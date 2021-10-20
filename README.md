@@ -25,7 +25,17 @@
  >   * [GitHub](https://github.com/) - An online host for software development utilizing Git.
 
  > * What will be the input/output of your project? What are the features that the project provides?
- >      * 
+ >      * Input:
+ >          * Book information by administrators (Title, genre, sub-genre, description, etc)
+ >          * User account creation (Inputting username/password)
+ >          * Search for books through user input
+ >          * Select books to borrow
+ >      * Output:
+ >          * Book recommendations
+ >          * Debt information
+ >          * Book search
+ >          * See account information
+ >          * List of available books
  >      * Features:
  >          * User Account System with Different Privileges (Student, Adminsistrative, etc)
  >          * Book Checkout System
