@@ -14,9 +14,8 @@
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold one check-in meeting with your lab TA in addition to the final demo.
 
 ## Project Description
- > * Why is it important or interesting to you?
  >   * This library system project is important because it allows us to implement an inheritance system in terms of accounts, and it will be interesting to see how the abstraction and encapsulation will control access in this program. It will also provide us with a good idea with how actual library systems, or other-related systems, work in real life compared to how we did it. It will also be interesting to see how we make a bare-bones recommendation system.
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+ > * Languages/Tools/Technologies
  >   * [C++](https://www.cplusplus.com/) - A general-purpose programming language
  >   * [CMake](https://cmake.org/cmake/help/v3.22/) - A tool to manage building of source code.
  >   * [GoogleTest](https://github.com/google/googletest) - Google’s C++ testing and mocking framework
@@ -24,7 +23,7 @@
  >   * [Git](https://git-scm.com/) - A distrubuted version control system
  >   * [GitHub](https://github.com/) - An online host for software development utilizing Git.
 
- > * What will be the input/output of your project? What are the features that the project provides?
+ > * Input/Output/Features
  >      * Input:
  >          * Book information by administrators (Title, genre, sub-genre, description, etc)
  >          * User account creation (Inputting username/password)
