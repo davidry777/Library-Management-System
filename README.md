@@ -14,35 +14,32 @@
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold one check-in meeting with your lab TA in addition to the final demo.
 
 ## Project Description
- > * Why is it important or interesting to you?
- >   * This library system project is important because it allows us to implement an inheritance system in terms of accounts, and it will be interesting to see how the abstraction and encapsulation will control access in this program. It will also provide us with a good idea with how actual library systems, or other-related systems, work in real life compared to how we did it. It will also be interesting to see how we make a bare-bones recommendation system.
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+ > This library system project is important because it allows us to implement an inheritance system in terms of accounts, and it will be interesting to see how the abstraction and encapsulation will control access in this program. It will also provide us with a good idea with how actual library systems, or other-related systems, work in real life compared to how we did it. It will also be interesting to see how we make a bare-bones recommendation system.
+ > The languages/tools/technologies we plan to use are (subject to change):
  >   * [C++](https://www.cplusplus.com/) - A general-purpose programming language
  >   * [CMake](https://cmake.org/cmake/help/v3.22/) - A tool to manage building of source code.
  >   * [GoogleTest](https://github.com/google/googletest) - Google’s C++ testing and mocking framework
  >   * [Valgrind](https://www.valgrind.org) - An instrumentation framework for building dynamic analysis tools
  >   * [Git](https://git-scm.com/) - A distrubuted version control system
  >   * [GitHub](https://github.com/) - An online host for software development utilizing Git.
-
- > * What will be the input/output of your project? What are the features that the project provides?
- >      * Input:
- >          * Book information by administrators (Title, genre, sub-genre, description, etc)
- >          * User account creation (Inputting username/password)
- >          * Search for books through user input
- >          * Select books to borrow
- >      * Output:
- >          * Book recommendations
- >          * Debt information
- >          * Book search
- >          * See account information
- >          * List of available books
- >      * Features:
- >          * User Account System with Different Privileges (Student, Adminsistrative, etc)
- >          * Book Checkout System
- >          * Account Debt Tracker
- >          * Available Books Displayed by a Specified Genre/Sub-Genre
- >          * Book Recommendations Based on User Behavior
- >          * User Data Encryption
+ > The input of our project will be:
+ >   * Book information by administrators (Title, genre, sub-genre, description, etc)
+ >   * User account creation (Inputting username/password)
+ >   * Search for books through user input
+ >   * Select books to borrow
+ > Our project will then output:
+ >   * Book recommendations
+ >   * Debt information
+ >   * Book search
+ >   * See account information
+ >   * List of available books
+ > Our project will contain features like:
+ >   * User Account System with Different Privileges (Student, Adminsistrative, etc)
+ >   * Book Checkout System
+ >   * Account Debt Tracker
+ >   * Available Books Displayed by a Specified Genre/Sub-Genre
+ >   * Book Recommendations Based on User Behavior
+ >   * User Data Encryption
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
  > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
