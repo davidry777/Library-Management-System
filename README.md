@@ -22,17 +22,20 @@
  >   * [Valgrind](https://www.valgrind.org) - An instrumentation framework for building dynamic analysis tools
  >   * [Git](https://git-scm.com/) - A distrubuted version control system
  >   * [GitHub](https://github.com/) - An online host for software development utilizing Git.
+
  > The input of our project will be:
  >   * Book information by administrators (Title, genre, sub-genre, description, etc)
  >   * User account creation (Inputting username/password)
  >   * Search for books through user input
  >   * Select books to borrow
+
  > Our project will then output:
  >   * Book recommendations
  >   * Debt information
  >   * Book search
  >   * See account information
  >   * List of available books
+ 
  > Our project will contain features like:
  >   * User Account System with Different Privileges (Student, Adminsistrative, etc)
  >   * Book Checkout System
