@@ -1,5 +1,5 @@
 # Library System
- > Authors: \[Daniel Castaneda](https://github.com/daniel-u-c)\
+ > Authors: [Daniel Castaneda](https://github.com/daniel-u-c), [David Ryan](https://github.com/davidry777), [Jason Giese](https://github.com/jsongi), [Gwen Kiler](https://github.com/gkiler)
  
  > You will be forming a group of **FOUR** students and working on an interesting project. The project has 4 phases, each one with specific requirements. A list of proposed project ideas that have been successful in previous quarters is listed in the project specifications document on Canvas. You can select an idea from the list, start thinking about the features you will implement, what design patterns can help you implement them, and why. If you want to propose your own original idea, you will have to contact an instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). Your project needs to implement at least two design patterns iteratively, which you will have to justify for later phases.The project work should be divided almost equally among team members and each member is expected to work on at least one design pattern (more than one partner may work on a pattern) and some of its test cases. You can of course help each other, but it needs to be clear who will be responsible for which patterns and for which features. Additionally, you are expected to follow Scrum patterns, specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings. While Daily Scrums are not required we highly recommend you practice them too.
  
@@ -14,15 +14,25 @@
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold one check-in meeting with your lab TA in addition to the final demo.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include:
  > * Why is it important or interesting to you?
+ >   * This library system project is important because it allows us to implement an inheritance system in terms of accounts, and it will be interesting to see how the abstraction and encapsulation will control access in this program. It will also provide us with a good idea with how actual library systems, or other-related systems, work in real life compared to how we did it. It will also be interesting to see how we make a bare-bones recommendation system.
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
+ >   * [C++](https://www.cplusplus.com/) - A general-purpose programming language
+ >   * [CMake](https://cmake.org/cmake/help/v3.22/) - A tool to manage building of source code.
+ >   * [GoogleTest](https://github.com/google/googletest) - Google’s C++ testing and mocking framework
+ >   * [Valgrind](https://www.valgrind.org) - An instrumentation framework for building dynamic analysis tools
+ >   * [Git](https://git-scm.com/) - A distrubuted version control system
+ >   * [GitHub](https://github.com/) - An online host for software development utilizing Git.
+
  > * What will be the input/output of your project? What are the features that the project provides?
- > 
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
- > 
- > You also need to set up an empty project board by choosing the  “Automated kanban with review” option on Github. You should also have a Backlog and In testing columns added.
+ >      * 
+ >      * Features:
+ >          * User Account System with Different Privileges (Student, Adminsistrative, etc)
+ >          * Book Checkout System
+ >          * Account Debt Tracker
+ >          * Available Books Displayed by a Specified Genre/Sub-Genre
+ >          * Book Recommendations Based on User Behavior
+ >          * User Data Encryption
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
  > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
