@@ -40,6 +40,7 @@
  >   * Available Books Displayed by a Specified Genre/Sub-Genre
  >   * Book Recommendations Based on User Behavior
  >   * User Data Encryption
+
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
  > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
