@@ -13,6 +13,7 @@
 
  > The Design Patterns used in this project are:
  >   * Strategy Pattern
+
  > The input of our project will be:
  >   * Book information by administrators (Title, genre, sub-genre, description, etc)
  >   * User account creation (Inputting username/password)
