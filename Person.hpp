@@ -6,12 +6,13 @@
 
 using namespace std;
 
-class Person {
+class Person 
+{
     protected:
         string fullName;
         int id;
         int hashedPassword;
-        Library* library;
+        LibrarySystem* library;
         
         string GetName();
         int GetId();
