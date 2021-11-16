@@ -14,3 +14,14 @@ void BookSystem::RemoveContent(int ISBN) {
     else
         std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
 }
+
+std::pair<std::time_t, Content*> BookSystem::CheckOut(int ISBN) {
+    std::pair<std::time_t, Content*> timeContent = {0, nullptr};
+    if (this->catalogue.find(ISBN) != this->catalogue.end()) {
+        timeContent = {std::time(0), this->catalogue.at(ISBN)};
+        this->checkedOut.push(timeContent);
+    }
+    else
+        std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
+    return timeContent;
+}
