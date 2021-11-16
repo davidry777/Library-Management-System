@@ -13,7 +13,8 @@ class Person
         int id;
         int hashedPassword;
         LibrarySystem* library;
-        
+    
+    public:
         virtual ~Person() = default;
         virtual std::string GetName() = 0;
         virtual int GetId() = 0;
