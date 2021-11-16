@@ -15,13 +15,33 @@ void BookSystem::RemoveContent(int ISBN) {
         std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
 }
 
-std::pair<std::time_t, Content*> BookSystem::CheckOut(int ISBN) {
-    std::pair<std::time_t, Content*> timeContent = {0, nullptr};
+CheckOutData* BookSystem::CheckOut(Person* person, int ISBN) {
+    CheckOutData* data = nullptr;
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
-        timeContent = {std::time(0), this->catalogue.at(ISBN)};
-        this->checkedOut.push(timeContent);
+        data = new CheckOutData(std::time(0), this->catalogue.at(ISBN), person);
+        this->checkedOut.push_back(data);
     }
     else
         std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
-    return timeContent;
+    return data;
+}
+
+bool BookSystem::ReturnContent(Person* person, int ISBN) {
+    for (deque<CheckOutData*>::iterator it = checkedOut.begin(); it != checkedOut.end(); ++it)
+        if ((*it)->userCheckedOut == person && (*it)->contentCheckedOut->GetISBN() == ISBN) {
+            CheckOutData* temp = *it;
+            checkedOut.erase(it);
+            delete temp;
+            return true;
+        }
+    std::cout << person->GetName() << " has not checked out ISBN " << ISBN << "!" << std::endl;
+    return false;
+}
+
+void BookSystem::CheckExpiration() {
+    if (checkedOut.empty()) { return; }
+    for (deque<CheckOutData*>::iterator it = checkedOut.begin(); it != checkedOut.end(); ++it)
+        if ((*it)->overTime == false)
+            if (std::time(0) - (*it)->timeCheckedOut >= 259200)
+                (*it)->overTime = true;
 }
