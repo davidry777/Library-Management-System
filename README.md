@@ -50,7 +50,7 @@
  
  > ## Phase III
  > What design patterns did you use? For each design pattern you must explain in 4-5 sentences:
- > * Strategy Pattern
+ > * Strategy Pattern - For our library system, one of the patterns we utilized was the strategy pattern for the display system in searching of books. This pattern was chosen as we needed a way to choose between variable algorithms during runtime for searching books and sorting the results from that search of books. This improved our designing and coding aspect  as the BookSearch and BookSort interfaces are able to pick between searching by Genre, ISBN, and Subgenre of a book, while also sorting by frequency of checkout or alphabetical order. As these functions take in the same parameters of a vector of books, the same vector can be used for multiple searches, refining results by re-searching and re-sorting the book vector.
  > * Composite Pattern
  > Why did you pick this pattern? And what feature did you implement with it?
  > How did the design pattern help you write better code?
