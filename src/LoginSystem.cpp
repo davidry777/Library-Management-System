@@ -2,10 +2,12 @@
 
 using namespace std;
 
-LoginSystem::LoginSystem(unordered_map<int, string> *userPasses, UserSystem *uSystem) : UserSystem(uSystem) 
-{
-	
-	//populate userPasses from text file
+LoginSystem::LoginSystem(unordered_map<int, int> *userPasses, UserSystem *uSystem) : UserSystem(uSystem) 
+{		
+	//TODO: populate userPasses from text file
+
+	//temporary stub
+	userPasses[1] = a*1984+2049;
 }
 
 LoginSystem::~LoginSystem()
@@ -35,6 +37,7 @@ bool LoginVerify(int userID, string &userPass, unordered_map<int, Person*> &peop
 
 void LogOut()
 {
+	//TOOD: LogOut
 	//save users to file
 	//deconstruct?
 	//do log out stuff
