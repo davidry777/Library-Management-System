@@ -8,3 +8,9 @@ User::User(std::string name, int id, LibrarySystem* set_library) : Person(name, 
 int User::GetBalance() { return debt; }
 
 void User::PayBalance(int cash) { debt -= cash; }
+
+void User::DisplayCheckOut()
+{
+    DisplaySystem checkoutOutput = DisplaySystem();
+    checkoutOutput.DisplayBooks(checkedOut);
+}
