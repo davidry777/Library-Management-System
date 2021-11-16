@@ -51,11 +51,7 @@
  > ## Phase III
  > What design patterns did you use? For each design pattern you must explain in 4-5 sentences:
  > * Strategy Pattern - For our library system, one of the patterns we utilized was the strategy pattern for the display system in searching of books. This pattern was chosen as we needed a way to choose between variable algorithms during runtime for searching books and sorting the results from that search of books. This improved our designing and coding aspect  as the BookSearch and BookSort interfaces are able to pick between searching by Genre, ISBN, and Subgenre of a book, while also sorting by frequency of checkout or alphabetical order. As these functions take in the same parameters of a vector of books, the same vector can be used for multiple searches, refining results by re-searching and re-sorting the book vector.
- > * Composite Pattern
- > Why did you pick this pattern? And what feature did you implement with it?
- > How did the design pattern help you write better code?
- > 
- 
+ > * Composite Pattern - Another design pattern that we used in our Library System is the Composite pattern. When designing the Library System, we ran into the issue of how we wanted to represent books and bundles of books, which can hold books or more bundles, and treat these two elements uniformly. We ultimately decided on representing these two elements through the Composite pattern, where they both inherit from a base Content class that defines common attributes and the function Draw() that they must implement for displaying its content. Now when creating the Bundle class, we gave it a list to hold Content* which can either be books or bundles. This has definitely helped us write better code as it kept it organized and managed to represent both simple and complex elements the same.
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
  > Before the demo, you should do the following:
