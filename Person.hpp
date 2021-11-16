@@ -2,7 +2,7 @@
 #define __PERSON_HPP__
 
 #include <iostream>
-#include <string.h>
+#include <string>
 
 using namespace std;
 
