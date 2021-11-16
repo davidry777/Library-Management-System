@@ -16,11 +16,11 @@ class Person
     
     public:
         virtual ~Person() = default;
-        virtual std::string GetName() = 0;
-        virtual int GetId() = 0;
+        std::string GetName() { return fullName; }
+        int GetId() { return id; }
         virtual std::string CheckPerson(Person* person) = 0;
         virtual std::string GetInfo() = 0;
-        virtual int GetHashedPassword() = 0;
+        int GetHashedPassword() { return hashedPassword; }
         virtual std::string GetBookInfo() = 0;
 };
 
