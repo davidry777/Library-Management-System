@@ -13,12 +13,12 @@ class AlphabeticalSort : public BookSort
 		}
 		static bool compareStr(Book* a, Book* b)
 		{
-			if(a->getTitle().compare(b->getTitle()) < 0)
+			if(a->GetTitle().compare(b->GetTitle()) < 0)
 			{
 				return true;
 			}
 			else
-				if(a->getTitle().compare(b->getTitle()) > 0)
+				if(a->GetTitle().compare(b->GetTitle()) > 0)
 				{
 					return false;
 				}
