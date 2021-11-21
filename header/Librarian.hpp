@@ -12,10 +12,6 @@
 
 class Librarian : public Person
 {
-    private:
-        std::vector<CheckOutData*> checkedOut;
-        int debt;
-
     public:
         Librarian(std::string name, int id, LibrarySystem* set_library);
         ~Librarian();
