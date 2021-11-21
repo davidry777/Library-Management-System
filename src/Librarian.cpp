@@ -11,4 +11,4 @@ void Librarian::AddBook(Book* newBook) { library->bookSystem->AddContent(newBook
 
 void Librarian::RemoveBook(int ISBN) { library->bookSystem->RemoveContent(ISBN); }
 
-void Librarian::SetLibrary(LibrarySystem* newLibrary) { library = &newLibrary; }
+void Librarian::SetLibrary(LibrarySystem* newLibrary) { library = newLibrary; }

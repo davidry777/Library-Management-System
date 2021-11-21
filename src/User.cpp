@@ -14,5 +14,5 @@ void User::PayBalance(int cash) { debt -= cash; }
 void User::DisplayCheckOut()
 {
     DisplaySystem checkoutOutput = DisplaySystem();
-    checkoutOutput.DisplayBooks(checkoutOutput);
+    checkoutOutput.DisplayBooks(checkedOut);
 }
