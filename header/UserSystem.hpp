@@ -15,6 +15,6 @@ class UserSystem {
 	public:
 		UserSystem(Person *cPerson, unordered_map<int, Person*> peeps;
 		void AddPerson(Person *newPeep);
-		Person* GetCurrPeron();	
+		Person* GetCurrPeron(Person* dude, string password);	
 			
 }
