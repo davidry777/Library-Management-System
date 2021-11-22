@@ -1,4 +1,9 @@
 #include "DisplaySystem.h"
+#include "GenreSearch.cpp"
+#include "SubgenreSearch.cpp"
+#include "ISBNSearch.cpp"
+#include "AlphabeticalSort.cpp"
+#include "FrequencySort.cpp"
 
 DisplaySystem::DisplaySystem() { }
 
