@@ -19,37 +19,46 @@ void DisplaySystem::DisplayBooks(std::vector<CheckedOut*> checkOut)
 		std::cout << endl;
 	}
 }
-void DisplaySystem::DisplayBooks(char choice, std::vector<Book*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Book*> catalogue)
 {
 	//Choice taken from main via user input from a menu of choices
 	std::vector<Book*> temp;
-	std::string genre;
-	int ISBN;
-	switch(choice {
+	switch(choice) {
 	//Case for GenreSearch
 	case '1':
 		searchAlgorithm = new GenreSearch();
-		temp = searchAlgorithm->SearchBooks(catalogue);
+		temp = searchAlgorithm->SearchBooks(catalogue, genre);
 		this->DisplayBooks(temp);
 		break;
 	//Case for SubgenreSearch
 	case '2':
 		searchAlgorithm = new SubgenreSearch();
-		temp = searchAlgorith->SearchBooks(catalogue);
+		temp = searchAlgorith->SearchBooks(catalogue, genre);
 		this->DisplayBooks(temp);
 		break;
-	//Case for ISBNSearch
-	case '3':
-		searchAlgorithm = new ISBNSearch();
-		ISBN = 
-		temp = searchAlgorithm->SearchBooks(catalogue, ISBN);
-		this->DisplayBooks(temp);
-		break;
-	//Case for AlphabeticalSort
+	}
+}
+void DisplaySystem::DisplayBooks(char choice, int ISBN, std::vector<Book*> catalogue)
+{
+	std::vector<Book*> temp;
+	searchAlgorithm = new ISBNSearch();
+	temp = searchAlgorithm->ISBNSearch(catalogue, ISBN);
+	this->DisplayBooks(temp);
+}
+void DisplaySystem::DisplayBooks(char choice, std::vector<Book*> catalogue)
+{
+	std::vector<Book*> temp;
+	switch(choice) {
 	case '4':
 		sortAlgorithm = new AlphabeticalSort();
 		temp = sortAlgorithm->SortBooks(catalogue);
 		this->DisplayBooks(temp);
 		break;
+	case '5':
+		sortAlgorithm = new FrequencySort();
+		temp = sortAlgorithm->SortBooks(catalogue);
+		this->DisplayBooks(temp);
+		break;
 	}
 }
+
