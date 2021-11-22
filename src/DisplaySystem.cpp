@@ -5,7 +5,17 @@
 #include "AlphabeticalSort.cpp"
 #include "FrequencySort.cpp"
 
-DisplaySystem::DisplaySystem() { }
+DisplaySystem::DisplaySystem() 
+{ 
+	searchAlgorithm = nullptr;
+	sortAlgorithm = nullptr;
+}
+
+DisplaySystem::~DisplaySystem()
+{
+	delete searchAlgorithm;
+	delete sortAlgorithm;
+}
 
 void DisplaySystem::DisplayBooks(std::vector<Book*> catalogue)
 {

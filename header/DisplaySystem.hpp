@@ -11,6 +11,8 @@ private:
 	BookSort* sortAlgorithm;
 
 public:
+	DisplaySystem();
+	~DisplaySystem();
 	void DisplayBooks(std::vector<Book*>);
 	void DisplayBooks(std::vector<CheckedOut*>)
 	void DisplayBooks(char, std::string, std::vector<Book*>);
