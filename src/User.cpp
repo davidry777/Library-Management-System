@@ -11,8 +11,6 @@ int User::GetBalance() { return debt; }
 
 void User::PayBalance(int cash) { debt -= cash; }
 
-std::vector<CheckOutData*> User::getCheckedOutList() { return checkedOut; }
-
 void User::DisplayCheckOut()
 {
     DisplaySystem checkoutOutput = DisplaySystem();

@@ -21,7 +21,6 @@ class User : public Person
         ~User();
         int GetBalance();
         void PayBalance(int cash);
-        std::vector<CheckOutData*> getCheckedOutList();
         void DisplayCheckOut();
 };
 
