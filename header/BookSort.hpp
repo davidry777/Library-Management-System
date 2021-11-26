@@ -8,6 +8,6 @@ class BookSort {
  private:
 
  public:
-	virtual std::vector<Book*>& SortBooks(std::vector<Book*>&) = 0;
+	virtual std::vector<Book*> SortBooks(std::vector<Book*>) = 0;
 };
 #endif

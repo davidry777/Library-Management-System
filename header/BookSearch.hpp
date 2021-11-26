@@ -8,6 +8,6 @@ class BookSearch {
  private:
 
  public:
-	virtual std::vector<Book*> SearchBooks(std::vector<Book*>&, std::string) = 0;
+	virtual std::vector<Book*> SearchBooks(std::vector<Book*>, std::string) = 0;
 };
 #endif
