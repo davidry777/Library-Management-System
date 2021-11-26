@@ -1,3 +1,6 @@
+#ifndef __BOOKSYSTEM_HPP__
+#define __BOOKSYSTEM_HPP__
+
 #pragma once
 
 #include <iostream>
@@ -29,3 +32,5 @@ class BookSystem {
         bool ReturnContent(Person* person, int ISBN);
         void CheckExpiration();
 };
+
+#endif  //__BOOKSYSTEM_HPP__

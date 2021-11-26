@@ -1,4 +1,4 @@
-#include "../header/BookSort.h"
+#include "../header/BookSort.hpp"
 
 class FrequencySort : public BookSort
 {

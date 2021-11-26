@@ -1,6 +1,10 @@
 #ifndef __PERSON_HPP__
 #define __PERSON_HPP__
 
+#include "LibrarySystem.hpp"
+#include "UserSystem.hpp"
+#include "BookSystem.hpp"
+
 #include <iostream>
 #include <string>
 

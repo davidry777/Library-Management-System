@@ -1,5 +1,6 @@
-#ifndef __BOOKSORT_H
-#define __BOOKSORT_H
+#ifndef __BOOKSORT_HPP__
+#define __BOOKSORT_HPP__
+
 #include <vector>
 #include <string>
 #include "Book.hpp"
@@ -10,4 +11,5 @@ class BookSort {
  public:
 	virtual std::vector<Book*> SortBooks(std::vector<Book*>) = 0;
 };
-#endif
+
+#endif	//__BOOKSORT_HPP__

@@ -1,5 +1,6 @@
-#ifndef __BOOKSEARCH_H
-#define __BOOKSEARCH_H
+#ifndef __BOOKSEARCH_HPP__
+#define __BOOKSEARCH_HPP__
+
 #include <vector>
 #include <string>
 #include "Book.hpp"

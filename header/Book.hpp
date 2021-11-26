@@ -1,3 +1,6 @@
+#ifndef __BOOK_HPP__
+#define __BOOK_HPP__
+
 #pragma once
 
 #include "Content.hpp"
@@ -20,3 +23,5 @@ class Book : public Content {
         int GetFrequency();
         void Display();
 };
+
+#endif  //__BOOK_HPP__

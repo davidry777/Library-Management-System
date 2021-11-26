@@ -1,7 +1,9 @@
-#ifndef __DISPLAYSSYTEM_H
-#define __DISPLAYSSYSTEM_H
+#ifndef __DISPLAYSYSTEM_HPP__
+#define __DISPLAYSYSTEM_HPP__
+
 #include "BookSort.hpp"
 #include "BookSearch.hpp"
+#include "BookSystem.hpp"
 #include <iostream>
 
 class DisplaySystem {
@@ -14,9 +16,10 @@ public:
 	DisplaySystem();
 	~DisplaySystem();
 	void DisplayBooks(std::vector<Book*>);
-	void DisplayBooks(std::vector<CheckedOut*>)
+	void DisplayBooks(std::vector<CheckedOutData*>)
 	void DisplayBooks(char, std::string, std::vector<Book*>);
 	void DisplayBooks(char, int, std::vector<Book*>);
 	void DisplayBooks(char, std::vector<Book*>);
 };
-#endif
+
+#endif	//__DISPLAYSYSTEM_HPP__

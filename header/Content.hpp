@@ -1,3 +1,6 @@
+#ifndef __CONTENT_HPP__
+#define __CONTENT_HPP__
+
 #pragma once
 
 #include <string>
@@ -12,3 +15,5 @@ class Content {
         std::string GetTitle() { return title; }
         int GetISBN() { return ISBN; }
 };
+
+#endif  //__CONTENT_HPP__

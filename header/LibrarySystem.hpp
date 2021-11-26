@@ -1,3 +1,6 @@
+#ifndef __LIBRARYSYSTEM_HPP__
+#define __LIBRARYSYSTEM_HPP__
+
 #pragma once
 
 #include "UserSystem.hpp"
@@ -13,3 +16,5 @@ class LibrarySystem {
         UserSystem* GetUserSystem();
         BookSystem* GetBookSystem();
 };
+
+#endif //__LIBRARYSYSTEM_HPP__

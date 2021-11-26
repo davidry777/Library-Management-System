@@ -1,3 +1,6 @@
+#ifndef __BUNDLE_HPP__
+#define __BUNDLE_HPP__
+
 #pragma once
 
 #include "Content.hpp"

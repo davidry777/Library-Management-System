@@ -1,3 +1,6 @@
+#ifndef __LOGINSYSTEM_HPP__
+#define __LOGINSYSTEM_HPP__
+
 #pragma once
 
 #include <unordered_map>
@@ -17,3 +20,5 @@ class LoginSystem {
 		int HashPassword(string &userPass);
 		void LogOut();
 }
+
+#endif	//__LOGINSYSTEM_HPP__

@@ -1,6 +1,6 @@
-#include "../header/DisplaySystem.h"
+#include "../header/DisplaySystem.hpp"
 #include "GenreSearch.cpp"
-#include "SubgenreSearch.cpp"
+#include "SubgenreSearch.cpp"	
 #include "ISBNSearch.cpp"
 #include "AlphabeticalSort.cpp"
 #include "FrequencySort.cpp"
@@ -26,7 +26,7 @@ void DisplaySystem::DisplayBooks(std::vector<Book*> catalogue)
 	}
 }
 
-void DisplaySystem::DisplayBooks(std::vector<CheckedOut*> checkOut)
+void DisplaySystem::DisplayBooks(std::vector<CheckedOutData*> checkOut)
 {
 	for(CheckedOut c : checkOut)
 	{
