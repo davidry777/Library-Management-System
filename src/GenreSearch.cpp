@@ -1,4 +1,4 @@
-#include "BookSearch.cpp"
+#include "../header/BookSearch.hpp"
 
 class GenreSearch : public BookSearch
 {
