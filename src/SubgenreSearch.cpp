@@ -7,19 +7,20 @@ private:
 public:
 	std::vector<Book*> SearchBooks(std::vector<Book*> catalogue, std::string subgenre)
 	{
-		std::vector<Book*> temp;
-		temp = SearchGenre(catalogue, subgenre);
+		std::vector<Content*> temp;
+		std::vector<Content*> mapped = MapToVector(catalogue);
+		temp = SearchGenre(mapped, subgenre);
 		return temp;
 	}
 	
 	std::vector<Book*> SearchSubgenre(std::vector<Book*> catalogue, std::string subgenre)
 	{
 		std::vector<Book*> tempFound;
-		for(Book* b : catalogue)
+		for(Content* c : catalogue)
 		{
-			if(b->GetSubgenre().compare(subgenre) == 0)
+			if(c->GetSubgenre().compare(subgenre) == 0)
 			{
-				tempFound.push_back(b);
+				tempFound.push_back(c);
 			}
 		}
 		return tempFound;
