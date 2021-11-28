@@ -1,24 +1,36 @@
 #include "../header/BookSystem.hpp"
 
-void BookSystem::AddContent(Content* content) {
-    if (this->catalogue.find(content->GetISBN()) == this->catalogue.end()) {
-        this->catalogue.insert({content->GetISBN(), content});
+bool BookSystem::GetContent(int ISBN) {
+    if (this->catalogue.find(ISBN) != this->catalogue.end()) {
+        return this->catalogue.at(ISBN);
+        return true;
     }
-    else
-        std::cout << "Error adding content. ISBN number " << content->GetISBN() << " is already in use for " << this->catalogue.at(content->GetISBN()) << "!" << std::endl; 
+    std::cout << "Error finding ISBN. ISBN number " << ISBN << " does not exist in catalogue!" << std::endl;
+    return false;
 }
 
-void BookSystem::RemoveContent(int ISBN) {
-    if (this->catalogue.find(ISBN) != this->catalogue.end())
+bool BookSystem::AddContent(Content* content) {
+    if (this->catalogue.find(content->GetISBN()) == this->catalogue.end()) {
+        this->catalogue.insert({content->GetISBN(), content});
+        return true;
+    }
+    std::cout << "Error adding content. ISBN number " << content->GetISBN() << " is already in use for " << this->catalogue.at(content->GetISBN()) << "!" << std::endl;
+    return false; 
+}
+
+bool BookSystem::RemoveContent(int ISBN) {
+    if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         this->catalogue.erase(ISBN);
-    else
-        std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
+        return true;
+    }
+    std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
+    return false;
 }
 
 CheckOutData* BookSystem::CheckOut(Person* person, int ISBN) {
     CheckOutData* data = nullptr;
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
-        data = new CheckOutData(std::time(0), this->catalogue.at(ISBN), person);
+        data = new CheckOutData(time(0), this->catalogue.at(ISBN), person);
         this->checkedOut.push_back(data);
     }
     else
@@ -27,7 +39,14 @@ CheckOutData* BookSystem::CheckOut(Person* person, int ISBN) {
 }
 
 bool BookSystem::ReturnContent(Person* person, int ISBN) {
-    for (deque<CheckOutData*>::iterator it = checkedOut.begin(); it != checkedOut.end(); ++it)
+    for (std::vector<CheckOutData*>::iterator it = passedDue.begin(); it != passedDue.end(); ++it)
+        if ((*it)->userCheckedOut == person && (*it)->contentCheckedOut->GetISBN() == ISBN) {
+            CheckOutData* temp = *it;
+            passedDue.erase(it);
+            delete temp;
+            return true;
+        }
+    for (std::deque<CheckOutData*>::iterator it = checkedOut.begin(); it != checkedOut.end(); ++it)
         if ((*it)->userCheckedOut == person && (*it)->contentCheckedOut->GetISBN() == ISBN) {
             CheckOutData* temp = *it;
             checkedOut.erase(it);
@@ -39,9 +58,10 @@ bool BookSystem::ReturnContent(Person* person, int ISBN) {
 }
 
 void BookSystem::CheckExpiration() {
-    if (checkedOut.empty()) { return; }
-    for (deque<CheckOutData*>::iterator it = checkedOut.begin(); it != checkedOut.end(); ++it)
-        if ((*it)->overTime == false)
-            if (std::time(0) - (*it)->timeCheckedOut >= 259200)
-                (*it)->overTime = true;
+    if (!this->checkedOut.empty() && std::time(0) - this->checkedOut.front()->timeCheckedOut >= 259200) {
+        this->checkedOut.front()->overTime = true;
+        this->passedDue.push_back(this->checkedOut.front());
+        this->checkedOut.pop_front();
+        this->CheckExpiration();
+    }
 }
