@@ -1,13 +1,8 @@
 #include "../header/Book.hpp"
 
-Book::Book(std::string title, int ISBN, std::string author, std::string genre, std::string subgrenre) : Content(title, ISBN), author(author), genre(genre), subgenre(subgenre), frequency(0) {}
+Book::Book(const std::string& title, int ISBN, const std::string& genre, const std::string& subgenre, const std::string& author) : Content(title, ISBN, genre, subgenre), author(author) {}
 
-std::string Book::GetAuthor() { return this->author; }
-std::string Book::GetGenre() { return this->genre; }
-std::string Book::GetSubgenre() { return this->subgenre; }
-int Book::GetFrequency() { return this->frequency; }
-
-void Book::Display() {
+void Book::Display(std::string indent) {
     std::cout << "Title: " << this->title;
     std::cout << "\nISBN: " << this->ISBN;
     std::cout << "\nAuthor: " << this->author;

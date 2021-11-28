@@ -8,15 +8,8 @@
 class Book : public Content {
     private:
         std::string author;
-        std::string genre;
-        std::string subgenre;
-        int frequency;
     public:
-        Book(std::string title, int ISBN, std::string author,
-             std::string genre, std::string subgrenre);
+        Book(const std::string& title, int ISBN, const std::string& genre, const std::string& subgenre, const std::string& author);
         std::string GetAuthor();
-        std::string GetGenre();
-        std::string GetSubgenre();
-        int GetFrequency();
-        void Display();
+        void Display(std::string indent = "");
 };
