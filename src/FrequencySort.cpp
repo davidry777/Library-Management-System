@@ -5,13 +5,15 @@ class FrequencySort : public BookSort
 	private:
 	
 	public:
-		std::vector<Book*>& SortBooks(std::vector<Book*> catalogue)
+		std::vector<Content*> SortBooks(std::unordered_map<int, Content*> catalogue)
 		{
+			//Everything in here needs a rework
 			//This uses the standard library sorting function to sort books alphabetically
-			std::sort(catalogue.begin(), catalogue.end(), this->compareFreq);
-			return catalogue;
+			std::vector<Content*> mapped = MapToVector(catalogue);
+			std::sort(mapped.begin(), mapped.end(), this->compareFreq);
+			return mapped;
 		}
-		static bool compareFreq(Book* a, Book* b)
+		static bool compareFreq(Content* a, Content* b)
 		{
 			return a->GetFrequency() > b->GetFrequency();
 		}
