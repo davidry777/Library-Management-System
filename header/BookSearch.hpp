@@ -8,6 +8,15 @@ class BookSearch {
  private:
 
  public:
-	virtual std::vector<Book*> SearchBooks(std::vector<Book*>, std::string) = 0;
+	virtual std::vector<Content*> SearchBooks(std::unordered_map<int, Content*>, std::string);
+	std::vector<Content*> MapToVector(std::unordered_map<int, Content*> catalogue)
+	{
+		std::vector<Content*> mapped;
+		for(auto i : catalogue)
+		{
+			mapped.push_back(i.second);	
+		}
+		return mapped;
+	}
 };
 #endif
