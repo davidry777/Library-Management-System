@@ -1,24 +1,25 @@
-#include "../header/BookSearch.hpp"
+#include "BookSearch.cpp"
 
 class GenreSearch : public BookSearch
 {
  private:
 
  public:
-	std::vector<Book*> SearchBooks(std::vector<Book*> catalogue, std::string genre)
+	std::vector<Content*> SearchBooks(std::unordered_map<int, Content*> catalogue, std::string genre)
 	{
-		std::vector<Book*> foundBooks;
-		temp = SearchGenre(catalogue, genre);
+		std::vector<Content*> foundBooks;
+		std::vector<Content*> mapped = MapToVector(catalogue);
+		foundBooks = SearchGenre(mapped, genre);
 		return foundBooks;	
 	}
-	std::vector<Book*> SearchGenre(std::vector<Book*> catalogue, std::string genre)
+	std::vector<Content*> SearchGenre(std::vector<Content*> catalogue, std::string genre)
 	{
-		std::vector<Book*> tempFound;
-		for (Book* b : catalogue)
+		std::vector<Content*> tempFound;
+		for (Content* c : catalogue)
 		{
-			if(b->getGenre().compare(genre) == 0)
+			if(c->getGenre().compare(genre) == 0)
 			{
-				tempFound.push_back(b);
+				tempFound.push_back(c);
 			}
 		}
 		return tempFound;
