@@ -17,4 +17,4 @@ void User::DisplayCheckOut()
     checkoutOutput.DisplayBooks(checkedOut);
 }
 
-void User::SetVector(vector<CheckOutData*> data) { this->checkedOut = data; }
+void User::SetCheckedOutData(vector<CheckOutData*> data) { this->checkedOut = data; }
