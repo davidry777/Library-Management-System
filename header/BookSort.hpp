@@ -9,6 +9,7 @@ class BookSort {
 
  public:
 	virtual std::vector<Content*> SortBooks(std::unordered_map<int, Content*>) = 0;
+	virtual std::vector<Content*> SortBooks(std::vector<CheckOutData*>) = 0;
 	std::vector<Content*> MapToVector(std::unordered_map<int, Content*> catalogue)
 	{
 		std::vector<Content*> mapped;
@@ -16,6 +17,15 @@ class BookSort {
 		{
 			mapped.push_back(i.second);
 		}	
+		return mapped;
+	}
+	std::vector<Content*> MapToVector(std::vector<CheckOutData*> usercat)
+	{
+		std::vector<Content*> mapped;
+		for(CheckOutData* i : usercat)
+		{
+			mapped.push_back(i.contentCheckedOut);
+		}
 		return mapped;
 	}
 };

@@ -17,53 +17,58 @@ DisplaySystem::~DisplaySystem()
 	delete sortAlgorithm;
 }
 
-void DisplaySystem::DisplayBooks(std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(std::unordered_map<long long, Content*> catalogue)
 {
 	//I need to rewrite this
-	for(Content* c: catalogue)
+	for (auto &pair : catalogue)
 	{
-		c.Display();
-		std::cout << endl;
+		std::cout << pair.second->Display() << std::endl;
 	}
 }
 
-void DisplaySystem::DisplayBooks(std::vector<CheckedOut*> checkOut)
+void DisplaySystem::DisplayBooks(std::vector<Content*> catalogue)
 {
-	for(CheckedOut c : checkOut)
+	for(Content* c : catalogue)
 	{
-		c.Display();
-		std::cout << endl;
+                std::cout << c.Display() << std::endl;
 	}
 }
-void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<int, Content*> catalogue)
+
+void DisplaySystem::DisplayBooks(std::vector<CheckOutData*> checkOut)
+{
+	for(CheckOutData* c : checkOut)
+	{
+		std::cout << (c.contentCheckedOut).Display() << std::endl;
+	}
+}
+void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<long long, Content*> catalogue)
 {
 	//Choice taken from main via user input from a menu of choices
-	std::vector<Book*> temp;
-	switch(choice) {
+	std::vector<Content*> temp;
 	//Case for GenreSearch
+	switch(choice) {
 	case '1':
 		searchAlgorithm = new GenreSearch();
+        	temp = searchAlgorithm->SearchBooks(catalogue, genre);
+        	this->DisplayBooks(temp);
+		break;
+	case '2':
+		searchAlgorithm = new KeyWordSearch();
 		temp = searchAlgorithm->SearchBooks(catalogue, genre);
 		this->DisplayBooks(temp);
 		break;
-	//Case for SubgenreSearch
-	case '2':
-		searchAlgorithm = new SubgenreSearch();
-		temp = searchAlgorith->SearchBooks(catalogue, genre);
-		this->DisplayBooks(temp);
-		break;
 	}
 }
-void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<long long, Content*> catalogue)
 {
-	std::vector<Book*> temp;
+	std::vector<Content*> temp;
 	searchAlgorithm = new ISBNSearch();
 	temp = searchAlgorithm->ISBNSearch(catalogue, ISBN);
 	this->DisplayBooks(temp);
 }
-void DisplaySystem::DisplayBooks(char choice, std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Content*> catalogue)
 {
-	std::vector<Book*> temp;
+	std::vector<Content*> temp;
 	switch(choice) {
 	case '4':
 		sortAlgorithm = new AlphabeticalSort();
@@ -77,4 +82,43 @@ void DisplaySystem::DisplayBooks(char choice, std::unordered_map<int, Content*> 
 		break;
 	}
 }
+void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<CheckOutData*> usercat)
+{
+	std::vector<Content*> temp;
+	switch(choice) {
+        case '1':
+                searchAlgorithm = new GenreSearch();
+                temp = searchAlgorithm->SearchBooks(usercat, genre);
+                this->DisplayBooks(temp);
+                break;
+        case '2':
+                searchAlgorithm = new KeyWordSearch();
+                temp = searchAlgorithm->SearchBooks(usercat, genre);
+                this->DisplayBooks(temp);
+                break;
+        }
+}
 
+void DisplaySystem::DisplayBooks(char choice, int ISBN, std::vector<CheckOutData*> usercat)
+{
+        std::vector<Content*> temp;
+        searchAlgorithm = new ISBNSearch();
+        temp = searchAlgorithm->ISBNSearch(usercat, ISBN);
+        this->DisplayBooks(temp);
+}
+void DisplaySystem::DisplayBooks(char choice, std::vector<CheckOutData*> usercat)
+{
+        std::vector<Content*> temp;
+        switch(choice) {
+        case '4':
+                sortAlgorithm = new AlphabeticalSort();
+                temp = sortAlgorithm->SortBooks(usercat);
+                this->DisplayBooks(temp);
+                break;
+        case '5':
+                sortAlgorithm = new FrequencySort();
+                temp = sortAlgorithm->SortBooks(usercat);
+                this->DisplayBooks(temp);
+                break;
+        }
+}
