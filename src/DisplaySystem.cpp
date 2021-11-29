@@ -1,9 +1,6 @@
-#include "../header/DisplaySystem.h"
-#include "GenreSearch.cpp"
-#include "SubgenreSearch.cpp"
-#include "ISBNSearch.cpp"
-#include "AlphabeticalSort.cpp"
-#include "FrequencySort.cpp"
+#include "../header/DisplaySystem.hpp"
+#include "../header/BookSort.hpp"
+#include "../header/BookSearch.hpp"
 
 DisplaySystem::DisplaySystem() 
 { 
