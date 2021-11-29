@@ -13,6 +13,12 @@ class FrequencySort : public BookSort
 			std::sort(mapped.begin(), mapped.end(), this->compareFreq);
 			return mapped;
 		}
+		std::vector<Content*> SortBooks(std::vector<CheckedOut*> usercat)
+		{
+			std::vector<Content*> mapped = MapToVector(usercat);
+			std::sort(mapped.begin(), mapped.end(), this->compareFreq);
+			return mapped;
+		}
 		static bool compareFreq(Content* a, Content* b)
 		{
 			return a->GetFrequency() > b->GetFrequency();
