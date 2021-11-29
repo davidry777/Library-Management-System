@@ -10,17 +10,15 @@ class Person
 {
     protected:
         string fullName;
-        int id;
-        int hashedPassword;
+        int ID;
         LibrarySystem* library;
     
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
-        int GetId() { return id; }
+        int GetId() { return ID; }
         virtual std::string CheckPerson(Person* person) = 0;
         virtual std::string GetInfo() = 0;
-        int GetHashedPassword() { return hashedPassword; }
         virtual std::string GetBookInfo() = 0;
 };
 
