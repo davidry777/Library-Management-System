@@ -124,6 +124,23 @@ bool BookSystem::AddContent(Content* content) {
     return false; 
 }
 
+bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency = 0) {
+    std::vector<Content*> newContentList;
+    for (long long ISBN : ISBNLists) {
+        if (this->catalogue.find(ISBN) != this->catalogue.end())
+            newContentList.push_back(this->catalogue.at(ISBN));
+        else
+            cout << "Error. Could not find ISBN " << ISBN << " in catalogue!" << endl;
+    }
+    Content* newContent = new Bundle(title, newISBN, genre, newContentList);
+    if (!AddContent(newContent)) {
+        cout << "Error. Content with ISBN " << newISBN << " already exists in the catalogue!" << endl;
+        delete newContent;
+        return false;
+    }
+    return true;
+}
+
 bool BookSystem::RemoveContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         this->catalogue.erase(ISBN);

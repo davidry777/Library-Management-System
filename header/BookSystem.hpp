@@ -39,6 +39,7 @@ class BookSystem {
 
         bool AddContent(Content* content);
         bool RemoveContent(long long ISBN);
+        bool MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency = 0);
 
         CheckOutData* CheckOut(Person* person, long long ISBN);
         bool ReturnContent(Person* person, long long ISBN);

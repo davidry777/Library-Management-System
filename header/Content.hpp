@@ -16,5 +16,5 @@ class Content {
         long long GetISBN() { return ISBN; }
         std::string GetGenre() { return genre; }
         int GetFrequency() { return frequency; }
-        std::string GetAuthor() { return author; }
+        virtual std::string GetAuthor() { return author; }
 };
