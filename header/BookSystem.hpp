@@ -35,7 +35,7 @@ class BookSystem {
     public:
         BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile);
         ~BookSystem();
-        bool GetContent(long long ISBN);
+        Content* GetContent(long long ISBN);
 
         bool AddContent(Content* content);
         bool RemoveContent(long long ISBN);

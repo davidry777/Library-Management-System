@@ -107,13 +107,12 @@ BookSystem::~BookSystem() {
     }
 }
 
-bool BookSystem::GetContent(long long ISBN) {
+Content* BookSystem::GetContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         return this->catalogue.at(ISBN);
-        return true;
     }
     std::cout << "Error finding ISBN. ISBN number " << ISBN << " does not exist in catalogue!" << std::endl;
-    return false;
+    return nullptr;
 }
 
 bool BookSystem::AddContent(Content* content) {
