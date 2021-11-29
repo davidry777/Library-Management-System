@@ -1,6 +1,113 @@
 #include "../header/BookSystem.hpp"
 
-bool BookSystem::GetContent(int ISBN) {
+BookSystem::BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile) : catalogueFile(catalogueFile), checkedOutFile(checkedOutFile), passedDueFile(passedDueFile) {
+    using json = nlohmann::json;
+    std::ifstream inFS;
+    
+
+    // Loading Catalogue
+    inFS.open(catalogueFile);
+    if (!inFS.is_open()) {
+        cout << "Cannot find '" << catalogueFile << "'.Exiting" << endl;
+        exit(1);
+    }
+    json catalogueJSON;
+    inFS >> catalogueJSON;
+    inFS.close();
+    for (auto book : catalogueJSON) {
+        Content* newContent = new Book(book["title"], book["isbn"], book["genre"], book["author"], book["frequency"]);
+        if (!AddContent(newContent))
+            delete newContent;
+    }
+
+    // Loading Checked Out
+    inFS.open(checkedOutFile);
+    if (!inFS.is_open()) {
+        cout << "Cannot find '" << checkedOutFile << "'.Exiting" << endl;
+        exit(1);
+    }
+    json checkedOutJSON;
+    inFS >> checkedOutJSON;
+    inFS.close();
+    for (auto data : checkedOutJSON) {
+        time_t dataTime = data["time"];
+        Content* dataContent = this->catalogue.at(data["content_isbn"]);
+        Person* dataUser = nullptr/*GetPerson(data["user_id"])*/;
+        bool dataOvertime = data["over_time"];
+        CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
+        checkedOut.push_back(newData);
+    }
+
+    // Loading Passed Due
+    inFS.open(passedDueFile);
+    if (!inFS.is_open()) {
+        cout << "Cannot find '" << passedDueFile << "'.Exiting" << endl;
+        exit(1);
+    }
+    json passed_dueJSON;
+    inFS >> passed_dueJSON;
+    inFS.close();
+    for (auto data : passed_dueJSON) {
+        time_t dataTime = data["time"];
+        Content* dataContent = this->catalogue.at(data["content_isbn"]);
+        Person* dataUser = nullptr/*GetPerson(data["user_id"])*/;
+        bool dataOvertime = data["over_time"];
+        CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
+        passedDue.push_back(newData);
+    }
+}
+
+BookSystem::~BookSystem() {
+    using json = nlohmann::json;
+    std::ofstream outFS;
+    int i;
+    
+    // Saving Catalogue
+    json catalogueJSON;
+    int i = 1;
+    for (pair<long long, Content*> book : this->catalogue) {
+        catalogueJSON[i]["title"] = book.second->GetTitle();
+        catalogueJSON[i]["isbn"] = book.second->GetISBN();
+        catalogueJSON[i]["genre"] = book.second->GetGenre();
+        catalogueJSON[i]["author"] = book.second->GetAuthor();
+        catalogueJSON[i]["frequency"] = book.second->GetFrequency();
+    }
+    outFS.open("../catalogue.json");
+    outFS << std::setw(4) << catalogueJSON << endl;
+    outFS.close();
+
+    // Saving Checked Out
+    json checkedOutJSON;
+    int i = 1;
+    for (CheckOutData* data : this->checkedOut) {
+        checkedOutJSON[i]["time"] = data->timeCheckedOut;
+        checkedOutJSON[i]["content_isbn"] = data->contentCheckedOut->GetISBN();
+        checkedOutJSON[i]["user_id"] = data->userCheckedOut->GetId();
+        checkedOutJSON[i]["over_time"] = data->overTime;
+    }
+    outFS.open(checkedOutFile);
+    outFS << std::setw(4) << checkedOutJSON << endl;
+    outFS.close();
+
+    // Saving Passed Due
+    json passedDueJSON;
+    int i = 1;
+    for (CheckOutData* data : this->passedDue) {
+        passedDueJSON[i]["time"] = data->timeCheckedOut;
+        passedDueJSON[i]["content_isbn"] = data->contentCheckedOut->GetISBN();
+        passedDueJSON[i]["user_id"] = data->userCheckedOut->GetId();
+        passedDueJSON[i]["over_time"] = data->overTime;
+    }
+    outFS.open(passedDueFile);
+    outFS << std::setw(4) << passedDueJSON << endl;
+    outFS.close();
+
+    for (pair<long long, Content*> content : this->catalogue) {
+        delete content.second;
+    }
+}
+
+bool BookSystem::GetContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         return this->catalogue.at(ISBN);
         return true;
@@ -18,7 +125,7 @@ bool BookSystem::AddContent(Content* content) {
     return false; 
 }
 
-bool BookSystem::RemoveContent(int ISBN) {
+bool BookSystem::RemoveContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         this->catalogue.erase(ISBN);
         return true;
@@ -27,7 +134,7 @@ bool BookSystem::RemoveContent(int ISBN) {
     return false;
 }
 
-CheckOutData* BookSystem::CheckOut(Person* person, int ISBN) {
+CheckOutData* BookSystem::CheckOut(Person* person, long long ISBN) {
     CheckOutData* data = nullptr;
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         data = new CheckOutData(time(0), this->catalogue.at(ISBN), person);
@@ -38,7 +145,7 @@ CheckOutData* BookSystem::CheckOut(Person* person, int ISBN) {
     return data;
 }
 
-bool BookSystem::ReturnContent(Person* person, int ISBN) {
+bool BookSystem::ReturnContent(Person* person, long long ISBN) {
     for (std::vector<CheckOutData*>::iterator it = passedDue.begin(); it != passedDue.end(); ++it)
         if ((*it)->userCheckedOut == person && (*it)->contentCheckedOut->GetISBN() == ISBN) {
             CheckOutData* temp = *it;
