@@ -2,46 +2,52 @@
 #include "../header/Person.hpp"
 #include "../header/LoginSystem.hpp"
 #include <fstream>
-#include <jsoncpp/json/value.h>
-#include <jsoncpp/json/json.h>
 #include <../header/CheckOutData.hpp>
 #include <ctime>
+#include <header/json.hpp>
 
 using namespace std;
 
 UserSystem::UserSystem(unordered_map<int, Person*> users, Person *nowPerson,)
 {
 	//import users from a file to populate the array
-	ifstream people_file("userInfo.json", ifstream::binary);
-	Json::Reader reader;
-	Json::Value root;
-	reader.parse(people_file,root);
-	
-	for (auto const& id : root.getMemberNames())
+	ifstream people_file("userInfo.json");
+	json readJson;
+	people_file >> readJson;
+	unordered_map<int, Person*> userMap;
+	for (auto& it : readJson)
 	{
 		int debt;
 		vector<CheckOutData*> checkoutData;
-		string fullName = root["users"][id]["name"];
-		int ID = id;
-		if (root["users"][id]["debt"] != NULL)
+		int ID = it.key();
+		string name = readJson["users"][ID]["name"].value();
+		int hashPass = readJson["users"][ID]["hashPass"].value();
+		if (readJson["users"][ID].find("debt"] != readJson.end()))
 		{
-			debt = root["users"][id]["debt"];
-			for (int i = 2; i < root["users"][id].size(); ++i)//start at 2 because 0 and 1 are name and debt
-			{//size param might be wrong
-				time_t timeChecked = root["users"][id][i]["timeCheckedOut"];
-				bool overT = root["users"][id][i]["overTime"];
-				int ISBN = root["users"][id][i]["ISBN"];
-				Content* newCont(GetContent(ISBN));
-				CheckOutData* tempData;
-				tempData->timeCheckedOut = timeChecked;
-				tempData->contentCheckedOut = newCont;
-				tempData->userCheckedOut = 				
-//bundle or book
+			debt = readJson["users"][ID]["debt"].value();
+			User* tempUser(name, ID);
+			tempUser.PayBalance(-1*debt);
+			for (json::iterator ite = readJson["users"][ID].begin()+2; ite != readJson.end(); ++ite)
+			{
+				long long tempISBN = ite.key();
+				time_t tempTime = readJson["users"][ID][tempISBN]["timeCheckedOut"];
+				bool tempOver = readJson["users"][ID][tempISBN]["overTime"];
+				Content tempContent = GetContent(tempISBN);
+				CheckOutData tempData(tempTime, tempContent, tempUser);
+				checkoutData.push_back(tempData);
 			}
-		}		
-	}	
+			tempUser.SetCheckedOutData(checkoutData);
+			userMap[ID] = tempUser;
+		}
+		else
+		{
+			Librarian* tempLibrarian(name, ID);
+			userMap[ID] = tempLibrarian;
+		}
+		users = userMap;
+	}
+	people_file.close();	
 }
-
 UserSystem::~UserSystem()
 {
 	for (auto &x : users)
@@ -61,31 +67,32 @@ void UserSystem::AddPerson(Person *dude) {
 
 void UserSystem::SaveUserData()
 {
-	Json::Value userInfo;
+	json userInfo;
+	
 	vector<CheckOutData*> tempVec;
-	Json::Value vec(Json::arrayValue);
 	for (const auto & [ID, userPerson] : users)
 	{
+		userInfo["users"][userPerson.GetID()]["hashPass"] = GetHashPass(userPerson.GetID); //TODO
 		userInfo["users"][userPerson.GetID()]["name"] = userPerson.GetName();
-		if (dynamic_cast<User*> (userPerson))
+		if (dynamic_cast<User*> (userPerson) != nullptr)
 		{
 			userInfo["users"][userPerson.GetID()]["debt"] = userPerson.GetBalance();
 			tempVec = userPerson.getCheckedOutList();
 			for (CheckOutData* x : tempVec)
 			{
-				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["timeCheckedOut"] = string(x->timeCheckedOut);
-				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["overTime"] = string(x->overTime);
-				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["ISBN"] = x->contentCheckedOut.GetISBN();
+				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["timeCheckedOut"] = (long long)x->timeCheckedOut;
+				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["overTime"] = x->overTime;
+			
 				//edit for book or bundle
 			}
 		}
 	}
 	ofstream fileOut;
 	fileOut.open("userInfo.json");
-	Json::StyledWriter writer;
+	
 	if (fileOut.is_open())
 	{
-		fileOut << writer.write(userInfo);
+		fileOut << userInfo;
 	}
 	fileOut.close();
 }
