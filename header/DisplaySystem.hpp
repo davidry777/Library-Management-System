@@ -2,6 +2,7 @@
 #define __DISPLAYSSYSTEM_H
 #include "BookSort.hpp"
 #include "BookSearch.hpp"
+#include "BookSystem.hpp"
 #include <iostream>
 
 class DisplaySystem {

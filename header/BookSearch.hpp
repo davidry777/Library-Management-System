@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "Book.hpp"
+#include "BookSystem.hpp"
 
 class BookSearch {
  private:

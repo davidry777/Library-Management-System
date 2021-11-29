@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "../header/Book.hpp"
+#include "../header/BookSystem.hpp"
 
 class BookSort {
  private:
@@ -24,7 +25,7 @@ class BookSort {
 		std::vector<Content*> mapped;
 		for(CheckOutData* i : usercat)
 		{
-			mapped.push_back(i.contentCheckedOut);
+			mapped.push_back(i->contentCheckedOut);
 		}
 		return mapped;
 	}
