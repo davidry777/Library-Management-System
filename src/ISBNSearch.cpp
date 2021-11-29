@@ -5,7 +5,7 @@ class ISBNSearch : public BookSearch
 private:
 
 public:
-	std::vector<Content*> SearchBooks(std::unordered_map<int, Content*> catalogue, int ISBN)
+	std::vector<Content*> SearchBooks(std::unordered_map<long long, Content*> catalogue, long long ISBN)
 	{
 		std::vector<Content*> temp;
 		std::vector<Content*> mapped = MapToVector(catalogue);
@@ -13,7 +13,7 @@ public:
 		return temp;
 	}
 	
-	std::vector<Content*> SearchISBN(std::vector<Content*> catalogue, int ISBN)
+	std::vector<Content*> SearchISBN(std::vector<Content*> catalogue, long long ISBN)
 	{
 		std::vector<Content*> tempFound;
 		for(Content* c: catalogue)
