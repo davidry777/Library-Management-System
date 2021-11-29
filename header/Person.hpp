@@ -11,7 +11,6 @@ class Person
     protected:
         std::string fullName;
         int ID;
-        LibrarySystem* library;
         std::string password;
     
     public:

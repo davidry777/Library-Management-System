@@ -1,6 +1,6 @@
 #include "../header/Bundle.hpp"
 
-Bundle::Bundle(const std::string& title, int ISBN, const std::string& genre, const std::vector<Content*>& contentList = {}) : Content(title, ISBN, genre) {
+Bundle::Bundle(const std::string& title, long long ISBN, const std::string& genre, const std::string& author, const std::vector<Content*>& contentList = {}, int frequency) : Content(title, ISBN, genre, author, frequency) {
     for (Content* content : contentList)
         if (this->contentList.find(content->GetISBN()) != this->contentList.end())
             this->contentList.insert({content->GetISBN(), content});
