@@ -5,7 +5,7 @@ class GenreSearch : public BookSearch
  private:
 
  public:
-	std::vector<Content*> SearchBooks(std::unordered_map<int, Content*> catalogue, std::string genre)
+	std::vector<Content*> SearchBooks(std::unordered_map<long long, Content*> catalogue, std::string genre)
 	{
 		std::vector<Content*> foundBooks;
 		std::vector<Content*> mapped = MapToVector(catalogue);
