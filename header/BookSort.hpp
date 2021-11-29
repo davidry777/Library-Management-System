@@ -2,12 +2,21 @@
 #define __BOOKSORT_H
 #include <vector>
 #include <string>
-#include "Book.hpp"
+#include "../src/Book.cpp"
 
 class BookSort {
  private:
 
  public:
-	virtual std::vector<Book*> SortBooks(std::vector<Book*>) = 0;
+	virtual std::vector<Content*> SortBooks(std::unordered_map<int, Content*>) = 0;
+	std::vector<Content*> MapToVector(std::unordered_map<int, Content*> catalogue)
+	{
+		std::vector<Content*> mapped;
+		for(auto i : catalogue)
+		{
+			mapped.push_back(i.second);
+		}	
+		return mapped;
+	}
 };
 #endif

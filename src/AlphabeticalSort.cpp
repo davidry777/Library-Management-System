@@ -5,13 +5,14 @@ class AlphabeticalSort : public BookSort
 	private:
 
 	public:
-		std::vector<Book*>& SortBooks(std::vector<Book*> &catalogue)
+		std::vector<Content*> SortBooks(std::unordered_map<int, Content*> catalogue)
 		{
 			//This uses the standard library sorting function to sort books alphabetically by title
-			std::sort(catalogue.begin(), catalogue.end(), this->compareStr);
+			vector<Content*> mapped = MapToVector(catalogue)
+			std::sort(mapped.begin(), mapped.end(), this->compareStr);
 			return catalogue;
 		}
-		static bool compareStr(Book* a, Book* b)
+		static bool compareStr(Content* a, Content* b)
 		{
 			if(a->GetTitle().compare(b->GetTitle()) < 0)
 			{

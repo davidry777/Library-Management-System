@@ -17,11 +17,12 @@ DisplaySystem::~DisplaySystem()
 	delete sortAlgorithm;
 }
 
-void DisplaySystem::DisplayBooks(std::vector<Book*> catalogue)
+void DisplaySystem::DisplayBooks(std::unordered_map<int, Content*> catalogue)
 {
-	for(Book b : catalogue)
+	//I need to rewrite this
+	for(Content* c: catalogue)
 	{
-		b.Display();
+		c.Display();
 		std::cout << endl;
 	}
 }
@@ -34,7 +35,7 @@ void DisplaySystem::DisplayBooks(std::vector<CheckedOut*> checkOut)
 		std::cout << endl;
 	}
 }
-void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Book*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<int, Content*> catalogue)
 {
 	//Choice taken from main via user input from a menu of choices
 	std::vector<Book*> temp;
@@ -53,14 +54,14 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Boo
 		break;
 	}
 }
-void DisplaySystem::DisplayBooks(char choice, int ISBN, std::vector<Book*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<int, Content*> catalogue)
 {
 	std::vector<Book*> temp;
 	searchAlgorithm = new ISBNSearch();
 	temp = searchAlgorithm->ISBNSearch(catalogue, ISBN);
 	this->DisplayBooks(temp);
 }
-void DisplaySystem::DisplayBooks(char choice, std::vector<Book*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, std::unordered_map<int, Content*> catalogue)
 {
 	std::vector<Book*> temp;
 	switch(choice) {

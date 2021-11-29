@@ -5,21 +5,23 @@ class ISBNSearch : public BookSearch
 private:
 
 public:
-	std::vector<Book*> SearchBooks(std::vector<Book*> catalogue, int ISBN)
+	std::vector<Content*> SearchBooks(std::unordered_map<int, Content*> catalogue, int ISBN)
 	{
-		std::vector<Book*> temp;
-		temp = SearchGenre(catalogue, ISBN);
+		std::vector<Content*> temp;
+		std::vector<Content*> mapped = MapToVector(catalogue);
+		temp = SearchGenre(mapped, ISBN);
 		return temp;
 	}
 	
-	std::vector<Book*> SearchISBN(std::vector<Book*> catalogue, int ISBN)
+	std::vector<Content*> SearchISBN(std::vector<Content*> catalogue, int ISBN)
 	{
-		std::vector<Book*> tempFound;
-		for(Book* b: catalogue)
+		std::vector<Content*> tempFound;
+		for(Content* c: catalogue)
 		{
-			if(b->GetISBN() == ISBN)
+			if(c->GetISBN() == ISBN)
 			{
-				tempFound.push_back(b);
+				tempFound.push_back(c);
+				return tempFound;
 			}
 		}
 		return tempFound;
