@@ -7,6 +7,7 @@
 #include <time.h>
 
 #include "Person.hpp"
+#include "LibrarySystem.hpp"
 #include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
 
