@@ -17,6 +17,7 @@ LoginSystem::LoginSystem(unordered_map<int, int> *userPasses, UserSystem *uSyste
 			userPasses.insert({tempUserID, tempPass});
 		}
 	}
+	this->userPasswords = userPasses;
 	//temporary stub
 	//userPasses[1] = a*1984+2049;
 }
@@ -59,4 +60,9 @@ void LoginSystem::SaveUsers()
 	//save users to file
 	//deconstruct?
 	//do log out stuff
+}
+
+int LoginSystem::GetHashPass(int ID)
+{
+	return this->userPasses[ID];
 }

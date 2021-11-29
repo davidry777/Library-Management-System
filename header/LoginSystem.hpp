@@ -16,4 +16,5 @@ class LoginSystem {
 		bool LoginVerify(int userID, string &userPass, unordered_map<int,Person*> &people);
 		int HashPassword(string &userPass);
 		void SaveUsers();
+		int GetHashPass(int ID);
 }
