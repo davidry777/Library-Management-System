@@ -8,12 +8,13 @@
 
 #include "Person.hpp"
 #include "BookSystem.hpp"
+#include "LibrarySystem.hpp"
 #include "Book.hpp"
 
 class Librarian : public Person
 {
     public:
-        Librarian(std::string name, int id, LibrarySystem* set_library);
+        Librarian(std::string name, int id, LibrarySystem* set_library, std::string hashedPassword);
         ~Librarian();
         void AddBook(Book* newBook);
         void RemoveBook(int ISBN);

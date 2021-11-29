@@ -62,5 +62,6 @@
         "vector": "cpp",
         "deque": "cpp",
         "queue": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
