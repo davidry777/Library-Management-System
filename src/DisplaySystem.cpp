@@ -20,9 +20,17 @@ DisplaySystem::~DisplaySystem()
 void DisplaySystem::DisplayBooks(std::unordered_map<long long, Content*> catalogue)
 {
 	//I need to rewrite this
-	for(Content* c: catalogue)
+	for (auto &pair : catalogue)
 	{
-		std::cout << c.Display() << std::endl;
+		std::cout << pair.second->Display() << std::endl;
+	}
+}
+
+void DisplaySystem::DisplayBooks(std::vector<Content*> catalogue)
+{
+	for(Content* c : catalogue)
+	{
+                std::cout << c.Display() << std::endl;
 	}
 }
 

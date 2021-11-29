@@ -14,6 +14,7 @@ public:
 	DisplaySystem();
 	~DisplaySystem();
 	void DisplayBooks(std::unordered_map<int, Content*>);
+	void DisplayBooks(std::vector<Content*>);
 	void DisplayBooks(std::vector<CheckOutData*>)
 	void DisplayBooks(char, std::string, std::unordered_map<int, Content*>);
 	void DisplayBooks(char, int, std::unordered_map<int, Content*>);
