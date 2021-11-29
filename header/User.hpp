@@ -23,6 +23,7 @@ class User : public Person
         int GetBalance();
         void PayBalance(int cash);
         void DisplayCheckOut();
+        void SetCheckedOutData(vector<CheckOutData*> data);
 };
 
 #endif //__USER_HPP__
