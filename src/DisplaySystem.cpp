@@ -1,6 +1,7 @@
 #include "../header/DisplaySystem.hpp"
 #include "../header/BookSort.hpp"
 #include "../header/BookSearch.hpp"
+#include "../header/BookSystem.hpp"
 
 DisplaySystem::DisplaySystem() 
 { 
