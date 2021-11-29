@@ -5,7 +5,7 @@ class FrequencySort : public BookSort
 	private:
 	
 	public:
-		std::vector<Content*> SortBooks(std::unordered_map<int, Content*> catalogue)
+		std::vector<Content*> SortBooks(std::unordered_map<long long, Content*> catalogue)
 		{
 			//Everything in here needs a rework
 			//This uses the standard library sorting function to sort books alphabetically
