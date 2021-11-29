@@ -1,14 +1,16 @@
 #include "../header/LoginSystem.hpp"
 #include <fstream>
+#include <unordered_map>
 
 using namespace std;
 
-LoginSystem::LoginSystem(unordered_map<int, int> *userPasses, UserSystem *uSystem) : UserSystem(uSystem) 
+LoginSystem::LoginSystem()
 {		
 	//TODO: populate userPasses from text file
 	ifstream file;
 	file.open("users.txt");
 	int temp, tempPass, tempUserID;
+	unordered_map<int, int> userPasses;
 	if (file.isopen())
 	{
 		while (!file.eof())
@@ -17,12 +19,14 @@ LoginSystem::LoginSystem(unordered_map<int, int> *userPasses, UserSystem *uSyste
 			userPasses.insert({tempUserID, tempPass});
 		}
 	}
+	this->userPasswords = userPasses;
 	//temporary stub
 	//userPasses[1] = a*1984+2049;
 }
 
 LoginSystem::~LoginSystem()
 {
+	SaveUsers();
 	//saving these to a file will be done in the log out function
 	for (auto x : userPasswords)
 		delete x;
@@ -59,4 +63,9 @@ void LoginSystem::SaveUsers()
 	//save users to file
 	//deconstruct?
 	//do log out stuff
+}
+
+int LoginSystem::GetHashPass(int ID)
+{
+	return this->userPasses[ID];
 }
