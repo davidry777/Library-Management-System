@@ -10,9 +10,11 @@
  >   * [Valgrind](https://www.valgrind.org) - An instrumentation framework for building dynamic analysis tools
  >   * [Git](https://git-scm.com/) - A distrubuted version control system
  >   * [GitHub](https://github.com/) - An online host for software development utilizing Git.
+ >   * [JSON for Modern C++](https://github.com/nlohmann/json) - A JSON parser library for C++
 
  > The Design Patterns used in this project are:
  >   * Strategy Pattern
+ >   * Composite Pattern
 
  > The input of our project will be:
  >   * Book information by administrators (Title, genre, sub-genre, description, etc)
