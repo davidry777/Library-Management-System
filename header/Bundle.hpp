@@ -14,5 +14,5 @@ class Bundle : public Content {
         Bundle(const std::string& title, int ISBN, const std::string& genre, const std::vector<Content*>& contentList = {});
         ~Bundle();
 
-        void Display(std::string indent = "");
+        std::string Display(std::string indent = "");
 };

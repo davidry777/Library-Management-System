@@ -11,11 +11,13 @@ Bundle::~Bundle() {
         delete content.second;
 }
 
-void Bundle::Display(std::string indent) {
+std::string Bundle::Display(std::string indent) {
+    std::string outputString = "";
     std::cout << indent << "Title: " << this->title;
     std::cout << "\n" << indent << "ISBN: " << this->ISBN;
     std::cout << "\n" << indent << "Genre: " << this->genre;
     std::cout << "\n" << indent << "Frequency: " << this->frequency << std::endl;
     for (std::pair<int, Content*> content : this->contentList)
         content.second->Display(indent + "  ");
+    return outputString;
 }
