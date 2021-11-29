@@ -12,7 +12,7 @@ class AlphabeticalSort : public BookSort
 			std::sort(mapped.begin(), mapped.end(), this->compareStr);
 			return mapped;
 		}
-		std::vector<Content*> SortBooks(std::vector<CheckedOut*> usercat)
+		std::vector<Content*> SortBooks(std::vector<CheckOutData*> usercat)
 		{
 			std::vector<Content*> mapped = MapToVector(usercat);
 			std::sort(mapped.begin(), mapped.end(), this->compareStr);

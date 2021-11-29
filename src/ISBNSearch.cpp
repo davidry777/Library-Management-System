@@ -12,7 +12,7 @@ public:
 		temp = SearchGenre(mapped, ISBN);
 		return temp;
 	}
-	std::vector<Content*> SearchBooks(std::vector<CheckedOut*> usercat, long long ISBN)
+	std::vector<Content*> SearchBooks(std::vector<CheckOutData*> usercat, long long ISBN)
 	{
 		std::vector<Content*> temp;
 		std::vector<Content*> mapped = MapToVector(usercat);

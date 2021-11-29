@@ -12,7 +12,7 @@ class GenreSearch : public BookSearch
 		foundBooks = SearchGenre(mapped, genre);
 		return foundBooks;	
 	}
-	std::vector<Content*> SearchBooks(std::vector<CheckedOut*> usercat, std::string genre)
+	std::vector<Content*> SearchBooks(std::vector<CheckOutData*> usercat, std::string genre)
 	{
 		std::vector<Content*> foundBooks;
 		std::vector<Content*> mapped = MapToVector(catalogue);

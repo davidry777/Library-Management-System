@@ -13,7 +13,7 @@ public:
 		return foundBooks;
 	}
 
-	std::vector<Content*> SearchBooks(std::vector<CheckedOut*> usercat, std::string keyword)
+	std::vector<Content*> SearchBooks(std::vector<CheckOutData*> usercat, std::string keyword)
 	{
 		std::vector<Content*> foundBooks;
 		std::vector<Content*> mapped = MapToVector(usercat);
