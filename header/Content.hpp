@@ -3,16 +3,18 @@
 class Content {
     protected:
         std::string title;
-        int ISBN;
+        long long ISBN;
         std::string genre;
         int frequency;
+        std::string author;
     public:
-        Content(const std::string& title, int ISBN, const std::string& genre) : title(title), ISBN(ISBN), genre(genre), frequency(0) {}
+        Content(const std::string& title, long long ISBN, const std::string& genre, const std::string& author, int frequency = 0) : title(title), ISBN(ISBN), genre(genre), author(author), frequency(frequency) {}
         virtual std::string Display(std::string indent = "") = 0;
         void AddFrequency() { ++frequency; }
 
         std::string GetTitle() { return title; }
-        int GetISBN() { return ISBN; }
+        long long GetISBN() { return ISBN; }
         std::string GetGenre() { return genre; }
         int GetFrequency() { return frequency; }
+        std::string GetAuthor() { return author; }
 };

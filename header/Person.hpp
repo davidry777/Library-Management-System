@@ -11,7 +11,6 @@ class Person
     protected:
         string fullName;
         int ID;
-        LibrarySystem* library;
     
     public:
         virtual ~Person() = default;
