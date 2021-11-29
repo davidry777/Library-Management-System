@@ -17,13 +17,12 @@ DisplaySystem::~DisplaySystem()
 	delete sortAlgorithm;
 }
 
-void DisplaySystem::DisplayBooks(std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(std::unordered_map<long long, Content*> catalogue)
 {
 	//I need to rewrite this
 	for(Content* c: catalogue)
 	{
-		c.Display();
-		std::cout << endl;
+		std::cout << c.Display() << std::endl;
 	}
 }
 
@@ -31,11 +30,10 @@ void DisplaySystem::DisplayBooks(std::vector<CheckedOut*> checkOut)
 {
 	for(CheckedOut c : checkOut)
 	{
-		c.Display();
-		std::cout << endl;
+		std::cout << c.Display() << std::endl;
 	}
 }
-void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<long long, Content*> catalogue)
 {
 	//Choice taken from main via user input from a menu of choices
 	std::vector<Book*> temp;
@@ -47,30 +45,24 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_
 		this->DisplayBooks(temp);
 		break;
 	//Case for SubgenreSearch
-	case '2':
-		searchAlgorithm = new SubgenreSearch();
-		temp = searchAlgorith->SearchBooks(catalogue, genre);
-		this->DisplayBooks(temp);
-		break;
-	}
 }
-void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<long long, Content*> catalogue)
 {
 	std::vector<Book*> temp;
 	searchAlgorithm = new ISBNSearch();
 	temp = searchAlgorithm->ISBNSearch(catalogue, ISBN);
 	this->DisplayBooks(temp);
 }
-void DisplaySystem::DisplayBooks(char choice, std::unordered_map<int, Content*> catalogue)
+void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Content*> catalogue)
 {
 	std::vector<Book*> temp;
 	switch(choice) {
-	case '4':
+	case '3':
 		sortAlgorithm = new AlphabeticalSort();
 		temp = sortAlgorithm->SortBooks(catalogue);
 		this->DisplayBooks(temp);
 		break;
-	case '5':
+	case '4':
 		sortAlgorithm = new FrequencySort();
 		temp = sortAlgorithm->SortBooks(catalogue);
 		this->DisplayBooks(temp);
