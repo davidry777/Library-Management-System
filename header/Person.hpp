@@ -4,18 +4,20 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+#include "LibrarySystem.hpp"
 
 class Person 
 {
     protected:
-        string fullName;
+        std::string fullName;
         int ID;
+        std::string password;
     
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
+        std::string GetHashedPassword { return password; }
         virtual std::string CheckPerson(Person* person) = 0;
         virtual std::string GetInfo() = 0;
         virtual std::string GetBookInfo() = 0;

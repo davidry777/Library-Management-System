@@ -1,13 +1,24 @@
 #include "../header/LoginSystem.hpp"
+#include <fstream>
 
 using namespace std;
 
 LoginSystem::LoginSystem(unordered_map<int, int> *userPasses, UserSystem *uSystem) : UserSystem(uSystem) 
 {		
 	//TODO: populate userPasses from text file
-
+	ifstream file;
+	file.open("users.txt");
+	int temp, tempPass, tempUserID;
+	if (file.isopen())
+	{
+		while (!file.eof())
+		{
+			file >> tempUserID >> tempPass;		
+			userPasses.insert({tempUserID, tempPass});
+		}
+	}
 	//temporary stub
-	userPasses[1] = a*1984+2049;
+	//userPasses[1] = a*1984+2049;
 }
 
 LoginSystem::~LoginSystem()
@@ -17,7 +28,7 @@ LoginSystem::~LoginSystem()
 		delete x;
 }
 
-int HashPassword(string &userPass) 
+int LoginSystem::HashPassword(string &userPass) 
 {
 	int hash = -1; //if no password is given, returns -1
 	for (auto c : userPass.toCharArray())
@@ -26,7 +37,7 @@ int HashPassword(string &userPass)
 		
 }
 
-bool LoginVerify(int userID, string &userPass, unordered_map<int, Person*> &people)
+bool LoginSystem::LoginVerify(int userID, string &userPass, unordered_map<int, Person*> &people)
 {
 	bool allowLogin = false;
 	int hash = HashPassword(userPass);
@@ -35,8 +46,15 @@ bool LoginVerify(int userID, string &userPass, unordered_map<int, Person*> &peop
 	return allowLogin;
 }
 
-void LogOut()
+void LoginSystem::SaveUsers()
 {
+	ofstream fileOut;
+	fileOut.open("users.txt");
+	if (fileOut.isopen())
+		for (const auto & [ID,pass] : userPasses)
+		{
+			fileOut << ID << " " << pass << endl;	
+		}
 	//TOOD: LogOut
 	//save users to file
 	//deconstruct?
