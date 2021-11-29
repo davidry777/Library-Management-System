@@ -16,3 +16,5 @@ void User::DisplayCheckOut()
     DisplaySystem checkoutOutput = DisplaySystem();
     checkoutOutput.DisplayBooks(checkedOut);
 }
+
+void User::SetVector(vector<CheckOutData*> data) { this->checkedOut = data; }
