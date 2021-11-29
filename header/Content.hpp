@@ -1,7 +1,5 @@
 #pragma once
-
 #include <string>
-
 class Content {
     protected:
         std::string title;
@@ -10,7 +8,8 @@ class Content {
         int frequency;
     public:
         Content(const std::string& title, int ISBN, const std::string& genre) : title(title), ISBN(ISBN), genre(genre), frequency(0) {}
-        virtual void Display(std::string indent = "") = 0;
+        virtual std::string Display(std::string indent = "") = 0;
+        void AddFrequency() { ++frequency; }
 
         std::string GetTitle() { return title; }
         int GetISBN() { return ISBN; }

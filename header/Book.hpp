@@ -11,5 +11,5 @@ class Book : public Content {
     public:
         Book(const std::string& title, int ISBN, const std::string& genre, const std::string& author);
         std::string GetAuthor();
-        void Display(std::string indent = "");
+        std::string Display(std::string indent = "");
 };
