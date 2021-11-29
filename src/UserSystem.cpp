@@ -8,7 +8,12 @@
 
 using namespace std;
 
-UserSystem::UserSystem(unordered_map<int, Person*> users, Person *nowPerson,)
+Person* UserSystem::GetPerson(int ID)
+{
+	return people[ID];
+}
+
+UserSystem::UserSystem()
 {
 	//import users from a file to populate the array
 	ifstream people_file("userInfo.json");
@@ -44,7 +49,7 @@ UserSystem::UserSystem(unordered_map<int, Person*> users, Person *nowPerson,)
 			Librarian* tempLibrarian(name, ID);
 			userMap[ID] = tempLibrarian;
 		}
-		users = userMap;
+		people = userMap;
 	}
 	people_file.close();	
 }
