@@ -24,7 +24,9 @@ class BookSystem {
         std::vector<CheckOutData*> passedDue;
         std::deque<CheckOutData*> checkedOut; 
     public:
-        bool GetContent(int ISBN);
+        BookSystem();
+        ~BookSystem();
+        Content* GetContent(int ISBN);
 
         bool AddContent(Content* content);
         bool RemoveContent(int ISBN);
