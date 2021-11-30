@@ -7,18 +7,16 @@
 #include "../header/User.hpp"
 #include "../header/BookSystem.hpp"
 #include "../header/Librarian.hpp"
-#include "LibrarySystem.hpp"
-
 using namespace std;
 
 class UserSystem {
 	private:
 		unordered_map<int, Person*> people;
 	public:
-		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
+		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue);
 		unordered_map<int, Person*>& GetMap()
 		{
-			return &people;
+			return people;
 		}
 		Person* GetPerson(int ID);
 		void AddPerson(Person *person);

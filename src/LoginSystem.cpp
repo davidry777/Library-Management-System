@@ -21,11 +21,10 @@ LoginSystem::LoginSystem(string textFile)//should be .txt
 	this->userPasswords = userPasses;
 }
 
-LoginSystem::~LoginSystem()
-{
-	for (auto x : userPasswords)
-		delete x;
-}
+// LoginSystem::~LoginSystem()
+// {
+
+// }
 
 int LoginSystem::HashPassword(string &userPass) 
 {
