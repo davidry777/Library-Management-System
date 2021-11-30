@@ -19,6 +19,7 @@ class Person
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
         std::string GetHashedPassword { return password; }
+        LibrarySystem* GetLibrary() { return this->library; }
         virtual std::string CheckPerson(Person* person) = 0;
         virtual std::string GetInfo() = 0;
         virtual std::string GetBookInfo() = 0;
