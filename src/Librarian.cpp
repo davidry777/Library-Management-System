@@ -1,15 +1,24 @@
 #include "../header/Librarian.hpp"
 
-Librarian::Librarian(std::string name, int id, LibrarySystem* set_library, std::string hashedPassword)
+Librarian::Librarian(std::string name, int id, LibrarySystem* set_library, int hashedPassword)
 { 
     fullName = name;
     ID = id;
     library = set_library;
-    password = hashedPassword
+    password = hashedPassword;
 }
 
-void Librarian::AddBook(Book* newBook) { library->bookSystem->AddContent(newBook); }
+Librarian::~Librarian() { delete library; }
 
-void Librarian::RemoveBook(int ISBN) { library->bookSystem->RemoveContent(ISBN); }
+void Librarian::GetInfo()
+{
+    cout << "Name: " << fullName << endl;
+    cout << "ID: " << ID << endl;
+    cout << "Status: Librarian" << endl;
+}
+
+void Librarian::AddBook(Book* newBook) { library->GetBookSystem()->AddContent(newBook); }
+
+void Librarian::RemoveBook(int ISBN) { library->GetBookSystem()->RemoveContent(ISBN); }
 
 void Librarian::SetLibrary(LibrarySystem* newLibrary) { library = newLibrary; }

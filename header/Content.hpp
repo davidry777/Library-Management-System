@@ -10,8 +10,9 @@ class Content {
     public:
         Content(const std::string& title, long long ISBN, const std::string& genre, const std::string& author, int frequency = 0) : title(title), ISBN(ISBN), genre(genre), author(author), frequency(frequency) {}
         virtual std::string Display(std::string indent = "") = 0;
-        void AddFrequency() { ++frequency; }
+        virtual std::string GetType() = 0;
 
+        void AddFrequency() { ++frequency; }
         std::string GetTitle() { return title; }
         long long GetISBN() { return ISBN; }
         std::string GetGenre() { return genre; }
