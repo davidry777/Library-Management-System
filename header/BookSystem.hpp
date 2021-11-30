@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __BOOKSYSTEM_HPP__
+#define __BOOKSYSTEM_HPP__
 
 #include <iostream>
 #include <unordered_map>
@@ -54,3 +56,5 @@ class BookSystem {
         bool ReturnContent(Person* person, long long ISBN);
         void CheckExpiration();
 };
+
+#endif //__BOOKSYSTEM_HPP__

@@ -4,14 +4,14 @@
 #include <iostream>
 #include <string>
 
-#include "LibrarySystem.hpp"
+#include "BookSystem.hpp"
 
 class Person {
     protected:
         std::string fullName;
         int ID;
         int password;
-        LibrarySystem* library;
+        BookSystem* bookSys;
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }

@@ -7,21 +7,18 @@
 #include <vector>
 #include <ctime>
 
-#include "LibrarySystem.hpp"
 // #include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
 #include "CheckOutData.hpp"
 
 using namespace std;
 
-class LibrarySystem;
-
 class User : public Person {
     private:
         std::vector<CheckOutData*> checkedOut;
         int debt;
     public:
-        User(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
+        User(std::string name, int id, BookSystem* books, int hashedPassword);
         ~User();
         void GetInfo();
         std::string GetType();
