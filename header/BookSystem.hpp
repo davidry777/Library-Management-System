@@ -33,9 +33,9 @@ class BookSystem {
         BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile);
         ~BookSystem();
 
-        void SaveCatalogue();
-        void SaveCheckedOut();
-        void SavePassedDue();
+        void SaveCatalogue(string file = "null");
+        void SaveCheckedOut(string file = "null");
+        void SavePassedDue(string file = "null");
 
         Content* GetContent(long long ISBN);
         std::vector<CheckOutData*>& GetPassedDue();

@@ -15,7 +15,9 @@ BookSystem::~BookSystem() {
         delete data;
 }
 
-void BookSystem::SaveCatalogue() {
+void BookSystem::SaveCatalogue(string file = "null") {
+    if (file == "null")
+        file = this->catalogueFile;
     json catalogueJSON;
 
     int i = 1;
@@ -26,7 +28,7 @@ void BookSystem::SaveCatalogue() {
         catalogueJSON[i]["author"] = book.second->GetAuthor();
         catalogueJSON[i]["frequency"] = book.second->GetFrequency();
     }
-    ofstream outFS(this->catalogueFile);
+    ofstream outFS(file);
     outFS << std::setw(4) << catalogueJSON << endl;
     outFS.close();
 }
@@ -45,7 +47,9 @@ void BookSystem::LoadCatalogue() {
     }
 }
 
-void BookSystem::SaveCheckedOut() {
+void BookSystem::SaveCheckedOut(string file = "null") {
+    if (file == "null")
+        file = this->checkedOutFile;
     json checkedOutJSON;
 
     int i = 1;
@@ -56,7 +60,7 @@ void BookSystem::SaveCheckedOut() {
         checkedOutJSON[i]["over_time"] = data->overTime;
     }
     
-    ofstream outFS(checkedOutFile);
+    ofstream outFS(file);
     outFS << std::setw(4) << checkedOutJSON << endl;
     outFS.close();
 }
@@ -78,7 +82,9 @@ void BookSystem::LoadCheckedOut(UserSystem* us) {
     }
 }
 
-void BookSystem::SavePassedDue() {
+void BookSystem::SavePassedDue(string file = "null") {
+    if (file == "null")
+        file = this->passedDueFile;
     json passedDueJSON;
 
     int i = 1;
@@ -89,7 +95,7 @@ void BookSystem::SavePassedDue() {
         passedDueJSON[i]["over_time"] = data->overTime;
     }
 
-    ofstream outFS(passedDueFile);
+    ofstream outFS(file);
     outFS << std::setw(4) << passedDueJSON << endl;
     outFS.close();
 }
