@@ -6,6 +6,8 @@
 
 #include "LibrarySystem.hpp"
 
+class LibrarySystem;
+
 class Person {
     protected:
         std::string fullName;
