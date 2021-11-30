@@ -1,13 +1,14 @@
 #pragma once
  
-#include <iostream>
 #include <unordered_map>
 #include <string>
-#include "../header/Person.hpp"
-#include "../header/User.hpp"
-#include "../header/BookSystem.hpp"
-#include "../header/Librarian.hpp"
+#include <fstream>
+#include "Person.hpp"
+#include "Librarian.hpp"
+#include "User.hpp"
 #include "LibrarySystem.hpp"
+#include "CheckOutData.hpp"
+#include "json.hpp"
 
 using namespace std;
 
@@ -16,8 +17,7 @@ class UserSystem {
 		unordered_map<int, Person*> people;
 	public:
 		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
-		unordered_map<int, Person*>& GetMap()
-		{
+		unordered_map<int, Person*>& GetMap() {
 			return people;
 		}
 		Person* GetPerson(int ID);

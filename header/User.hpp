@@ -2,9 +2,9 @@
 #define __USER_HPP__
 
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <vector>
-#include <time.h>
+#include <ctime>
 
 #include "Person.hpp"
 #include "LibrarySystem.hpp"
@@ -12,8 +12,9 @@
 #include "BookSystem.hpp"
 #include "CheckOutData.hpp"
 
-class User : public Person
-{
+using namespace std;
+
+class User : public Person {
     private:
         std::vector<CheckOutData*> checkedOut;
         int debt;

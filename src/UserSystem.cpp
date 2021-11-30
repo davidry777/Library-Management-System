@@ -1,10 +1,4 @@
 #include "../header/UserSystem.hpp"
-#include "../header/Person.hpp"
-#include "../header/LoginSystem.hpp"
-#include <fstream>
-#include "../header/CheckOutData.hpp"
-#include <ctime>
-#include "../header/json.hpp"
 
 using json = nlohmann::json;
 
@@ -76,24 +70,11 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 	people_file.close();	
   checkout.close();
 }
-UserSystem::~UserSystem()
-{
-	for (auto &x : people)
-  {
-    if (dynamic_cast<User*>(x.second) != nullptr)
-      delete dynamic_cast<User*>(x.second);
-    else
-      delete dynamic_cast<Librarian*>(x.second);
-  }
-		
-}
 
-//Person* UserSystem::SetCurrPerson(Person *dude, string password) {
-//	if (LoginVerify(dude->ID, password, users))
-//		return dude;
-//	else
-//		return nullptr;
-//}
+UserSystem::~UserSystem() {
+	for (auto &x : people)
+		delete x.second;	
+}
 
 void UserSystem::AddPerson(Person *person) {
 	this->people.insert({ person->GetId(), person });	
