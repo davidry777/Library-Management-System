@@ -39,7 +39,7 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 		{
 			debt = readJson["users"][ID]["debt"];
 			User* tempUser = new User(name, ID, set_library, hashPass);
-			tempUser.PayBalance(-1*debt);
+			tempUser->PayBalance(-1*debt);
 			for (auto book : checkedOut)
 			{
 				if (book->userCheckedOut.GetID() == ID)
@@ -52,7 +52,7 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 				if (book->userCheckedOut.GetID() == ID)
 					checkoutData.push_back(book);
 			}
-			tempUser.SetCheckedOutData(checkoutData);
+			tempUser->SetCheckedOutData(checkoutData);
 			/*for (json::iterator ite = readJson["users"][ID].begin()+2; ite != readJson.end(); ++ite)
 			{
 				long long tempISBN = ite.key();

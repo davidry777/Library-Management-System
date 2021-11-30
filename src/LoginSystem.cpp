@@ -30,8 +30,8 @@ LoginSystem::~LoginSystem()
 int LoginSystem::HashPassword(string &userPass) 
 {
 	int hash = 0; //if no password is given, returns 0
-	for (auto c : userPass)
-		hash += int(c)*1984 + 2049;
+	for (int i = 0; i < userPass.length(); ++i)
+		hash += (i+1)*(int)userPass[i]*1984 + 2049;
 	return hash;
 }
 
