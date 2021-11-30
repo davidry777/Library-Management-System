@@ -4,6 +4,10 @@
 #include "../header/LibrarySystem.hpp"
 #include "../header/Book.hpp"
 
+void PrintUserInfo(User* person) {
+    person->GetInfo();
+}
+
 void CheckoutBook(User* person) {
     long long isbn = -1;
 
@@ -42,7 +46,13 @@ void PayDebt(User* person) {
 }
 
 void DisplayCheckedOutBooks(User* person) {
-    std::cout << person->
+    std::cout << person->GetName() << "'s Checked Out Books:" << std::endl;
+    person->DisplayCheckOut();
+    std::cout << std::endl;
+}
+
+void PrintLibrarianInfo(Librarian* person) {
+    person->GetInfo();
 }
 
 void AddBook(Librarian* person) {
@@ -77,10 +87,31 @@ void RemoveBook(Librarian* person) {
     person->RemoveBook(isbn);
 }
 
-void PrintMenu() {
-    
+void SetNewLibrary(Librarian* person, LibrarySystem* newLibrary) {
+    person->SetLibrary(newLibrary);
+}
+
+void PrintMenu(User* person) {
+    std::cout << "/---------------- User Library Menu ----------------/" << std::endl;
+    std::cout << "/           1. Display Your Information             /" << std::endl;
+    std::cout << "/           2. Check Out a Book                     /" << std::endl;
+    std::cout << "/           3. Return a Book                        /" << std::endl;
+    std::cout << "/           4. Display Debt From Fines              /" << std::endl;
+    std::cout << "/           5. Pay off Debt                         /" << std::endl;
+    std::cout << "/           6. Show all Checked Out Books           /" << std::endl;
+    std::cout << "/---------------------------------------------------/" << std::endl;
+}
+
+void PrintMenu(Librarian* person) {
+    std::cout << "/------------- Librarian Library Menu --------------/" << std::endl;
+    std::cout << "/           1. Display Your Information             /" << std::endl;
+    std::cout << "/           2. Add Book to Library                  /" << std::endl;
+    std::cout << "/           3. Remove Book from Library             /" << std::endl;
+    std::cout << "/           4. Set a New Library                    /" << std::endl;
+    std::cout << "/---------------------------------------------------/" << std::endl;
 }
 
 int main() {
-
+    
+    return 0;
 }
