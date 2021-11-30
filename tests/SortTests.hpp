@@ -4,6 +4,7 @@
 
 #include "../header/Book.hpp"
 #include "../header/AlphabeticalSort.hpp"
+#include "../header/FrequencySort.hpp"
 
 TEST(AlphabeticalSortTest, OneBook)
 {
@@ -56,4 +57,18 @@ TEST(AlphabeticalSortTest, FourBooks)
         AlphabeticalSort* a = new AlphabeticalSort();
         sorted = a->SortBooks(cata);
         EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotThey");	
+}
+
+TEST(FrequencySortTest, TwoBooks)
+{
+        Book* testBook = new Book("Test", 12345, "Fiction", "NotYou");
+        Book* testBook2 = new Book("ATest", 54321, "NonFiction", "NotMe");
+	testBook2->AddFrequency();
+        std::vector<Content*> sorted;
+        std::unordered_map<long long, Content*> cata;
+        cata.insert({12345, testBook});
+        cata.insert({54321, testBook2});
+        FrequencySort* f = new FrequencySort();
+        sorted = f->SortBooks(cata);
+        EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotMe");
 }
