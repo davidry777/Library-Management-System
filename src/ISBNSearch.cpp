@@ -4,14 +4,14 @@ std::vector<Content*> ISBNSearch::SearchBooks(std::unordered_map<long long, Cont
 {
 	std::vector<Content*> temp;
 	std::vector<Content*> mapped = MapToVector(catalogue);
-	temp = SearchGenre(mapped, ISBN);
+	temp = SearchISBN(mapped, ISBN);
 	return temp;
 }
 std::vector<Content*> ISBNSearch::SearchBooks(std::vector<CheckOutData*> usercat, long long ISBN)
 {
 	std::vector<Content*> temp;
 	std::vector<Content*> mapped = MapToVector(usercat);
-	temp = SearchGenre(mapped, ISBN);
+	temp = SearchISBN(mapped, ISBN);
 	return temp;
 }
 std::vector<Content*> ISBNSearch::SearchISBN(std::vector<Content*> catalogue, long long ISBN)

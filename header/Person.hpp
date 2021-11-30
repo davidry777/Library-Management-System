@@ -16,7 +16,7 @@ class Person {
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
-        std::string GetHashedPassword() { return password; }
+        int GetHashedPassword() { return password; }
         LibrarySystem* GetLibrary() { return this->library; }
         virtual void GetInfo() = 0;
         virtual std::string GetType() = 0;
