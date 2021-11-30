@@ -21,12 +21,6 @@ LoginSystem::LoginSystem(string textFile)//should be .txt
 	this->userPasswords = userPasses;
 }
 
-LoginSystem::~LoginSystem()
-{
-	for (auto x : userPasswords)
-		delete x;
-}
-
 int LoginSystem::HashPassword(string &userPass) 
 {
 	int hash = 0; //if no password is given, returns 0

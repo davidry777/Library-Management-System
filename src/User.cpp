@@ -28,8 +28,8 @@ void User::PayBalance(int cash) { debt -= cash; }
 
 void User::DisplayCheckOut()
 {
-    DisplaySystem checkoutOutput = DisplaySystem();
-    checkoutOutput.DisplayBooks(checkedOut);
+    // DisplaySystem checkoutOutput = DisplaySystem();
+    // checkoutOutput.DisplayBooks(checkedOut);
 }
 
 void User::SetCheckedOutData(vector<CheckOutData*> data) { this->checkedOut = data; }
