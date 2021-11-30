@@ -8,9 +8,9 @@ class LoginSystem {
 	private:
 		unordered_map<int, int> userPasswords; //<userID, hashed password>
 	public:
-		LoginSystem(string textFile);
+		LoginSystem(std::string textFile);
 		bool LoginVerify(int userID, std::string &userPass);
 		int HashPassword(std::string &userPass);
-		void SaveUsers(string textFile);
+		void SaveUsers(std::string textFile);
 		int GetHashPass(int ID);
 };

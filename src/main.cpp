@@ -2,11 +2,18 @@
 
 #include <iostream>
 #include <string>
+
+#include "../header/LibrarySystem.hpp"
+#include "../header/UserSystem.hpp"
+#include "../header/BookSystem.hpp"
 #include "../header/Book.hpp"
 #include "../header/LoginSystem.hpp"
+#include "../header/Person.hpp"
+#include "../header/User.hpp"
+#include "../header/Librarian.hpp"
 
-void PrintUserInfo(User* person) {
-    person->GetInfo();
+void PrintUserInfo(User* user) {
+    user->GetInfo();
 }
 
 void CheckoutBook(User* person) {
@@ -116,62 +123,54 @@ void PrintMenu(Librarian* person) {
     std::cout << "/---------------------------------------------------/" << std::endl;
 }
 
-int SwitchCase(User* person)
-{
+int SwitchCase(User* person) {
     int input = -1;
     std::cout << "Type an option (1-6). Type -1 to quit: ";
     std::cin >> input;
     std::cout << std::endl;
 
-    switch(input)
-    {
-        case '1':
-            PrintUserInfo(person);
-        case '2':
-            CheckoutBook(person);
-        case '3':
-            ReturnBook(person);
-        case '4':
-            ShowDebt(person);
-        case '5':
-            PayDebt(person);
-        case '6':
-            DisplayCheckedOutBooks(person);
-    }
+    if (input == 1)
+        PrintUserInfo(person);
+    if (input == 2)
+        CheckoutBook(person);
+    if (input == 3)
+        ReturnBook(person);
+    if (input == 4)
+        ShowDebt(person);
+    if (input == 5)
+        PayDebt(person);
+    if (input == 6)
+        DisplayCheckedOutBooks(person);
+    if (input == -1)
+        return -1;
 
     return input;
 }
 
-int SwitchCase(Librarian* librarian)
-{
+int SwitchCase(Librarian* librarian) {
     int input = -1;
     std::cout << "Type an option (1-4). Type -1 to quit: ";
     std::cin >> input;
     std::cout << std::endl;
 
-    switch(input)
-    {
-        case '1':
-            PrintLibrarianInfo(librarian);
-        case '2':
-            AddBook(librarian);
-        case '3':
-            RemoveBook(librarian);
-        case '4':
-            /*new library catalogue and checked out and passed out as input string
-            use us and bs
-            
-            LibrarySystem* lib = new LibrarySystem(us, bs, newCat, newCheckOut);*/
-    }
+    if (input == 1)
+        PrintLibrarianInfo(librarian);    
+    if (input == 2)
+        AddBook(librarian);
+    if (input == 3)
+        RemoveBook(librarian);
+    if (input == 4)
+        cout << "Work in progress" << endl;
+    if (input == -1)
+        return -1;
 
     return input;
 }
 
 int main()
 {
-    LoginSystem loggingIn;
-    int id;
-    std::string password;
+    int id = 0;
+    std::string password  = "";
 
     std::cout << "Enter Your User ID: " << std::endl;
     std::cin >> id;
@@ -187,7 +186,7 @@ int main()
     {
         UserSystem* us;
         BookSystem* bs;
-        LibrarySystem* library = new LibrarySystem(us, bs, "../catalogue.json", "../checked_out.json", "../passed_due.json");
+        LibrarySystem* library = new LibrarySystem(us, bs, "../catalogue.json", "../checked_out.json", "../passed_due.json", "", "");   // Don't know what goes in 4th and 5th param
         Person* person = library->GetUserSystem()->GetPerson(id);
         
         if (person->GetType() == "User"){
@@ -196,7 +195,8 @@ int main()
             do {
                 PrintMenu(user);
                 int option = SwitchCase(user);
-            } while (option != -1);
+            } 
+            while (option != -1);
         }    
         else
         {
@@ -205,7 +205,8 @@ int main()
             do {
                 PrintMenu(librarian);
                 int option = SwitchCase(librarian);
-            } while (option != -1);
+            } 
+            while (option != -1);
         }
     }
     return 0;
