@@ -1,35 +1,29 @@
-#include "../header/BookSearch.hpp"
+#include "../header/ISBNSearch.hpp"
 
-class ISBNSearch : public BookSearch
+std::vector<Content*> ISBNSearch::SearchBooks(std::unordered_map<long long, Content*> catalogue, long long ISBN)
 {
-private:
-
-public:
-	std::vector<Content*> SearchBooks(std::unordered_map<long long, Content*> catalogue, long long ISBN)
+	std::vector<Content*> temp;
+	std::vector<Content*> mapped = MapToVector(catalogue);
+	temp = SearchISBN(mapped, ISBN);
+	return temp;
+}
+std::vector<Content*> ISBNSearch::SearchBooks(std::vector<CheckOutData*> usercat, long long ISBN)
+{
+	std::vector<Content*> temp;
+	std::vector<Content*> mapped = MapToVector(usercat);
+	temp = SearchISBN(mapped, ISBN);
+	return temp;
+}
+std::vector<Content*> ISBNSearch::SearchISBN(std::vector<Content*> catalogue, long long ISBN)
+{
+	std::vector<Content*> tempFound;
+	for(Content* c: catalogue)
 	{
-		std::vector<Content*> temp;
-		std::vector<Content*> mapped = MapToVector(catalogue);
-		temp = SearchGenre(mapped, ISBN);
-		return temp;
-	}
-	std::vector<Content*> SearchBooks(std::vector<CheckOutData*> usercat, long long ISBN)
-	{
-		std::vector<Content*> temp;
-		std::vector<Content*> mapped = MapToVector(usercat);
-		temp = SearchGenre(mapped, ISBN);
-		return temp;
-	}
-	std::vector<Content*> SearchISBN(std::vector<Content*> catalogue, long long ISBN)
-	{
-		std::vector<Content*> tempFound;
-		for(Content* c: catalogue)
+		if(c->GetISBN() == ISBN)
 		{
-			if(c->GetISBN() == ISBN)
-			{
-				tempFound.push_back(c);
-				return tempFound;
-			}
+			tempFound.push_back(c);
+			return tempFound;
 		}
-		return tempFound;
 	}
+	return tempFound;
 }
