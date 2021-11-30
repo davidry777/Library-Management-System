@@ -3,7 +3,6 @@
 
 #include "Person.hpp"
 #include "BookSystem.hpp"
-#include "LibrarySystem.hpp"
 #include "Book.hpp"
 
 #include <iostream>
@@ -11,17 +10,15 @@
 #include <vector>
 #include <ctime>
 
-class LibrarySystem;
-
 class Librarian : public Person {
     public:
-        Librarian(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
+        Librarian(std::string name, int id, BookSystem* books, int hashedPassword);
         ~Librarian();
         void GetInfo();
         std::string GetType();
         void AddBook(Book* newBook);
         void RemoveBook(long long ISBN);
-        void SetLibrary(LibrarySystem* newLibrary);
+        void SetBookSys(BookSystem* newBookSys);
 };
 
 #endif //__LIBRARIAN_HPP__

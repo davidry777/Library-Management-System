@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "LibrarySystem.hpp"
+#include "BookSystem.hpp"
 
 class LibrarySystem;
 
@@ -13,7 +13,7 @@ class Person {
         std::string fullName;
         int ID;
         int password;
-        LibrarySystem* library;
+        BookSystem* bookSys;
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }

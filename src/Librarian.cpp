@@ -1,14 +1,14 @@
 #include "../header/Librarian.hpp"
 
-Librarian::Librarian(std::string name, int id, LibrarySystem* set_library, int hashedPassword)
+Librarian::Librarian(std::string name, int id, BookSystem* books, int hashedPassword)
 { 
     fullName = name;
     ID = id;
-    library = set_library;
+    bookSys = books;
     password = hashedPassword;
 }
 
-Librarian::~Librarian() { delete library; }
+Librarian::~Librarian() { delete bookSys; }
 
 void Librarian::GetInfo()
 {
@@ -19,8 +19,8 @@ void Librarian::GetInfo()
 
 std::string Librarian::GetType() { return "Librarian"; }
 
-void Librarian::AddBook(Book* newBook) { library->GetBookSystem()->AddContent(newBook); }
+void Librarian::AddBook(Book* newBook) { bookSys->AddContent(newBook); }
 
-void Librarian::RemoveBook(long long ISBN) { library->GetBookSystem()->RemoveContent(ISBN); }
+void Librarian::RemoveBook(long long ISBN) { bookSys->RemoveContent(ISBN); }
 
-void Librarian::SetLibrary(LibrarySystem* newLibrary) { library = newLibrary; }
+void Librarian::SetBookSys(BookSystem* newBookSys) { bookSys = newBookSys; }

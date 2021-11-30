@@ -2,15 +2,15 @@
 
 using namespace std;
 
-User::User(std::string name, int id, LibrarySystem* set_library, int hashedPassword) : debt(0)
+User::User(std::string name, int id, BookSystem* books, int hashedPassword) : debt(0)
 { 
     fullName = name;
     ID = id;
-    library = set_library;
+    bookSys = books;
     password = hashedPassword;
 }
 
-User::~User() { delete library; }
+User::~User() { delete bookSys; }
 
 void User::GetInfo()
 {
@@ -22,9 +22,9 @@ void User::GetInfo()
 
 std::string User::GetType() { return "User"; }
 
-void User::CheckoutBook(long long ISBN) { library->GetBookSystem()->CheckOut(this, ISBN); }
+void User::CheckoutBook(long long ISBN) { bookSys->CheckOut(this, ISBN); }
 
-void User::ReturnBook(long long ISBN) { library->GetBookSystem()->ReturnContent(this, ISBN); }
+void User::ReturnBook(long long ISBN) { bookSys->ReturnContent(this, ISBN); }
 
 int User::GetBalance() { return debt; }
 

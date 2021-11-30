@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __CHECKOUTDATA_HPP__
+#define __CHECKOUTDATA_HPP__
 
 #include <ctime>
 #include "Content.hpp"
@@ -14,3 +16,5 @@ struct CheckOutData {
 
     CheckOutData(time_t a, Content* b, Person* c, bool overTime = false) : timeCheckedOut(a), contentCheckedOut(b), userCheckedOut(c), overTime(false) {}
 };
+
+#endif	//__CHECKOUTDATA_HPP__
