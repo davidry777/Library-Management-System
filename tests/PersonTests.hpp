@@ -18,6 +18,30 @@ LibrarySystem* genLib()
     return new LibrarySystem(userSys, bookSys);
 }
 
+TEST(PersonTest, GetName)
+{
+    User user("Jason Giese", 28956, nullptr, "~ZD0bRrv~[A/nyP");
+    EXPECT_EQ(user.GetName(), "Jason Giese");
+}
+
+TEST(PersonTest, GetID)
+{
+    User user("Jason Giese", 28956, nullptr, "~ZD0bRrv~[A/nyP");
+    EXPECT_EQ(user.GetId(), 28956);
+}
+
+TEST(PersonTest, GetPassword)
+{
+    User user("Jason Giese", 28956, nullptr, "~ZD0bRrv~[A/nyP");
+    EXPECT_EQ(user.GetHashedPassword(), "~ZD0bRrv~[A/nyP");
+}
+
+TEST(PersonTest, GetLibrary)
+{
+    User user("Jason Giese", 28956, genLib(), "~ZD0bRrv~[A/nyP");
+    EXPECT_EQ(user.GetLibrary(), genLib());
+}
+
 TEST(UserTest, ZeroBalance)
 {
     User user("Jason Giese", 28956, nullptr, "~ZD0bRrv~[A/nyP");
