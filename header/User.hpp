@@ -8,7 +8,7 @@
 
 #include "Person.hpp"
 #include "LibrarySystem.hpp"
-//#include "DisplaySystem.hpp"
+// #include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
 #include "CheckOutData.hpp"
 
@@ -19,8 +19,11 @@ class User : public Person
         int debt;
 
     public:
-        User(std::string name, int id, LibrarySystem* set_library, std::string hashedPassword);
+        User(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
         ~User();
+        void GetInfo();
+        void CheckoutBook(long long ISBN);
+        void ReturnBook(long long ISBN);
         int GetBalance();
         void PayBalance(int cash);
         void DisplayCheckOut();

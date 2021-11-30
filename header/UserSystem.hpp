@@ -4,6 +4,10 @@
 #include <unordered_map>
 #include <string>
 #include "../header/Person.hpp"
+#include "../header/User.hpp"
+#include "../header/BookSystem.hpp"
+#include "../header/Librarian.hpp"
+#include "LibrarySystem.hpp"
 
 using namespace std;
 
@@ -11,9 +15,12 @@ class UserSystem {
 	private:
 		unordered_map<int, Person*> people;
 	public:
-		UserSystem();
+		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
+		unordered_map<int, Person*>& GetMap()
+		{
+			return people;
+		}
 		Person* GetPerson(int ID);
-		void AddPerson(Person *newPeep);
-		Person* GetCurrPeron(Person* dude, string password);	
-			
-}
+		void AddPerson(Person *person);
+		void SaveUserData(string userInfo);
+};

@@ -2,7 +2,9 @@
 
 #include "BookTests.hpp"
 #include "SortTests.hpp"
-
+#include "PersonTests.hpp"
+#include "BundleTests.hpp"
+#include "BookSystemTests.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

@@ -30,7 +30,7 @@ void DisplaySystem::DisplayBooks(std::vector<Content*> catalogue)
 {
 	for(Content* c : catalogue)
 	{
-                std::cout << c->Display() << std::endl;
+        std::cout << c->Display() << std::endl;
 	}
 }
 
