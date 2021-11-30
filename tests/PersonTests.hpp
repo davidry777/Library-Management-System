@@ -5,6 +5,7 @@
 #include "../header/LibrarySystem.hpp"
 #include "../header/UserSystem.hpp"
 #include "../header/BookSystem.hpp"
+#include "../header/Book.hpp"
 #include "../header/User.hpp"
 #include "../header/Librarian.hpp"
 #include "../header/CheckOutData.hpp"
