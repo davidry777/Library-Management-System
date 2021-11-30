@@ -8,6 +8,11 @@ User::User(std::string name, int id, LibrarySystem* set_library, std::string has
     password = hashedPassword;
 }
 
+User::~User()
+{
+    delete library;
+}
+
 void User::CheckoutBook(long long ISBN) { library->GetBookSystem()->CheckOut(this, ISBN); }
 
 void User::ReturnBook(long long ISBN) { library->GetBookSystem()->ReturnContent(this, ISBN); }
