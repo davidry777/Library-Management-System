@@ -23,6 +23,4 @@ class UserSystem {
 		Person* GetPerson(int ID);
 		void AddPerson(Person *person);
 		void SaveUserData(string userInfo);
-//Person* GetCurrPeron(Person* dude, string password);	
-			
 };
