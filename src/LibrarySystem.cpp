@@ -1,6 +1,11 @@
 #include "../header/LibrarySystem.hpp"
 
-LibrarySystem::LibrarySystem(UserSystem* us, BookSystem* bs) : userSystem(us), bookSystem(bs) {}
+LibrarySystem::LibrarySystem(UserSystem* us, BookSystem* bs, const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile) : userSystem(us), bookSystem(bs) {
+    this->bookSystem = new BookSystem(catalogueFile, checkedOutFile, passedDueFile);
+    this->userSystem = new UserSystem(bookSystem->GetCheckedOut(), bookSystem->GetPassedDue());
+    this->bookSystem->LoadCheckedOut(this->userSystem->GetMap());
+    this->bookSystem->LoadPassedDue(this->userSystem->GetMap());
+}
 
 LibrarySystem::~LibrarySystem() {
     delete this->userSystem;
