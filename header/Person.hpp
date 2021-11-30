@@ -4,9 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "BookSystem.hpp"
-
-class LibrarySystem;
+class BookSystem;
 
 class Person {
     protected:
