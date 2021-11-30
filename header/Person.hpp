@@ -19,7 +19,7 @@ class Person {
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
         int GetHashedPassword() { return password; }
-        LibrarySystem* GetLibrary() { return this->library; }
+        BookSystem* GetBookSys() { return bookSys; }
         virtual void GetInfo() = 0;
         virtual std::string GetType() = 0;
 };
