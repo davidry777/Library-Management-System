@@ -8,7 +8,6 @@
 #include <fstream>
 #include "json.hpp"
 
-#include "Person.hpp"
 #include "Content.hpp"
 #include "Book.hpp"
 #include "Bundle.hpp"
