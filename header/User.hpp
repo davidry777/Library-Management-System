@@ -18,7 +18,7 @@ class User : public Person
         int debt;
 
     public:
-        User(std::string name, int id, LibrarySystem* set_library, std::string hashedPassword);
+        User(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
         ~User();
         void GetInfo();
         void CheckoutBook(long long ISBN);
