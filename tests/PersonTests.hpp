@@ -2,8 +2,6 @@
 
 #include "gtest/gtest.h"
 
-#include "../header/LibrarySystem.hpp"
-#include "../header/UserSystem.hpp"
 #include "../header/BookSystem.hpp"
 #include "../header/Book.hpp"
 #include "../header/User.hpp"
@@ -12,11 +10,9 @@
 
 #include <vector>
 
-LibrarySystem* genLib()
+BookSystem* genBookSys()
 {
-    UserSystem* userSys = new UserSystem();
-    BookSystem* bookSys = new BookSystem("../catalogue.json", "none", "none");
-    return new LibrarySystem(userSys, bookSys);
+    return new BookSystem("../catalogue.json", "none", "none");
 }
 
 TEST(PersonTest, GetName)
@@ -69,7 +65,7 @@ TEST(UserTest, RemovedDebt)
 
 TEST(UserTest, CheckedOutBooks)
 {
-    User user("Jason Giese", 28956, genLib(), "~ZD0bRrv~[A/nyP");
+    User user("Jason Giese", 28956, genBookSys(), "~ZD0bRrv~[A/nyP");
     user.CheckoutBook(9781617734076);
     user.CheckoutBook(9781250166609);
     EXPECT_EQ(user.DisplayCheckout(),
@@ -121,7 +117,7 @@ TEST(LibrarianTest, AddingBook)
     Librarian librarian("Gwen Kiler", 78094, genLib(), "Fn]YF<5!tA*{PL");
     Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
     librarian.AddBook(book)
-    EXPECT_EQ(librarian.GetLibrary()->GetBookSystem()->GetContent(9784567290812), book);
+    EXPECT_EQ(librarian.GetBookSys()->GetContent(9784567290812), book);
 }
 
 TEST(LibrarianTest, RemovingBook)
@@ -130,12 +126,12 @@ TEST(LibrarianTest, RemovingBook)
     Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
     librarian.AddBook(book)
     librarian.RemoveBook(9784567290812)
-    EXPECT_EQ(librarian.GetLibrary()->GetBookSystem()->GetContent(9784567290812), nullptr);
+    EXPECT_EQ(librarian.GetBookSys()->GetContent(9784567290812), nullptr);
 }
 
 TEST(LibrarianTest, SettingLibrary)
 {
     Librarian librarian("Gwen Kiler", 78094, nullptr, "Fn]YF<5!tA*{PL");
-    librarian.SetLibrary(genlib());
-    EXPECT_EQ(librarian.GetLibrary(), genlib());
+    librarian.SetBookSys(genBookSys());
+    EXPECT_EQ(librarian.GetBookSys(), genLib());
 }
