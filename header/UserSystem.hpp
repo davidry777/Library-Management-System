@@ -4,17 +4,10 @@
  
 #include <unordered_map>
 #include <string>
-<<<<<<< HEAD
-#include "../header/Person.hpp"
-#include "../header/User.hpp"
-#include "../header/BookSystem.hpp"
-#include "../header/Librarian.hpp"
-=======
 #include "Person.hpp"
 #include "User.hpp"
 #include "BookSystem.hpp"
 #include "Librarian.hpp"
->>>>>>> 327bc230709b56475353b9a8b01818d43901434b
 using namespace std;
 
 
