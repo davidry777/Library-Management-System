@@ -47,5 +47,12 @@
         "genre": "Media",
         "isbn": 9781789090154,
         "title": "God of War: The Official Novelization"
+    },
+    {
+        "author": "Brandon Sanderson",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9781250166609,
+        "title": "Edgedancer: From the Stormlight Archive"
     }
 ]
