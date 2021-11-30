@@ -12,7 +12,7 @@
 
 BookSystem* genBookSys()
 {
-    return new BookSystem("../catalogue.json", "none", "none");
+    return new BookSystem("../catalogue.json", "../checked_out.json", "../passed_due.json");
 }
 
 TEST(PersonTest, GetName)
