@@ -91,3 +91,26 @@ TEST(UserTest, SetCheckedOutData)
         Frequency: 66\n");
 }
 
+TEST(LibrarianTest, AddingBook)
+{
+    Librarian librarian("Gwen Kiler", 78094, genLib(), "Fn]YF<5!tA*{PL");
+    Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
+    librarian.AddBook(book)
+    EXPECT_EQ(librarian.GetLibrary()->GetBookSystem()->GetContent(9784567290812), book);
+}
+
+TEST(LibrarianTest, RemovingBook)
+{
+    Librarian librarian("Gwen Kiler", 78094, genLib(), "Fn]YF<5!tA*{PL");
+    Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
+    librarian.AddBook(book)
+    librarian.RemoveBook(9784567290812)
+    EXPECT_EQ(librarian.GetLibrary()->GetBookSystem()->GetContent(9784567290812), nullptr);
+}
+
+TEST(LibrarianTest, SettingLibrary)
+{
+    Librarian librarian("Gwen Kiler", 78094, nullptr, "Fn]YF<5!tA*{PL");
+    librarian.SetLibrary(genlib());
+    EXPECT_EQ(librarian.GetLibrary(), genlib());
+}
