@@ -41,9 +41,9 @@ void LoginSystem::SaveUsers(string textFile)
 	ofstream fileOut;
 	fileOut.open(textFile);
 	if (fileOut.is_open())
-		for (const auto & [ID,pass] : userPasswords)
+		for (auto kv : userPasswords)
 		{
-			fileOut << ID << " " << pass << endl;	
+			fileOut << kv.first << " " << kv.second << endl;	
 		}
   fileOut.close();
 }
