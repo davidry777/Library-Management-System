@@ -12,7 +12,10 @@ using namespace std;
 
 Person* UserSystem::GetPerson(int ID)
 {
-	return this->people[ID];
+	if (this->people.find(ID) !=this->people.end())
+		return this->people[ID];
+	else
+		return nullptr;
 }
 
 UserSystem::UserSystem(string peopleInput, string checkedOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue)
@@ -86,7 +89,7 @@ UserSystem::~UserSystem()
 //}
 
 void UserSystem::AddPerson(Person *dude) {
-	this->users.insert({ dude.get, dude });	
+	this->users.insert({ dude.getID(), dude });	
 }
 
 void UserSystem::SaveUserData(string userInfo)
