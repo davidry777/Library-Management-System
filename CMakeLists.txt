@@ -17,7 +17,7 @@ ADD_EXECUTABLE(test
     src/Librarian.cpp
     src/LibrarySystem.cpp
     src/BookSystem.cpp
-
+    src/Bundle.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
