@@ -1,11 +1,9 @@
 #ifndef __BOOKSORT_H
 #define __BOOKSORT_H
-#include <vector>
-#include <string>
-#include "../header/Book.hpp"
-#include "../header/BookSystem.hpp"
+
+#include "Book.hpp"
+#include "BookSystem.hpp"
 #include "CheckOutData.hpp"
-#include "Content.hpp"
 
 class BookSort {
  private:

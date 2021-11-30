@@ -1,6 +1,6 @@
 #include "../header/Librarian.hpp"
 
-Librarian::Librarian(std::string name, int id, LibrarySystem* set_library, std::string hashedPassword)
+Librarian::Librarian(std::string name, int id, LibrarySystem* set_library, int hashedPassword)
 { 
     fullName = name;
     ID = id;
