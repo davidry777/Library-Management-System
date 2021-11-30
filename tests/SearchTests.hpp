@@ -16,6 +16,8 @@ TEST(GenreSearchTest, OneBook)
         GenreSearch* g = new GenreSearch();
         searched = g->SearchBooks(cata, "Fiction");
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotI");
+	delete testBook;
+	delete g;
 }
 
 TEST(GenreSearchTest, TwoBooks)
@@ -31,6 +33,9 @@ TEST(GenreSearchTest, TwoBooks)
         searched = g->SearchBooks(cata, "Fiction");
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotHe");
         EXPECT_EQ(searched.at(1)->GetAuthor(), "NotI");
+	delete testBook;
+	delete testBook2;
+	delete g;
 }
 
 TEST(GenreSearchTest, TwoBooksOneMatch)
@@ -44,6 +49,9 @@ TEST(GenreSearchTest, TwoBooksOneMatch)
         GenreSearch* g = new GenreSearch();
         searched = g->SearchBooks(cata, "Fiction");
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotI");
+	delete testBook;
+	delete testBook2;
+	delete g;
 }
 
 TEST(GenreSearchTest, NoMatch)
@@ -57,6 +65,9 @@ TEST(GenreSearchTest, NoMatch)
         GenreSearch* g = new GenreSearch();
         searched = g->SearchBooks(cata, "BadGenre");
         EXPECT_EQ(searched.empty(), true);
+	delete testBook;
+	delete testBook2;
+	delete g;
 }
 
 TEST(ISBNSearchTest, OneBook)
@@ -68,6 +79,8 @@ TEST(ISBNSearchTest, OneBook)
         ISBNSearch* i = new ISBNSearch();
         searched = i->SearchBooks(cata, 12345);
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotI");
+	delete testBook;
+	delete i;
 }
 
 TEST(ISBNSearchTest, TwoBooks)
@@ -81,6 +94,9 @@ TEST(ISBNSearchTest, TwoBooks)
         ISBNSearch* i = new ISBNSearch();
         searched = i->SearchBooks(cata, 12346);
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotHe");
+	delete testBook;
+	delete testBook2;
+	delete i;
 }
 
 TEST(ISBNSearchTest, NoMatch)
@@ -94,6 +110,9 @@ TEST(ISBNSearchTest, NoMatch)
         ISBNSearch* i = new ISBNSearch();
         searched = i->SearchBooks(cata, 99999);
         EXPECT_EQ(searched.empty(), true);
+	delete testBook;
+        delete testBook2;
+        delete i;
 }
 
 TEST(KeyWordSearchTest, OneBook)
@@ -105,6 +124,8 @@ TEST(KeyWordSearchTest, OneBook)
         KeyWordSearch* k = new KeyWordSearch();
         searched = k->SearchBooks(cata, "Test");
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotI");
+	delete testBook;
+	delete k;	
 }
 
 TEST(KeyWordSearchTest, TwoBooks)
@@ -119,6 +140,9 @@ TEST(KeyWordSearchTest, TwoBooks)
         searched = k->SearchBooks(cata, "Test");
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotThey");
         EXPECT_EQ(searched.at(1)->GetAuthor(), "NotI");
+        delete testBook;
+        delete testBook2;
+        delete k;
 }
 
 TEST(KeyWordSearch, TwoBooksOneMatch)
@@ -132,6 +156,9 @@ TEST(KeyWordSearch, TwoBooksOneMatch)
         KeyWordSearch* k = new KeyWordSearch();
         searched = k->SearchBooks(cata, "Also");
         EXPECT_EQ(searched.at(0)->GetAuthor(), "NotThey");
+	delete testBook;
+	delete testBook2;
+        delete k;
 }
 
 TEST(KeyWordSearchTest, NoMatch)
@@ -145,4 +172,7 @@ TEST(KeyWordSearchTest, NoMatch)
         KeyWordSearch* k = new KeyWordSearch();
         searched = k->SearchBooks(cata, "DefinitelyNotInHere");
         EXPECT_EQ(searched.empty(), true);
+        delete testBook;
+        delete testBook2;
+        delete k;
 }
