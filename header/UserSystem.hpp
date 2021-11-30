@@ -14,7 +14,7 @@ class UserSystem {
 	private:
 		unordered_map<int, Person*> people;
 	public:
-		UserSystem((string peopleInput, string checkedOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue);
+		UserSystem(string peopleInput, string checkedOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue);
 		unordered_map<int, Person*>& GetMap()
 		{
 			return &this->people;
