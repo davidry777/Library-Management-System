@@ -7,7 +7,6 @@
 #include "../header/User.hpp"
 #include "../header/BookSystem.hpp"
 #include "../header/Librarian.hpp"
-#include "Person.hpp"
 
 using namespace std;
 
