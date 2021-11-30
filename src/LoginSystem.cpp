@@ -4,14 +4,13 @@
 
 using namespace std;
 
-LoginSystem::LoginSystem()
+LoginSystem::LoginSystem(string textFile)//should be .txt
 {		
-	//TODO: populate userPasses from text file
 	ifstream file;
-	file.open("users.txt");
+	file.open(textFile);
 	int temp, tempPass, tempUserID;
 	unordered_map<int, int> userPasses;
-	if (file.isopen())
+	if (file.is_open())
 	{
 		while (!file.eof())
 		{
@@ -20,52 +19,44 @@ LoginSystem::LoginSystem()
 		}
 	}
 	this->userPasswords = userPasses;
-	//temporary stub
-	//userPasses[1] = a*1984+2049;
 }
 
 LoginSystem::~LoginSystem()
 {
-	SaveUsers();
-	//saving these to a file will be done in the log out function
 	for (auto x : userPasswords)
 		delete x;
 }
 
 int LoginSystem::HashPassword(string &userPass) 
 {
-	int hash = -1; //if no password is given, returns -1
-	for (auto c : userPass.toCharArray())
-		hash += int(c)*1984 + 2049;
+	int hash = 0; //if no password is given, returns 0
+	for (int i = 0; i < userPass.length(); ++i)
+		hash += (i+1)*(int)userPass[i]*1984 + 2049;
 	return hash;
-		
 }
 
-bool LoginSystem::LoginVerify(int userID, string &userPass, unordered_map<int, Person*> &people)
+bool LoginSystem::LoginVerify(int userID, string &userPass)
 {
 	bool allowLogin = false;
 	int hash = HashPassword(userPass);
-	if (people[userID] == hash)
+	if (userPasswords[userID] == hash)
 		allowLogin = true;
 	return allowLogin;
 }
 
-void LoginSystem::SaveUsers()
+void LoginSystem::SaveUsers(string textFile)
 {
 	ofstream fileOut;
-	fileOut.open("users.txt");
-	if (fileOut.isopen())
-		for (const auto & [ID,pass] : userPasses)
+	fileOut.open(textFile);
+	if (fileOut.is_open())
+		for (const auto & [ID,pass] : userPasswords)
 		{
 			fileOut << ID << " " << pass << endl;	
 		}
-	//TOOD: LogOut
-	//save users to file
-	//deconstruct?
-	//do log out stuff
+  fileOut.close();
 }
 
 int LoginSystem::GetHashPass(int ID)
 {
-	return this->userPasses[ID];
+	return this->userPasswords[ID];
 }

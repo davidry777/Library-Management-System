@@ -14,13 +14,13 @@ class UserSystem {
 	private:
 		unordered_map<int, Person*> people;
 	public:
-		UserSystem(string peopleInput, string checkedOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue);
+		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
 		unordered_map<int, Person*>& GetMap()
 		{
 			return &this->people;
 		}
 		Person* GetPerson(int ID);
-		void AddPerson(Person *newPeep);
+		void AddPerson(Person *person);
 		void SaveUserData(string userInfo);
 //Person* GetCurrPeron(Person* dude, string password);	
 			
