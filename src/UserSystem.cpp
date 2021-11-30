@@ -15,13 +15,13 @@ Person* UserSystem::GetPerson(int ID)
 	return this->people[ID];
 }
 
-UserSystem::UserSystem(vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue	)
+UserSystem::UserSystem(string peopleInput, string checkedOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue)
 {
 	//import users from a file to populate the array
-	ifstream people_file("userInfo.json");
+	ifstream people_file(peopleInput);
 	json readJson;
 	json readCheckedOut;
-	ifstream checkout("checked_out.json");
+	ifstream checkout(checkedOut);
 	checkout >> readCheckedOut;
 	people_file >> readJson;
 	unordered_map<int, Person*> userMap;
@@ -89,7 +89,7 @@ void UserSystem::AddPerson(Person *dude) {
 	this->users.insert({ dude.get, dude });	
 }
 
-void UserSystem::SaveUserData()
+void UserSystem::SaveUserData(string userInfo)
 {
 	json userInfo;
 	
@@ -112,7 +112,7 @@ void UserSystem::SaveUserData()
 	*/	}
 	}
 	ofstream fileOut;
-	fileOut.open("userInfo.json");
+	fileOut.open(userInfo);
 	
 	if (fileOut.is_open())
 	{
