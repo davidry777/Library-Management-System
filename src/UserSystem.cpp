@@ -12,16 +12,19 @@ using namespace std;
 
 Person* UserSystem::GetPerson(int ID)
 {
-	return this->people[ID];
+	if (this->people.find(ID) !=this->people.end())
+		return this->people[ID];
+	else
+		return nullptr;
 }
 
-UserSystem::UserSystem(vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue	)
+UserSystem::UserSystem(string peopleInput, string checkedOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue)
 {
 	//import users from a file to populate the array
-	ifstream people_file("userInfo.json");
+	ifstream people_file(peopleInput);
 	json readJson;
 	json readCheckedOut;
-	ifstream checkout("checked_out.json");
+	ifstream checkout(checkedOut);
 	checkout >> readCheckedOut;
 	people_file >> readJson;
 	unordered_map<int, Person*> userMap;
@@ -86,10 +89,10 @@ UserSystem::~UserSystem()
 //}
 
 void UserSystem::AddPerson(Person *dude) {
-	this->users.insert({ dude.get, dude });	
+	this->users.insert({ dude.getID(), dude });	
 }
 
-void UserSystem::SaveUserData()
+void UserSystem::SaveUserData(string userInfo)
 {
 	json userInfo;
 	
@@ -112,7 +115,7 @@ void UserSystem::SaveUserData()
 	*/	}
 	}
 	ofstream fileOut;
-	fileOut.open("userInfo.json");
+	fileOut.open(userInfo);
 	
 	if (fileOut.is_open())
 	{
