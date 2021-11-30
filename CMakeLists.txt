@@ -20,12 +20,13 @@ ADD_EXECUTABLE(test
     src/LibrarySystem.cpp
     src/LoginSystem.cpp
     src/UserSystem.cpp
-    # src/AlphabeticalSort.cpp
-    # src/DisplaySystem.cpp
-    # src/FrequencySort.cpp
-    # src/GenreSearch.cpp
-    # src/ISBNSearch.cpp
-    # src/KeyWordSearch.cpp
+    
+    src/AlphabeticalSort.cpp
+    src/DisplaySystem.cpp
+    src/FrequencySort.cpp
+    src/GenreSearch.cpp
+    src/ISBNSearch.cpp
+    src/KeyWordSearch.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
