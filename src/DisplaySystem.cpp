@@ -52,6 +52,7 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_
 		GenreSearch* g = new GenreSearch();
         	temp = g->SearchBooks(catalogue, genre);
         	this->DisplayBooks(temp);
+		delete g;
 		break;
 	}
 	case '2':
@@ -59,6 +60,7 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_
 		KeyWordSearch* k = new KeyWordSearch();
 		temp = k->SearchBooks(catalogue, genre);
 		this->DisplayBooks(temp);
+		delete k;
 		break;
 	}
 	}
@@ -69,6 +71,7 @@ void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<long 
 	ISBNSearch* i = new ISBNSearch();
 	temp = i->SearchBooks(catalogue, ISBN);
 	this->DisplayBooks(temp);
+	delete i;
 }
 void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Content*> catalogue)
 {
@@ -79,6 +82,7 @@ void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Cont
 		AlphabeticalSort* a = new AlphabeticalSort();
 		temp = a->SortBooks(catalogue);
 		this->DisplayBooks(temp);
+		delete a;
 		break;
 	}
 	case '5':
@@ -86,6 +90,7 @@ void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Cont
 		FrequencySort* f = new FrequencySort();
 		temp = f->SortBooks(catalogue);
 		this->DisplayBooks(temp);
+		delete f;
 		break;
 	}
 	}
@@ -99,6 +104,7 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Che
 	        GenreSearch* g = new GenreSearch();
                 temp = g->SearchBooks(usercat, genre);
                 this->DisplayBooks(temp);
+		delete g;
                 break;
         }
 	case '2':
@@ -106,6 +112,7 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Che
 	        KeyWordSearch* k = new KeyWordSearch();
                 temp = k->SearchBooks(usercat, genre);
                 this->DisplayBooks(temp);
+		delete k;
                 break;
         }
 	}
@@ -117,6 +124,7 @@ void DisplaySystem::DisplayBooks(char choice, int ISBN, std::vector<CheckOutData
         ISBNSearch* i = new ISBNSearch();
         temp = i->SearchBooks(usercat, ISBN);
         this->DisplayBooks(temp);
+	delete i;
 }
 void DisplaySystem::DisplayBooks(char choice, std::vector<CheckOutData*> usercat)
 {
@@ -127,6 +135,7 @@ void DisplaySystem::DisplayBooks(char choice, std::vector<CheckOutData*> usercat
 	        AlphabeticalSort* a = new AlphabeticalSort();
                 temp = a->SortBooks(usercat);
                 this->DisplayBooks(temp);
+		delete a;
                 break;
         }
 	case '5':
@@ -134,6 +143,7 @@ void DisplaySystem::DisplayBooks(char choice, std::vector<CheckOutData*> usercat
 	        FrequencySort* f = new FrequencySort();
                 temp = f->SortBooks(usercat);
                 this->DisplayBooks(temp);
+		delete f;
                 break;
         }
 	}
