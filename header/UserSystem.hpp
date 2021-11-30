@@ -7,6 +7,7 @@
 #include "../header/User.hpp"
 #include "../header/BookSystem.hpp"
 #include "../header/Librarian.hpp"
+#include "LibrarySystem.hpp"
 
 using namespace std;
 
@@ -17,11 +18,11 @@ class UserSystem {
 		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
 		unordered_map<int, Person*>& GetMap()
 		{
-			return &this->people;
+			return &people;
 		}
 		Person* GetPerson(int ID);
 		void AddPerson(Person *person);
 		void SaveUserData(string userInfo);
 //Person* GetCurrPeron(Person* dude, string password);	
 			
-}
+};

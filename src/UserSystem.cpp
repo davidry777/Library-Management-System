@@ -42,14 +42,14 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 			tempUser->PayBalance(-1*debt);
 			for (auto book : checkedOut)
 			{
-				if (book->userCheckedOut.GetID() == ID)
+				if (book->userCheckedOut.GetId() == ID)
 				{
 					checkoutData.push_back(book);
 				}
 			}
 			for (auto book : passedDue)
 			{
-				if (book->userCheckedOut.GetID() == ID)
+				if (book->userCheckedOut.GetId() == ID)
 					checkoutData.push_back(book);
 			}
 			tempUser->SetCheckedOutData(checkoutData);
@@ -106,8 +106,8 @@ void UserSystem::SaveUserData(string userInfo)
 	vector<CheckOutData*> tempVec;
 	for (const auto & [ID, userPerson] : people)
 	{
-		userJson["users"][ID]["hashPass"] = userPerson->GetHashedPassword(); //TODO
 		userJson["users"][ID]["name"] = userPerson->GetName();
+    userJson["users"][ID]["hashPass"] = userPerson->GetHashedPassword(); 
 		if (dynamic_cast<User*> (userPerson) != nullptr)
 		{
 			userJson["users"][ID]["debt"] = dynamic_cast<User*>(userPerson)->GetBalance();
