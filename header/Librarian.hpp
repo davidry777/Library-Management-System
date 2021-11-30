@@ -11,8 +11,7 @@
 #include "LibrarySystem.hpp"
 #include "Book.hpp"
 
-class Librarian : public Person
-{
+class Librarian : public Person {
     public:
         Librarian(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
         ~Librarian();

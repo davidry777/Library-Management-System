@@ -1,5 +1,7 @@
 #include "../header/User.hpp"
 
+using namespace std;
+
 User::User(std::string name, int id, LibrarySystem* set_library, int hashedPassword) : debt(0)
 { 
     fullName = name;

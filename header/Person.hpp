@@ -6,14 +6,12 @@
 
 #include "LibrarySystem.hpp"
 
-class Person 
-{
+class Person {
     protected:
         std::string fullName;
         int ID;
         int password;
         LibrarySystem* library;
-    
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
