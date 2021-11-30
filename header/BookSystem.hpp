@@ -12,7 +12,7 @@
 #include "Content.hpp"
 #include "Book.hpp"
 #include "Bundle.hpp"
-#include "UserSystem.hpp"
+#include "Person.hpp"
 
 #include "CheckOutData.hpp"
 
@@ -34,8 +34,8 @@ class BookSystem {
         ~BookSystem();
 
         void LoadCatalogue();
-        void LoadCheckedOut(UserSystem* us);
-        void LoadPassedDue(UserSystem* us);
+        void LoadCheckedOut(std::unordered_map<int, Person *>);
+        void LoadPassedDue(std::unordered_map<int, Person *>);
         
         void SaveCatalogue(std::string file = "null");
         void SaveCheckedOut(std::string file = "null");

@@ -65,7 +65,7 @@ void BookSystem::SaveCheckedOut(string file) {
     outFS.close();
 }
 
-void BookSystem::LoadCheckedOut(UserSystem* us) {
+void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
     ifstream inFS(checkedOutFile);
     json checkedOutJSON;
 
@@ -75,7 +75,11 @@ void BookSystem::LoadCheckedOut(UserSystem* us) {
     for (auto data : checkedOutJSON) {
         time_t dataTime = data["time"];
         Content* dataContent = this->catalogue.at(data["content_isbn"]);
-        Person* dataUser = us->GetPerson(data["user_id"]);
+        if (us.find(data["user_id"]) == us.end()) {
+            std::cout << "could not find user. aborting program" << std::endl;
+            exit(1);
+        }
+        Person* dataUser = us.at(data["user_id"]);
         bool dataOvertime = data["over_time"];
         CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
         checkedOut.push_back(newData);
@@ -100,7 +104,7 @@ void BookSystem::SavePassedDue(string file) {
     outFS.close();
 }
 
-void BookSystem::LoadPassedDue(UserSystem* us) {
+void BookSystem::LoadPassedDue(std::unordered_map<int, Person *> us) {
     ifstream inFS(passedDueFile);
     if (!inFS.is_open()) {
         cout << "Cannot find '" << passedDueFile << "'.Exiting" << endl;
@@ -112,7 +116,11 @@ void BookSystem::LoadPassedDue(UserSystem* us) {
     for (auto data : passed_dueJSON) {
         time_t dataTime = data["time"];
         Content* dataContent = this->catalogue.at(data["content_isbn"]);
-        Person* dataUser = us->GetPerson(data["user_id"]);
+        if (us.find(data["user_id"]) == us.end()) {
+            std::cout << "could not find user. aborting program" << std::endl;
+            exit(1);
+        }
+        Person* dataUser = us.at(data["user_id"]);
         bool dataOvertime = data["over_time"];
         CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
         passedDue.push_back(newData);

@@ -7,9 +7,9 @@
 #include "Book.hpp"
 
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <vector>
-#include <time.h>
+#include <ctime>
 
 class LibrarySystem;
 
