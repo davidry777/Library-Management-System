@@ -11,14 +11,14 @@ class Person
     protected:
         std::string fullName;
         int ID;
-        std::string password;
+        int password;
         LibrarySystem* library;
     
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
-        std::string GetHashedPassword { return password; }
+        int GetHashedPassword { return password; }
         LibrarySystem* GetLibrary() { return this->library; }
         virtual std::string GetInfo() = 0;
 };

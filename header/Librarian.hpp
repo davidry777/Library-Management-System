@@ -14,7 +14,7 @@
 class Librarian : public Person
 {
     public:
-        Librarian(std::string name, int id, LibrarySystem* set_library, std::string hashedPassword);
+        Librarian(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
         ~Librarian();
         void GetInfo();
         void AddBook(Book* newBook);
