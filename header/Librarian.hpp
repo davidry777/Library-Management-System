@@ -18,7 +18,7 @@ class Librarian : public Person
         ~Librarian();
         void GetInfo();
         void AddBook(Book* newBook);
-        void RemoveBook(int ISBN);
+        void RemoveBook(long long ISBN);
         void SetLibrary(LibrarySystem* newLibrary);
 };
 
