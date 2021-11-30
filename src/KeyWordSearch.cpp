@@ -1,6 +1,6 @@
 #include "../header/KeyWordSearch.hpp"
 
-std::vector<Content*> KeyWordSearch::SearchBooks(std::unordered_map<int, Content*> catalogue, std::string keyword)
+std::vector<Content*> KeyWordSearch::SearchBooks(std::unordered_map<long long, Content*> catalogue, std::string keyword)
 {
 	std::vector<Content*> foundBooks;
 	std::vector<Content*> mapped = MapToVector(catalogue);
@@ -19,7 +19,7 @@ std::vector<Content*> KeyWordSearch::SearchKeyWord(std::vector<Content*> catalog
 	std::vector<Content*> tempFound;
 	for(Content* c : catalogue)
 	{
-		std::size_t found = c->getTitle().find(keyword);
+		std::size_t found = c->GetTitle().find(keyword);
 		if(found != std::string::npos)
 			tempFound.push_back(c);
 	}
