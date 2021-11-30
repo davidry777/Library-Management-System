@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "LibrarySystem.hpp"
+//#include "LibrarySystem.hpp"
 
 class Person 
 {
@@ -17,7 +17,7 @@ class Person
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
-        std::string GetHashedPassword { return password; }
+        std::string GetHashedPassword() { return password; }
         virtual std::string CheckPerson(Person* person) = 0;
         virtual std::string GetInfo() = 0;
         virtual std::string GetBookInfo() = 0;

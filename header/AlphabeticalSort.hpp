@@ -2,7 +2,7 @@
 #define __ALPHABETICALSORT_H
 #include "BookSort.hpp"
 
-class AlphabeticalSort {
+class AlphabeticalSort : public BookSort {
  private:
 
  public:

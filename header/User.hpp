@@ -8,8 +8,9 @@
 
 #include "Person.hpp"
 #include "LibrarySystem.hpp"
-#include "DisplaySystem.hpp"
+//#include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
+#include "CheckOutData.hpp"
 
 class User : public Person
 {

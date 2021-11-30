@@ -1,5 +1,9 @@
 #include "../header/DisplaySystem.hpp"
-#include "../header/BookSystem.hpp"
+#include "../header/AlphabeticalSort.hpp"
+#include "FrequencySort.cpp"
+#include "GenreSearch.cpp"
+#include "ISBNSearch.cpp"
+#include "KeyWordSearch.cpp"
 
 DisplaySystem::DisplaySystem() 
 { 
@@ -26,7 +30,7 @@ void DisplaySystem::DisplayBooks(std::vector<Content*> catalogue)
 {
 	for(Content* c : catalogue)
 	{
-                std::cout << c.Display() << std::endl;
+                std::cout << c->Display() << std::endl;
 	}
 }
 
@@ -34,7 +38,7 @@ void DisplaySystem::DisplayBooks(std::vector<CheckOutData*> checkOut)
 {
 	for(CheckOutData* c : checkOut)
 	{
-		std::cout << (c.contentCheckedOut).Display() << std::endl;
+		std::cout << (c->contentCheckedOut).Display() << std::endl;
 	}
 }
 void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<long long, Content*> catalogue)
@@ -44,13 +48,13 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_
 	//Case for GenreSearch
 	switch(choice) {
 	case '1':
-		searchAlgorithm = new GenreSearch();
-        	temp = searchAlgorithm->SearchBooks(catalogue, genre);
+		GenreSearch* g = new GenreSearch();
+        	temp = g->SearchBooks(catalogue, genre);
         	this->DisplayBooks(temp);
 		break;
 	case '2':
-		searchAlgorithm = new KeyWordSearch();
-		temp = searchAlgorithm->SearchBooks(catalogue, genre);
+		KeyWordSearch* k = new KeyWordSearch();
+		temp = k->SearchBooks(catalogue, genre);
 		this->DisplayBooks(temp);
 		break;
 	}
@@ -58,8 +62,8 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_
 void DisplaySystem::DisplayBooks(char choice, int ISBN, std::unordered_map<long long, Content*> catalogue)
 {
 	std::vector<Content*> temp;
-	searchAlgorithm = new ISBNSearch();
-	temp = searchAlgorithm->ISBNSearch(catalogue, ISBN);
+	ISBNSearch* i = new ISBNSearch();
+	temp = i->ISBNSearch(catalogue, ISBN);
 	this->DisplayBooks(temp);
 }
 void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Content*> catalogue)
@@ -67,13 +71,13 @@ void DisplaySystem::DisplayBooks(char choice, std::unordered_map<long long, Cont
 	std::vector<Content*> temp;
 	switch(choice) {
 	case '4':
-		sortAlgorithm = new AlphabeticalSort();
+		AlphabeticalSort* a = new AlphabeticalSort();
 		temp = sortAlgorithm->SortBooks(catalogue);
 		this->DisplayBooks(temp);
 		break;
 	case '5':
-		sortAlgorithm = new FrequencySort();
-		temp = sortAlgorithm->SortBooks(catalogue);
+		FrequencySort* f = new FrequencySort();
+		temp = f->SortBooks(catalogue);
 		this->DisplayBooks(temp);
 		break;
 	}
@@ -83,13 +87,13 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Che
 	std::vector<Content*> temp;
 	switch(choice) {
         case '1':
-                searchAlgorithm = new GenreSearch();
-                temp = searchAlgorithm->SearchBooks(usercat, genre);
+                GenreSearch* g = new GenreSearch();
+                temp = g->SearchBooks(usercat, genre);
                 this->DisplayBooks(temp);
                 break;
         case '2':
-                searchAlgorithm = new KeyWordSearch();
-                temp = searchAlgorithm->SearchBooks(usercat, genre);
+                KeyWordSearch* k = new KeyWordSearch();
+                temp = k->SearchBooks(usercat, genre);
                 this->DisplayBooks(temp);
                 break;
         }
@@ -98,8 +102,8 @@ void DisplaySystem::DisplayBooks(char choice, std::string genre, std::vector<Che
 void DisplaySystem::DisplayBooks(char choice, int ISBN, std::vector<CheckOutData*> usercat)
 {
         std::vector<Content*> temp;
-        searchAlgorithm = new ISBNSearch();
-        temp = searchAlgorithm->ISBNSearch(usercat, ISBN);
+        ISBNSearch* i = new ISBNSearch();
+        temp = i->ISBNSearch(usercat, ISBN);
         this->DisplayBooks(temp);
 }
 void DisplaySystem::DisplayBooks(char choice, std::vector<CheckOutData*> usercat)
@@ -107,13 +111,13 @@ void DisplaySystem::DisplayBooks(char choice, std::vector<CheckOutData*> usercat
         std::vector<Content*> temp;
         switch(choice) {
         case '4':
-                sortAlgorithm = new AlphabeticalSort();
-                temp = sortAlgorithm->SortBooks(usercat);
+                AlphabeticalSort* a = new AlphabeticalSort();
+                temp = a->SortBooks(usercat);
                 this->DisplayBooks(temp);
                 break;
         case '5':
-                sortAlgorithm = new FrequencySort();
-                temp = sortAlgorithm->SortBooks(usercat);
+                FrequencySort* f = new FrequencySort();
+                temp = f->SortBooks(usercat);
                 this->DisplayBooks(temp);
                 break;
         }

@@ -3,7 +3,6 @@
 #include "gtest/gtest.h"
 
 #include "../header/Book.hpp"
-#include "../header/BookSort.hpp"
 #include "../header/AlphabeticalSort.hpp"
 
 TEST(AlphabeticalSortTest, OneBook)
@@ -57,9 +56,4 @@ TEST(AlphabeticalSortTest, FourBooks)
         AlphabeticalSort* a = new AlphabeticalSort();
         sorted = a->SortBooks(cata);
         EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotThey");	
-}
-
-TEST(FrequencySortTest, OneBook)
-{
-
 }
