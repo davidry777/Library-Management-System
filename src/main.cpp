@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include <switch>
 #include "../header/Book.hpp"
 #include "../header/LoginSystem.hpp"
 
@@ -124,41 +123,41 @@ int SwitchCase(User* person)
     std::cin >> input;
     std::cout << std::endl;
 
-    std::switch(input)
+    switch(input)
     {
-        std::case '1':
+        case '1':
             PrintUserInfo(person);
-        std::case '2':
+        case '2':
             CheckoutBook(person);
-        std::case '3':
+        case '3':
             ReturnBook(person);
-        std::case '4':
+        case '4':
             ShowDebt(person);
-        std::case '5':
+        case '5':
             PayDebt(person);
-        std::case '6':
+        case '6':
             DisplayCheckedOutBooks(person);
     }
 
     return input;
 }
 
-int SwitchCase(Librarian* person)
+int SwitchCase(Librarian* librarian)
 {
     int input = -1;
     std::cout << "Type an option (1-4). Type -1 to quit: ";
     std::cin >> input;
     std::cout << std::endl;
 
-    std::switch(input)
+    switch(input)
     {
-        std::case '1':
+        case '1':
             PrintLibrarianInfo(librarian);
-        std::case '2':
+        case '2':
             AddBook(librarian);
-        std::case '3':
+        case '3':
             RemoveBook(librarian);
-        std::case '4':
+        case '4':
             /*new library catalogue and checked out and passed out as input string
             use us and bs
             
@@ -183,7 +182,7 @@ int main()
     std::cout << std::endl;
 
     LoginSystem* logSys = new LoginSystem("userLogins.txt");
-    
+
     if(Login(id,password, logSys))
     {
         UserSystem* us;
