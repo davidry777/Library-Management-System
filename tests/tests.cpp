@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "BookTests.hpp"
+#include "BundleTests.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

@@ -13,6 +13,7 @@ ADD_SUBDIRECTORY(googletest)
 ADD_EXECUTABLE(test
     tests/tests.cpp
     src/Book.cpp
+    src/Bundle.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
