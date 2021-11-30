@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+using namespace std;
+
 class LoginSystem {
 	private:
 		unordered_map<int, int> userPasswords; //<userID, hashed password>
