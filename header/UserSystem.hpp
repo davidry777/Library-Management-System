@@ -18,7 +18,7 @@ class UserSystem {
 		UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
 		unordered_map<int, Person*>& GetMap()
 		{
-			return &people;
+			return people;
 		}
 		Person* GetPerson(int ID);
 		void AddPerson(Person *person);
