@@ -4,23 +4,24 @@
 #include <iostream>
 #include <string>
 
-#include "LibrarySystem.hpp"
+#include "BookSystem.hpp"
 
-class Person 
-{
+class LibrarySystem;
+
+class Person {
     protected:
         std::string fullName;
         int ID;
         int password;
-        LibrarySystem* library;
-    
+        BookSystem* bookSys;
     public:
         virtual ~Person() = default;
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
-        int GetHashedPassword { return password; }
-        LibrarySystem* GetLibrary() { return this->library; }
-        virtual std::string GetInfo() = 0;
+        int GetHashedPassword() { return password; }
+        BookSystem* GetBookSys() { return bookSys; }
+        virtual void GetInfo() = 0;
+        virtual std::string GetType() = 0;
 };
 
 #endif //__PERSON_HPP__

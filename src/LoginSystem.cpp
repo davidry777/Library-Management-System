@@ -1,6 +1,4 @@
 #include "../header/LoginSystem.hpp"
-#include <fstream>
-#include <unordered_map>
 
 using namespace std;
 
@@ -20,11 +18,6 @@ LoginSystem::LoginSystem(string textFile)//should be .txt
 	}
 	this->userPasswords = userPasses;
 }
-
-// LoginSystem::~LoginSystem()
-// {
-
-// }
 
 int LoginSystem::HashPassword(string &userPass) 
 {

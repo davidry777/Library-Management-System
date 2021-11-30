@@ -1,14 +1,10 @@
 #include "../header/UserSystem.hpp"
-#include "../header/Person.hpp"
-#include "../header/LoginSystem.hpp"
-#include <fstream>
-#include "../header/CheckOutData.hpp"
-#include <ctime>
-#include "../header/json.hpp"
 
 using json = nlohmann::json;
 
 using namespace std;
+
+unordered_map<int, Person*>& UserSystem::GetMap() { return people; }
 
 Person* UserSystem::GetPerson(int ID)
 {
@@ -42,14 +38,14 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 			tempUser->PayBalance(-1*debt);
 			for (auto book : checkedOut)
 			{
-				if (book->userCheckedOut.GetId() == ID)
+				if (book->userCheckedOut->GetId() == ID)
 				{
 					checkoutData.push_back(book);
 				}
 			}
 			for (auto book : passedDue)
 			{
-				if (book->userCheckedOut.GetId() == ID)
+				if (book->userCheckedOut->GetId() == ID)
 					checkoutData.push_back(book);
 			}
 			tempUser->SetCheckedOutData(checkoutData);
@@ -76,24 +72,11 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 	people_file.close();	
   checkout.close();
 }
-UserSystem::~UserSystem()
-{
-	for (auto &x : people)
-  {
-    if (dynamic_cast<User*>(x.second) != nullptr)
-      delete dynamic_cast<User*>(x.second);
-    else
-      delete dynamic_cast<Librarian*>(x.second);
-  }
-		
-}
 
-//Person* UserSystem::SetCurrPerson(Person *dude, string password) {
-//	if (LoginVerify(dude->ID, password, users))
-//		return dude;
-//	else
-//		return nullptr;
-//}
+UserSystem::~UserSystem() {
+	for (auto &x : people)
+		delete x.second;	
+}
 
 void UserSystem::AddPerson(Person *person) {
 	this->people.insert({ person->GetId(), person });	
@@ -105,13 +88,13 @@ void UserSystem::SaveUserData(string userInfo)
 	json userJson;
 	
 	vector<CheckOutData*> tempVec;
-	for (const auto & [ID, userPerson] : people)
+	for (pair<int, Person*> kv : people)
 	{
-		userJson["users"][ID]["name"] = userPerson->GetName();
-    userJson["users"][ID]["hashPass"] = userPerson->GetHashedPassword(); 
-		if (dynamic_cast<User*> (userPerson) != nullptr)
+		userJson["users"][kv.first]["hashpass"] = kv.second->GetHashedPassword();
+		userJson["users"][kv.first]["name"] = kv.second->GetName();
+		if (dynamic_cast<User*> (kv.second) != nullptr)
 		{
-			userJson["users"][ID]["debt"] = dynamic_cast<User*>(userPerson)->GetBalance();
+			userJson["users"][kv.first]["debt"] = dynamic_cast<User*>(kv.second)->GetBalance();
 			//tempVec = userPerson.getCheckedOutList();
 			/*for (CheckOutData* x : tempVec)
 			{

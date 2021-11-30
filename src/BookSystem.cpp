@@ -15,7 +15,9 @@ BookSystem::~BookSystem() {
         delete data;
 }
 
-void BookSystem::SaveCatalogue() {
+void BookSystem::SaveCatalogue(string file) {
+    if (file == "null")
+        file = this->catalogueFile;
     json catalogueJSON;
 
     int i = 1;
@@ -26,7 +28,7 @@ void BookSystem::SaveCatalogue() {
         catalogueJSON[i]["author"] = book.second->GetAuthor();
         catalogueJSON[i]["frequency"] = book.second->GetFrequency();
     }
-    ofstream outFS(this->catalogueFile);
+    ofstream outFS(file);
     outFS << std::setw(4) << catalogueJSON << endl;
     outFS.close();
 }
@@ -45,7 +47,9 @@ void BookSystem::LoadCatalogue() {
     }
 }
 
-void BookSystem::SaveCheckedOut() {
+void BookSystem::SaveCheckedOut(string file) {
+    if (file == "null")
+        file = this->checkedOutFile;
     json checkedOutJSON;
 
     int i = 1;
@@ -56,12 +60,12 @@ void BookSystem::SaveCheckedOut() {
         checkedOutJSON[i]["over_time"] = data->overTime;
     }
     
-    ofstream outFS(checkedOutFile);
+    ofstream outFS(file);
     outFS << std::setw(4) << checkedOutJSON << endl;
     outFS.close();
 }
 
-void BookSystem::LoadCheckedOut(UserSystem* us) {
+void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
     ifstream inFS(checkedOutFile);
     json checkedOutJSON;
 
@@ -71,14 +75,20 @@ void BookSystem::LoadCheckedOut(UserSystem* us) {
     for (auto data : checkedOutJSON) {
         time_t dataTime = data["time"];
         Content* dataContent = this->catalogue.at(data["content_isbn"]);
-        Person* dataUser = us->GetPerson(data["user_id"]);
+        if (us.find(data["user_id"]) == us.end()) {
+            std::cout << "could not find user. aborting program" << std::endl;
+            exit(1);
+        }
+        Person* dataUser = us.at(data["user_id"]);
         bool dataOvertime = data["over_time"];
         CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
         checkedOut.push_back(newData);
     }
 }
 
-void BookSystem::SavePassedDue() {
+void BookSystem::SavePassedDue(string file) {
+    if (file == "null")
+        file = this->passedDueFile;
     json passedDueJSON;
 
     int i = 1;
@@ -89,12 +99,12 @@ void BookSystem::SavePassedDue() {
         passedDueJSON[i]["over_time"] = data->overTime;
     }
 
-    ofstream outFS(passedDueFile);
+    ofstream outFS(file);
     outFS << std::setw(4) << passedDueJSON << endl;
     outFS.close();
 }
 
-void BookSystem::LoadPassedDue(UserSystem* us) {
+void BookSystem::LoadPassedDue(std::unordered_map<int, Person *> us) {
     ifstream inFS(passedDueFile);
     if (!inFS.is_open()) {
         cout << "Cannot find '" << passedDueFile << "'.Exiting" << endl;
@@ -106,7 +116,11 @@ void BookSystem::LoadPassedDue(UserSystem* us) {
     for (auto data : passed_dueJSON) {
         time_t dataTime = data["time"];
         Content* dataContent = this->catalogue.at(data["content_isbn"]);
-        Person* dataUser = us->GetPerson(data["user_id"]);
+        if (us.find(data["user_id"]) == us.end()) {
+            std::cout << "could not find user. aborting program" << std::endl;
+            exit(1);
+        }
+        Person* dataUser = us.at(data["user_id"]);
         bool dataOvertime = data["over_time"];
         CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
         passedDue.push_back(newData);
@@ -139,7 +153,7 @@ bool BookSystem::AddContent(Content* content) {
     std::cout << "Error adding content. ISBN number " << content->GetISBN() << " is already in use for " << this->catalogue.at(content->GetISBN()) << "!" << std::endl;
     return false; 
 }
-bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency = 0) {
+bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency) {
     std::vector<Content*> newContentList;
     for (long long ISBN : ISBNLists) {
         if (this->catalogue.find(ISBN) != this->catalogue.end())
