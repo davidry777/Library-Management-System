@@ -6,6 +6,8 @@
 #include <ctime>
 #include <header/json.hpp>
 
+using json = nlohmann::json;
+
 using namespace std;
 
 Person* UserSystem::GetPerson(int ID)
