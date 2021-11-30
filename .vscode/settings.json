@@ -61,7 +61,17 @@
         "utility": "cpp",
         "vector": "cpp",
         "deque": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "__tree": "cpp",
+        "filesystem": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "valarray": "cpp",
+        "clocale": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "numeric": "cpp",
+        "stack": "cpp"
     },
     "cmake.configureOnOpen": false
 }

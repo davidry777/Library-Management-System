@@ -23,6 +23,7 @@ class User : public Person {
         User(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
         ~User();
         void GetInfo();
+        std::string GetType();
         void CheckoutBook(long long ISBN);
         void ReturnBook(long long ISBN);
         int GetBalance();

@@ -17,8 +17,10 @@ void Librarian::GetInfo()
     cout << "Status: Librarian" << endl;
 }
 
+std::string Librarian::GetType() { return "Librarian"; }
+
 void Librarian::AddBook(Book* newBook) { library->GetBookSystem()->AddContent(newBook); }
 
-void Librarian::RemoveBook(int ISBN) { library->GetBookSystem()->RemoveContent(ISBN); }
+void Librarian::RemoveBook(long long ISBN) { library->GetBookSystem()->RemoveContent(ISBN); }
 
 void Librarian::SetLibrary(LibrarySystem* newLibrary) { library = newLibrary; }
