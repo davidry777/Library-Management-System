@@ -1,12 +1,8 @@
 #pragma once
 
 #include <unordered_map>
+#include <fstream>
 #include <string>
-#include "../header/Person.hpp"
-#include "../header/User.hpp"
-#include "../header/Librarian.hpp"
-#include "UserSystem.hpp"
-#include "../header/BookSystem.hpp"
 
 class LoginSystem {
 	private:
