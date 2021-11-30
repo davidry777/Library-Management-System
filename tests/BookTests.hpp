@@ -36,7 +36,7 @@ TEST(BookTest, GetGenre) {
     Book testBook("Test", 1, "Fiction", "Me");
     EXPECT_EQ(testBook.GetGenre(), "Fiction");
 }
-TEST(BookTest, GetISBNBlank) {
+TEST(BookTest, GetGenreBlank) {
     Book testBook("", 1, "", "Me");
     EXPECT_EQ(testBook.GetGenre(), "");
 }
