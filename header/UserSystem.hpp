@@ -4,25 +4,18 @@
  
 #include <unordered_map>
 #include <string>
-#include <fstream>
-#include <vector>
-#include <unordered_map>
-#include <deque>
+#include "../header/Person.hpp"
+#include "../header/User.hpp"
+#include "../header/BookSystem.hpp"
+#include "../header/Librarian.hpp"
+using namespace std;
 
-#include "Person.hpp"
-#include "User.hpp"
-#include "Librarian.hpp"
-#include "LibrarySystem.hpp"
-#include "CheckOutData.hpp"
-#include "json.hpp"
-
-class LibrarySystem;
 
 class UserSystem {
 	private:
 		std::unordered_map<int, Person*> people;
 	public:
-		UserSystem(std::string peopleInput, std::string checkOut, std::vector<CheckOutData*>& checkedOut, std::deque<CheckOutData*>& passedDue, LibrarySystem* set_library);
+		UserSystem(std::string peopleInput, std::string checkOut, std::vector<CheckOutData*>& checkedOut, std::deque<CheckOutData*>& passedDue);
 		std::unordered_map<int, Person*>& GetMap();
 		Person* GetPerson(int ID);
 		void AddPerson(Person *person);
