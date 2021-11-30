@@ -122,7 +122,6 @@ void PrintMenu(Librarian* person) {
     std::cout << "/           2. Add Book to Library                  /" << std::endl;
     std::cout << "/           3. Remove Book from Library             /" << std::endl;
     std::cout << "/           4. Set a New Library                    /" << std::endl;
-    std::cout << "/           5. Search/Sort Books                    /" << std::endl;
     std::cout << "/---------------------------------------------------/" << std::endl;
 }
 
@@ -231,8 +230,6 @@ int SwitchCase(Librarian* librarian) {
         RemoveBook(librarian);
     if (input == 4)
         cout << "Work in progress" << endl;
-    if (input == 5)
-  	//does nothing
     if (input == -1)
         return -1;
 
