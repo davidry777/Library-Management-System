@@ -42,14 +42,14 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 			tempUser->PayBalance(-1*debt);
 			for (auto book : checkedOut)
 			{
-				if (book->userCheckedOut.GetId() == ID)
+				if (book->userCheckedOut->GetId() == ID)
 				{
 					checkoutData.push_back(book);
 				}
 			}
 			for (auto book : passedDue)
 			{
-				if (book->userCheckedOut.GetId() == ID)
+				if (book->userCheckedOut->GetId() == ID)
 					checkoutData.push_back(book);
 			}
 			tempUser->SetCheckedOutData(checkoutData);
@@ -104,13 +104,13 @@ void UserSystem::SaveUserData(string userInfo)
 	json userJson;
 	
 	vector<CheckOutData*> tempVec;
-	for (const auto & [ID, userPerson] : people)
+	for (pair<int, Person*> kv : people)
 	{
-		userJson["users"][ID]["name"] = userPerson->GetName();
-    userJson["users"][ID]["hashPass"] = userPerson->GetHashedPassword(); 
-		if (dynamic_cast<User*> (userPerson) != nullptr)
+		userJson["users"][kv.first]["hashpass"] = kv.second->GetHashedPassword();
+		userJson["users"][kv.first]["name"] = kv.second->GetName();
+		if (dynamic_cast<User*> (kv.second) != nullptr)
 		{
-			userJson["users"][ID]["debt"] = dynamic_cast<User*>(userPerson)->GetBalance();
+			userJson["users"][kv.first]["debt"] = dynamic_cast<User*>(kv.second)->GetBalance();
 			//tempVec = userPerson.getCheckedOutList();
 			/*for (CheckOutData* x : tempVec)
 			{
