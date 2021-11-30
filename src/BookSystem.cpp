@@ -153,6 +153,7 @@ bool BookSystem::RemoveContent(long long ISBN) {
 CheckOutData* BookSystem::CheckOut(Person* person, long long ISBN) {
     CheckOutData* data = nullptr;
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
+        this->catalogue.at(ISBN)->AddFrequency();
         data = new CheckOutData(time(0), this->catalogue.at(ISBN), person);
         this->checkedOut.push_back(data);
     }
