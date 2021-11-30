@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 
 #include "../header/BookSystem.hpp"
+#include <fstream>
 
 TEST(BookSystemTest, Constructor) {
     BookSystem testBookSystem("tests/test_files/test_catalogue.json", "none", "none");
@@ -84,7 +85,42 @@ TEST(BookSystemTest, MakeBundleOfBundleAuthors) {
 }
 TEST(BookSystemTest, CheckOutValid) {
     BookSystem testBookSystem("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
-    Person* me = new User("Daniel", 100, nullptr, "########");
-    CheckOutData* = testBookSystem.CheckOut()
+    Person* me = new User("Daniel", 100, nullptr, 2132321);
+    EXPECT_TRUE(testBookSystem.CheckOut(me, 9781506713816) != nullptr);
+    delete me;
 }
-
+TEST(BookSystemTest, CheckOutValidCheckQueue) {
+    BookSystem testBookSystem("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+    Person* me = new User("Daniel", 100, nullptr, 2132321);
+    testBookSystem.CheckOut(me, 9781506713816);
+    EXPECT_EQ(testBookSystem.GetCheckedOut().front()->userCheckedOut, me);
+    delete me;
+}
+TEST(BookSystemTest, CheckOutInvalid) {
+    BookSystem testBookSystem("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+    Person* me = new User("Daniel", 100, nullptr, 2132321);
+    EXPECT_TRUE(testBookSystem.CheckOut(me, 321) == nullptr);
+    delete me;
+}
+TEST(BookSystemTest, ReturnContentValid) {
+    BookSystem testBookSystem("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+    Person* me = new User("Daniel", 100, nullptr, 2132321);
+    testBookSystem.CheckOut(me, 9781506713816);
+    EXPECT_TRUE(testBookSystem.ReturnContent(me, 9781506713816));
+    delete me;
+}
+TEST(BookSystemTest, ReturnContentInvalid) {
+    BookSystem testBookSystem("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+    Person* me = new User("Daniel", 100, nullptr, 2132321);
+    EXPECT_TRUE(testBookSystem.ReturnContent(me, 9781506713816));
+    delete me;
+}
+TEST(BookSystemTest, SaveCatalogue) {
+    BookSystem testBookSystem("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+    testBookSystem.AddContent(new Book("Harry Potter and the Sorcerer's Stone", 9780439362139, "Fantasy", "J. K. Rowling"));
+    
+    testBookSystem.SaveCatalogue("output.json");
+    ifstream inFS("output.json");
+    BookSystem testBookSystem2("test_files/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+    EXPECT_EQ(testBookSystem.GetCatalogue(), testBookSystem2.GetCatalogue());
+}

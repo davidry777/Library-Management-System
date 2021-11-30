@@ -1,15 +1,23 @@
 #pragma once
+#ifndef __LIBRARYSYSTEM_HPP__
+#define __LIBRARYSYSTEM_HPP__
 
 #include "UserSystem.hpp"
 #include "BookSystem.hpp"
+
+class UserSystem;
+class LibrarySystem;
+class BookSystem;
 
 class LibrarySystem {
     private:
         UserSystem* userSystem;
         BookSystem* bookSystem;
     public:
-        LibrarySystem(UserSystem* us, BookSystem* bs, const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile);
+        LibrarySystem(UserSystem* us, BookSystem* bs, const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile, const std::string& peopleInput, const std::string& checkOut);
         ~LibrarySystem();
         UserSystem* GetUserSystem();
         BookSystem* GetBookSystem();
 };
+
+#endif

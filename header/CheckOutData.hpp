@@ -1,8 +1,12 @@
 #pragma once
+#ifndef __CHECKOUTDATA_HPP__
+#define __CHECKOUTDATA_HPP__
 
 #include <ctime>
 #include "Content.hpp"
 #include "Person.hpp"
+
+class Person;
 
 struct CheckOutData {
     time_t timeCheckedOut;
@@ -11,5 +15,6 @@ struct CheckOutData {
     bool overTime;
 
     CheckOutData(time_t a, Content* b, Person* c, bool overTime = false) : timeCheckedOut(a), contentCheckedOut(b), userCheckedOut(c), overTime(false) {}
-    int SecondsPassed() { return time(0) - timeCheckedOut; }
 };
+
+#endif	//__CHECKOUTDATA_HPP__

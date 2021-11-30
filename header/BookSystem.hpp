@@ -1,20 +1,25 @@
 #pragma once
+#ifndef __BOOKSYSTEM_HPP__
+#define __BOOKSYSTEM_HPP__
 
 #include <iostream>
 #include <unordered_map>
 #include <deque>
 #include <ctime>
-
+#include <iomanip>
 #include <fstream>
+
 #include "json.hpp"
 
-#include "Person.hpp"
 #include "Content.hpp"
 #include "Book.hpp"
 #include "Bundle.hpp"
-#include "UserSystem.hpp"
+#include "Person.hpp"
 
 #include "CheckOutData.hpp"
+
+class UserSystem;
+class CheckOutData;
 
 class BookSystem {
     private:
@@ -26,16 +31,17 @@ class BookSystem {
         std::string checkedOutFile; 
         std::string passedDueFile; 
 
-        void LoadCatalogue();
-        void LoadCheckedOut(UserSystem* us);
-        void LoadPassedDue(UserSystem* us);
     public:
         BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile);
         ~BookSystem();
 
-        void SaveCatalogue();
-        void SaveCheckedOut();
-        void SavePassedDue();
+        void LoadCatalogue();
+        void LoadCheckedOut(std::unordered_map<int, Person *>);
+        void LoadPassedDue(std::unordered_map<int, Person *>);
+        
+        void SaveCatalogue(std::string file = "null");
+        void SaveCheckedOut(std::string file = "null");
+        void SavePassedDue(std::string file = "null");
 
         Content* GetContent(long long ISBN);
         std::vector<CheckOutData*>& GetPassedDue();
@@ -50,3 +56,5 @@ class BookSystem {
         bool ReturnContent(Person* person, long long ISBN);
         void CheckExpiration();
 };
+
+#endif //__BOOKSYSTEM_HPP__

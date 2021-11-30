@@ -1,14 +1,16 @@
 #include "../header/User.hpp"
 
-User::User(std::string name, int id, LibrarySystem* set_library, int hashedPassword) : debt(0)
+using namespace std;
+
+User::User(std::string name, int id, BookSystem* books, int hashedPassword) : debt(0)
 { 
     fullName = name;
     ID = id;
-    library = set_library;
+    bookSys = books;
     password = hashedPassword;
 }
 
-User::~User() { delete library; }
+User::~User() { delete bookSys; }
 
 void User::GetInfo()
 {
@@ -18,9 +20,11 @@ void User::GetInfo()
     cout << "Debt: $" << debt << endl;
 }
 
-void User::CheckoutBook(long long ISBN) { library->GetBookSystem()->CheckOut(this, ISBN); }
+std::string User::GetType() { return "User"; }
 
-void User::ReturnBook(long long ISBN) { library->GetBookSystem()->ReturnContent(this, ISBN); }
+void User::CheckoutBook(long long ISBN) { bookSys->CheckOut(this, ISBN); }
+
+void User::ReturnBook(long long ISBN) { bookSys->ReturnContent(this, ISBN); }
 
 int User::GetBalance() { return debt; }
 
@@ -28,8 +32,8 @@ void User::PayBalance(int cash) { debt -= cash; }
 
 void User::DisplayCheckOut()
 {
-    DisplaySystem checkoutOutput = DisplaySystem();
-    checkoutOutput.DisplayBooks(checkedOut);
+    // DisplaySystem checkoutOutput = DisplaySystem();
+    // checkoutOutput.DisplayBooks(checkedOut);
 }
 
 void User::SetCheckedOutData(vector<CheckOutData*> data) { this->checkedOut = data; }
