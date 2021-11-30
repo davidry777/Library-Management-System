@@ -1,15 +1,17 @@
 #ifndef __LIBRARIAN_HPP__
 #define __LIBRARIAN_HPP__
 
+#include "Person.hpp"
+#include "BookSystem.hpp"
+#include "LibrarySystem.hpp"
+#include "Book.hpp"
+
 #include <iostream>
 #include <string.h>
 #include <vector>
 #include <time.h>
 
-#include "Person.hpp"
-#include "BookSystem.hpp"
-#include "LibrarySystem.hpp"
-#include "Book.hpp"
+class LibrarySystem;
 
 class Librarian : public Person {
     public:

@@ -16,4 +16,5 @@ class Bundle : public Content {
 
         std::string GetAuthor();
         std::string Display(std::string indent = "");
-        std::string GetType() { return "Bundle"; };
+        std::string GetType() { return "Bundle"; }
+};
