@@ -5,7 +5,6 @@ using json = nlohmann::json;
 BookSystem::BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile) : catalogueFile(catalogueFile), checkedOutFile(checkedOutFile), passedDueFile(passedDueFile) {
     std::ifstream inFS;
     
-
     // Loading Catalogue
     inFS.open(catalogueFile);
     if (!inFS.is_open()) {
@@ -108,6 +107,10 @@ BookSystem::~BookSystem() {
     for (pair<long long, Content*> content : this->catalogue) {
         delete content.second;
     }
+}
+
+std::unordered_map<long long, Content*>& BookSystem::GetCatalogue() {
+    return this->catalogue;
 }
 
 Content* BookSystem::GetContent(long long ISBN) {

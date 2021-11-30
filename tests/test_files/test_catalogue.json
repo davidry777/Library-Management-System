@@ -1,0 +1,51 @@
+[
+    {
+        "author": "Hajime Isayama",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9781612626864,
+        "title": "Attack on Titan: Volume 13"
+    },
+    {
+        "author": "Barbara Allan",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9780758272799,
+        "title": "Antiques Roadkill: A Trash 'n' Treasures Mystery"
+    },
+    {
+        "author": "Nintendo",
+        "frequency": 0,
+        "genre": "Activities",
+        "isbn": 9781506713816,
+        "title": "The Art of Super Mario Odyssey"
+    },
+    {
+        "author": "Sara Rosett",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9781617734076,
+        "title": "Getting Away Is Deadly: An Ellie Avery Mystery"
+    },
+    {
+        "author": "Peter V. Brett",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9780007287758,
+        "title": "The Painted Man (The Demon Cycle Book 1)"
+    },
+    {
+        "author": "George R.R. Martin",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9780007369218,
+        "title": "A Feast for Crows (A Song of Ice and Fire Book 4)"
+    },
+    {
+        "author": "J.M. Barlog",
+        "frequency": 0,
+        "genre": "Media",
+        "isbn": 9781789090154,
+        "title": "God of War: The Official Novelization"
+    }
+]

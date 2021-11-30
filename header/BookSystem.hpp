@@ -35,6 +35,7 @@ class BookSystem {
         Content* GetContent(long long ISBN);
         std::vector<CheckOutData*>& GetPassedDue();
         std::deque<CheckOutData*>& GetCheckedOut();
+        std::unordered_map<long long, Content*>& GetCatalogue();
 
         bool AddContent(Content* content);
         bool RemoveContent(long long ISBN);
