@@ -4,6 +4,8 @@
 #include <string>
 #include "../header/Book.hpp"
 #include "../header/BookSystem.hpp"
+#include "CheckOutData.hpp"
+#include "Content.hpp"
 
 class BookSort {
  private:

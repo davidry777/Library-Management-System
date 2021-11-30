@@ -5,11 +5,11 @@ Librarian::Librarian(std::string name, int id, LibrarySystem* set_library, std::
     fullName = name;
     ID = id;
     library = set_library;
-    password = hashedPassword
+    password = hashedPassword;
 }
 
-void Librarian::AddBook(Book* newBook) { library->bookSystem->AddContent(newBook); }
+void Librarian::AddBook(Book* newBook) { library->GetBookSystem()->AddContent(newBook); }
 
-void Librarian::RemoveBook(int ISBN) { library->bookSystem->RemoveContent(ISBN); }
+void Librarian::RemoveBook(int ISBN) { library->GetBookSystem()->RemoveContent(ISBN); }
 
 void Librarian::SetLibrary(LibrarySystem* newLibrary) { library = newLibrary; }

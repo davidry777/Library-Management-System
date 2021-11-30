@@ -5,8 +5,8 @@
 
 class LibrarySystem {
     private:
-        UserSystem userSystem;
-        BookSystem bookSystem;
+        UserSystem* userSystem;
+        BookSystem* bookSystem;
     public:
         LibrarySystem(UserSystem* us, BookSystem* bs);
         ~LibrarySystem();
