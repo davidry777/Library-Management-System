@@ -1,6 +1,7 @@
 #include "../header/BookSystem.hpp"
 
 using json = nlohmann::json;
+using namespace std;
 
 BookSystem::BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile) : catalogueFile(catalogueFile), checkedOutFile(checkedOutFile), passedDueFile(passedDueFile) {
     LoadCatalogue();
@@ -20,7 +21,7 @@ void BookSystem::SaveCatalogue(string file) {
         file = this->catalogueFile;
     json catalogueJSON;
 
-    int i = 1;
+    int i = 0;
     for (pair<long long, Content*> book : this->catalogue) {
         catalogueJSON[i]["title"] = book.second->GetTitle();
         catalogueJSON[i]["isbn"] = book.second->GetISBN();
@@ -52,7 +53,7 @@ void BookSystem::SaveCheckedOut(string file) {
         file = this->checkedOutFile;
     json checkedOutJSON;
 
-    int i = 1;
+    int i = 0;
     for (CheckOutData* data : this->checkedOut) {
         checkedOutJSON[i]["time"] = data->timeCheckedOut;
         checkedOutJSON[i]["content_isbn"] = data->contentCheckedOut->GetISBN();
@@ -91,7 +92,7 @@ void BookSystem::SavePassedDue(string file) {
         file = this->passedDueFile;
     json passedDueJSON;
 
-    int i = 1;
+    int i = 0;
     for (CheckOutData* data : this->passedDue) {
         passedDueJSON[i]["time"] = data->timeCheckedOut;
         passedDueJSON[i]["content_isbn"] = data->contentCheckedOut->GetISBN();
