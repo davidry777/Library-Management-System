@@ -1,6 +1,7 @@
 #include "../header/BookSystem.hpp"
 
 using json = nlohmann::json;
+using namespace std;
 
 BookSystem::BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile) : catalogueFile(catalogueFile), checkedOutFile(checkedOutFile), passedDueFile(passedDueFile) {
     LoadCatalogue();

@@ -14,7 +14,7 @@ Person* UserSystem::GetPerson(int ID)
 		return nullptr;
 }
 
-UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue)
+UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, BookSystem* bs)
 {
 	//import users from a file to populate the array
 	ifstream people_file(peopleInput);
@@ -34,7 +34,7 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 		if (readJson["users"][ID].find("debt") != readJson.end())
 		{
 			debt = readJson["users"][ID]["debt"];
-			User* tempUser = new User(name, ID, hashPass);
+			User* tempUser = new User(name, ID, bs, hashPass);
 			tempUser->PayBalance(-1*debt);
 			for (auto book : checkedOut)
 			{
@@ -63,7 +63,7 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 		}
 		else
 		{
-			Librarian* tempLibrarian = new Librarian(name, ID, hashPass);
+			Librarian* tempLibrarian = new Librarian(name, ID, bs, hashPass);
 			userMap[ID] = tempLibrarian;
 		}
 		

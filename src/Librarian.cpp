@@ -1,5 +1,7 @@
 #include "../header/Librarian.hpp"
 
+using namespace std;
+
 Librarian::Librarian(std::string name, int id, BookSystem* books, int hashedPassword)
 { 
     fullName = name;
