@@ -18,6 +18,8 @@ void User::GetInfo()
     cout << "Debt: $" << debt << endl;
 }
 
+std::string User::GetType() { return "User"; }
+
 void User::CheckoutBook(long long ISBN) { library->GetBookSystem()->CheckOut(this, ISBN); }
 
 void User::ReturnBook(long long ISBN) { library->GetBookSystem()->ReturnContent(this, ISBN); }
