@@ -1,8 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include "../header/LibrarySystem.hpp"
+#include <string>
 #include "../header/Book.hpp"
+#include "../header/LoginSystem.hpp"
 
 void PrintUserInfo(User* person) {
     person->GetInfo();
@@ -91,6 +92,10 @@ void SetNewLibrary(Librarian* person, LibrarySystem* newLibrary) {
     person->SetLibrary(newLibrary);
 }
 
+bool Login() {
+    return loggingIn.LoginVerify(id, password);
+}
+
 void PrintMenu(User* person) {
     std::cout << "/---------------- User Library Menu ----------------/" << std::endl;
     std::cout << "/           1. Display Your Information             /" << std::endl;
@@ -111,7 +116,31 @@ void PrintMenu(Librarian* person) {
     std::cout << "/---------------------------------------------------/" << std::endl;
 }
 
-int main() {
-    
+int main()
+{
+    LoginSystem loggingIn;
+
+    int id;
+    std::string password;
+    std::cout << "Enter Your User ID: " << std::endl;
+    std::cin >> id;
+    std::cout << std::endl;
+
+    std::cout << "Enter Password: " << std::endl;
+    std::cin >> password;
+    std::cout << std::endl;
+
+    if(Login())
+    {
+        UserSystem* us;
+        BookSystem* bs;
+        LibrarySystem* library = new LibrarySystem(us, bs, "../catalogue.json", "../checked_out.json", "../passed_due.json");
+        Person* person = library->GetUserSystem()->GetPerson(id);
+        do {
+            PrintMenu(person);
+            
+        }
+        while
+    }
     return 0;
 }
