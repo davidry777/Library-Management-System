@@ -7,10 +7,10 @@ LibrarySystem::~LibrarySystem() {
     delete this->bookSystem;
 }
 
-UserSystem* GetUserSystem() {
+UserSystem* LibrarySystem::GetUserSystem() {
     return this->userSystem;
 }
 
-BookSystem* GetBookSystem() {
+BookSystem* LibrarySystem::GetBookSystem() {
     return this->bookSystem;
 }

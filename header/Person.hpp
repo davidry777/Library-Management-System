@@ -12,6 +12,7 @@ class Person
         std::string fullName;
         int ID;
         std::string password;
+        LibrarySystem* library;
     
     public:
         virtual ~Person() = default;
