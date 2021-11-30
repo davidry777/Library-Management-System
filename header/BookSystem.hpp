@@ -4,8 +4,9 @@
 #include <unordered_map>
 #include <deque>
 #include <ctime>
-
+#include <iomanip>
 #include <fstream>
+
 #include "json.hpp"
 
 #include "Content.hpp"
@@ -14,6 +15,9 @@
 #include "UserSystem.hpp"
 
 #include "CheckOutData.hpp"
+
+class UserSystem;
+class CheckOutData;
 
 class BookSystem {
     private:
@@ -33,9 +37,9 @@ class BookSystem {
         void LoadCheckedOut(UserSystem* us);
         void LoadPassedDue(UserSystem* us);
         
-        void SaveCatalogue(string file = "null");
-        void SaveCheckedOut(string file = "null");
-        void SavePassedDue(string file = "null");
+        void SaveCatalogue(std::string file = "null");
+        void SaveCheckedOut(std::string file = "null");
+        void SavePassedDue(std::string file = "null");
 
         Content* GetContent(long long ISBN);
         std::vector<CheckOutData*>& GetPassedDue();

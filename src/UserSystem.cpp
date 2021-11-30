@@ -4,6 +4,8 @@ using json = nlohmann::json;
 
 using namespace std;
 
+unordered_map<int, Person*>& UserSystem::GetMap() { return people; }
+
 Person* UserSystem::GetPerson(int ID)
 {
 	if (this->people.find(ID) !=this->people.end())

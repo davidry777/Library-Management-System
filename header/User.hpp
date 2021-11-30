@@ -1,12 +1,12 @@
 #ifndef __USER_HPP__
 #define __USER_HPP__
 
+#include "Person.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <ctime>
 
-#include "Person.hpp"
 #include "LibrarySystem.hpp"
 // #include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
@@ -14,11 +14,12 @@
 
 using namespace std;
 
+class LibrarySystem;
+
 class User : public Person {
     private:
         std::vector<CheckOutData*> checkedOut;
         int debt;
-
     public:
         User(std::string name, int id, LibrarySystem* set_library, int hashedPassword);
         ~User();

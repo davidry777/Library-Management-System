@@ -15,7 +15,7 @@ BookSystem::~BookSystem() {
         delete data;
 }
 
-void BookSystem::SaveCatalogue(string file = "null") {
+void BookSystem::SaveCatalogue(string file) {
     if (file == "null")
         file = this->catalogueFile;
     json catalogueJSON;
@@ -47,7 +47,7 @@ void BookSystem::LoadCatalogue() {
     }
 }
 
-void BookSystem::SaveCheckedOut(string file = "null") {
+void BookSystem::SaveCheckedOut(string file) {
     if (file == "null")
         file = this->checkedOutFile;
     json checkedOutJSON;
@@ -82,7 +82,7 @@ void BookSystem::LoadCheckedOut(UserSystem* us) {
     }
 }
 
-void BookSystem::SavePassedDue(string file = "null") {
+void BookSystem::SavePassedDue(string file) {
     if (file == "null")
         file = this->passedDueFile;
     json passedDueJSON;
@@ -145,7 +145,7 @@ bool BookSystem::AddContent(Content* content) {
     std::cout << "Error adding content. ISBN number " << content->GetISBN() << " is already in use for " << this->catalogue.at(content->GetISBN()) << "!" << std::endl;
     return false; 
 }
-bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency = 0) {
+bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency) {
     std::vector<Content*> newContentList;
     for (long long ISBN : ISBNLists) {
         if (this->catalogue.find(ISBN) != this->catalogue.end())

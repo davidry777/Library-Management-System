@@ -3,6 +3,10 @@
 #include "UserSystem.hpp"
 #include "BookSystem.hpp"
 
+class UserSystem;
+class LibrarySystem;
+class BookSystem;
+
 class LibrarySystem {
     private:
         UserSystem* userSystem;

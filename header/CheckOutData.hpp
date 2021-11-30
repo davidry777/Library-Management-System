@@ -4,6 +4,8 @@
 #include "Content.hpp"
 #include "Person.hpp"
 
+class Person;
+
 struct CheckOutData {
     time_t timeCheckedOut;
     Content* contentCheckedOut;
