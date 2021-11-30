@@ -2,7 +2,6 @@
 
 #include "gtest/gtest.h"
 
-#include "../header/UserSystem.hpp"
 #include "../header/BookSystem.hpp"
 #include "../header/Book.hpp"
 #include "../header/User.hpp"
