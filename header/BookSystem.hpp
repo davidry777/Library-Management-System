@@ -26,13 +26,14 @@ class BookSystem {
         std::string checkedOutFile; 
         std::string passedDueFile; 
 
-        void LoadCatalogue();
-        void LoadCheckedOut(UserSystem* us);
-        void LoadPassedDue(UserSystem* us);
     public:
         BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile);
         ~BookSystem();
 
+        void LoadCatalogue();
+        void LoadCheckedOut(UserSystem* us);
+        void LoadPassedDue(UserSystem* us);
+        
         void SaveCatalogue(string file = "null");
         void SaveCheckedOut(string file = "null");
         void SavePassedDue(string file = "null");
