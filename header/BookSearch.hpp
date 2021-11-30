@@ -12,7 +12,7 @@ class BookSearch {
  public:
 	virtual std::vector<Content*> SearchBooks(std::unordered_map<long long, Content*>, std::string);
 	virtual std::vector<Content*> SearchBooks(std::unordered_map<long  long, Content*>, int);
-	virtual std::vector<Content*> SearchBooks(std::vector<CheckOutData*> std::string);
+	virtual std::vector<Content*> SearchBooks(std::vector<CheckOutData*>, std::string);
 	std::vector<Content*> MapToVector(std::unordered_map<long long, Content*> catalogue)
 	{
 		std::vector<Content*> mapped;

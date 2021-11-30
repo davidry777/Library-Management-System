@@ -1,4 +1,4 @@
-#include "../header/BookSort.h"
+#include "../header/AlphabeticalSort.h"
 
 class AlphabeticalSort : public BookSort
 {
