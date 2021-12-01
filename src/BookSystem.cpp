@@ -172,7 +172,9 @@ bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const s
 }
 bool BookSystem::RemoveContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
+        Content* temp = this->catalogue.at(ISBN);
         this->catalogue.erase(ISBN);
+        delete temp;
         return true;
     }
     std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
