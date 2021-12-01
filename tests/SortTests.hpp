@@ -15,6 +15,8 @@ TEST(AlphabeticalSortTest, OneBook)
 	AlphabeticalSort* a = new AlphabeticalSort();
 	sorted = a->SortBooks(cata);
 	EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotYou");
+	delete testBook;
+	delete a;
 }
 
 TEST(AlphabeticalSortTest, TwoBooks)
@@ -28,6 +30,9 @@ TEST(AlphabeticalSortTest, TwoBooks)
         AlphabeticalSort* a = new AlphabeticalSort();
         sorted = a->SortBooks(cata);
         EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotMe");
+	delete testBook;
+	delete testBook2;
+	delete a;
 }
 TEST(AlphabeticalSortTest, TwoBooksAlreadySorted)
 {
@@ -40,6 +45,9 @@ TEST(AlphabeticalSortTest, TwoBooksAlreadySorted)
         AlphabeticalSort* a = new AlphabeticalSort();
         sorted = a->SortBooks(cata);
         EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotYou");
+	delete testBook;
+        delete testBook2;
+        delete a;
 }
 
 TEST(AlphabeticalSortTest, FourBooks)
@@ -57,6 +65,11 @@ TEST(AlphabeticalSortTest, FourBooks)
         AlphabeticalSort* a = new AlphabeticalSort();
         sorted = a->SortBooks(cata);
         EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotThey");	
+	delete testBook;
+        delete testBook2;
+	delete testBook3;
+	delete testBook4;
+        delete a;
 }
 
 TEST(FrequencySortTest, TwoBooks)
@@ -71,4 +84,7 @@ TEST(FrequencySortTest, TwoBooks)
         FrequencySort* f = new FrequencySort();
         sorted = f->SortBooks(cata);
         EXPECT_EQ(sorted.at(0)->GetAuthor(), "NotMe");
+	delete testBook;
+	delete testBook2;
+	delete f;
 }

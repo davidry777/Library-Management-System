@@ -20,8 +20,8 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 	ifstream people_file(peopleInput);
 	json readJson;
 	json readCheckedOut;
-	ifstream checkout(checkOut);
-	checkout >> readCheckedOut;
+	// ifstream checkout(checkOut);
+	// checkout >> readCheckedOut;
 	people_file >> readJson;
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
@@ -34,7 +34,7 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 		if (readJson[ID].find("debt") != readJson.end())
 		{
 			debt = readJson[ID]["debt"];
-			User* tempUser = new User(name, ID, hashPass);
+			User* tempUser = new User(name, ID, bs, hashPass);
 
 			tempUser->PayBalance(-1*debt);
 			for (auto book : checkedOut)
@@ -71,7 +71,7 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 	}
 	this->people = userMap;
 	people_file.close();	
-  checkout.close();
+  // checkout.close();
 }
 
 UserSystem::~UserSystem() {
