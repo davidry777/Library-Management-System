@@ -13,7 +13,6 @@
 class Librarian : public Person {
     public:
         Librarian(std::string name, int id, BookSystem* books, int hashedPassword);
-        ~Librarian();
         void GetInfo();
         std::string GetType();
         void AddBook(Book* newBook);

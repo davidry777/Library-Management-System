@@ -10,8 +10,6 @@ User::User(std::string name, int id, BookSystem* books, int hashedPassword) : de
     password = hashedPassword;
 }
 
-User::~User() { delete bookSys; }
-
 void User::GetInfo()
 {
     cout << "Name: " << fullName << endl;
