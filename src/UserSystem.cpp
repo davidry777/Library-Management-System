@@ -14,41 +14,42 @@ Person* UserSystem::GetPerson(int ID)
 		return nullptr;
 }
 
-UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, BookSystem* bs)
+UserSystem::UserSystem(string peopleInput, string checkOut, unordered_map<int, set<CheckOutData*>> checkedOut, BookSystem* bs)
 {
 	//import users from a file to populate the array
-	ifstream people_file(peopleInput);
+	ifstream people_file;
+  people_file.open(peopleInput);
 	json readJson;
-	json readCheckedOut;
+  if (people_file.is_open() == false)
+    cout << "not open" << endl;
+	// json readCheckedOut;
 	// ifstream checkout(checkOut);
 	// checkout >> readCheckedOut;
 	people_file >> readJson;
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
-	{
+	{  
+
 		int debt;
 		vector<CheckOutData*> checkoutData;
+
 		int ID = it;
 		string name = readJson[ID]["name"];
 		int hashPass = readJson[ID]["hashPass"];
+
 		if (readJson[ID].find("debt") != readJson.end())
 		{
+        cout << "here ";
+
 			debt = readJson[ID]["debt"];
 			User* tempUser = new User(name, ID, bs, hashPass);
 
 			tempUser->PayBalance(-1*debt);
-			for (auto book : checkedOut)
+			for (auto book : checkedOut[ID])
 			{
-				if (book->userCheckedOut->GetId() == ID)
-				{
-					checkoutData.push_back(book);
-				}
+				checkoutData.push_back(book);
 			}
-			for (auto book : passedDue)
-			{
-				if (book->userCheckedOut->GetId() == ID)
-					checkoutData.push_back(book);
-			}
+			
 			tempUser->SetCheckedOutData(checkoutData);
 			/*for (json::iterator ite = readJson["users"][ID].begin()+2; ite != readJson.end(); ++ite)
 			{

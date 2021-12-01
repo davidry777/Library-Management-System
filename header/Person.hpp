@@ -13,7 +13,6 @@ class Person {
         int password;
         BookSystem* bookSys;
     public:
-        virtual ~Person() = default;
         std::string GetName() { return fullName; }
         int GetId() { return ID; }
         int GetHashedPassword() { return password; }

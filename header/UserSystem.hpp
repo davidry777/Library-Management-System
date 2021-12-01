@@ -15,7 +15,7 @@ class UserSystem {
 	private:
 		std::unordered_map<int, Person*> people;
 	public:
-		UserSystem(std::string peopleInput, std::string checkOut, std::vector<CheckOutData*>& checkedOut, std::deque<CheckOutData*>& passedDue, BookSystem* bs);
+		UserSystem(string peopleInput, string checkOut, unordered_map<int, set<CheckOutData*>> checkedOut, BookSystem* bs);
 		~UserSystem();
 		std::unordered_map<int, Person*>& GetMap();
 		Person* GetPerson(int ID);

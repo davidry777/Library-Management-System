@@ -12,11 +12,6 @@
 #include <vector>
 #include <string>
 
-BookSystem* genBookSys()
-{
-    return new BookSystem("../tests/test_catalogue.json", "none", "none");
-}
-
 TEST(PersonTest, GetName)
 {
     User user("Jason Giese", 28956, nullptr, 830264);
@@ -103,19 +98,17 @@ TEST(LibrarianTest, AddingBook)
     librarian.AddBook(book);
     EXPECT_EQ(librarian.GetBookSys()->GetContent(9784567290812), book);
     delete setBookSys;
-    delete book;
 }
 
 TEST(LibrarianTest, RemovingBook)
 {
     BookSystem* setBookSys = new BookSystem("../tests/test_catalogue.json", "none", "none");
-    Librarian librarian("Gwen Kiler", 78094, genBookSys(), 403501);
+    Librarian librarian("Gwen Kiler", 78094, setBookSys, 403501);
     Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
     librarian.AddBook(book);
     librarian.RemoveBook(9784567290812);
     EXPECT_EQ(librarian.GetBookSys()->GetContent(9784567290812), nullptr);
     delete setBookSys;
-    delete book;   
 }
 
 TEST(LibrarianTest, SettingBookSystem)

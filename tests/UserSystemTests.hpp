@@ -20,8 +20,8 @@ using json = nlohmann::json;
 // }
 
 TEST(UserSystemTest, GetMap) {
-  string peopleInput = "../tests/test_files/test_users.json";
-  string checkOut = "checkOut.txt";
+  string peopleInput = "tests/test_users.json";
+  string checkOut = "checkedOut.json";
   vector<CheckOutData*> checkedOut; deque<CheckOutData*> passedDue;
   UserSystem *userSys = new UserSystem(peopleInput,checkOut,checkedOut,passedDue, nullptr);
   unordered_map<int, Person*> peopleTest = userSys->GetMap();
@@ -30,24 +30,24 @@ TEST(UserSystemTest, GetMap) {
 }
 
 TEST(UserSystemTest, GetAPerson) {
-  string peopleInput = "../tests/test_files/test_users.json";
-  string checkOut = "checkOut.txt";
+  string peopleInput = "tests/test_users.json";
+  string checkOut = "checkedOut.json";
   vector<CheckOutData*> checkedOut; deque<CheckOutData*> passedDue;
   UserSystem *userSys = new UserSystem(peopleInput,checkOut,checkedOut,passedDue, nullptr);
   EXPECT_NE(userSys->GetPerson(18679479), nullptr);
 }
 
 TEST(UserSystemTest, GetAFakePerson) {
-  string peopleInput = "../tests/test_files/test_users.json";
-  string checkOut = "checkOut.txt";
+  string peopleInput = "tests/test_users.json";
+  string checkOut = "checkedOut.json";
   vector<CheckOutData*> checkedOut; deque<CheckOutData*> passedDue;
   UserSystem *userSys = new UserSystem(peopleInput,checkOut,checkedOut,passedDue, nullptr);
   EXPECT_EQ(userSys->GetPerson(7), nullptr);
 }
 
 TEST(UserSystemTest, AddAPerson) {
-  string peopleInput = "../tests/test_files/test_users.json";
-  string checkOut = "checkOut.txt";
+  string peopleInput = "tests/test_users.json";
+  string checkOut = "checkedOut.json";
   int hash = 39052307;
   vector<CheckOutData*> checkedOut; deque<CheckOutData*> passedDue;
   UserSystem *userSys = new UserSystem(peopleInput,checkOut,checkedOut,passedDue, nullptr);
@@ -57,8 +57,8 @@ TEST(UserSystemTest, AddAPerson) {
 }
 
 TEST(UserSystemTest, SaveUserData) {
-  string peopleInput = "../tests/test_files/test_users.json";
-  string checkOut = "checkOut.txt";
+  string peopleInput = "tests/test_users.json";
+  string checkOut = "checkedOut.json";
   vector<CheckOutData*> checkedOut; deque<CheckOutData*> passedDue;
   UserSystem *userSys = new UserSystem(peopleInput,checkOut,checkedOut,passedDue, nullptr);
   EXPECT_EQ(userSys->GetPerson(18658864)->GetId(),18658864);

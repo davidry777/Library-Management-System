@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <unordered_map>
-#include <deque>
 #include <ctime>
 #include <iomanip>
 #include <fstream>
@@ -16,6 +15,8 @@
 #include "Bundle.hpp"
 #include "Person.hpp"
 
+#include <vector>
+#include <set>
 #include "CheckOutData.hpp"
 
 class UserSystem;
@@ -24,33 +25,29 @@ class CheckOutData;
 class BookSystem {
     private:
         std::unordered_map<long long, Content*> catalogue;
-        std::vector<CheckOutData*> passedDue;
-        std::deque<CheckOutData*> checkedOut;
+        std::unordered_map<int, std::set<CheckOutData*>> checkedOut;
 
         std::string catalogueFile; 
-        std::string checkedOutFile; 
-        std::string passedDueFile; 
+        std::string checkedOutFile;
 
+        int maximumSeconds;
     public:
-        BookSystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile);
+        BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
         ~BookSystem();
 
         void LoadCatalogue();
-        void LoadCheckedOut(std::unordered_map<int, Person *>);
-        void LoadPassedDue(std::unordered_map<int, Person *>);
-        
         void SaveCatalogue(std::string file = "null");
-        void SaveCheckedOut(std::string file = "null");
-        void SavePassedDue(std::string file = "null");
-
-        Content* GetContent(long long ISBN);
-        std::vector<CheckOutData*>& GetPassedDue();
-        std::deque<CheckOutData*>& GetCheckedOut();
         std::unordered_map<long long, Content*>& GetCatalogue();
 
+        void LoadCheckedOut(std::unordered_map<int, Person *>);
+        void SaveCheckedOut(std::string file = "null");
+        unordered_map<int, std::set<CheckOutData*>>& GetCheckedOut();
+
+
+        Content* GetContent(long long ISBN);
         bool AddContent(Content* content);
         bool RemoveContent(long long ISBN);
-        bool MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency = 0);
+        bool MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<Content*>& contents);
 
         CheckOutData* CheckOut(Person* person, long long ISBN);
         bool ReturnContent(Person* person, long long ISBN);

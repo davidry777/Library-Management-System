@@ -10,8 +10,6 @@ Librarian::Librarian(std::string name, int id, BookSystem* books, int hashedPass
     password = hashedPassword;
 }
 
-Librarian::~Librarian() { delete bookSys; }
-
 void Librarian::GetInfo()
 {
     cout << "Name: " << fullName << endl;
