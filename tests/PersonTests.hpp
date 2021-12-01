@@ -103,7 +103,6 @@ TEST(LibrarianTest, AddingBook)
     librarian.AddBook(book);
     EXPECT_EQ(librarian.GetBookSys()->GetContent(9784567290812), book);
     delete setBookSys;
-    delete book;
 }
 
 TEST(LibrarianTest, RemovingBook)
@@ -115,7 +114,6 @@ TEST(LibrarianTest, RemovingBook)
     librarian.RemoveBook(9784567290812);
     EXPECT_EQ(librarian.GetBookSys()->GetContent(9784567290812), nullptr);
     delete setBookSys;
-    delete book;   
 }
 
 TEST(LibrarianTest, SettingBookSystem)
