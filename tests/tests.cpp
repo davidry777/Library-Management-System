@@ -6,6 +6,7 @@
 // #include "PersonTests.hpp"
 // #include "BundleTests.hpp"
 // #include "BookSystemTests.hpp"
+#include "UserSystemTests.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
