@@ -26,33 +26,5 @@
         "genre": "Mystery",
         "isbn": 9781617734076,
         "title": "Getting Away Is Deadly: An Ellie Avery Mystery"
-    },
-    {
-        "author": "Peter V. Brett",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9780007287758,
-        "title": "The Painted Man (The Demon Cycle Book 1)"
-    },
-    {
-        "author": "George R.R. Martin",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9780007369218,
-        "title": "A Feast for Crows (A Song of Ice and Fire Book 4)"
-    },
-    {
-        "author": "J.M. Barlog",
-        "frequency": 0,
-        "genre": "Media",
-        "isbn": 9781789090154,
-        "title": "God of War: The Official Novelization"
-    },
-    {
-        "author": "Brandon Sanderson",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9781250166609,
-        "title": "Edgedancer: From the Stormlight Archive"
     }
 ]
