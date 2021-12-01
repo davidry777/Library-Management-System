@@ -64,28 +64,28 @@ TEST(BookSystemTest, RemoveContentInvalid) {
     bool added = testBookSystem.RemoveContent(123);
     EXPECT_FALSE(added);
 }
-TEST(BookSystemTest, MakeBundleValid) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
-    testBookSystem.MakeBundle("Combo", 12345, "variety", {9781612626864, 9780758272799});
-    EXPECT_TRUE(testBookSystem.GetContent(12345) != nullptr);
-}
-TEST(BookSystemTest, MakeBundleInvalid) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
-    bool added = testBookSystem.MakeBundle("Combo", 9781506713816, "variety", {9781612626864, 9780758272799});
-    EXPECT_FALSE(added);
-}
-TEST(BookSystemTest, MakeBundleOfBundle) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
-    testBookSystem.MakeBundle("Bundle1", 123456, "variety", {9781612626864, 9780758272799});
-    testBookSystem.MakeBundle("Bundle2", 12345, "variety", {123456, 9781506713816});
-    EXPECT_TRUE(testBookSystem.GetContent(12345) != nullptr);
-}
-TEST(BookSystemTest, MakeBundleOfBundleAuthors) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
-    testBookSystem.MakeBundle("Bundle1", 123456, "variety", {9781612626864, 9780758272799});
-    testBookSystem.MakeBundle("Bundle2", 12345, "variety", {123456, 9781506713816});
-    EXPECT_EQ(testBookSystem.GetContent(12345)->GetAuthor(), "Barbara Allan, Hajime Isayama, Nintendo");
-}
+// TEST(BookSystemTest, MakeBundleValid) {
+//     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+//     testBookSystem.MakeBundle("Combo", 12345, "variety", {9781612626864, 9780758272799});
+//     EXPECT_TRUE(testBookSystem.GetContent(12345) != nullptr);
+// }
+// TEST(BookSystemTest, MakeBundleInvalid) {
+//     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+//     bool added = testBookSystem.MakeBundle("Combo", 9781506713816, "variety", {9781612626864, 9780758272799});
+//     EXPECT_FALSE(added);
+// }
+// TEST(BookSystemTest, MakeBundleOfBundle) {
+//     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+//     testBookSystem.MakeBundle("Bundle1", 123456, "variety", {9781612626864, 9780758272799});
+//     testBookSystem.MakeBundle("Bundle2", 12345, "variety", {123456, 9781506713816});
+//     EXPECT_TRUE(testBookSystem.GetContent(12345) != nullptr);
+// }
+// TEST(BookSystemTest, MakeBundleOfBundleAuthors) {
+//     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
+//     testBookSystem.MakeBundle("Bundle1", 123456, "variety", {9781612626864, 9780758272799});
+//     testBookSystem.MakeBundle("Bundle2", 12345, "variety", {123456, 9781506713816});
+//     EXPECT_EQ(testBookSystem.GetContent(12345)->GetAuthor(), "Barbara Allan, Hajime Isayama, Nintendo");
+// }
 TEST(BookSystemTest, CheckOutValid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
     Person* me = new User("Daniel", 100, nullptr, 2132321);
