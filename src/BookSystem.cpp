@@ -8,8 +8,12 @@ BookSystem::BookSystem(const std::string& catalogueFile, const std::string& chec
 }
 
 BookSystem::~BookSystem() {
-    for (pair<long long, Content*> content : this->catalogue)
-        delete content.second;
+    for (pair<long long, Content*> content : this->catalogue) {
+        if (content.second->GetType() == "Bundle")
+            delete dynamic_cast<Bundle*>(content.second);
+        else
+            delete content.second;
+    }
     for (CheckOutData* data : this->passedDue)
         delete data;
     for (CheckOutData* data : this->checkedOut)
@@ -23,6 +27,8 @@ void BookSystem::SaveCatalogue(string file) {
 
     int i = 0;
     for (pair<long long, Content*> book : this->catalogue) {
+        if (book.second->GetType() == "Bundle")
+            continue;
         catalogueJSON[i]["title"] = book.second->GetTitle();
         catalogueJSON[i]["isbn"] = book.second->GetISBN();
         catalogueJSON[i]["genre"] = book.second->GetGenre();
@@ -151,23 +157,21 @@ bool BookSystem::AddContent(Content* content) {
         this->catalogue.insert({content->GetISBN(), content});
         return true;
     }
-    std::cout << "Error adding content. ISBN number " << content->GetISBN() << " is already in use for " << this->catalogue.at(content->GetISBN()) << "!" << std::endl;
     return false; 
 }
-bool BookSystem::MakeBundle(const std::string& title, long long newISBN, const std::string& genre, const std::vector<long long> ISBNLists, int frequency) {
-    std::vector<Content*> newContentList;
-    for (long long ISBN : ISBNLists) {
-        if (this->catalogue.find(ISBN) != this->catalogue.end())
-            newContentList.push_back(this->catalogue.at(ISBN));
-        else
-            cout << "Error. Could not find ISBN " << ISBN << " in catalogue!" << endl;
-    }
-    Content* newContent = new Bundle(title, newISBN, genre, newContentList);
-    if (!AddContent(newContent)) {
-        cout << "Error. Content with ISBN " << newISBN << " already exists in the catalogue!" << endl;
-        delete newContent;
+
+bool BookSystem::MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<Content*>& contents) {
+    if (this->catalogue.find(ISBN) != this->catalogue.end()) {
+        for (Content* content : contents) {
+            if (content->GetType() == "Bundle")
+                delete dynamic_cast<Bundle*>(content);
+            else
+                delete content;
+        }
         return false;
     }
+    else
+        this->catalogue.insert({ISBN, new Bundle(title, ISBN, genre, contents)});
     return true;
 }
 bool BookSystem::RemoveContent(long long ISBN) {
