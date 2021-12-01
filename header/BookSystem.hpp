@@ -41,7 +41,7 @@ class BookSystem {
 
         void LoadCheckedOut(std::unordered_map<int, Person *>);
         void SaveCheckedOut(std::string file = "null");
-        unordered_map<int, std::set<CheckOutData*>>& GetCheckedOut();
+        std::unordered_map<int, std::set<CheckOutData*>>& GetCheckedOut();
 
 
         Content* GetContent(long long ISBN);
