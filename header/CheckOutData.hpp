@@ -16,7 +16,7 @@ struct CheckOutData {
 
     CheckOutData(time_t a, Content* b, Person* c, bool overTime = false) : timeCheckedOut(a), contentCheckedOut(b), userCheckedOut(c), overTime(false) {}
     bool operator<(const CheckOutData& rhs) const {
-        this->timeCheckedOut < rhs.timeCheckedOut;
+        return this->timeCheckedOut < rhs.timeCheckedOut;
     }
 };
 
