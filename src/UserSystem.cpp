@@ -109,7 +109,7 @@ void UserSystem::AddPerson(LoginSystem *logSys, Person *person) {
 void UserSystem::SaveUserData(string userInfo)
 {
 	json userJson;
-	`
+
 	vector<CheckOutData*> tempVec;
   int i = 0;
 	for (pair<int, Person*> kv : people)
