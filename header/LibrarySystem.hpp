@@ -15,6 +15,7 @@ class LibrarySystem {
         BookSystem* bookSystem;
     public:
         LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile, const std::string& peopleInput, const std::string& checkOut);
+        LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile, const std::string& peopleInput, const std::string& checkOut, int checkoutTime);
         ~LibrarySystem();
         UserSystem* GetUserSystem();
         BookSystem* GetBookSystem();

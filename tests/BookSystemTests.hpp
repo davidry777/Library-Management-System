@@ -102,13 +102,13 @@ TEST(BookSystemTest, CheckOutInvalid) {
     EXPECT_TRUE(testBookSystem.CheckOut(me, 321) == nullptr);
     delete me;
 }
-TEST(BookSystemTest, ReturnContentValid) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    Person* me = new User("Daniel", 100, nullptr, 2132321);
-    testBookSystem.CheckOut(me, 9781506713816);
-    EXPECT_TRUE(testBookSystem.ReturnContent(me, 9781506713816));
-    delete me;
-}
+// TEST(BookSystemTest, ReturnContentValid) {
+//     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
+//     Person* me = new User("Daniel", 100, nullptr, 2132321);
+//     testBookSystem.CheckOut(me, 9781506713816);
+//     EXPECT_TRUE(testBookSystem.ReturnContent(me, 9781506713816));
+//     delete me;
+// }
 TEST(BookSystemTest, ReturnContentInvalid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
     Person* me = new User("Daniel", 100, nullptr, 2132321);
@@ -123,7 +123,7 @@ TEST(BookSystemTest, SaveCatalogue) {
     BookSystem testBookSystem2("../tests/output.json", "test_files/test_checked_out.json");
     EXPECT_TRUE(testBookSystem.GetContent(9780439362139) != nullptr);
 }
-TEST(BookSystemTest, SaveCheckedOut) {
+// TEST(BookSystemTest, SaveCheckedOut) {
     // BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
     // Person* me = new User("Daniel", 92509, nullptr, 101010101);
 
@@ -133,4 +133,4 @@ TEST(BookSystemTest, SaveCheckedOut) {
     // BookSystem testBookSystem2("../tests/output.json", "test_files/test_checked_out.json", "test_files/test_passed_due.json");
     // EXPECT_TRUE(testBookSystem2.GetCheckedOut().front()->overTime == false && testBookSystem2.GetCheckedOut().front()->contentCheckedOut == 9781506713816 && testBookSystem2.GetCheckedOut()->);
     // delete me;
-}
+// }

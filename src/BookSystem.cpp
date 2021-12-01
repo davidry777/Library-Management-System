@@ -42,8 +42,8 @@ void BookSystem::SaveCatalogue(string file) {
 void BookSystem::LoadCatalogue() {
     std::ifstream inFS(catalogueFile);
     json catalogueJSON;
-    if (!catalogueJSON.accept(inFS)) {
-        cout << catalogueFile << " is not a valid JSON file" << endl;
+    if (inFS.is_open() == false) {
+        cout << catalogueFile << " not found" << endl;
         return;
     }
 
