@@ -14,41 +14,58 @@ Person* UserSystem::GetPerson(int ID)
 		return nullptr;
 }
 
-UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*>& checkedOut, deque<CheckOutData*>& passedDue, BookSystem* bs)
+void UserSystem::AddCheckedOut(unordered_map<int, set<CheckOutData*>> checkedOut)
+{
+  for (auto & [id, person] : people)
+  {
+    if (dynamic_cast<User*>(person) != nullptr)
+    {
+      vector<CheckOutData*> checkoutData;
+      for (auto book : checkedOut[id])
+			  {
+			  	checkoutData.push_back(book);
+			  }
+      dynamic_cast<User*>(person)->SetCheckedOutData(checkoutData);
+    }
+  }
+}
+
+UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 {
 	//import users from a file to populate the array
-	ifstream people_file(peopleInput);
+	ifstream people_file;
+  people_file.open(peopleInput);
 	json readJson;
-	json readCheckedOut;
-	ifstream checkout(checkOut);
-	checkout >> readCheckedOut;
+  if (people_file.is_open() == false)
+    cout << "not open" << endl;
+	// json readCheckedOut;
+	// ifstream checkout(checkOut);
+	// checkout >> readCheckedOut;
 	people_file >> readJson;
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
-	{
+	{  
+
 		int debt;
-		vector<CheckOutData*> checkoutData;
-		int ID = it;
-		string name = readJson["users"][ID]["name"];
-		int hashPass = readJson["users"][ID]["hashPass"];
-		if (readJson["users"][ID].find("debt") != readJson.end())
+		// set<CheckOutData*> checkoutData;
+
+		int ID = it["id"];
+		string name = it["name"];
+		int hashPass = it["hashPass"];
+
+		if (it.find("debt") != it.end())
 		{
-			debt = readJson["users"][ID]["debt"];
+			debt = it["debt"];
 			User* tempUser = new User(name, ID, bs, hashPass);
+
 			tempUser->PayBalance(-1*debt);
-			for (auto book : checkedOut)
-			{
-				if (book->userCheckedOut->GetId() == ID)
-				{
-					checkoutData.push_back(book);
-				}
-			}
-			for (auto book : passedDue)
-			{
-				if (book->userCheckedOut->GetId() == ID)
-					checkoutData.push_back(book);
-			}
-			tempUser->SetCheckedOutData(checkoutData);
+			// for (auto book : checkedOut[ID])
+			// {
+			// 	checkoutData.insert(book);
+			// }
+			
+			// dynamic_cast<User*>(tempUser)->SetCheckedOutData(checkoutData);
+
 			/*for (json::iterator ite = readJson["users"][ID].begin()+2; ite != readJson.end(); ++ite)
 			{
 				long long tempISBN = ite.key();
@@ -70,15 +87,21 @@ UserSystem::UserSystem(string peopleInput, string checkOut, vector<CheckOutData*
 	}
 	this->people = userMap;
 	people_file.close();	
-  checkout.close();
+  // checkout.close();
 }
 
 UserSystem::~UserSystem() {
 	for (auto &x : people)
-		delete x.second;	
+	{
+    if (dynamic_cast<User*>(x.second)!=nullptr)
+      delete dynamic_cast<User*>(x.second);
+    else
+      delete dynamic_cast<Librarian*>(x.second);
+  }	
 }
 
-void UserSystem::AddPerson(Person *person) {
+void UserSystem::AddPerson(LoginSystem *logSys, Person *person) {
+  logSys->AddPass(person->GetId(), person->GetHashedPassword());
 	this->people.insert({ person->GetId(), person });	
 }
 
@@ -86,15 +109,17 @@ void UserSystem::AddPerson(Person *person) {
 void UserSystem::SaveUserData(string userInfo)
 {
 	json userJson;
-	
+
 	vector<CheckOutData*> tempVec;
+  int i = 0;
 	for (pair<int, Person*> kv : people)
 	{
-		userJson["users"][kv.first]["hashpass"] = kv.second->GetHashedPassword();
-		userJson["users"][kv.first]["name"] = kv.second->GetName();
+		userJson[i]["hashpass"] = kv.second->GetHashedPassword();
+		userJson[i]["name"] = kv.second->GetName();
+    userJson[i]["id"] = kv.second->GetId();
 		if (dynamic_cast<User*> (kv.second) != nullptr)
 		{
-			userJson["users"][kv.first]["debt"] = dynamic_cast<User*>(kv.second)->GetBalance();
+			userJson[i]["debt"] = dynamic_cast<User*>(kv.second)->GetBalance();
 			//tempVec = userPerson.getCheckedOutList();
 			/*for (CheckOutData* x : tempVec)
 			{
@@ -104,6 +129,7 @@ void UserSystem::SaveUserData(string userInfo)
 				//edit for book or bundle
 			}
 	*/	}
+    ++i;
 	}
 	ofstream fileOut;
 	fileOut.open(userInfo);
