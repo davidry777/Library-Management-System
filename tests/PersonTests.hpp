@@ -62,34 +62,6 @@ TEST(UserTest, RemovedDebt)
     EXPECT_EQ(user.GetBalance(), 0);
 }
 
-//TEST(UserTest, CheckedOutBooks)
-//{
-//    User user("Jason Giese", 28956, genBookSys(), 830264);
-//    user.CheckoutBook(9781617734076);
-//    user.CheckoutBook(9781250166609);   
-//    EXPECT_EQ(user.DisplayCheckOut(), "Title: Getting Away Is Deadly: An Ellie Avery Mystery\nISBN: 9781617734076\nAuthor: Sara Rosett\nGenre: Mystery\nFrequency: 0\nTitle: Edgedancer: From the Stormlight Archive\nISBN: 9781250166609\nAuthor: Brandon Sanderson\nGenre: Fantasy\nFrequency: 0\n");
-//}
-
-//TEST(UserTest, ReturnedBooks)
-//{
-//    User user("Jason Giese", 28956, genBookSys(), 830264);
-//    user.CheckoutBook(9781617734076);
-//    user.CheckoutBook(9781250166609);
-//    user.ReturnBook(9781617734076);
-//    user.ReturnBook(9781250166609);
-//    EXPECT_EQ(user.DisplayCheckOut(), "\n");
-//}
-
-//TEST(UserTest, SetCheckedOutData)
-//{
-//    User user("Jason Giese", 28956, nullptr, 830264);
-//    std::vector<CheckOutData*> newData;
-//    newData.push_back(new CheckOutData(365, new Book("Harry Potter and the Goblet Of Fire", 9780747546245, "Fantasy", "J. K. Rowling", 123), user));
-//    newData.push_back(new CheckOutData(216, new Book("Twilight", 9780316015849, "Fiction", "Stephenie Meyer", 66), user));
-//    user.SetCheckedOutData(newData);
-//    EXPECT_EQ(user.DisplayCheckOut(), "Title: Harry Potter and the Goblet Of Fire\nISBN: 9780747546245\nAuthor: J. K. Rowling\nGenre: Fantasy\nFrequency: 123\nTitle: Twilight\nISBN: 9780316015849\nAuthor: Stephenie Meyer\nGenre: Fiction\nFrequency: 66\n");
-//}
-
 TEST(LibrarianTest, AddingBook)
 {
     BookSystem* setBookSys = new BookSystem("../tests/test_catalogue.json", "none");

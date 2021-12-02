@@ -7,7 +7,7 @@
 #include <vector>
 #include <ctime>
 
-// #include "DisplaySystem.hpp"
+#include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
 #include "CheckOutData.hpp"
 
@@ -28,6 +28,7 @@ class User : public Person {
         void DisplayCheckOut();
         void SetCheckedOutData(vector<CheckOutData*> data);
         vector<CheckOutData*> GetCheckedOut();
+        void AddCheckOutData(CheckOutData*);
 };
 
 #endif //__USER_HPP__
