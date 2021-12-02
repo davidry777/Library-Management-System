@@ -1,13 +1,13 @@
 #include "../header/LibrarySystem.hpp"
 
-LibrarySystem::LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile, const std::string& peopleInput, const std::string& checkOut) {
+LibrarySystem::LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& peopleInput) {
     this->bookSystem = new BookSystem(catalogueFile, checkedOutFile);
     this->userSystem = new UserSystem(peopleInput, this->bookSystem);
     this->bookSystem->LoadCheckedOut(this->userSystem->GetMap());
     this->userSystem->AddCheckedOut(this->bookSystem->GetCheckedOut());
 }
 
-LibrarySystem::LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& passedDueFile, const std::string& peopleInput, const std::string& checkOut, int checkoutTime) {
+LibrarySystem::LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& peopleInput, int checkoutTime) {
     this->bookSystem = new BookSystem(catalogueFile, checkedOutFile, checkoutTime);
     this->userSystem = new UserSystem(peopleInput, this->bookSystem);
     this->bookSystem->LoadCheckedOut(this->userSystem->GetMap());

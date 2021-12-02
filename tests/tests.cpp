@@ -8,9 +8,8 @@
 #include "SortTests.hpp"
 #include "SearchTests.hpp"
 #include "PersonTests.hpp"
-#include "LoginSystemTests.hpp"
-#include "UserSystemTests.hpp"
-
+// #include "UserSystemTests.hpp"
+// #include "LoginSystemTests.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

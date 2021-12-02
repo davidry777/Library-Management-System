@@ -63,12 +63,15 @@ void BookSystem::SaveCheckedOut(string file) {
     json checkedOutJSON;
 
     int i = 0;
-    for (pair<int, std::set<CheckOutData*>> dataPair : this->checkedOut)
+    for (pair<int, std::set<CheckOutData*>> dataPair : this->checkedOut) {
         for (CheckOutData* data : dataPair.second) {
-            checkedOutJSON[data->userCheckedOut->GetId()]["time"] = data->timeCheckedOut;
-            checkedOutJSON[data->userCheckedOut->GetId()]["content_isbn"] = data->contentCheckedOut->GetISBN();
-            checkedOutJSON[data->userCheckedOut->GetId()]["over_time"] = data->overTime;
+            checkedOutJSON[i]["time"] = data->timeCheckedOut;
+            checkedOutJSON[i]["content_isbn"] = data->contentCheckedOut->GetISBN();
+            checkedOutJSON[i]["over_time"] = data->overTime;
+            checkedOutJSON[i]["user_id"] = data->userCheckedOut->GetId();
         }
+        ++i;
+    }
     
     ofstream outFS(file);
     outFS << std::setw(4) << checkedOutJSON << endl;
@@ -78,8 +81,8 @@ void BookSystem::SaveCheckedOut(string file) {
 void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
     ifstream inFS(checkedOutFile);
     json checkedOutJSON;
-    if (!checkedOutJSON.accept(inFS)) {
-        cout << checkedOutFile << " is not a valid JSON file" << endl;
+    if (!inFS.is_open()) {
+        cout << checkedOutFile << " not found" << endl;
         return;
     }
 
