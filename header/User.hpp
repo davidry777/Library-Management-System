@@ -7,7 +7,7 @@
 #include <vector>
 #include <ctime>
 
-// #include "DisplaySystem.hpp"
+#include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
 #include "CheckOutData.hpp"
 
