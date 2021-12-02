@@ -4,10 +4,12 @@
 #include "BookTests.hpp"
 #include "BundleTests.hpp"
 #include "BookSystemTests.hpp"
-// #include "LibrarySystemTests.hpp"
+#include "LibrarySystemTests.hpp"
 #include "SortTests.hpp"
 #include "SearchTests.hpp"
 #include "PersonTests.hpp"
+#include "LoginSystemTests.hpp"
+#include "UserSystemTests.hpp"
 
 
 int main(int argc, char **argv) {

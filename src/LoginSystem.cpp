@@ -2,21 +2,14 @@
 
 using namespace std;
 
-LoginSystem::LoginSystem(string textFile)//should be .txt
-{		
-	ifstream file;
-	file.open(textFile);
-	int temp, tempPass, tempUserID;
+LoginSystem::LoginSystem(unordered_map<int, Person*> userList)
+{	
+  //unordered_map<int, Person*> people
 	unordered_map<int, int> userPasses;
-	if (file.is_open())
-	{
-		while (!file.eof())
-		{
-			file >> tempUserID >> tempPass;		
-			userPasses.insert({tempUserID, tempPass});
-		}
-	}
-	this->userPasswords = userPasses;
+	for (pair<int, Person*> x : userList)
+  {
+    userPasswords[x.first] = x.second->GetHashedPassword();
+  } 
 }
 
 void LoginSystem::AddPass(int ID, int userPass)
@@ -49,17 +42,17 @@ bool LoginSystem::LoginVerify(int userID, string userPass)
 	return allowLogin;
 }
 
-void LoginSystem::SaveUsers(string textFile)
-{
-	ofstream fileOut;
-	fileOut.open(textFile);
-	if (fileOut.is_open())
-		for (auto kv : userPasswords)
-		{
-			fileOut << kv.first << " " << kv.second << endl;	
-		}
-  fileOut.close();
-}
+// void LoginSystem::SaveUsers(string textFile)
+// {
+// 	ofstream fileOut;
+// 	fileOut.open(textFile);
+// 	if (fileOut.is_open())
+// 		for (auto kv : userPasswords)
+// 		{
+// 			fileOut << kv.first << " " << kv.second << endl;	
+// 		}
+//   fileOut.close();
+// }
 
 int LoginSystem::GetHashPass(int ID)
 {

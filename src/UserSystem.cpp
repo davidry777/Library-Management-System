@@ -45,16 +45,12 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
 	{  
-
 		int debt;
-		// set<CheckOutData*> checkoutData;
-
 		int ID = it["id"];
 		string name = it["name"];
-		int hashPass = it["hashPass"];
-
-		if (it.find("debt") != it.end())
-		{
+		int hashPass = it["hashpass"];
+		if (it.contains("debt"))
+		{   
 			debt = it["debt"];
 			User* tempUser = new User(name, ID, bs, hashPass);
 
@@ -84,7 +80,8 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 			userMap[ID] = tempLibrarian;
 		}
 		
-	}
+	}    
+
 	this->people = userMap;
 	people_file.close();	
   // checkout.close();
