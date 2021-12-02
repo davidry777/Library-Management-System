@@ -44,10 +44,10 @@ TEST(LoginSystemTest, GetHashPass) {
   string pass = "Lskdjf;lksjdgkjdsdg"; //39052307
   EXPECT_EQ(logSys->HashPassword(pass),39052307);
 }
-TEST(LoginSystemTest, SaveUsers) {
-  UserSystem *userSys = new UserSystem("../tests/test_users.json", nullptr);
-  LoginSystem *logSys = new LoginSystem(userSys->GetMap());  int ID = 34;
-  fstream test;
-  test.open("test_user_pass_out.txt");
-  EXPECT_TRUE(test.peek() == std::ifstream::traits_type::eof());
-}
+// TEST(LoginSystemTest, SaveUsers) {
+//   UserSystem *userSys = new UserSystem("../tests/test_users.json", nullptr);
+//   LoginSystem *logSys = new LoginSystem(userSys->GetMap());  int ID = 34;
+//   fstream test;
+//   test.open("test_user_pass_out.txt");
+//   EXPECT_TRUE(test.peek() == std::ifstream::traits_type::eof());
+// }
