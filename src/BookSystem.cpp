@@ -8,15 +8,18 @@ BookSystem::BookSystem(const string& catF, const string& coF, int maxSecs) : cat
 }
 
 BookSystem::~BookSystem() {
-    for (pair<long long, Content*> content : this->catalogue) {
-        if (content.second->GetType() == "Bundle")
-            delete dynamic_cast<Bundle*>(content.second);
-        else
-            delete content.second;
-    }
+    for (pair<long long, Content*> content : this->catalogue)
+        DeallocateContent(content.second);
     for (pair<int, set<CheckOutData*>> dataPair : this->checkedOut)
         for (CheckOutData* data : dataPair.second)
             delete data;
+}
+
+void BookSystem::DeallocateContent(Content* content) {
+    if (content->GetType() == "Bundle")
+        delete dynamic_cast<Bundle*>(content);
+    else
+        delete content;
 }
 
 void BookSystem::SaveCatalogue(string file) {
@@ -33,6 +36,7 @@ void BookSystem::SaveCatalogue(string file) {
         catalogueJSON[i]["genre"] = book.second->GetGenre();
         catalogueJSON[i]["author"] = book.second->GetAuthor();
         catalogueJSON[i]["frequency"] = book.second->GetFrequency();
+        ++i;
     }
     ofstream outFS(file);
     outFS << std::setw(4) << catalogueJSON << endl;
@@ -52,8 +56,7 @@ void BookSystem::LoadCatalogue() {
 
     for (auto content : catalogueJSON) {
         Content* newContent = new Book(content["title"], content["isbn"], content["genre"], content["author"], content["frequency"]);
-        if (!AddContent(newContent))
-            delete newContent;
+        AddContent(newContent);
     }
 }
 
@@ -128,23 +131,23 @@ bool BookSystem::AddContent(Content* content) {
         this->catalogue.insert({content->GetISBN(), content});
         return true;
     }
+    std::cout << "ISBN " << content->GetISBN() << " already exists" << endl;
+    DeallocateContent(content);
     return false; 
 }
 
 bool BookSystem::MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<Content*>& contents) {
+    // If Bundle ISBN exists in catalogue, deallocate everything the bundle holds
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
-        for (Content* content : contents) {
-            if (content->GetType() == "Bundle")
-                delete dynamic_cast<Bundle*>(content);
-            else
-                delete content;
-        }
+        for (Content* content : contents)
+            DeallocateContent(content);
         return false;
     }
     else
         this->catalogue.insert({ISBN, new Bundle(title, ISBN, genre, contents)});
     return true;
 }
+
 bool BookSystem::RemoveContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         Content* temp = this->catalogue.at(ISBN);
@@ -156,19 +159,37 @@ bool BookSystem::RemoveContent(long long ISBN) {
     return false;
 }
 
-CheckOutData* BookSystem::CheckOut(Person* person, long long ISBN) {
+bool BookSystem::FindInCheckedOutSet(set<CheckOutData*> userSet, long long ISBN) {
+    for (CheckOutData* data : userSet)
+        if (data->contentCheckedOut->GetISBN())
+            return true;
+    return false;
+}
+
+bool BookSystem::CheckOut(Person* person, long long ISBN) {
     CheckOutData* data = nullptr;
+    if (person->GetType() != "User") {
+        cout << person->GetName() << " is not able to check out books!" << endl;
+    }
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
+        if (this->checkedOut.find(person->GetId()) != this->checkedOut.end()) {
+            if (this->FindInCheckedOutSet(this->checkedOut.at(person->GetId()), ISBN)) {
+                cout << ISBN << " has already been checked out!" << endl;
+                return false;
+            }
+        }
         this->catalogue.at(ISBN)->AddFrequency();
         data = new CheckOutData(time(0), this->catalogue.at(ISBN), person);
         if (this->checkedOut.find(person->GetId()) == this->checkedOut.end())
             this->checkedOut.insert({person->GetId(), {data}});
         else
             this->checkedOut.at(person->GetId()).insert(data);
+        User* personUser = dynamic_cast<User*>(person);
+        personUser->AddCheckOutData(data);
     }
     else
         std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
-    return data;
+    return true;
 }
 
 bool BookSystem::ReturnContent(Person* person, long long ISBN) {
