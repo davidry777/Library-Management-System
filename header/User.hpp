@@ -28,6 +28,7 @@ class User : public Person {
         void DisplayCheckOut();
         void SetCheckedOutData(vector<CheckOutData*> data);
         vector<CheckOutData*> GetCheckedOut();
+        void AddCheckOutData(CheckOutData*);
 };
 
 #endif //__USER_HPP__

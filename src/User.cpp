@@ -37,3 +37,5 @@ void User::DisplayCheckOut()
 void User::SetCheckedOutData(vector<CheckOutData*> data) { this->checkedOut = data; }
 
 vector<CheckOutData*> User::GetCheckedOut() { return checkedOut; }
+
+void User::AddCheckOutData(CheckOutData* newCheckedOutBook) { checkedOut.push_back(newCheckedOutBook); }
