@@ -151,7 +151,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 		std::cout << "Enter the genre you would like to search for: ";
 		std::cin >> sinput;
 		if(choice == 1)
-			display->DisplayBooks('1', sinput, person->GetBookSys()->GetCheckedOut());	
+			display->DisplayBooks('1', sinput, person->GetCheckedOut());	
 		if(choice == 2)
 			display->DisplayBooks('1', sinput, library->GetBookSystem()->GetCatalogue());
 	}
@@ -160,7 +160,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 		std::cout << "Enter the keyword you would like to search by: ";
 		std:: cin >> sinput;
 		if(choice == 1)
-			display->DisplayBooks('2', sinput, person->GetBookSys()->GetCheckedOut());
+			display->DisplayBooks('2', sinput, person->GetCheckedOut());
 		if(choice == 2)
 			display->DisplayBooks('2', sinput, library->GetBookSystem()->GetCatalogue());
 	}
@@ -169,21 +169,21 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 		std::cout << "Enter the ISBN you would like to search for: ";
 		std::cin >> ntinput;
 		if(choice == 1)
-			display->DisplayBooks('3', ntinput, person->GetBookSys()->GetCheckedOut());
+			display->DisplayBooks('3', ntinput, person->GetCheckedOut());
 		if(choice == 2)
 			display->DisplayBooks('3', ntinput, library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 4)
 	{
 		if(choice == 1)
-			display->DisplayBooks('4', person->GetBookSys()->GetCheckedOut());
+			display->DisplayBooks('4', person->GetCheckedOut());
 		if(choice == 2)
 			display->DisplayBooks('4', library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 5)
 	{
 		if(choice == 1)
-			display->DisplayBooks('5', person->GetBookSys()->GetCheckedOut());
+			display->DisplayBooks('5', person->GetCheckedOut());
 		if(choice == 2)
 			display->DisplayBooks('5', library->GetBookSystem()->GetCatalogue());
 	}
@@ -262,15 +262,17 @@ int main()
     std::cout << "Enter Password: " << std::endl;
     std::cin >> password;
     std::cout << std::endl;
+    
+    // BookSystem* bs = new BookSystem(catF, coF);
+    // UserSystem* us = new UserSystem("../userInfo.json", bs);
+    // LoginSystem* logS = new LoginSystem(us->GetMap());
+    LibrarySystem* library = new LibrarySystem("../catalogue.json", "../checked_out.json", "../passed_due.json", "");
+    LoginSystem* logS = new LoginSystem(library->GetUserSystem()->GetMap());
 
-    LoginSystem* logSys = new LoginSystem("userLogins.txt");
-
-    if(Login(id,password, logSys))
+    if(Login(id,password, logS))
     {
-        UserSystem* us;
-        BookSystem* bs;
-        LibrarySystem* library = new LibrarySystem(us, bs, "../catalogue.json", "../checked_out.json", "../passed_due.json", "", "");   // Don't know what goes in 4th and 5th param
-        Person* person = library->GetUserSystem()->GetPerson(id);
+  //LibrarySystem* library = new LibrarySystem(us, bs, "../catalogue.json", "../checked_out.json", "../passed_due.json", "", "");   // Don't know what goes in 4th and 5th param
+       Person* person = library->GetUserSystem()->GetPerson(id);
         
         if (person->GetType() == "User"){
             User* user = dynamic_cast<User*>(person);
