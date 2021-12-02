@@ -96,10 +96,6 @@ void RemoveBook(Librarian* person) {
     person->RemoveBook(isbn);
 }
 
-void SetNewLibrary(Librarian* person, LibrarySystem* newLibrary) {
-    person->SetLibrary(newLibrary);
-}
-
 bool Login(int id, std::string &password, LoginSystem *logSys) {
     return logSys->LoginVerify(id, password);
 }
@@ -209,7 +205,7 @@ int SwitchCase(User* person) {
     if (input == 6)
         DisplayCheckedOutBooks(person);
     if (input == 7)
-	//Does nothing
+	    return input;
     if (input == -1)
         return -1;
 
@@ -266,7 +262,7 @@ int main()
     // BookSystem* bs = new BookSystem(catF, coF);
     // UserSystem* us = new UserSystem("../userInfo.json", bs);
     // LoginSystem* logS = new LoginSystem(us->GetMap());
-    LibrarySystem* library = new LibrarySystem("../catalogue.json", "../checked_out.json", "../passed_due.json", "");
+    LibrarySystem* library = new LibrarySystem("../catalogue.json", "../checked_out.json", "../userInfo.json");
     LoginSystem* logS = new LoginSystem(library->GetUserSystem()->GetMap());
 
     if(Login(id,password, logS))
@@ -275,23 +271,23 @@ int main()
        Person* person = library->GetUserSystem()->GetPerson(id);
         
         if (person->GetType() == "User"){
-            User* user = dynamic_cast<User*>(person);
+            // User* user = dynamic_cast<User*>(person);
             int option = -1;
             do {
-                PrintMenu(user);
-                int option = SwitchCase(user);
-		if(option == 7)
-			SwitchCaseDisplay(user, library);
-            } 
+                PrintMenu(dynamic_cast<User*>(person));
+                int option = SwitchCase(dynamic_cast<User*>(person));
+		        if(option == 7)
+			        SwitchCaseDisplay(dynamic_cast<User*>(person), library);
+            }
             while (option != -1);
         }    
         else
         {
-            Librarian* librarian = dynamic_cast<Librarian*>(person);
+            // Librarian* librarian = dynamic_cast<Librarian*>(person);
             int option = -1;
             do {
-                PrintMenu(librarian);
-                int option = SwitchCase(librarian);
+                PrintMenu(dynamic_cast<Librarian*>(person));
+                int option = SwitchCase(dynamic_cast<Librarian*>(person));
             } 
             while (option != -1);
         }
