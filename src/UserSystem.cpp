@@ -16,16 +16,16 @@ Person* UserSystem::GetPerson(int ID)
 
 void UserSystem::AddCheckedOut(unordered_map<int, set<CheckOutData*>> checkedOut)
 {
-  for (auto & [id, person] : people)
+  for (pair<int, Person*> person : people)
   {
-    if (dynamic_cast<User*>(person) != nullptr)
+    if (dynamic_cast<User*>(person.second) != nullptr)
     {
       vector<CheckOutData*> checkoutData;
-      for (auto book : checkedOut[id])
+      for (auto book : checkedOut[person.first])
 			  {
 			  	checkoutData.push_back(book);
 			  }
-      dynamic_cast<User*>(person)->SetCheckedOutData(checkoutData);
+      dynamic_cast<User*>(person.second)->SetCheckedOutData(checkoutData);
     }
   }
 }

@@ -14,6 +14,7 @@
 #include "Book.hpp"
 #include "Bundle.hpp"
 #include "Person.hpp"
+#include "User.hpp"
 
 #include <vector>
 #include <set>
@@ -31,6 +32,9 @@ class BookSystem {
         std::string checkedOutFile;
 
         int maximumSeconds;
+
+        void DeallocateContent(Content* content);
+        bool FindInCheckedOutSet(std::set<CheckOutData*> userSet, long long ISBN);
     public:
         BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
         ~BookSystem();
@@ -49,7 +53,7 @@ class BookSystem {
         bool RemoveContent(long long ISBN);
         bool MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<Content*>& contents);
 
-        CheckOutData* CheckOut(Person* person, long long ISBN);
+        bool CheckOut(Person* person, long long ISBN);
         bool ReturnContent(Person* person, long long ISBN);
         void CheckExpiration();
 };
