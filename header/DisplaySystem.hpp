@@ -9,9 +9,6 @@
 
 class DisplaySystem {
 private:
-	//Stores pointers to the search and sort algorithms
-	BookSort* sortAlgorithm;
-	BookSearch* searchAlgorithm;
 
 public:
 	DisplaySystem();
