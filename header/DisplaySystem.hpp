@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __DISPLAYSSYTEM_H
 #define __DISPLAYSSYSTEM_H
 #include "BookSort.hpp"
