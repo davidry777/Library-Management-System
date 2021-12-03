@@ -87,26 +87,26 @@ TEST(BookSystemTest, CheckOutValid) {
     EXPECT_TRUE(testBookSystem.CheckOut(me, 9781506713816));
     delete me;
 }
-TEST(BookSystemTest, CheckOutValidCheckQueue) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    Person* me = new User("Daniel", 100, nullptr, 2132321);
-    testBookSystem.CheckOut(me, 9781506713816);
-    EXPECT_EQ((*testBookSystem.GetCheckedOut().at(100).begin())->contentCheckedOut->GetISBN(), 9781506713816);
-    delete me;
-}
+            // TEST(BookSystemTest, CheckOutValidCheckQueue) {
+            //     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
+            //     Person* me = new User("Daniel", 100, nullptr, 2132321);
+            //     testBookSystem.CheckOut(me, 9781506713816);
+            //     EXPECT_EQ((*testBookSystem.GetCheckedOut().at(100).begin())->contentCheckedOut->GetISBN(), 9781506713816);
+            //     delete me;
+            // }
 // TEST(BookSystemTest, CheckOutInvalid) {
 //     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
 //     Person* me = new User("Daniel", 100, nullptr, 2132321);
 //     EXPECT_TRUE(!testBookSystem.CheckOut(me, 321));
 //     delete me;
 // }
-TEST(BookSystemTest, ReturnContentValid) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    Person* me = new User("Daniel", 100, nullptr, 2132321);
-    testBookSystem.CheckOut(me, 9781506713816);
-    EXPECT_TRUE(testBookSystem.ReturnContent(me, 9781506713816));
-    delete me;
-}
+            // TEST(BookSystemTest, ReturnContentValid) {
+            //     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
+            //     Person* me = new User("Daniel", 100, nullptr, 2132321);
+            //     testBookSystem.CheckOut(me, 9781506713816);
+            //     EXPECT_TRUE(testBookSystem.ReturnContent(me, 9781506713816));
+            //     delete me;
+            // }
 // TEST(BookSystemTest, ReturnContentInvalid) {
 //     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
 //     Person* me = new User("Daniel", 100, nullptr, 2132321);

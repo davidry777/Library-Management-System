@@ -26,7 +26,7 @@ class CheckOutData;
 class BookSystem {
     private:
         std::unordered_map<long long, Content*> catalogue;
-        std::unordered_map<int, std::set<CheckOutData*>> checkedOut;
+        std::unordered_map<int, std::set<CheckOutData>> checkedOut;
 
         std::string catalogueFile; 
         std::string checkedOutFile;
@@ -34,7 +34,7 @@ class BookSystem {
         int maximumSeconds;
 
         void DeallocateContent(Content* content);
-        bool FindInCheckedOutSet(std::set<CheckOutData*> userSet, long long ISBN);
+        bool FindInCheckedOutSet(std::set<CheckOutData> userSet, long long ISBN);
     public:
         BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
         ~BookSystem();
@@ -45,7 +45,7 @@ class BookSystem {
 
         void LoadCheckedOut(std::unordered_map<int, Person *>);
         void SaveCheckedOut(std::string file = "null");
-        std::unordered_map<int, std::set<CheckOutData*>>& GetCheckedOut();
+        std::unordered_map<int, std::set<CheckOutData>>& GetCheckedOut();
 
 
         Content* GetContent(long long ISBN);
