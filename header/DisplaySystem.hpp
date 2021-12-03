@@ -11,8 +11,6 @@ class DisplaySystem {
 private:
 
 public:
-	DisplaySystem();
-	~DisplaySystem();
 	void DisplayBooks(std::unordered_map<long long, Content*>);
 	void DisplayBooks(std::vector<Content*>);
 	void DisplayBooks(std::vector<CheckOutData*>);
