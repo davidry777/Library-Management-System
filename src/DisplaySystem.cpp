@@ -5,18 +5,6 @@
 #include "../header/ISBNSearch.hpp"
 #include "../header/KeyWordSearch.hpp"
 
-DisplaySystem::DisplaySystem() 
-{ 
-	searchAlgorithm = nullptr;
-	sortAlgorithm = nullptr;
-}
-
-DisplaySystem::~DisplaySystem()
-{
-	delete searchAlgorithm;
-	delete sortAlgorithm;
-}
-
 void DisplaySystem::DisplayBooks(std::unordered_map<long long, Content*> catalogue)
 {
 	//I need to rewrite this
