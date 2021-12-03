@@ -34,8 +34,19 @@ void User::DisplayCheckOut()
     checkoutOutput.DisplayBooks(checkedOut);
 }
 
-void User::SetCheckedOutData(vector<CheckOutData*> data) { this->checkedOut = data; }
+void User::SetCheckedOutData(vector<CheckOutData> data) { checkedOut = data; }
 
-vector<CheckOutData*> User::GetCheckedOut() { return checkedOut; }
+vector<CheckOutData> User::GetCheckedOut() { return checkedOut; }
 
-void User::AddCheckOutData(CheckOutData* newCheckedOutBook) { checkedOut.push_back(newCheckedOutBook); }
+void User::AddCheckOutData(CheckOutData data) { checkedOut.push_back(data); }
+
+void User::RemoveCheckOutData(CheckOutData data) 
+{
+    std::vector<CheckOutData>::iterator it = find(checkedOut.begin(), checkedOut.end(), data);
+ 
+    // If element was found
+    if (it != v.end())
+        checkedOut.erase(it);
+    else
+        std::cout << "ERROR: Checked Out Book Not Found" << std::endl;
+}

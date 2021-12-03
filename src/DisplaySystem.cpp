@@ -22,11 +22,11 @@ void DisplaySystem::DisplayBooks(std::vector<Content*> catalogue)
 	}
 }
 
-void DisplaySystem::DisplayBooks(std::vector<CheckOutData*> checkOut)
+void DisplaySystem::DisplayBooks(std::vector<CheckOutData> checkOut)
 {
-	for(CheckOutData* c : checkOut)
+	for(CheckOutData c : checkOut)
 	{
-		std::cout << (c->contentCheckedOut)->Display() << std::endl;
+		std::cout << (c.contentCheckedOut)->Display() << std::endl;
 	}
 }
 void DisplaySystem::DisplayBooks(char choice, std::string genre, std::unordered_map<long long, Content*> catalogue)
