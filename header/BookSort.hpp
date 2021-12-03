@@ -9,8 +9,8 @@ class BookSort {
  private:
 
  public:
-	std::vector<Content*> SortBooks(std::unordered_map<long long, Content*>) = 0;
-	std::vector<Content*> SortBooks(std::vector<CheckOutData*>) = 0;
+	std::vector<Content*> SortBooks(std::unordered_map<long long, Content*>);
+	std::vector<Content*> SortBooks(std::vector<CheckOutData*>);
 	std::vector<Content*> MapToVector(std::unordered_map<long long, Content*> catalogue)
 	{
 		std::vector<Content*> mapped;
