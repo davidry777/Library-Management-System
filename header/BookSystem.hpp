@@ -36,6 +36,7 @@ class BookSystem {
         void DeallocateContent(Content* content);
         bool FindInCheckedOutSet(std::set<CheckOutData> userSet, long long ISBN);
     public:
+        BookSystem() = default;
         BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
         ~BookSystem();
 

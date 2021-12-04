@@ -16,13 +16,14 @@ class UserSystem {
 	private:
 		std::unordered_map<int, Person*> people;
 	public:
+		UserSystem() = default;
 		UserSystem(string peopleInput, BookSystem* bs);
 		~UserSystem();
 		std::unordered_map<int, Person*>& GetMap();
 		Person* GetPerson(int ID);
     void AddPerson(LoginSystem *logSys, Person *person);
 		void SaveUserData(std::string userInfo);
-    void AddCheckedOut(unordered_map<int, set<CheckOutData*>> checkedOut);
+    void AddCheckedOut(unordered_map<int, set<CheckOutData>> checkedOut);
 };
 
 #endif

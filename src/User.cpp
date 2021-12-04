@@ -45,7 +45,7 @@ void User::RemoveCheckOutData(CheckOutData data)
     std::vector<CheckOutData>::iterator it = find(checkedOut.begin(), checkedOut.end(), data);
  
     // If element was found
-    if (it != v.end())
+    if (it != checkedOut.end())
         checkedOut.erase(it);
     else
         std::cout << "ERROR: Checked Out Book Not Found" << std::endl;

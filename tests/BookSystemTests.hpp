@@ -83,8 +83,12 @@ using namespace std;
 // }
 TEST(BookSystemTest, CheckOutValid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    Person* me = new User("Daniel", 100, nullptr, 2132321);
+    User* me = new User("Daniel", 100, nullptr, 2132321);
     EXPECT_TRUE(testBookSystem.CheckOut(me, 9781506713816));
+    for (auto dat : me->GetCheckedOut()) {
+        cout << "user address: " << dat.userCheckedOut << "\nbook address" << dat.contentCheckedOut << endl;
+    }
+    cout << "deleting user: " << me << endl;
     delete me;
 }
             // TEST(BookSystemTest, CheckOutValidCheckQueue) {
