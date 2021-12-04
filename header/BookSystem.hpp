@@ -26,7 +26,7 @@ class CheckOutData;
 class BookSystem {
     private:
         std::unordered_map<long long, Content*> catalogue;
-        std::unordered_map<int, std::set<CheckOutData*>> checkedOut;
+        std::unordered_map<int, std::set<CheckOutData>> checkedOut;
 
         std::string catalogueFile; 
         std::string checkedOutFile;
@@ -34,28 +34,29 @@ class BookSystem {
         int maximumSeconds;
 
         void DeallocateContent(Content* content);
-        bool FindInCheckedOutSet(std::set<CheckOutData*> userSet, long long ISBN);
+        bool FindInCheckedOutSet(std::set<CheckOutData> userSet, long long ISBN);
     public:
+        BookSystem() = default;
         BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
         ~BookSystem();
 
-        void LoadCatalogue();
-        void SaveCatalogue(std::string file = "null");
-        std::unordered_map<long long, Content*>& GetCatalogue();
-
-        void LoadCheckedOut(std::unordered_map<int, Person *>);
-        void SaveCheckedOut(std::string file = "null");
-        std::unordered_map<int, std::set<CheckOutData*>>& GetCheckedOut();
-
-
-        Content* GetContent(long long ISBN);
         bool AddContent(Content* content);
-        bool RemoveContent(long long ISBN);
         bool MakeBundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<Content*>& contents);
+        bool RemoveContent(long long ISBN);
 
         bool CheckOut(Person* person, long long ISBN);
         bool ReturnContent(Person* person, long long ISBN);
         void CheckExpiration();
+
+        std::unordered_map<long long, Content*>& GetCatalogue();
+        std::unordered_map<int, std::set<CheckOutData>>& GetCheckedOut();
+        Content* GetContent(long long ISBN);
+
+        void LoadCatalogue();
+        void SaveCatalogue(std::string file = "null");
+
+        void LoadCheckedOut(std::unordered_map<int, Person *>);
+        void SaveCheckedOut(std::string file = "null");
 };
 
 #endif //__BOOKSYSTEM_HPP__

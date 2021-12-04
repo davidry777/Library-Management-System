@@ -1,28 +1,23 @@
 #include "../header/LibrarySystem.hpp"
 
 LibrarySystem::LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& peopleInput) {
-    this->bookSystem = new BookSystem(catalogueFile, checkedOutFile);
-    this->userSystem = new UserSystem(peopleInput, this->bookSystem);
-    this->bookSystem->LoadCheckedOut(this->userSystem->GetMap());
-    this->userSystem->AddCheckedOut(this->bookSystem->GetCheckedOut());
+    this->bookSystem = BookSystem(catalogueFile, checkedOutFile);
+    this->userSystem = UserSystem(peopleInput, &this->bookSystem);
+    this->bookSystem.LoadCheckedOut(this->userSystem.GetMap());
+    this->userSystem.AddCheckedOut(this->bookSystem.GetCheckedOut());
 }
 
 LibrarySystem::LibrarySystem(const std::string& catalogueFile, const std::string& checkedOutFile, const std::string& peopleInput, int checkoutTime) {
-    this->bookSystem = new BookSystem(catalogueFile, checkedOutFile, checkoutTime);
-    this->userSystem = new UserSystem(peopleInput, this->bookSystem);
-    this->bookSystem->LoadCheckedOut(this->userSystem->GetMap());
-    this->userSystem->AddCheckedOut(this->bookSystem->GetCheckedOut());
+    this->bookSystem = BookSystem(catalogueFile, checkedOutFile, checkoutTime);
+    this->userSystem = UserSystem(peopleInput, &this->bookSystem);
+    this->bookSystem.LoadCheckedOut(this->userSystem.GetMap());
+    this->userSystem.AddCheckedOut(this->bookSystem.GetCheckedOut());
 }
 
-LibrarySystem::~LibrarySystem() {
-    delete this->userSystem;
-    delete this->bookSystem;
-}
-
-UserSystem* LibrarySystem::GetUserSystem() {
+UserSystem LibrarySystem::GetUserSystem() {
     return this->userSystem;
 }
 
-BookSystem* LibrarySystem::GetBookSystem() {
+BookSystem LibrarySystem::GetBookSystem() {
     return this->bookSystem;
 }

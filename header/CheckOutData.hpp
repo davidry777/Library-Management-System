@@ -18,6 +18,9 @@ struct CheckOutData {
     bool operator<(const CheckOutData& rhs) const {
         return this->timeCheckedOut < rhs.timeCheckedOut;
     }
+    bool operator==(const CheckOutData& rhs) const {
+        return this->timeCheckedOut == rhs.timeCheckedOut && this->overTime == rhs.overTime && this->timeCheckedOut == rhs.timeCheckedOut && this->userCheckedOut == rhs.userCheckedOut;
+    }
 };
 
 #endif	//__CHECKOUTDATA_HPP__
