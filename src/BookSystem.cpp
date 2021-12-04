@@ -6,12 +6,9 @@ using namespace std;
 BookSystem::BookSystem(const string& catF, const string& coF, int maxSecs) : catalogueFile(catF), checkedOutFile(coF), maximumSeconds(maxSecs) {
     LoadCatalogue();
 }
-
 BookSystem::~BookSystem() {
-    for (pair<long long, Content*> content : this->catalogue) {
-        cout << "deleting book: " << content.second << endl;
+    for (pair<long long, Content*> content : this->catalogue)
         DeallocateContent(content.second);
-    }
 }
 void BookSystem::DeallocateContent(Content* content) {
     if (content->GetType() == "Bundle")
@@ -165,7 +162,6 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
                 return false;
             }
         }
-        cout << "person address: " << person << endl;
         this->catalogue.at(ISBN)->AddFrequency();
         CheckOutData data(time(0), this->catalogue.at(ISBN), person);
         if (this->checkedOut.find(person->GetId()) == this->checkedOut.end())
@@ -173,18 +169,19 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
         else
             this->checkedOut.at(person->GetId()).insert(data);
         User* personUser = dynamic_cast<User*>(person);
-        cout << "user address: " << personUser << endl;
         personUser->AddCheckOutData(data);
     }
-    else
+    else {
         std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
+        return false;
+    }
     return true;
 }
 bool BookSystem::ReturnContent(Person* person, long long ISBN) {
     if (checkedOut.find(person->GetId()) != checkedOut.end() && this->catalogue.find(ISBN) != this->catalogue.end()) {
         for (set<CheckOutData>::iterator it = checkedOut.at(person->GetId()).begin(); it != checkedOut.at(person->GetId()).end(); ++it) {
             if ((*it).contentCheckedOut->GetISBN() == ISBN) {
-                CheckOutData temp = (*it);
+                cout << "returning " << (*it).contentCheckedOut->GetISBN() << endl;
                 if (this->checkedOut.at(person->GetId()).size() == 1)
                     this->checkedOut.erase(person->GetId());
                 else
