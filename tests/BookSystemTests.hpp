@@ -9,27 +9,14 @@ using namespace std;
 
 TEST(BookSystemTest, Constructor) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "none");
-    EXPECT_TRUE(testBookSystem.GetCatalogue().size() != 0);
+    EXPECT_TRUE(testBookSystem.GetCatalogue().size() == 4);
 }
 TEST(BookSystemTest, GetContentValid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "none");
-    EXPECT_TRUE(testBookSystem.GetContent(9781612626864) != nullptr);
-}
-TEST(BookSystemTest, GetContentValidAuthor) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "none");
-    EXPECT_EQ(testBookSystem.GetContent(9781612626864)->GetAuthor(), "Hajime Isayama");
-}
-TEST(BookSystemTest, GetContentValidFrequency) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "none");
-    EXPECT_EQ(testBookSystem.GetContent(9781612626864)->GetFrequency(), 0);
-}
-TEST(BookSystemTest, GetContentValidGenre) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "none");
-    EXPECT_EQ(testBookSystem.GetContent(9781612626864)->GetGenre(), "Fantasy");
-}
-TEST(BookSystemTest, GetContentValidTitle) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "none");
-    EXPECT_EQ(testBookSystem.GetContent(9781612626864)->GetTitle(), "Attack on Titan: Volume 13");
+    EXPECT_TRUE(testBookSystem.GetContent(9781506713816)->GetTitle() == "The Art of Super Mario Odyssey" &&
+                testBookSystem.GetContent(9781506713816)->GetISBN() == 9781506713816 &&
+                testBookSystem.GetContent(9781506713816)->GetGenre() == "Activities" &&
+                testBookSystem.GetContent(9781506713816)->GetAuthor() == "Nintendo");
 }
 TEST(BookSystemTest, GetContentInvalid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "none");
@@ -38,28 +25,14 @@ TEST(BookSystemTest, GetContentInvalid) {
 TEST(BookSystemTest, AddContentValid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
     testBookSystem.AddContent(new Book("Harry Potter and the Sorcerer's Stone", 9780439362139, "Fantasy", "J. K. Rowling"));
-    EXPECT_TRUE(testBookSystem.GetContent(9780439362139) != nullptr);
-}
-TEST(BookSystemTest, AddContentValidTitle) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    testBookSystem.AddContent(new Book("Harry Potter and the Sorcerer's Stone", 9780439362139, "Fantasy", "J. K. Rowling"));
-    EXPECT_EQ(testBookSystem.GetContent(9780439362139)->GetTitle(), "Harry Potter and the Sorcerer's Stone");
+    EXPECT_TRUE(testBookSystem.GetContent(9780439362139)->GetTitle() == "Harry Potter and the Sorcerer's Stone" &&
+                testBookSystem.GetContent(9780439362139)->GetISBN() == 9780439362139 &&
+                testBookSystem.GetContent(9780439362139)->GetGenre() == "Fantasy" &&
+                testBookSystem.GetContent(9780439362139)->GetAuthor() == "J. K. Rowling");
 }
 TEST(BookSystemTest, AddContentInvalid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    Content* newBook = new Book("Harry Potter and the Sorcerer's Stone", 9781612626864, "Fantasy", "J. K. Rowling");
-    bool added = testBookSystem.AddContent(newBook);
-    EXPECT_FALSE(added);
-}
-TEST(BookSystemTest, RemoveContentValid) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    testBookSystem.RemoveContent(9781612626864);
-    EXPECT_TRUE(testBookSystem.GetContent(9781612626864) == nullptr);
-}
-TEST(BookSystemTest, RemoveContentInvalid) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    bool added = testBookSystem.RemoveContent(123);
-    EXPECT_FALSE(added);
+    EXPECT_FALSE(testBookSystem.AddContent(new Book("Harry Potter and the Sorcerer's Stone", 9781612626864, "Fantasy", "J. K. Rowling")));
 }
 TEST(BookSystemTest, MakeBundleValid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
@@ -68,18 +41,45 @@ TEST(BookSystemTest, MakeBundleValid) {
 }
 TEST(BookSystemTest, MakeBundleInvalid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    bool added = testBookSystem.MakeBundle("Combo", 9781506713816, "variety", {new Book("test", 2, "fantasy", "me"), new Book("test", 3, "fantasy", "me")});
-    EXPECT_FALSE(added);
+    EXPECT_FALSE(testBookSystem.MakeBundle("Combo", 9781506713816, "variety", {new Book("test", 2, "fantasy", "me"), new Book("test", 3, "fantasy", "me")}));
 }
 TEST(BookSystemTest, MakeBundleOfBundle) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
     testBookSystem.MakeBundle("Bundle1", 123456, "variety", {new Bundle("InnerBundle", 10, "genre", {new Book("test", 3, "fantasy", "me")})});
     EXPECT_TRUE(testBookSystem.GetContent(123456) != nullptr);
 }
+TEST(BookSystemTest, RemoveContentBookValid) {
+    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
+    testBookSystem.RemoveContent(9781612626864);
+    EXPECT_TRUE(testBookSystem.GetContent(9781612626864) == nullptr);
+}
+TEST(BookSystemTest, RemoveContentBundleValid) {
+    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
+    testBookSystem.MakeBundle("Combo", 1, "variety", {new Book("test", 2, "fantasy", "me"),
+                                                      new Book("test", 3, "fantasy", "me")
+                                                     }
+                             );
+    testBookSystem.RemoveContent(1);
+    EXPECT_TRUE(testBookSystem.GetContent(1) == nullptr);
+}
+TEST(BookSystemTest, RemoveContentInvalid) {
+    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
+    bool added = testBookSystem.RemoveContent(123);
+    EXPECT_FALSE(added);
+}
 TEST(BookSystemTest, MakeBundleOfBundleAuthors) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    testBookSystem.MakeBundle("Bundle1", 123456, "variety", {new Bundle("InnerBundle", 10, "genre", {new Book("test", 3, "fantasy", "me")})});
-    EXPECT_EQ(testBookSystem.GetContent(123456)->GetAuthor(), "me");
+    testBookSystem.MakeBundle("Bundle1", 1, "variety", {new Bundle("InnerBundle", 2, "genre", {
+                                                            new Book("test", 3, "fantasy", "Daniel"),
+                                                            new Book("test", 4, "fantasy", "Gwen")
+                                                            }),
+                                                        new Bundle("InnerBundle", 5, "genre", {
+                                                            new Book("test", 6, "fantasy", "David"), 
+                                                            new Book("test", 7, "fantasy", "Jason")
+                                                            })
+                                                        }
+                            );
+    EXPECT_EQ(testBookSystem.GetContent(1)->GetAuthor(), "Daniel, Gwen, David, Jason");
 }
 TEST(BookSystemTest, CheckOutValid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");

@@ -13,8 +13,11 @@ BookSystem::~BookSystem() {
 void BookSystem::DeallocateContent(Content* content) {
     if (content->GetType() == "Bundle")
         delete dynamic_cast<Bundle*>(content);
-    else
+    else if (content->GetType() == "Book")
         delete content;
+    else {
+        cout << "error. object not defined" << endl;
+    }
 }
 void BookSystem::SaveCatalogue(string file) {
     if (file == "null")
@@ -136,9 +139,8 @@ bool BookSystem::MakeBundle(const std::string& title, long long ISBN, const std:
 }
 bool BookSystem::RemoveContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
-        Content* temp = this->catalogue.at(ISBN);
+        DeallocateContent(this->catalogue.at(ISBN));
         this->catalogue.erase(ISBN);
-        delete temp;
         return true;
     }
     std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;

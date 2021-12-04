@@ -21,6 +21,7 @@ std::string Bundle::GetAuthor() {
 
 Bundle::~Bundle() {
     for (Content* content : this->contentList) {
+        std::cout << "deleting: " << content->GetISBN() << std::endl;
         if (content->GetType() == "Bundle")
             delete dynamic_cast<Bundle*>(content);
         else
