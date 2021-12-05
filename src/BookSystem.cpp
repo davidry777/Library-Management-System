@@ -199,8 +199,9 @@ bool BookSystem::ReturnContent(Person* person, long long ISBN) {
 void BookSystem::CheckExpiration() {
     for (pair<int, vector<CheckOutData*>> dataPair : this->checkedOut) {
         for (CheckOutData* data : dataPair.second) {
-            if (time(0) - data->timeCheckedOut >= maximumSeconds) {
+            if (time(0) - data->timeCheckedOut >= maximumSeconds && data->overTime == false) {
                 data->overTime = true;
+                dynamic_cast<User*>(data->userCheckedOut)->PayBalance(-10);
             }
         }
     }

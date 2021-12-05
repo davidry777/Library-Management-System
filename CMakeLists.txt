@@ -7,7 +7,7 @@ SET(CMAKE_CXX_STANDARD 11)
 ADD_SUBDIRECTORY(googletest)
 
 ADD_EXECUTABLE(main
-    main.cpp
+    src/main.cpp
     src/Book.cpp
     src/Bundle.cpp
     src/BookSystem.cpp
@@ -16,7 +16,6 @@ ADD_EXECUTABLE(main
     src/LibrarySystem.cpp
     src/LoginSystem.cpp
     src/UserSystem.cpp
-    
     src/AlphabeticalSort.cpp
     src/DisplaySystem.cpp
     src/FrequencySort.cpp

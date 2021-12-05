@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <string>
 
@@ -15,30 +13,64 @@
 
 using namespace std;
 
+bool GetLongInput(long long& num) {
+    long long n;
+    if (!(cin >> n)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
+    }
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    num = n;
+    return true;
+}
+bool GetIntInput(int& num) {
+    int n;
+    if (!(cin >> n)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
+    }
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    num = n;
+    return true;
+}
+
+bool IsDigitString(const string& str) {
+    for (char ch : str)
+        if (!isdigit(ch))
+            return false;
+    return true;
+}
+
 void PrintUserInfo(User* user) {
     user->GetInfo();
 }
 
 void CheckoutBook(User* person) {
-    long long isbn = -1;
-
-    std::cout << "Enter ISBN13 number to checkout out a book: " << std::endl;
-    std::cin >> isbn;
-    std::cout << std::endl;
-
-    std::cout << "Checking Out Book..." << std::endl;
+    long long isbn;
+    std::cout << "Enter ISBN13 number to check out a book:\n > ";
+    if (!GetLongInput(isbn)) {
+        cout << "Invalid input! Only input a number.";
+        return;
+    }
+    std::cout << "Checking out book..." << std::endl;
     person->CheckoutBook(isbn);
+    std::cout << "Book checked out!" << std::endl;
 }
 
 void ReturnBook(User* person) {
-    long long isbn = -1;
-
-    std::cout << "Enter ISBN13 number to return a book: " << std::endl;
-    std::cin >> isbn;
-    std::cout << std::endl;
-
+    long long isbn;
+    std::cout << "Enter ISBN13 number to return a book:\n > ";
+    if (!GetLongInput(isbn)) {
+        cout << "Invalid input! Only input a number.";
+        return;
+    }
     std::cout << "Returning book..." << std::endl;
     person->ReturnBook(isbn);
+    std::cout << "Book returned!" << std::endl;
 }
 
 void ShowDebt(User* person) {
@@ -46,12 +78,12 @@ void ShowDebt(User* person) {
 }
 
 void PayDebt(User* person) {
-    int money = 0;
-
-    std::cout << "Enter how much money you want to pay off: " << std::endl;
-    std::cin >> money;
-    std::cout << std::endl;
-
+    int money;
+    std::cout << "Enter how much money you want to pay off:\n > ";
+    if (!GetIntInput(money)) {
+        cout << "Invalid input! Only input a number.";
+        return;
+    }
     std::cout << "Paying off $" << money << std::endl;
     person->PayBalance(money);
 }
@@ -66,27 +98,18 @@ void PrintLibrarianInfo(Librarian* person) {
     person->GetInfo();
 }
 
-bool IsDigitString(const string& str) {
-    for (char ch : str)
-        if (!isdigit(ch))
-            return false;
-    return true;
-}
-
 void AddBook(Librarian* person) {
-    std::string title, genre, author, isbnStr;
+    std::string title, genre, author, isbnStr = "a";
     long long isbn;
 
     std::cout << "Enter title for new book:\n > ";
-    getline(cin, title);
+    getline(cin, title);    
     
-    while (true) {
-        std::cout << "Enter ISBN for " << title << ":\n > ";
-        getline(cin, isbnStr);
-        if (IsDigitString(isbnStr))
-            break;
+    std::cout << "Enter ISBN for " << title << ":\n > ";
+    if (!GetLongInput(isbn)) {
+        cout << "Invalid input! Only input a number.";
+        return;
     }
-    isbn = stoll(isbnStr);
 
     std::cout << "Enter genre for " << title << ":\n > ";
     getline(cin, genre);
@@ -94,28 +117,28 @@ void AddBook(Librarian* person) {
     getline(cin, author);
 
     Book* newBook = new Book(title, isbn, genre, author, 0);
+    person->AddBook(newBook);
     std::cout << title << " added to Librarian " << person->GetName() << "'s library" << std::endl;
 }
 
 void RemoveBook(Librarian* person) {
     long long isbn = -1;
 
-    std::cout << "Enter ISBN13 number to remove out a book: " << std::endl;
-    std::cin >> isbn;
-    std::cout << std::endl;
+    std::cout << "Enter ISBN13 number to remove out a book:\n > ";
+    if (!GetLongInput(isbn)) {
+        cout << "Invalid input! Only input a number.";
+        return;
+    }
 
     std::cout << "Removing book..." << std::endl;
     person->RemoveBook(isbn);
 }
 
-bool Login(int id, std::string &password, LoginSystem *logSys) {
-    return logSys->LoginVerify(id, password);
-}
-
 void PrintLoginMenu() {
     std::cout << "/------------------- Main Menu ---------------------/" << std::endl;
     std::cout << "/           1. Log In                               /" << std::endl;
-    std::cout << "/           2. Exit Program                         /" << std::endl;
+    std::cout << "/           2. Register an Account                  /" << std::endl;
+    std::cout << "/           3. Exit Program                         /" << std::endl;
     std::cout << "/---------------------------------------------------/" << std::endl;
     std::cout << "Type an option (1-2):\n > ";
 }
@@ -183,12 +206,12 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	}
 	if(input == 3)
 	{
-		std::cout << "Enter the ISBN you would like to search for: ";
-		std::getline(std::cin, sinput);
-		if(choice == 1)
-			display->DisplayBooks('3', ntinput, library->GetBookSystem().GetUserCheckedOut(person));
-		if(choice == 2)
-			display->DisplayBooks('3', ntinput, library->GetBookSystem().GetCatalogue());
+		// std::cout << "Enter the ISBN you would like to search for: ";
+		// std::getline(std::cin, sinput);
+		// if(choice == 1)
+		// 	display->DisplayBooks('3', ntinput, library->GetBookSystem().GetUserCheckedOut(person));
+		// if(choice == 2)
+		// 	display->DisplayBooks('3', ntinput, library->GetBookSystem().GetCatalogue());
 	}
 	if(input == 4)
 	{
@@ -254,30 +277,35 @@ int main() {
     LibrarySystem lib("program_files/catalogue.json", "program_files/checked_out.json", "program_files/userInfo.json");
     Person* currPerson = nullptr;
     string input;
+    bool loggedIn = false;
 
     while (true) { 
         PrintLoginMenu();
         getline(cin, input);
-        if (input != "1" || input != "2") { continue; }
-        if (input == "2") { break; }
-        /*
-        Login System Here
-        Set currPerson
-        */
-        if (dynamic_cast<User*>(currPerson) != nullptr) {
-            while (input != "-1") {
-                PrintMenu(dynamic_cast<User*>(currPerson));
-                getline(cin, input);
-                ExecuteCommand(dynamic_cast<User*>(currPerson), input);
-            }
+        if (input != "1" || input != "2" || input != "3") { continue; }
+        if (input == "3") { break; }
+        if (input == "1") {
+            // LogIn System here
+            // If Log In was successful, set loggedIn = true
         }
-        else if (dynamic_cast<Librarian*>(currPerson) != nullptr) {
-            while (input != "-1") {
-                PrintMenu(dynamic_cast<Librarian*>(currPerson));
-                getline(cin, input);
-                ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input);
-            }
+        else if (input == "2") {
+            // Register System here
         }
+        if (loggedIn) {
+            if (dynamic_cast<User*>(currPerson) != nullptr)
+                while (input != "-1") {
+                    PrintMenu(dynamic_cast<User*>(currPerson));
+                    getline(cin, input);
+                    ExecuteCommand(dynamic_cast<User*>(currPerson), input);
+                }
+            else if (dynamic_cast<Librarian*>(currPerson) != nullptr)
+                while (input != "-1") {
+                    PrintMenu(dynamic_cast<Librarian*>(currPerson));
+                    getline(cin, input);
+                    ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input);
+                }
+        }
+        loggedIn = false;
     }
     cout << "Saving. Do not exit program." << endl;
     lib.GetBookSystem().SaveCatalogue();
