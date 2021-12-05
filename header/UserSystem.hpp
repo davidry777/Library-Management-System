@@ -23,7 +23,7 @@ class UserSystem {
 		Person* GetPerson(int ID);
     void AddPerson(LoginSystem *logSys, Person *person);
 		void SaveUserData(std::string userInfo);
-    void AddCheckedOut(unordered_map<int, set<CheckOutData>> checkedOut);
+    void AddCheckedOut(const unordered_map<int, vector<CheckOutData>>& checkedOut);
 };
 
 #endif
