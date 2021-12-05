@@ -32,7 +32,7 @@ TEST(PersonTest, GetPassword)
 
 TEST(PersonTest, GetBookSystem)
 {
-    BookSystem* setBookSys = new BookSystem("../tests/test_catalogue.json", "none");
+    BookSystem* setBookSys = new BookSystem("../tests/test_files/test_catalogue.json", "none");
     User user("Jason Giese", 28956, setBookSys, 830264);
     EXPECT_TRUE(user.GetBookSys() == setBookSys);
     delete setBookSys;
@@ -64,7 +64,7 @@ TEST(UserTest, RemovedDebt)
 
 TEST(LibrarianTest, AddingBook)
 {
-    BookSystem* setBookSys = new BookSystem("../tests/test_catalogue.json", "none");
+    BookSystem* setBookSys = new BookSystem("../tests/test_files/test_catalogue.json", "none");
     Librarian librarian("Gwen Kiler", 78094, setBookSys, 403501);
     Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
     librarian.AddBook(book);
@@ -74,7 +74,7 @@ TEST(LibrarianTest, AddingBook)
 
 TEST(LibrarianTest, RemovingBook)
 {
-    BookSystem* setBookSys = new BookSystem("../tests/test_catalogue.json", "none");
+    BookSystem* setBookSys = new BookSystem("../tests/test_files/test_catalogue.json", "none");
     Librarian librarian("Gwen Kiler", 78094, setBookSys, 403501);
     Book* book = new Book("How to be a CS God", 9784567290812, "Non Fiction", "David Ryan", 0);
     librarian.AddBook(book);
@@ -86,7 +86,7 @@ TEST(LibrarianTest, RemovingBook)
 TEST(LibrarianTest, SettingBookSystem)
 {
     Librarian librarian("Gwen Kiler", 78094, nullptr, 403501);
-    BookSystem* setBookSys = new BookSystem("../tests/test_catalogue.json", "none");
+    BookSystem* setBookSys = new BookSystem("../tests/test_files/test_catalogue.json", "none");
     librarian.SetBookSys(setBookSys);
     EXPECT_EQ(librarian.GetBookSys(), setBookSys);
     delete setBookSys;
