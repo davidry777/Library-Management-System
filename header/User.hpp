@@ -15,7 +15,6 @@ using namespace std;
 
 class User : public Person {
     private:
-        std::vector<CheckOutData*> checkedOut;
         int debt;
     public:
         User(std::string name, int id, BookSystem* books, int hashedPassword);
@@ -26,10 +25,6 @@ class User : public Person {
         int GetBalance();
         void PayBalance(int cash);
         void DisplayCheckOut();
-        void SetCheckedOutData(vector<CheckOutData*> data);
-        vector<CheckOutData*> GetCheckedOut();
-        void AddCheckOutData(CheckOutData*);
-        void RemoveCheckOutData(CheckOutData*);
 };
 
 #endif //__USER_HPP__

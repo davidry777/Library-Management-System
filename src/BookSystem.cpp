@@ -9,6 +9,9 @@ BookSystem::BookSystem(const string& catF, const string& coF, int maxSecs) : cat
 BookSystem::~BookSystem() {
     for (pair<long long, Content*> content : this->catalogue)
         DeallocateContent(content.second);
+    for (pair<int, std::vector<CheckOutData*>> dataPair : this->checkedOut)
+        for (CheckOutData* data : dataPair.second)
+            delete data;
 }
 void BookSystem::DeallocateContent(Content* content) {
     if (content->GetType() == "Bundle")
@@ -61,12 +64,12 @@ void BookSystem::SaveCheckedOut(string file) {
     json checkedOutJSON;
 
     int i = 0;
-    for (pair<int, std::vector<CheckOutData>> dataPair : this->checkedOut) {
-        for (CheckOutData &data : dataPair.second) {
-            checkedOutJSON[i]["time"] = data.timeCheckedOut;
-            checkedOutJSON[i]["content_isbn"] = data.contentCheckedOut->GetISBN();
-            checkedOutJSON[i]["over_time"] = data.overTime;
-            checkedOutJSON[i]["user_id"] = data.userCheckedOut->GetId();
+    for (pair<int, std::vector<CheckOutData*>> dataPair : this->checkedOut) {
+        for (CheckOutData* &data : dataPair.second) {
+            checkedOutJSON[i]["time"] = data->timeCheckedOut;
+            checkedOutJSON[i]["content_isbn"] = data->contentCheckedOut->GetISBN();
+            checkedOutJSON[i]["over_time"] = data->overTime;
+            checkedOutJSON[i]["user_id"] = data->userCheckedOut->GetId();
         }
         ++i;
     }
@@ -97,7 +100,7 @@ void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
         }
         Person* dataUser = us.at(data["user_id"]);
         bool dataOvertime = data["over_time"];
-        CheckOutData newData(dataTime, dataContent, dataUser, dataOvertime);
+        CheckOutData* newData = new CheckOutData(dataTime, dataContent, dataUser, dataOvertime);
         if (this->checkedOut.find(dataUser->GetId()) == this->checkedOut.end())
             this->checkedOut.insert({dataUser->GetId(), {newData}});
         else
@@ -114,7 +117,7 @@ Content* BookSystem::GetContent(long long ISBN) {
     std::cout << "Error finding ISBN. ISBN number " << ISBN << " does not exist in catalogue!" << std::endl;
     return nullptr;
 }
-unordered_map<int, std::vector<CheckOutData>>& BookSystem::GetCheckedOut() {
+unordered_map<int, std::vector<CheckOutData*>>& BookSystem::GetCheckedOut() {
     return this->checkedOut;
 }
 bool BookSystem::AddContent(Content* content) {
@@ -146,9 +149,9 @@ bool BookSystem::RemoveContent(long long ISBN) {
     std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
     return false;
 }
-bool BookSystem::FindInCheckedOutVec(vector<CheckOutData>& userVec, long long ISBN) {
-    for (CheckOutData &data : userVec)
-        if (data.contentCheckedOut->GetISBN())
+bool BookSystem::FindInCheckedOutVec(vector<CheckOutData*>& userVec, long long ISBN) {
+    for (CheckOutData* &data : userVec)
+        if (data->contentCheckedOut->GetISBN())
             return true;
     return false;
 }
@@ -165,13 +168,11 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
             }
         }
         this->catalogue.at(ISBN)->AddFrequency();
-        CheckOutData data(time(0), this->catalogue.at(ISBN), person);
+        CheckOutData* data = new CheckOutData(time(0), this->catalogue.at(ISBN), person);
         if (this->checkedOut.find(person->GetId()) == this->checkedOut.end())
             this->checkedOut.insert({person->GetId(), {data}});
         else
             this->checkedOut.at(person->GetId()).push_back(data);
-        User* personUser = dynamic_cast<User*>(person);
-        personUser->AddCheckOutData(data);
     }
     else {
         std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
@@ -181,9 +182,9 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
 }
 bool BookSystem::ReturnContent(Person* person, long long ISBN) {
     if (checkedOut.find(person->GetId()) != checkedOut.end() && this->catalogue.find(ISBN) != this->catalogue.end()) {
-        for (vector<CheckOutData>::iterator it = checkedOut.at(person->GetId()).begin(); it != checkedOut.at(person->GetId()).end(); ++it) {
-            if ((*it).contentCheckedOut->GetISBN() == ISBN) {
-                cout << "returning " << (*it).contentCheckedOut->GetISBN() << endl;
+        for (vector<CheckOutData*>::iterator it = checkedOut.at(person->GetId()).begin(); it != checkedOut.at(person->GetId()).end(); ++it) {
+            if ((*it)->contentCheckedOut->GetISBN() == ISBN) {
+                delete (*it);
                 if (this->checkedOut.at(person->GetId()).size() == 1)
                     this->checkedOut.erase(person->GetId());
                 else
@@ -196,9 +197,17 @@ bool BookSystem::ReturnContent(Person* person, long long ISBN) {
     return false;
 }
 void BookSystem::CheckExpiration() {
-    for (pair<int, vector<CheckOutData>> dataPair : this->checkedOut) {
-        for (int i = 0; i < dataPair.second.size(); ++i)
-            if (time(0) - dataPair.second.at(i).timeCheckedOut >= maximumSeconds)
-                this->checkedOut.at(dataPair.first).at(i).overTime = true;
+    for (pair<int, vector<CheckOutData*>> dataPair : this->checkedOut) {
+        for (CheckOutData* data : dataPair.second) {
+            if (time(0) - data->timeCheckedOut >= maximumSeconds) {
+                data->overTime = true;
+            }
+        }
     }
+}
+std::vector<CheckOutData*> BookSystem::GetUserCheckedOut(Person* user) {
+    if (this->checkedOut.find(user->GetId()) != this->checkedOut.end()) {
+        return this->checkedOut.at(user->GetId());
+    }
+    return {};
 }

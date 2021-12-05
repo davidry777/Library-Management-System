@@ -25,7 +25,7 @@ class CheckOutData;
 class BookSystem {
     private:
         std::unordered_map<long long, Content*> catalogue;
-        std::unordered_map<int, std::vector<CheckOutData>> checkedOut;
+        std::unordered_map<int, std::vector<CheckOutData*>> checkedOut;
 
         std::string catalogueFile; 
         std::string checkedOutFile;
@@ -33,7 +33,7 @@ class BookSystem {
         int maximumSeconds;
 
         void DeallocateContent(Content* content);
-        bool FindInCheckedOutVec(std::vector<CheckOutData>& userVec, long long ISBN);
+        bool FindInCheckedOutVec(std::vector<CheckOutData*>& userVec, long long ISBN);
     public:
         BookSystem() = default;
         BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
@@ -48,7 +48,7 @@ class BookSystem {
         void CheckExpiration();
 
         std::unordered_map<long long, Content*>& GetCatalogue();
-        std::unordered_map<int, std::vector<CheckOutData>>& GetCheckedOut();
+        std::unordered_map<int, std::vector<CheckOutData*>>& GetCheckedOut();
         Content* GetContent(long long ISBN);
 
         void LoadCatalogue();
@@ -56,6 +56,8 @@ class BookSystem {
 
         void LoadCheckedOut(std::unordered_map<int, Person *>);
         void SaveCheckedOut(std::string file = "null");
+
+        std::vector<CheckOutData*> GetUserCheckedOut(Person* user);
 };
 
 #endif //__BOOKSYSTEM_HPP__

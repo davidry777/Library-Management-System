@@ -31,22 +31,8 @@ void User::PayBalance(int cash) { debt -= cash; }
 void User::DisplayCheckOut()
 {
     DisplaySystem checkoutOutput = DisplaySystem();
-    checkoutOutput.DisplayBooks(checkedOut);
-}
-
-void User::SetCheckedOutData(vector<CheckOutData*> data) { checkedOut = data; }
-
-vector<CheckOutData*> User::GetCheckedOut() { return checkedOut; }
-
-void User::AddCheckOutData(CheckOutData* data) { checkedOut.push_back(data); }
-
-void User::RemoveCheckOutData(CheckOutData* data) 
-{
-    std::vector<CheckOutData*>::iterator it = find(checkedOut.begin(), checkedOut.end(), data);
- 
-    // If element was found
-    if (it != checkedOut.end())
-        checkedOut.erase(it);
+    if (bookSys->GetUserCheckedOut(this).size() != 0)
+        checkoutOutput.DisplayBooks(bookSys->GetUserCheckedOut(this));
     else
-        std::cout << "ERROR: Checked Out Book Not Found" << std::endl;
+        cout << "No checked out data to display" << endl;
 }

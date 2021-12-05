@@ -14,22 +14,6 @@ Person* UserSystem::GetPerson(int ID)
 		return nullptr;
 }
 
-void UserSystem::AddCheckedOut(const unordered_map<int, vector<CheckOutData>>& checkedOut)
-{
-  for (pair<int, Person*> person : people)
-  {
-    if (dynamic_cast<User*>(person.second) != nullptr)
-    {
-      vector<CheckOutData> checkoutData;
-      for (auto book : checkedOut.at(person.first))
-			  {
-			  	checkoutData.push_back(book);
-			  }
-      dynamic_cast<User*>(person.second)->SetCheckedOutData(checkoutData);
-    }
-  }
-}
-
 UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 {
 	//import users from a file to populate the array
@@ -38,9 +22,6 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 	json readJson;
   if (people_file.is_open() == false)
     cout << "not open" << endl;
-	// json readCheckedOut;
-	// ifstream checkout(checkOut);
-	// checkout >> readCheckedOut;
 	people_file >> readJson;
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
@@ -55,23 +36,6 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 			User* tempUser = new User(name, ID, bs, hashPass);
 
 			tempUser->PayBalance(-1*debt);
-			// for (auto book : checkedOut[ID])
-			// {
-			// 	checkoutData.insert(book);
-			// }
-			
-			// dynamic_cast<User*>(tempUser)->SetCheckedOutData(checkoutData);
-
-			/*for (json::iterator ite = readJson["users"][ID].begin()+2; ite != readJson.end(); ++ite)
-			{
-				long long tempISBN = ite.key();
-				time_t tempTime = readJson["users"][ID][tempISBN]["timeCheckedOut"];
-				bool tempOver = readJson["users"][ID][tempISBN]["overTime"];
-				Content tempContent = GetContent(tempISBN);
-				CheckOutData tempData(tempTime, tempContent, tempUser);
-				checkoutData.push_back(tempData);
-			}
-			tempUser.SetCheckedOutData(checkoutData);*/
 			userMap[ID] = tempUser;
 		}
 		else
@@ -83,8 +47,7 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 	}    
 
 	this->people = userMap;
-	people_file.close();	
-  // checkout.close();
+	people_file.close();
 }
 
 UserSystem::~UserSystem() {
@@ -102,12 +65,9 @@ void UserSystem::AddPerson(LoginSystem *logSys, Person *person) {
 	this->people.insert({ person->GetId(), person });	
 }
 
-
 void UserSystem::SaveUserData(string userInfo)
 {
 	json userJson;
-
-	vector<CheckOutData> tempVec;
   int i = 0;
 	for (pair<int, Person*> kv : people)
 	{
@@ -117,15 +77,7 @@ void UserSystem::SaveUserData(string userInfo)
 		if (dynamic_cast<User*> (kv.second) != nullptr)
 		{
 			userJson[i]["debt"] = dynamic_cast<User*>(kv.second)->GetBalance();
-			//tempVec = userPerson.getCheckedOutList();
-			/*for (CheckOutData x : tempVec)
-			{
-				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["timeCheckedOut"] = (long long)x->timeCheckedOut;
-				userInfo["users"][userPerson.GetID()][x->contentCheckedOut.GetISBN()]["overTime"] = x->overTime;
-			
-				//edit for book or bundle
-			}
-	*/	}
+		}
     ++i;
 	}
 	ofstream fileOut;
