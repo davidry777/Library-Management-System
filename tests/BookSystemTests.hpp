@@ -2,8 +2,13 @@
 
 #include "gtest/gtest.h"
 
+#include <chrono>
+#include <thread>
+#include <fstream>
+
 #include "../header/BookSystem.hpp"
 #include "../header/User.hpp"
+#include "../header/json.hpp"
 
 using namespace std;
 
@@ -91,11 +96,11 @@ TEST(BookSystemTest, CheckOutValidCheckQueue) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
     User* me = new User("Daniel", 100, nullptr, 2132321);   // Person* me = new User() LEAKS BC VECTOR IN USER
     testBookSystem.CheckOut(me, 9781506713816);
-    EXPECT_TRUE(me->GetCheckedOut().front().contentCheckedOut->GetISBN() == 9781506713816 &&
-                me->GetCheckedOut().front().userCheckedOut == me &&
-                me->GetCheckedOut().front().overTime == false &&
-                me->GetCheckedOut().front().timeCheckedOut <= time(0) &&
-                me->GetCheckedOut().front().contentCheckedOut->GetISBN() == 9781506713816
+    EXPECT_TRUE(me->GetCheckedOut().front()->contentCheckedOut->GetISBN() == 9781506713816 &&
+                me->GetCheckedOut().front()->userCheckedOut == me &&
+                me->GetCheckedOut().front()->overTime == false &&
+                me->GetCheckedOut().front()->timeCheckedOut <= time(0) &&
+                me->GetCheckedOut().front()->contentCheckedOut->GetISBN() == 9781506713816
                 );
     delete me;
 }
@@ -123,24 +128,24 @@ TEST(BookSystemTest, CheckExpirationNotExpired) {
     User* me = new User("Daniel", 100, nullptr, 2132321);
     testBookSystem.CheckOut(me, 9781506713816);
     testBookSystem.CheckExpiration();
-    EXPECT_EQ((*testBookSystem.GetCheckedOut().at(100).begin()).overTime, false);
+    EXPECT_EQ(testBookSystem.GetCheckedOut().at(100).at(0)->overTime, false);
     delete me;
 }
 TEST(BookSystemTest, CheckExpirationExpired) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json", 1);
     User* me = new User("Daniel", 100, nullptr, 2132321);
     testBookSystem.CheckOut(me, 9781506713816);
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     testBookSystem.CheckExpiration();
-    EXPECT_EQ((*testBookSystem.GetCheckedOut().at(100).begin()).overTime, true);
+    EXPECT_EQ(testBookSystem.GetCheckedOut().at(100).at(0)->overTime, true);
     delete me;
 }
 TEST(BookSystemTest, SaveCatalogue) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    testBookSystem.AddContent(new Book("Harry Potter and the Sorcerer's Stone", 9780439362139, "Fantasy", "J. K. Rowling"));
     testBookSystem.SaveCatalogue("../tests/output.json");
     
     BookSystem testBookSystem2("../tests/output.json", "test_files/test_checked_out.json");
-    EXPECT_TRUE(testBookSystem.GetContent(9780439362139) != nullptr);
+    EXPECT_TRUE(testBookSystem.GetContent(9781506713816) != nullptr && testBookSystem.GetCatalogue().size() == 4);
 }
 TEST(BookSystemTest, SaveCatalogueAddedBooks) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
@@ -150,11 +155,24 @@ TEST(BookSystemTest, SaveCatalogueAddedBooks) {
     testBookSystem.SaveCatalogue("../tests/output.json");
     
     BookSystem testBookSystem2("../tests/output.json", "test_files/test_checked_out.json");
-    EXPECT_TRUE(testBookSystem.GetContent(9780439362300) != nullptr && testBookSystem.GetContent(9780439362300) != nullptr && testBookSystem.GetContent(9780439362300) != nullptr);
+    EXPECT_TRUE(testBookSystem2.GetContent(9780439362300) != nullptr &&
+                testBookSystem2.GetContent(9780439362300) != nullptr &&
+                testBookSystem2.GetContent(9780439362300) != nullptr &&
+                testBookSystem2.GetCatalogue().size() == 7);
 }
 TEST(BookSystemTest, SaveCheckedOut) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
     User* me = new User("Daniel", 100, nullptr, 2132321);
     testBookSystem.CheckOut(me, 9781506713816);
+    testBookSystem.SaveCheckedOut("../tests/output.json");
+    EXPECT_TRUE(true);
+    nlohmann::json jsonParcer;
+    ifstream inFS("../tests/output.json");
+    inFS >> jsonParcer;
+    cout << jsonParcer[0]["user_id"] << " " << jsonParcer[0]["content_isbn"] << " " << jsonParcer[0]["over_time"] << endl;
+    EXPECT_TRUE(jsonParcer[0]["user_id"] == 100 &&
+                jsonParcer[0]["content_isbn"] == 9781506713816 &&
+                jsonParcer[0]["over_time"] == false
+                );
     delete me;
 }

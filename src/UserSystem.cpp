@@ -14,13 +14,13 @@ Person* UserSystem::GetPerson(int ID)
 		return nullptr;
 }
 
-void UserSystem::AddCheckedOut(const unordered_map<int, vector<CheckOutData>>& checkedOut)
+void UserSystem::AddCheckedOut(const unordered_map<int, vector<CheckOutData*>>& checkedOut)
 {
   for (pair<int, Person*> person : people)
   {
     if (dynamic_cast<User*>(person.second) != nullptr)
     {
-      vector<CheckOutData> checkoutData;
+      vector<CheckOutData*> checkoutData;
       for (auto book : checkedOut.at(person.first))
 			  {
 			  	checkoutData.push_back(book);
@@ -107,7 +107,7 @@ void UserSystem::SaveUserData(string userInfo)
 {
 	json userJson;
 
-	vector<CheckOutData> tempVec;
+	vector<CheckOutData*> tempVec;
   int i = 0;
 	for (pair<int, Person*> kv : people)
 	{
