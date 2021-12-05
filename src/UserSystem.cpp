@@ -1,5 +1,5 @@
 #include "../header/UserSystem.hpp"
-
+#include "../header/Person.hpp"
 using json = nlohmann::json;
 
 using namespace std;
@@ -14,6 +14,7 @@ Person* UserSystem::GetPerson(int ID)
 		return nullptr;
 }
 
+
 UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 {
 	//import users from a file to populate the array
@@ -26,43 +27,52 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
 	{  
-		int debt;
-		int ID = it["id"];
-		string name = it["name"];
-		int hashPass = it["hashpass"];
-		if (it.contains("debt"))
-		{   
-			debt = it["debt"];
-			User* tempUser = new User(name, ID, bs, hashPass);
+    // cout << "start";
+    // cout << it;
+    
+    if (userMap.find(it["id"]) == userMap.end())
+    {
+      int i = 0;      
+      int debt;      
+      int ID = it["id"];     
+      string name = it["name"];     
+      int hashPass = it["hashpass"];      
+      if (it.find("debt") != it.end())
+      {        
+        debt = it["debt"];      
+        Person* tempUser = new User(name, ID, bs, hashPass);      
 
-			tempUser->PayBalance(-1*debt);
-			userMap[ID] = tempUser;
-		}
-		else
-		{
-			Librarian* tempLibrarian = new Librarian(name, ID, bs, hashPass);
-			userMap[ID] = tempLibrarian;
-		}
-		
+        dynamic_cast<User*>(tempUser)->PayBalance(-1*debt);      
+        userMap[ID] = tempUser;     
+      }
+      else
+      {      
+        Person* tempLibrarian = new Librarian(name, ID, bs, hashPass);   
+        userMap[ID] = tempLibrarian;    
+      }
+    }
 	}    
-
 	this->people = userMap;
 	people_file.close();
 }
 
 UserSystem::~UserSystem() {
-	for (auto &x : people)
+	for (pair<int, Person*> x : people)
 	{
-    if (dynamic_cast<User*>(x.second)!=nullptr)
-      delete dynamic_cast<User*>(x.second);
-    else
-      delete dynamic_cast<Librarian*>(x.second);
+    // cout << x.second->GetName() << endl;
+
+    delete x.second;
   }	
 }
 
 void UserSystem::AddPerson(LoginSystem *logSys, Person *person) {
-  logSys->AddPass(person->GetId(), person->GetHashedPassword());
-	this->people.insert({ person->GetId(), person });	
+  if (people.find(person->GetId()) != people.end()) {}
+  else
+  {
+    logSys->AddPass(person->GetId(), person->GetHashedPassword());
+    this->people.insert({ person->GetId(), person });	
+  }
+  
 }
 
 void UserSystem::SaveUserData(string userInfo)

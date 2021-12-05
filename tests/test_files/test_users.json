@@ -1,34 +1,43 @@
 [
   {
-    "18623696": {
-      "debt": 315,
-      "name": "Human",
-      "hashpass": 4486214
-    },
-    "18624696": {
-      "debt": 315,
-      "name": "John",
-      "hashpass": 39052307
-    },
-    "18633084": {
-      "debt": 315,
-      "name": "Steve",
-      "hashpass": 11662862
-    },
-    "18658864": {
-      "debt": 315,
-      "name": "Orange Apple",
-      "hashpass": 11464202
-    },
-    "18679479": {
-      "debt": 315,
-      "name": "Algernon",
-      "hashpass": 70159833
-    },
-    "18690237": {
-      "debt": 315,
-      "name": "Beebo",
-      "hashpass": 239682
-    }
+    "id": 18624664,
+    "debt": 315,
+    "name": "Human",
+    "hashpass": 4486214
+  },
+  {
+    "id": 18624696,
+    "debt": 315,
+    "name": "John",
+    "hashpass": 39052307
+  },
+  {
+    "id": 18633084,
+    "debt": 315,
+    "name": "Steve",
+    "hashpass": 11662862
+  },
+  {
+    "id": 18658864,
+    "debt": 315,
+    "name": "Orange Apple",
+    "hashpass": 11464202
+  },
+  {
+    "id": 18673479,
+    "debt": 315,
+    "name": "Algernon",
+    "hashpass": 70159833
+  },
+  {
+    "id": 18679479,
+    "debt": 315,
+    "name": "Beebo",
+    "hashpass": 239682
+  },
+  {
+    "id": 92304860,
+    "name": "librarian lady",
+    "hashpass": 70159833
   }
 ]

@@ -12,6 +12,11 @@ LoginSystem::LoginSystem(unordered_map<int, Person*> userList)
   } 
 }
 
+// LoginSystem::~LoginSystem()
+// {
+//   delete userPasswords;
+// }
+
 void LoginSystem::AddPass(int ID, int userPass)
 {
   userPasswords[ID] = userPass;
