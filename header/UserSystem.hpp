@@ -21,9 +21,8 @@ class UserSystem {
 		~UserSystem();
 		std::unordered_map<int, Person*>& GetMap();
 		Person* GetPerson(int ID);
-    void AddPerson(LoginSystem *logSys, Person *person);
+    	void AddPerson(LoginSystem *logSys, Person *person);
 		void SaveUserData(std::string userInfo);
-    void AddCheckedOut(const unordered_map<int, vector<CheckOutData*>>& checkedOut);
 };
 
 #endif

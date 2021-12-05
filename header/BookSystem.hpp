@@ -56,6 +56,8 @@ class BookSystem {
 
         void LoadCheckedOut(std::unordered_map<int, Person *>);
         void SaveCheckedOut(std::string file = "null");
+
+        std::vector<CheckOutData*> GetUserCheckedOut(Person* user);
 };
 
 #endif //__BOOKSYSTEM_HPP__

@@ -173,8 +173,6 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
             this->checkedOut.insert({person->GetId(), {data}});
         else
             this->checkedOut.at(person->GetId()).push_back(data);
-        User* personUser = dynamic_cast<User*>(person);
-        personUser->AddCheckOutData(data);
     }
     else {
         std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
@@ -206,4 +204,10 @@ void BookSystem::CheckExpiration() {
             }
         }
     }
+}
+std::vector<CheckOutData*> BookSystem::GetUserCheckedOut(Person* user) {
+    if (this->checkedOut.find(user->GetId()) != this->checkedOut.end()) {
+        return this->checkedOut.at(user->GetId());
+    }
+    return {};
 }

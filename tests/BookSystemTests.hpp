@@ -92,18 +92,6 @@ TEST(BookSystemTest, CheckOutValid) {
     EXPECT_TRUE(testBookSystem.CheckOut(me, 9781506713816));
     delete me;
 }
-TEST(BookSystemTest, CheckOutValidCheckQueue) {
-    BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
-    User* me = new User("Daniel", 100, nullptr, 2132321);   // Person* me = new User() LEAKS BC VECTOR IN USER
-    testBookSystem.CheckOut(me, 9781506713816);
-    EXPECT_TRUE(me->GetCheckedOut().front()->contentCheckedOut->GetISBN() == 9781506713816 &&
-                me->GetCheckedOut().front()->userCheckedOut == me &&
-                me->GetCheckedOut().front()->overTime == false &&
-                me->GetCheckedOut().front()->timeCheckedOut <= time(0) &&
-                me->GetCheckedOut().front()->contentCheckedOut->GetISBN() == 9781506713816
-                );
-    delete me;
-}
 TEST(BookSystemTest, CheckOutInvalid) {
     BookSystem testBookSystem("../tests/test_catalogue.json", "test_files/test_checked_out.json");
     User* me = new User("Daniel", 100, nullptr, 2132321);
