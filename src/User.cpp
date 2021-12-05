@@ -34,15 +34,15 @@ void User::DisplayCheckOut()
     checkoutOutput.DisplayBooks(checkedOut);
 }
 
-void User::SetCheckedOutData(vector<CheckOutData> data) { checkedOut = data; }
+void User::SetCheckedOutData(vector<CheckOutData*> data) { checkedOut = data; }
 
-vector<CheckOutData> User::GetCheckedOut() { return checkedOut; }
+vector<CheckOutData*> User::GetCheckedOut() { return checkedOut; }
 
-void User::AddCheckOutData(CheckOutData data) { checkedOut.push_back(data); }
+void User::AddCheckOutData(CheckOutData* data) { checkedOut.push_back(data); }
 
-void User::RemoveCheckOutData(CheckOutData data) 
+void User::RemoveCheckOutData(CheckOutData* data) 
 {
-    std::vector<CheckOutData>::iterator it = find(checkedOut.begin(), checkedOut.end(), data);
+    std::vector<CheckOutData*>::iterator it = find(checkedOut.begin(), checkedOut.end(), data);
  
     // If element was found
     if (it != checkedOut.end())

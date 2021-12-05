@@ -13,7 +13,7 @@ private:
 public:
 	void DisplayBooks(std::unordered_map<long long, Content*>);
 	void DisplayBooks(std::vector<Content*>);
-	void DisplayBooks(std::vector<CheckOutData>);
+	void DisplayBooks(std::vector<CheckOutData*>);
 	void DisplayBooks(char, std::string, std::unordered_map<long long, Content*>);
 	void DisplayBooks(char, int, std::unordered_map<long long, Content*>);
 	void DisplayBooks(char, std::unordered_map<long long, Content*>);
