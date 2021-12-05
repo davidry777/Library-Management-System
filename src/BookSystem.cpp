@@ -91,11 +91,12 @@ void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
 
     for (auto data : checkedOutJSON) {
         time_t dataTime = data["time"];
-        if (this->catalogue.find((data["user_id"])) == this->catalogue.end()) {
+        if (this->catalogue.find((data["content_isbn"])) == this->catalogue.end()) {
             continue;
         }
         Content* dataContent = this->catalogue.at(data["content_isbn"]);
         if (us.find((data["user_id"])) == us.end()) {
+            cout << "error constructing user " << data["user_id"] << ". User does not exist in person map." << endl;
             continue;
         }
         Person* dataUser = us.at(data["user_id"]);

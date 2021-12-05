@@ -135,12 +135,12 @@ void RemoveBook(Librarian* person) {
 }
 
 void PrintLoginMenu() {
-    std::cout << "/------------------- Main Menu ---------------------/" << std::endl;
-    std::cout << "/           1. Log In                               /" << std::endl;
-    std::cout << "/           2. Register an Account                  /" << std::endl;
-    std::cout << "/           3. Exit Program                         /" << std::endl;
-    std::cout << "/---------------------------------------------------/" << std::endl;
-    std::cout << "Type an option (1-2):\n > ";
+    std::cout << " ------------------- Main Menu --------------------- " << std::endl;
+    std::cout << "|           1. Log In                               |" << std::endl;
+    std::cout << "|           2. Register an Account                  |" << std::endl;
+    std::cout << "|           3. Exit Program                         |" << std::endl;
+    std::cout << " --------------------------------------------------- " << std::endl;
+    std::cout << "Type an option (1-3):\n > ";
 }
 
 void PrintMenu(User* person) {
@@ -191,18 +191,18 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 		std::cout << "Enter the genre you would like to search for: ";
 		std::getline(std::cin, sinput);
 		if(choice == 1)
-			display->DisplayBooks('1', sinput, library->GetBookSystem().GetUserCheckedOut(person));	
+			display->DisplayBooks('1', sinput, library->GetBookSystem()->GetUserCheckedOut(person));	
 		if(choice == 2)
-			display->DisplayBooks('1', sinput, library->GetBookSystem().GetCatalogue());
+			display->DisplayBooks('1', sinput, library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 2)
 	{
 		std::cout << "Enter the keyword you would like to search by: ";
 		std::getline(std::cin, sinput);
 		if(choice == 1)
-			display->DisplayBooks('2', sinput, library->GetBookSystem().GetUserCheckedOut(person));
+			display->DisplayBooks('2', sinput, library->GetBookSystem()->GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('2', sinput, library->GetBookSystem().GetCatalogue());
+			display->DisplayBooks('2', sinput, library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 3)
 	{
@@ -216,16 +216,16 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	if(input == 4)
 	{
 		if(choice == 1)
-			display->DisplayBooks('4', library->GetBookSystem().GetUserCheckedOut(person));
+			display->DisplayBooks('4', library->GetBookSystem()->GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('4', library->GetBookSystem().GetCatalogue());
+			display->DisplayBooks('4', library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 5)
 	{
 		if(choice == 1)
-			display->DisplayBooks('5', library->GetBookSystem().GetUserCheckedOut(person));
+			display->DisplayBooks('5', library->GetBookSystem()->GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('5', library->GetBookSystem().GetCatalogue());
+			display->DisplayBooks('5', library->GetBookSystem()->GetCatalogue());
 	}
 	delete display;
 }
@@ -274,7 +274,7 @@ int SwitchCaseDisplay(User* person, LibrarySystem* library)
 }
 
 int main() {
-    LibrarySystem lib("program_files/catalogue.json", "program_files/checked_out.json", "program_files/userInfo.json");
+    LibrarySystem lib("../program_files/catalogue.json", "../program_files/checked_out.json", "../program_files/userInfo.json", 86400);
     Person* currPerson = nullptr;
     string input;
     bool loggedIn = false;
@@ -282,7 +282,7 @@ int main() {
     while (true) { 
         PrintLoginMenu();
         getline(cin, input);
-        if (input != "1" || input != "2" || input != "3") { continue; }
+        if (input != "1" && input != "2" && input != "3") { continue; }
         if (input == "3") { break; }
         if (input == "1") {
             // LogIn System here
@@ -307,9 +307,13 @@ int main() {
         }
         loggedIn = false;
     }
-    cout << "Saving. Do not exit program." << endl;
-    lib.GetBookSystem().SaveCatalogue();
-    lib.GetBookSystem().SaveCheckedOut();
-    lib.GetUserSystem().SaveUserData("program_files/userInfo.json");
-    cout << "Program successfully saved." << endl;
+    cout << "Saving. Do not exit program!" << endl;
+    lib.GetBookSystem()->SaveCatalogue();
+    cout << "33%" << endl;
+    lib.GetBookSystem()->SaveCheckedOut();
+    cout << "66%" << endl;
+    lib.GetUserSystem()->SaveUserData("../program_files/userInfo.json");
+    cout << "100%" << endl;
+    cout << "Program successfully saved. Exiting..." << endl;
+    return 0;
 }
