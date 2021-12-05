@@ -1,402 +1,24 @@
 [
     {
-        "author": "Hajime Isayama",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9781612626864,
-        "title": "Attack on Titan: Volume 13"
-    },
-    {
-        "author": "Barbara Allan",
-        "frequency": 0,
-        "genre": "Mystery",
-        "isbn": 9780758272799,
-        "title": "Antiques Roadkill: A Trash 'n' Treasures Mystery"
-    },
-    {
-        "author": "Nintendo",
-        "frequency": 0,
-        "genre": "Activities",
-        "isbn": 9781506713816,
-        "title": "The Art of Super Mario Odyssey"
-    },
-    {
-        "author": "Sara Rosett",
-        "frequency": 0,
-        "genre": "Mystery",
-        "isbn": 9781617734076,
-        "title": "Getting Away Is Deadly: An Ellie Avery Mystery"
-    },
-    {
-        "author": "Peter V. Brett",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9780007287758,
-        "title": "The Painted Man (The Demon Cycle Book 1)"
-    },
-    {
-        "author": "George R.R. Martin",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9780007369218,
-        "title": "A Feast for Crows (A Song of Ice and Fire Book 4)"
-    },
-    {
-        "author": "J.M. Barlog",
-        "frequency": 0,
-        "genre": "Media",
-        "isbn": 9781789090154,
-        "title": "God of War: The Official Novelization"
-    },
-    {
-        "author": "Brandon Sanderson",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9781250166609,
-        "title": "Edgedancer: From the Stormlight Archive"
-    },
-    {
-        "author": "Jason Schreier",
-        "frequency": 0,
-        "genre": "Activities",
-        "isbn": 9780062651242,
-        "title": "Blood Sweat and Pixels: The Triumphant Turbulent Stories Behind How Video Games Are Made"
-    },
-    {
-        "author": "Adam Kay",
-        "frequency": 0,
-        "genre": "Autobiography",
-        "isbn": 9781529018592,
-        "title": "Twas The Nightshift Before Christmas: Festive hospital diaries from the author of million-copy hit This is Going to Hurt"
-    },
-    {
-        "author": "Andrzej Sapkowski",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9781473211551,
-        "title": "Sword of Destiny: Witcher 2: Tales of the Witcher"
-    },
-    {
-        "author": "Agatha Christie",
-        "frequency": 0,
-        "genre": "Drama",
-        "isbn": 9780007422586,
-        "title": "The Mysterious Affair at Styles (Poirot)"
-    },
-    {
-        "author": "Blake Pierce",
-        "frequency": 0,
-        "genre": "Mystery",
-        "isbn": 9781632917072,
-        "title": "Riley Paige Mystery Bundle: Once Gone (#1) and Once Taken (#2)"
-    },
-    {
-        "author": "Cullen Bunn",
-        "frequency": 0,
-        "genre": "Graphic Novel",
-        "isbn": 9781302368807,
-        "title": "Deadpool Kills the Marvel Universe"
-    },
-    {
-        "author": "Agatha Christie",
-        "frequency": 0,
-        "genre": "Drama",
-        "isbn": 9780007452170,
-        "title": "The Red Signal: An Agatha Christie Short Story"
-    },
-    {
-        "author": "Robert Jordan",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9781429960748,
-        "title": "Crossroads of Twilight: Book Ten of 'The Wheel of Time'"
-    },
-    {
-        "author": "Story by FUSE",
+        "author": "André Aciman",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9781646590797,
-        "title": "That Time I got Reincarnated as a Slime 11"
+        "isbn": 9780374722104,
+        "title": "Find Me: A Novel"
     },
     {
-        "author": "James Milner",
+        "author": "Alan Moore",
         "frequency": 0,
-        "genre": "Autobiography",
-        "isbn": 9781529404937,
-        "title": "Ask A Footballer"
+        "genre": "none",
+        "isbn": 9781779501837,
+        "title": "Watchmen (2019 Edition)"
     },
     {
-        "author": "Brian Michael Bendis",
-        "frequency": 0,
-        "genre": "Graphic Novel",
-        "isbn": 9780785180197,
-        "title": "Ultimate Spider-Man Vol. 11: Carnage"
-    },
-    {
-        "author": "Nicola Marsh",
+        "author": "Clive Cussler",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9781838880514,
-        "title": "The Last Wife: An absolutely gripping and emotional page turner with a brilliant twist"
-    },
-    {
-        "author": "Douglas Adams",
-        "frequency": 0,
-        "genre": "Humor",
-        "isbn": 9780330513081,
-        "title": "The Hitchhiker's Guide to the Galaxy: 42nd Anniversary Edition"
-    },
-    {
-        "author": "Mark Lawrence",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780007423309,
-        "title": "Prince of Thorns (The Broken Empire Book 1)"
-    },
-    {
-        "author": "Robert B. Cialdini",
-        "frequency": 0,
-        "genre": "Economics",
-        "isbn": 9780061899874,
-        "title": "Influence: The Psychology of Persuasion"
-    },
-    {
-        "author": "Matthew Mercer",
-        "frequency": 0,
-        "genre": "Science Fiction",
-        "isbn": 9781506714820,
-        "title": "Critical Role Vox Machina: Origins: Volume 1"
-    },
-    {
-        "author": "Stuart Sim",
-        "frequency": 0,
-        "genre": "Social Science",
-        "isbn": 9781840469097,
-        "title": "Introducing Critical Theory: A Graphic Guide"
-    },
-    {
-        "author": "Billy Connolly",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781529361353,
-        "title": "Tall Tales and Wee Stories: The Best of Billy Connolly"
-    },
-    {
-        "author": "Alex Lake",
-        "frequency": 0,
-        "genre": "Mystery",
-        "isbn": 9780008150907,
-        "title": "After Anna"
-    },
-    {
-        "author": "Dale Carnegie",
-        "frequency": 0,
-        "genre": "Economics",
-        "isbn": 9781409005216,
-        "title": "How to Win Friends and Influence People"
-    },
-    {
-        "author": "Sue Watson",
-        "frequency": 0,
-        "genre": "Thriller",
-        "isbn": 9781838880415,
-        "title": "The Empty Nest: An unputdownably gripping psychological thriller"
-    },
-    {
-        "author": "Sue Grafton",
-        "frequency": 0,
-        "genre": "Mystery",
-        "isbn": 9781101636459,
-        "title": "W is for Wasted: A Kinsey Millhone Novel"
-    },
-    {
-        "author": "Madeleine Roux",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780451491848,
-        "title": "Salvaged"
-    },
-    {
-        "author": "Rolf Dobelli",
-        "frequency": 0,
-        "genre": "Non Fiction",
-        "isbn": 9780062359803,
-        "title": "The Art of Thinking Clearly"
-    },
-    {
-        "author": "William Shakespeare",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9788026804758,
-        "title": "The Complete Works of William Shakespeare: All 213 Plays Poems Sonnets Apocryphal Plays + The Biography: The Life of William Shakespeare by Sidney Lee: Hamlet - Romeo and Juliet - King Lear - A Midsummer Night’s Dream - Macbeth - The Tempest - Othello and many more"
-    },
-    {
-        "author": "Peter V. Brett",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9780345535658,
-        "title": "The Daylight War: Book Three of The Demon Cycle"
-    },
-    {
-        "author": "Ernest Cline",
-        "frequency": 0,
-        "genre": "Science Fiction",
-        "isbn": 9780307887450,
-        "title": "Ready Player One"
-    },
-    {
-        "author": "Morgan Rice",
-        "frequency": 0,
-        "genre": "Fantasy",
-        "isbn": 9781632913821,
-        "title": "A Forge of Valor (Kings and Sorcerers--Book 4)"
-    },
-    {
-        "author": "Dale Carnegie",
-        "frequency": 0,
-        "genre": "Economics",
-        "isbn": 9781451621716,
-        "title": "How To Win Friends and Influence People"
-    },
-    {
-        "author": "Thomas Ittelson",
-        "frequency": 0,
-        "genre": "Economics",
-        "isbn": 9781601638618,
-        "title": "Financial Statements Revised and Expanded Edition: A Step-by-Step Guide to Understanding and Creating Financial Reports"
-    },
-    {
-        "author": "Laura Levine",
-        "frequency": 0,
-        "genre": "Drama",
-        "isbn": 9781496708489,
-        "title": "Death of a Bachelorette"
-    },
-    {
-        "author": "Ed Brubaker",
-        "frequency": 0,
-        "genre": "Graphic Novel",
-        "isbn": 9781401242299,
-        "title": "Batman: The Man Who Laughs"
-    },
-    {
-        "author": "Jason Fried",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780307463760,
-        "title": "Rework"
-    },
-    {
-        "author": "Scott Snyder",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401287184,
-        "title": "Dark Nights: Metal: Deluxe Edition: Issues 1-6"
-    },
-    {
-        "author": "Sir Arthur Conan Doyle",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780486114354,
-        "title": "The Memoirs of Sherlock Holmes"
-    },
-    {
-        "author": "Paul S. Kemp",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780786956890,
-        "title": "Shadowbred: The Twilight War Book 1"
-    },
-    {
-        "author": "Edward Snowden",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781250237248,
-        "title": "Permanent Record"
-    },
-    {
-        "author": "Cora Seton",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781927036600,
-        "title": "The Marine's E-Mail Order Bride: Heroes of Chance Creek Volume 4"
-    },
-    {
-        "author": "Pierce Brown",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780345539854,
-        "title": "Morning Star"
-    },
-    {
-        "author": "Elizabeth Adler",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780307574961,
-        "title": "Now or Never: A Novel"
-    },
-    {
-        "author": "Gerald Seymour",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781473663527,
-        "title": "Battle Sight Zero"
-    },
-    {
-        "author": "Faith Hunter",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780399587993,
-        "title": "Shattered Bonds"
-    },
-    {
-        "author": "Dan Ariely",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780007319923,
-        "title": "Predictably Irrational: The Hidden Forces that Shape Our Decisions"
-    },
-    {
-        "author": "Jim Butcher",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781101128459,
-        "title": "Death Masks"
-    },
-    {
-        "author": "Jack Canfield",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9781448176007,
-        "title": "The Power of Focus: How to Hit Your Business Personal and Financial Targets with Confidence and Certainty"
-    },
-    {
-        "author": "Steven D. Levitt",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780062218360,
-        "title": "Think Like a Freak: The Authors of Freakonomics Offer to Retrain Your Brain"
-    },
-    {
-        "author": "Michael G. Manning",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781943481316,
-        "title": "The Choice of Magic"
-    },
-    {
-        "author": "James S. A. Corey",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780356504322,
-        "title": "Auberon"
-    },
-    {
-        "author": "Vanessa Van Edwards",
-        "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9780399564505,
-        "title": "Captivate: The Science of Succeeding with People"
+        "isbn": 9780525541820,
+        "title": "Final Option"
     },
     {
         "author": "Andrzej Sapkowski",
@@ -406,242 +28,18 @@
         "title": "The Malady and Other Stories: An Andrzej Sapkowski Sampler"
     },
     {
-        "author": "Morgan Rice",
+        "author": "Brandon Sanderson",
         "frequency": 0,
-        "genre": "none",
-        "isbn": 9781632915740,
-        "title": "Kings and Sorcerers Bundle (Books 2 and 3)"
+        "genre": "Fantasy",
+        "isbn": 9781250166609,
+        "title": "Edgedancer: From the Stormlight Archive"
     },
     {
-        "author": "Barbara Allan",
+        "author": "Peter V. Brett",
         "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781617738760,
-        "title": "Antiques Con"
-    },
-    {
-        "author": "Robert Greene",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781847651402,
-        "title": "The Art Of Seduction"
-    },
-    {
-        "author": "Georges Simenon",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781524705398,
-        "title": "Maigret Goes to School"
-    },
-    {
-        "author": "Blake Pierce",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781640290112,
-        "title": "A Trace of Vice (a Keri Locke Mystery--Book #3)"
-    },
-    {
-        "author": "Barbara Allan",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781617730436,
-        "title": "Antiques Chop"
-    },
-    {
-        "author": "Ray Dalio",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9781501124051,
-        "title": "Principles: Life and Work"
-    },
-    {
-        "author": "Art Baltazar",
-        "frequency": 0,
-        "genre": "Comics",
-        "isbn": 9781401244378,
-        "title": "Young Justice Vol. 1"
-    },
-    {
-        "author": "Morgan Rice",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781632913296,
-        "title": "The Weight of Honor (Kings and Sorcerers--Book 3)"
-    },
-    {
-        "author": "James Fries",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781526012456,
-        "title": "10 Ways to be less consumerist"
-    },
-    {
-        "author": "Stephen King",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781848940819,
-        "title": "'Salem's Lot"
-    },
-    {
-        "author": "B A Paris",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780008244880,
-        "title": "Bring Me Back"
-    },
-    {
-        "author": "Brian Tracy",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780814434208,
-        "title": "Management (The Brian Tracy Success Library)"
-    },
-    {
-        "author": "Brian McGilloway",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780062336583,
-        "title": "Little Girl Lost: A Lucy Black Thriller"
-    },
-    {
-        "author": "Joanne Fluke",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781617731259,
-        "title": "Strawberry Shortcake Murder"
-    },
-    {
-        "author": "Grant Morrison",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401235741,
-        "title": "Batman and Robin Vol. 1: Batman Reborn"
-    },
-    {
-        "author": "Laura Levine",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780758265111,
-        "title": "Killer Blonde"
-    },
-    {
-        "author": "Michael Connelly",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781409134336,
-        "title": "The Black Box"
-    },
-    {
-        "author": "Shannon Messenger",
-        "frequency": 0,
-        "genre": "Juvenile Fiction",
-        "isbn": 9781534427358,
-        "title": "Legacy"
-    },
-    {
-        "author": "Lorenzo Carcaterra",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780345459541,
-        "title": "Gangster: A Novel"
-    },
-    {
-        "author": "Clive Cussler",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781405941020,
-        "title": "Final Option: 'The best one yet'"
-    },
-    {
-        "author": "Timothy Snyder",
-        "frequency": 0,
-        "genre": "History",
-        "isbn": 9780804190121,
-        "title": "On Tyranny: Twenty Lessons from the Twentieth Century"
-    },
-    {
-        "author": "Martina Cole",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781472249425,
-        "title": "No Mercy: The brand new novel from the Queen of Crime"
-    },
-    {
-        "author": "Robert Jordan",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781429960571,
-        "title": "A Crown of Swords: Book Seven of 'The Wheel of Time'"
-    },
-    {
-        "author": "Barbara Allan",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780758277695,
-        "title": "Antiques Knock-Off"
-    },
-    {
-        "author": "Timothy Zahn",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780345542847,
-        "title": "Thrawn (Star Wars)"
-    },
-    {
-        "author": "Brian Azzarello",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401236632,
-        "title": "The Joker"
-    },
-    {
-        "author": "Michael Hyatt",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781595555045,
-        "title": "Platform: Get Noticed in a Noisy World"
-    },
-    {
-        "author": "John Grisham",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780385544191,
-        "title": "The Guardians: A Novel"
-    },
-    {
-        "author": "Gregory David Roberts",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781405516976,
-        "title": "Shantaram"
-    },
-    {
-        "author": "Brent Weeks",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780356504650,
-        "title": "The Burning White: Book Five of Lightbringer"
-    },
-    {
-        "author": "Shirley Wells",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781426892103,
-        "title": "Dead Silent"
-    },
-    {
-        "author": "Geoffrey G. Parker",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780393249125,
-        "title": "Platform Revolution: How Networked Markets Are Transforming the Economy—and How to Make Them Work for You"
-    },
-    {
-        "author": "Philip K. Dick",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780547601205,
-        "title": "The Man in the High Castle"
+        "genre": "Fantasy",
+        "isbn": 9780007287758,
+        "title": "The Painted Man (The Demon Cycle Book 1)"
     },
     {
         "author": "David Baldacci",
@@ -651,25 +49,284 @@
         "title": "Total Control"
     },
     {
-        "author": "Patrick Rothfuss",
+        "author": "Madeleine Roux",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9780575087057,
-        "title": "The Name of the Wind: The Kingkiller Chronicle: Book 1"
+        "isbn": 9780451491848,
+        "title": "Salvaged"
     },
     {
-        "author": "Jeffrey Archer",
+        "author": "Nir Eyal",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9780330524759,
-        "title": "Shall We Tell the President?"
+        "isbn": 9781526610232,
+        "title": "Indistractable: How to Control Your Attention and Choose Your Life"
+    },
+    {
+        "author": "Morgan Rice",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781632913296,
+        "title": "The Weight of Honor (Kings and Sorcerers--Book 3)"
+    },
+    {
+        "author": "Sallie Stone",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9783743895003,
+        "title": "15 Delicious Slow Cooker Recipes"
+    },
+    {
+        "author": "H. P. Lovecraft",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9783736805101,
+        "title": "The Call of Cthulhu"
+    },
+    {
+        "author": "Peter V. Brett",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9780345535658,
+        "title": "The Daylight War: Book Three of The Demon Cycle"
+    },
+    {
+        "author": "Napoleon Hill",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781627931991,
+        "title": "The Law of Success in Sixteen Lessons"
+    },
+    {
+        "author": "Alex Lake",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9780008150907,
+        "title": "After Anna"
+    },
+    {
+        "author": "J. R. R. Tolkien",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780007322596,
+        "title": "The Lord of the Rings: The Fellowship of the Ring The Two Towers The Return of the King"
+    },
+    {
+        "author": "B A Paris",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780008244880,
+        "title": "Bring Me Back"
+    },
+    {
+        "author": "Nintendo",
+        "frequency": 0,
+        "genre": "Activities",
+        "isbn": 9781506713816,
+        "title": "The Art of Super Mario Odyssey"
+    },
+    {
+        "author": "Blake Crouch",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781101904237,
+        "title": "Dark Matter: A Novel"
+    },
+    {
+        "author": "David Allen",
+        "frequency": 0,
+        "genre": "Self-Help",
+        "isbn": 9780698161863,
+        "title": "Getting Things Done: The Art of Stress-Free Productivity"
+    },
+    {
+        "author": "Agatha Christie",
+        "frequency": 0,
+        "genre": "Drama",
+        "isbn": 9780007452170,
+        "title": "The Red Signal: An Agatha Christie Short Story"
+    },
+    {
+        "author": "Dylan Young",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781786814029,
+        "title": "Blood Runs Cold: A completely unputdownable mystery and suspense thriller"
+    },
+    {
+        "author": "Blake Pierce",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9781632917072,
+        "title": "Riley Paige Mystery Bundle: Once Gone (#1) and Once Taken (#2)"
+    },
+    {
+        "author": "George R. R. Martin",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780553905656,
+        "title": "A Dance with Dragons: A Song of Ice and Fire: Book Five"
+    },
+    {
+        "author": "George R.R. Martin",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9780007369218,
+        "title": "A Feast for Crows (A Song of Ice and Fire Book 4)"
+    },
+    {
+        "author": "Brandon Sanderson",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781429989817,
+        "title": "Mistborn Trilogy: The Final Empire The Well of Ascension The Hero of Ages"
+    },
+    {
+        "author": "Sue Watson",
+        "frequency": 0,
+        "genre": "Thriller",
+        "isbn": 9781838880415,
+        "title": "The Empty Nest: An unputdownably gripping psychological thriller"
+    },
+    {
+        "author": "Jen Sincero",
+        "frequency": 0,
+        "genre": "Self-Help",
+        "isbn": 9781473649491,
+        "title": "You Are a Badass: How to Stop Doubting Your Greatness and Start Living an Awesome Life"
+    },
+    {
+        "author": "Jason Kelly",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9781101615478,
+        "title": "The Neatest Little Guide to Stock Market Investing: Fifth Edition"
+    },
+    {
+        "author": "Lorenzo Carcaterra",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780345459541,
+        "title": "Gangster: A Novel"
+    },
+    {
+        "author": "Rhonda Byrne",
+        "frequency": 0,
+        "genre": "Self-Help",
+        "isbn": 9781416554998,
+        "title": "The Secret"
+    },
+    {
+        "author": "Jason Schreier",
+        "frequency": 0,
+        "genre": "Activities",
+        "isbn": 9780062651242,
+        "title": "Blood Sweat and Pixels: The Triumphant Turbulent Stories Behind How Video Games Are Made"
+    },
+    {
+        "author": "Holly Black",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781471407574,
+        "title": "The Queen of Nothing (The Folk of the Air #3)"
+    },
+    {
+        "author": "Robert Kirkman",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781607066309,
+        "title": "The Walking Dead: Compendium 1"
+    },
+    {
+        "author": "Gerald Seymour",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781473663527,
+        "title": "Battle Sight Zero"
+    },
+    {
+        "author": "Timothy Zahn",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780345542847,
+        "title": "Thrawn (Star Wars)"
+    },
+    {
+        "author": "Mathias Weske",
+        "frequency": 0,
+        "genre": "Computers",
+        "isbn": 9783642286162,
+        "title": "Business Process Management: Concepts Languages Architectures Edition 2"
+    },
+    {
+        "author": "James S. A. Corey",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780356504322,
+        "title": "Auberon"
+    },
+    {
+        "author": "Shirley Wells",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781426892103,
+        "title": "Dead Silent"
+    },
+    {
+        "author": "Derren Brown",
+        "frequency": 0,
+        "genre": "Self-Help",
+        "isbn": 9781473526853,
+        "title": "Happy: Why More or Less Everything is Absolutely Fine"
+    },
+    {
+        "author": "Julie Andrews",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781474602198,
+        "title": "Home Work: A Memoir of My Hollywood Years"
+    },
+    {
+        "author": "Morgan Rice",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781632915740,
+        "title": "Kings and Sorcerers Bundle (Books 2 and 3)"
+    },
+    {
+        "author": "Ed Brubaker",
+        "frequency": 0,
+        "genre": "Graphic Novel",
+        "isbn": 9781401242299,
+        "title": "Batman: The Man Who Laughs"
     },
     {
         "author": "Andrzej Sapkowski",
         "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9781473211551,
+        "title": "Sword of Destiny: Witcher 2: Tales of the Witcher"
+    },
+    {
+        "author": "Barbara Allan",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781617730436,
+        "title": "Antiques Chop"
+    },
+    {
+        "author": "James Fries",
+        "frequency": 0,
         "genre": "none",
-        "isbn": 9781473211582,
-        "title": "The Tower of the Swallow: Witcher 6"
+        "isbn": 9781526012456,
+        "title": "10 Ways to be less consumerist"
+    },
+    {
+        "author": "Agatha Christie",
+        "frequency": 0,
+        "genre": "Drama",
+        "isbn": 9780007422586,
+        "title": "The Mysterious Affair at Styles (Poirot)"
     },
     {
         "author": "Morgan Rice",
@@ -686,32 +343,109 @@
         "title": "Wrecking Ball (Diary of a Wimpy Kid Book 14)"
     },
     {
-        "author": "Blake Pierce",
+        "author": "Jason Fried",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9780307463760,
+        "title": "Rework"
+    },
+    {
+        "author": "Michael G. Manning",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781943481316,
+        "title": "The Choice of Magic"
+    },
+    {
+        "author": "William Shakespeare",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9788026804758,
+        "title": "The Complete Works of William Shakespeare: All 213 Plays Poems Sonnets Apocryphal Plays + The Biography: The Life of William Shakespeare by Sidney Lee: Hamlet - Romeo and Juliet - King Lear - A Midsummer Night’s Dream - Macbeth - The Tempest - Othello and many more"
+    },
+    {
+        "author": "Geoff Johns",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401266066,
+        "title": "Batman vs. Superman: The Greatest Battles"
+    },
+    {
+        "author": "James Fries",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781526012487,
+        "title": "10 Ways to be annoying"
+    },
+    {
+        "author": "Scott Snyder",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401287184,
+        "title": "Dark Nights: Metal: Deluxe Edition: Issues 1-6"
+    },
+    {
+        "author": "George R. R. Martin",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9781640294127,
-        "title": "Watching (The Making of Riley Paige—Book 1)"
+        "isbn": 9780553897845,
+        "title": "A Game of Thrones: A Song of Ice and Fire: Book One"
     },
     {
-        "author": "Sallie Stone",
+        "author": "Jim Butcher",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9783743895003,
-        "title": "15 Delicious Slow Cooker Recipes"
+        "isbn": 9781101128459,
+        "title": "Death Masks"
     },
     {
-        "author": "Pierce Brown",
+        "author": "Sue Grafton",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9781101636459,
+        "title": "W is for Wasted: A Kinsey Millhone Novel"
+    },
+    {
+        "author": "Steven D. Levitt",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9780061792809,
+        "title": "Freakonomics Rev Ed: A Rogue Economist Explores the Hidden Side of Everything"
+    },
+    {
+        "author": "Michael Hyatt",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9780425285954,
-        "title": "Dark Age"
+        "isbn": 9781595555045,
+        "title": "Platform: Get Noticed in a Noisy World"
     },
     {
-        "author": "Derren Brown",
+        "author": "Renee Evenson",
         "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9781473526853,
-        "title": "Happy: Why More or Less Everything is Absolutely Fine"
+        "genre": "Business",
+        "isbn": 9780814432990,
+        "title": "Powerful Phrases for Dealing with Difficult People: Over 325 Ready-to-Use Words and Phrases for Working with Challenging Personalities"
+    },
+    {
+        "author": "Dan Ariely",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780007319923,
+        "title": "Predictably Irrational: The Hidden Forces that Shape Our Decisions"
+    },
+    {
+        "author": "Stephen Guise",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780996435420,
+        "title": "Mini Habits: Smaller Habits Bigger Results"
+    },
+    {
+        "author": "Dan Slott",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780785182962,
+        "title": "Spider-Man: Anti-Venom"
     },
     {
         "author": "Jonathan Maberry",
@@ -724,218 +458,8 @@
         "author": "Stephen King",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9781501141232,
-        "title": "It"
-    },
-    {
-        "author": "Leo Tolstoy",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781476789477,
-        "title": "War and Peace: With bonus material from Give War and Peace A Chance by Andrew D. Kaufman"
-    },
-    {
-        "author": "Arthur Conan Doyle",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781476797502,
-        "title": "The Memoirs of Sherlock Holmes"
-    },
-    {
-        "author": "André Aciman",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780374722104,
-        "title": "Find Me: A Novel"
-    },
-    {
-        "author": "Blake Crouch",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781101904237,
-        "title": "Dark Matter: A Novel"
-    },
-    {
-        "author": "Dan Slott",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780785182962,
-        "title": "Spider-Man: Anti-Venom"
-    },
-    {
-        "author": "Jason Kelly",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9781101615478,
-        "title": "The Neatest Little Guide to Stock Market Investing: Fifth Edition"
-    },
-    {
-        "author": "Zoe Ferraris",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780748129942,
-        "title": "Kingdom Of Strangers"
-    },
-    {
-        "author": "Linda Castillo",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781250314161,
-        "title": "In Dark Company: A Kate Burkholder Short Story"
-    },
-    {
-        "author": "Simon Sinek",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780735213524,
-        "title": "The Infinite Game"
-    },
-    {
-        "author": "Steven D. Levitt",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780061792809,
-        "title": "Freakonomics Rev Ed: A Rogue Economist Explores the Hidden Side of Everything"
-    },
-    {
-        "author": "Mary Higgins Clark",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781471167690,
-        "title": "Kiss the Girls and Make Them Cry"
-    },
-    {
-        "author": "Tony Robbins",
-        "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9780743274333,
-        "title": "Awaken the Giant Within: How to Take Immediate Control of Your Mental Emotional Physical and Financial"
-    },
-    {
-        "author": "Robert Jordan",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781429959810,
-        "title": "The Eye of the World: Book One of 'The Wheel of Time'"
-    },
-    {
-        "author": "Brian Tracy",
-        "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9781605099408,
-        "title": "Goals!: How to Get Everything You Want -- Faster Than You Ever Thought Possible Edition 2"
-    },
-    {
-        "author": "Zig Ziglar",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781418530297,
-        "title": "Selling 101: What Every Successful Sales Professional Needs to Know"
-    },
-    {
-        "author": "David R. Hawkins M.D./Ph.D.",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401945534,
-        "title": "Letting Go"
-    },
-    {
-        "author": "James Fries",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781526012487,
-        "title": "10 Ways to be annoying"
-    },
-    {
-        "author": "Clive Cussler",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780525541820,
-        "title": "Final Option"
-    },
-    {
-        "author": "George R. R. Martin",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780804179607,
-        "title": "Rogues"
-    },
-    {
-        "author": "Charles Duhigg",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780679603856,
-        "title": "The Power of Habit: Why We Do What We Do in Life and Business"
-    },
-    {
-        "author": "Michaella McCollum",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781789460148,
-        "title": "You'll Never See Daylight Again"
-    },
-    {
-        "author": "George R. R. Martin",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780553897845,
-        "title": "A Game of Thrones: A Song of Ice and Fire: Book One"
-    },
-    {
-        "author": "Agatha Christie",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780007463497,
-        "title": "The Mysterious Affair at Styles"
-    },
-    {
-        "author": "Jason Aaron",
-        "frequency": 0,
-        "genre": "Comics",
-        "isbn": 9781302494605,
-        "title": "Mighty Thor Vol. 2: Lords Of Midgard"
-    },
-    {
-        "author": "Dorothy Gilman",
-        "frequency": 0,
-        "genre": "Fiction ",
-        "isbn": 9780345443076,
-        "title": "Mrs. Pollifax Unveiled"
-    },
-    {
-        "author": "Lee Child",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780399593550,
-        "title": "Blue Moon: A Jack Reacher Novel"
-    },
-    {
-        "author": "George R. R. Martin",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780553905656,
-        "title": "A Dance with Dragons: A Song of Ice and Fire: Book Five"
-    },
-    {
-        "author": "Julie Andrews",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781474602198,
-        "title": "Home Work: A Memoir of My Hollywood Years"
-    },
-    {
-        "author": "Renee Evenson",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780814432990,
-        "title": "Powerful Phrases for Dealing with Difficult People: Over 325 Ready-to-Use Words and Phrases for Working with Challenging Personalities"
-    },
-    {
-        "author": "Geoff Johns",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401236410,
-        "title": "Green Lantern: Secret Origin"
+        "isbn": 9781848940819,
+        "title": "'Salem's Lot"
     },
     {
         "author": "Michael E. Porter",
@@ -945,123 +469,46 @@
         "title": "Competitive Advantage: Creating and Sustaining Superior Performance"
     },
     {
-        "author": "Agatha Christie",
+        "author": "Nicola Marsh",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9780007422135,
-        "title": "And Then There Were None"
+        "isbn": 9781838880514,
+        "title": "The Last Wife: An absolutely gripping and emotional page turner with a brilliant twist"
     },
     {
-        "author": "Sun Tzu",
+        "author": "Jack Canfield",
         "frequency": 0,
-        "genre": "History",
-        "isbn": 9788074844553,
-        "title": "The Art of War (The Classic Lionel Giles Translation)"
+        "genre": "Business",
+        "isbn": 9781448176007,
+        "title": "The Power of Focus: How to Hit Your Business Personal and Financial Targets with Confidence and Certainty"
     },
     {
-        "author": "The Awkward Yeti",
+        "author": "Stuart Sim",
         "frequency": 0,
-        "genre": "none",
-        "isbn": 9781449474836,
-        "title": "Heart and Brain: An Awkward Yeti Collection"
+        "genre": "Social Science",
+        "isbn": 9781840469097,
+        "title": "Introducing Critical Theory: A Graphic Guide"
     },
     {
-        "author": "Jana DeLeon",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781940270371,
-        "title": "Diabolical"
-    },
-    {
-        "author": "Nir Eyal",
+        "author": "Edward Snowden",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9781526610232,
-        "title": "Indistractable: How to Control Your Attention and Choose Your Life"
+        "isbn": 9781250237248,
+        "title": "Permanent Record"
     },
     {
-        "author": "Rhonda Byrne",
-        "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9781416554998,
-        "title": "The Secret"
-    },
-    {
-        "author": "Robert Jordan",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781429960199,
-        "title": "The Shadow Rising: Book Four of 'The Wheel of Time'"
-    },
-    {
-        "author": "Brian Tracy",
+        "author": "Steven D. Levitt",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9780814436288,
-        "title": "Business Strategy (The Brian Tracy Success Library)"
+        "isbn": 9780062218360,
+        "title": "Think Like a Freak: The Authors of Freakonomics Offer to Retrain Your Brain"
     },
     {
-        "author": "Brian Tracy",
+        "author": "Andrzej Sapkowski",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9780814437049,
-        "title": "Personal Success (The Brian Tracy Success Library)"
-    },
-    {
-        "author": "George R.R. Martin",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780007482931,
-        "title": "A Game of Thrones: The Story Continues Books 1-5: A Game of Thrones A Clash of Kings A Storm of Swords A Feast for Crows A Dance with Dragons (A Song of Ice and Fire)"
-    },
-    {
-        "author": "Mark Millar",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780785170242,
-        "title": "Civil War: Volume 1"
-    },
-    {
-        "author": "Terry Hayes",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781448170609,
-        "title": "I Am Pilgrim: The bestselling Richard & Judy Book Club pick"
-    },
-    {
-        "author": "David Allen",
-        "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9780698161863,
-        "title": "Getting Things Done: The Art of Stress-Free Productivity"
-    },
-    {
-        "author": "Voltaire",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781497684256,
-        "title": "Candide"
-    },
-    {
-        "author": "Peter Newman",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780007593101,
-        "title": "The Vagrant (The Vagrant Trilogy)"
-    },
-    {
-        "author": "Brandon Sanderson",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781429989817,
-        "title": "Mistborn Trilogy: The Final Empire The Well of Ascension The Hero of Ages"
-    },
-    {
-        "author": "Rachel Renee Russell",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781471172816,
-        "title": "Dork Diaries: Spectacular Superstar"
+        "isbn": 9781473211582,
+        "title": "The Tower of the Swallow: Witcher 6"
     },
     {
         "author": "Frank Miller",
@@ -1071,109 +518,11 @@
         "title": "Batman: Year One"
     },
     {
-        "author": "Geoff Johns",
+        "author": "Robert Jordan",
         "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401266066,
-        "title": "Batman vs. Superman: The Greatest Battles"
-    },
-    {
-        "author": "Al Ewing",
-        "frequency": 0,
-        "genre": "Comics",
-        "isbn": 9781302507169,
-        "title": "Immortal Hulk Vol. 1: Or Is He Both?"
-    },
-    {
-        "author": "Rhys Bowen",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781101207369,
-        "title": "Her Royal Spyness"
-    },
-    {
-        "author": "Robin Hobb",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780007374038,
-        "title": "Assassin’s Apprentice (The Farseer Trilogy Book 1)"
-    },
-    {
-        "author": "Dylan Young",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781786814029,
-        "title": "Blood Runs Cold: A completely unputdownable mystery and suspense thriller"
-    },
-    {
-        "author": "J. R. R. Tolkien",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9780007322596,
-        "title": "The Lord of the Rings: The Fellowship of the Ring The Two Towers The Return of the King"
-    },
-    {
-        "author": "Robert Kirkman",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781607066309,
-        "title": "The Walking Dead: Compendium 1"
-    },
-    {
-        "author": "Stephen Guise",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9780996435420,
-        "title": "Mini Habits: Smaller Habits Bigger Results"
-    },
-    {
-        "author": "Denise Grover Swank",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781939996343,
-        "title": "Thirty-Five and a Half Conspiracies: Rose Gardner Mystery #8"
-    },
-    {
-        "author": "Jim Butcher",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9781440631849,
-        "title": "Furies of Calderon"
-    },
-    {
-        "author": "Matthew Walker",
-        "frequency": 0,
-        "genre": "Psychology",
-        "isbn": 9780141983776,
-        "title": "Why We Sleep: The New Science of Sleep and Dreams"
-    },
-    {
-        "author": "H. P. Lovecraft",
-        "frequency": 0,
-        "genre": "Fiction",
-        "isbn": 9783736805101,
-        "title": "The Call of Cthulhu"
-    },
-    {
-        "author": "Geoff Johns",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401239565,
-        "title": "Batman: Earth One"
-    },
-    {
-        "author": "Brian Tracy",
-        "frequency": 0,
-        "genre": "Business",
-        "isbn": 9781626569430,
-        "title": "Eat That Frog!: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time Edition 3"
-    },
-    {
-        "author": "Peter J. Tomasi",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781401270506,
-        "title": "Batman: Arkham Knight Vol. 3"
+        "genre": "Fantasy",
+        "isbn": 9781429960748,
+        "title": "Crossroads of Twilight: Book Ten of 'The Wheel of Time'"
     },
     {
         "author": "Edward Fields",
@@ -1183,46 +532,242 @@
         "title": "The Essentials of Finance and Accounting for Nonfinancial Managers"
     },
     {
-        "author": "Napoleon Hill",
+        "author": "Voltaire",
         "frequency": 0,
-        "genre": "none",
-        "isbn": 9781627931991,
-        "title": "The Law of Success in Sixteen Lessons"
+        "genre": "Fiction",
+        "isbn": 9781497684256,
+        "title": "Candide"
     },
     {
-        "author": "Michael Sincere",
+        "author": "David R. Hawkins M.D./Ph.D.",
         "frequency": 0,
         "genre": "none",
-        "isbn": 9781440511929,
-        "title": "Start Day Trading Now: A Quick and Easy Introduction to Making Money While Managing Your Risk"
-    },
-    {
-        "author": "Alan Moore",
-        "frequency": 0,
-        "genre": "none",
-        "isbn": 9781779501837,
-        "title": "Watchmen (2019 Edition)"
-    },
-    {
-        "author": "Jen Sincero",
-        "frequency": 0,
-        "genre": "Self-Help",
-        "isbn": 9781473649491,
-        "title": "You Are a Badass: How to Stop Doubting Your Greatness and Start Living an Awesome Life"
+        "isbn": 9781401945534,
+        "title": "Letting Go"
     },
     {
         "author": "Brian Tracy",
         "frequency": 0,
-        "genre": "Business",
-        "isbn": 9780814434222,
-        "title": "Marketing (The Brian Tracy Success Library)"
+        "genre": "Self-Help",
+        "isbn": 9781605099408,
+        "title": "Goals!: How to Get Everything You Want -- Faster Than You Ever Thought Possible Edition 2"
     },
     {
-        "author": "Holly Black",
+        "author": "Philip K. Dick",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780547601205,
+        "title": "The Man in the High Castle"
+    },
+    {
+        "author": "Barbara Allan",
         "frequency": 0,
         "genre": "Fiction",
-        "isbn": 9781471407574,
-        "title": "The Queen of Nothing (The Folk of the Air #3)"
+        "isbn": 9780758277695,
+        "title": "Antiques Knock-Off"
+    },
+    {
+        "author": "Zoe Ferraris",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780748129942,
+        "title": "Kingdom Of Strangers"
+    },
+    {
+        "author": "Sun Tzu",
+        "frequency": 0,
+        "genre": "History",
+        "isbn": 9788074844553,
+        "title": "The Art of War (The Classic Lionel Giles Translation)"
+    },
+    {
+        "author": "Rachel Renee Russell",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781471172816,
+        "title": "Dork Diaries: Spectacular Superstar"
+    },
+    {
+        "author": "Agatha Christie",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780007463497,
+        "title": "The Mysterious Affair at Styles"
+    },
+    {
+        "author": "Michaella McCollum",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781789460148,
+        "title": "You'll Never See Daylight Again"
+    },
+    {
+        "author": "Robert Jordan",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781429959810,
+        "title": "The Eye of the World: Book One of 'The Wheel of Time'"
+    },
+    {
+        "author": "Robert Jordan",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781429960199,
+        "title": "The Shadow Rising: Book Four of 'The Wheel of Time'"
+    },
+    {
+        "author": "Shannon Messenger",
+        "frequency": 0,
+        "genre": "Juvenile Fiction",
+        "isbn": 9781534427358,
+        "title": "Legacy"
+    },
+    {
+        "author": "Stephen King",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781501141232,
+        "title": "It"
+    },
+    {
+        "author": "Thomas Ittelson",
+        "frequency": 0,
+        "genre": "Economics",
+        "isbn": 9781601638618,
+        "title": "Financial Statements Revised and Expanded Edition: A Step-by-Step Guide to Understanding and Creating Financial Reports"
+    },
+    {
+        "author": "Terry Hayes",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781448170609,
+        "title": "I Am Pilgrim: The bestselling Richard & Judy Book Club pick"
+    },
+    {
+        "author": "Faith Hunter",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780399587993,
+        "title": "Shattered Bonds"
+    },
+    {
+        "author": "Blake Pierce",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781640290112,
+        "title": "A Trace of Vice (a Keri Locke Mystery--Book #3)"
+    },
+    {
+        "author": "Brian McGilloway",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780062336583,
+        "title": "Little Girl Lost: A Lucy Black Thriller"
+    },
+    {
+        "author": "Brian Michael Bendis",
+        "frequency": 0,
+        "genre": "Graphic Novel",
+        "isbn": 9780785180197,
+        "title": "Ultimate Spider-Man Vol. 11: Carnage"
+    },
+    {
+        "author": "Paul S. Kemp",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780786956890,
+        "title": "Shadowbred: The Twilight War Book 1"
+    },
+    {
+        "author": "Robert Greene",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781847651402,
+        "title": "The Art Of Seduction"
+    },
+    {
+        "author": "Georges Simenon",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781524705398,
+        "title": "Maigret Goes to School"
+    },
+    {
+        "author": "Patrick Rothfuss",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780575087057,
+        "title": "The Name of the Wind: The Kingkiller Chronicle: Book 1"
+    },
+    {
+        "author": "Dale Carnegie",
+        "frequency": 0,
+        "genre": "Economics",
+        "isbn": 9781409005216,
+        "title": "How to Win Friends and Influence People"
+    },
+    {
+        "author": "Sir Arthur Conan Doyle",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780486114354,
+        "title": "The Memoirs of Sherlock Holmes"
+    },
+    {
+        "author": "Robert B. Cialdini",
+        "frequency": 0,
+        "genre": "Economics",
+        "isbn": 9780061899874,
+        "title": "Influence: The Psychology of Persuasion"
+    },
+    {
+        "author": "Linda Castillo",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781250314161,
+        "title": "In Dark Company: A Kate Burkholder Short Story"
+    },
+    {
+        "author": "Morgan Rice",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9781632913821,
+        "title": "A Forge of Valor (Kings and Sorcerers--Book 4)"
+    },
+    {
+        "author": "Laura Levine",
+        "frequency": 0,
+        "genre": "Drama",
+        "isbn": 9781496708489,
+        "title": "Death of a Bachelorette"
+    },
+    {
+        "author": "Timothy Snyder",
+        "frequency": 0,
+        "genre": "History",
+        "isbn": 9780804190121,
+        "title": "On Tyranny: Twenty Lessons from the Twentieth Century"
+    },
+    {
+        "author": "Agatha Christie",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780007422135,
+        "title": "And Then There Were None"
+    },
+    {
+        "author": "Denise Grover Swank",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781939996343,
+        "title": "Thirty-Five and a Half Conspiracies: Rose Gardner Mystery #8"
+    },
+    {
+        "author": "Laura Levine",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780758265111,
+        "title": "Killer Blonde"
     },
     {
         "author": "Blake Pierce",
@@ -1232,11 +777,172 @@
         "title": "Once Missed (A Riley Paige Mystery—Book 16)"
     },
     {
-        "author": "Mathias Weske",
+        "author": "Pierce Brown",
         "frequency": 0,
-        "genre": "Computers",
-        "isbn": 9783642286162,
-        "title": "Business Process Management: Concepts Languages Architectures Edition 2"
+        "genre": "none",
+        "isbn": 9780425285954,
+        "title": "Dark Age"
+    },
+    {
+        "author": "Jana DeLeon",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781940270371,
+        "title": "Diabolical"
+    },
+    {
+        "author": "Joanne Fluke",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781617731259,
+        "title": "Strawberry Shortcake Murder"
+    },
+    {
+        "author": "Cora Seton",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781927036600,
+        "title": "The Marine's E-Mail Order Bride: Heroes of Chance Creek Volume 4"
+    },
+    {
+        "author": "Lee Child",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780399593550,
+        "title": "Blue Moon: A Jack Reacher Novel"
+    },
+    {
+        "author": "Mark Millar",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780785170242,
+        "title": "Civil War: Volume 1"
+    },
+    {
+        "author": "Rolf Dobelli",
+        "frequency": 0,
+        "genre": "Non Fiction",
+        "isbn": 9780062359803,
+        "title": "The Art of Thinking Clearly"
+    },
+    {
+        "author": "Grant Morrison",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401235741,
+        "title": "Batman and Robin Vol. 1: Batman Reborn"
+    },
+    {
+        "author": "Matthew Mercer",
+        "frequency": 0,
+        "genre": "Science Fiction",
+        "isbn": 9781506714820,
+        "title": "Critical Role Vox Machina: Origins: Volume 1"
+    },
+    {
+        "author": "Dorothy Gilman",
+        "frequency": 0,
+        "genre": "Fiction ",
+        "isbn": 9780345443076,
+        "title": "Mrs. Pollifax Unveiled"
+    },
+    {
+        "author": "Elizabeth Adler",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780307574961,
+        "title": "Now or Never: A Novel"
+    },
+    {
+        "author": "J.M. Barlog",
+        "frequency": 0,
+        "genre": "Media",
+        "isbn": 9781789090154,
+        "title": "God of War: The Official Novelization"
+    },
+    {
+        "author": "Geoffrey G. Parker",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9780393249125,
+        "title": "Platform Revolution: How Networked Markets Are Transforming the Economy—and How to Make Them Work for You"
+    },
+    {
+        "author": "Gregory David Roberts",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781405516976,
+        "title": "Shantaram"
+    },
+    {
+        "author": "Martina Cole",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781472249425,
+        "title": "No Mercy: The brand new novel from the Queen of Crime"
+    },
+    {
+        "author": "Brian Tracy",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780814436288,
+        "title": "Business Strategy (The Brian Tracy Success Library)"
+    },
+    {
+        "author": "Jeffrey Archer",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780330524759,
+        "title": "Shall We Tell the President?"
+    },
+    {
+        "author": "Leo Tolstoy",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781476789477,
+        "title": "War and Peace: With bonus material from Give War and Peace A Chance by Andrew D. Kaufman"
+    },
+    {
+        "author": "Art Baltazar",
+        "frequency": 0,
+        "genre": "Comics",
+        "isbn": 9781401244378,
+        "title": "Young Justice Vol. 1"
+    },
+    {
+        "author": "Brian Tracy",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780814437049,
+        "title": "Personal Success (The Brian Tracy Success Library)"
+    },
+    {
+        "author": "Robin Hobb",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780007374038,
+        "title": "Assassin’s Apprentice (The Farseer Trilogy Book 1)"
+    },
+    {
+        "author": "Brian Tracy",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9780814434222,
+        "title": "Marketing (The Brian Tracy Success Library)"
+    },
+    {
+        "author": "George R. R. Martin",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780804179607,
+        "title": "Rogues"
+    },
+    {
+        "author": "Billy Connolly",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781529361353,
+        "title": "Tall Tales and Wee Stories: The Best of Billy Connolly"
     },
     {
         "author": "David Ulrich",
@@ -1244,5 +950,299 @@
         "genre": "Business",
         "isbn": 9780071802673,
         "title": "HR from the Outside In: Six Competencies for the Future of Human Resources"
+    },
+    {
+        "author": "Mark Lawrence",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780007423309,
+        "title": "Prince of Thorns (The Broken Empire Book 1)"
+    },
+    {
+        "author": "Dale Carnegie",
+        "frequency": 0,
+        "genre": "Economics",
+        "isbn": 9781451621716,
+        "title": "How To Win Friends and Influence People"
+    },
+    {
+        "author": "Pierce Brown",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780345539854,
+        "title": "Morning Star"
+    },
+    {
+        "author": "Jim Butcher",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781440631849,
+        "title": "Furies of Calderon"
+    },
+    {
+        "author": "Simon Sinek",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9780735213524,
+        "title": "The Infinite Game"
+    },
+    {
+        "author": "Story by FUSE",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781646590797,
+        "title": "That Time I got Reincarnated as a Slime 11"
+    },
+    {
+        "author": "Barbara Allan",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9780758272799,
+        "title": "Antiques Roadkill: A Trash 'n' Treasures Mystery"
+    },
+    {
+        "author": "Al Ewing",
+        "frequency": 0,
+        "genre": "Comics",
+        "isbn": 9781302507169,
+        "title": "Immortal Hulk Vol. 1: Or Is He Both?"
+    },
+    {
+        "author": "Mary Higgins Clark",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781471167690,
+        "title": "Kiss the Girls and Make Them Cry"
+    },
+    {
+        "author": "James Milner",
+        "frequency": 0,
+        "genre": "Autobiography",
+        "isbn": 9781529404937,
+        "title": "Ask A Footballer"
+    },
+    {
+        "author": "Geoff Johns",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401236410,
+        "title": "Green Lantern: Secret Origin"
+    },
+    {
+        "author": "Ray Dalio",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9781501124051,
+        "title": "Principles: Life and Work"
+    },
+    {
+        "author": "Brian Azzarello",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401236632,
+        "title": "The Joker"
+    },
+    {
+        "author": "Brian Tracy",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9781626569430,
+        "title": "Eat That Frog!: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time Edition 3"
+    },
+    {
+        "author": "Charles Duhigg",
+        "frequency": 0,
+        "genre": "Business",
+        "isbn": 9780679603856,
+        "title": "The Power of Habit: Why We Do What We Do in Life and Business"
+    },
+    {
+        "author": "Michael Connelly",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781409134336,
+        "title": "The Black Box"
+    },
+    {
+        "author": "Brent Weeks",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780356504650,
+        "title": "The Burning White: Book Five of Lightbringer"
+    },
+    {
+        "author": "Clive Cussler",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781405941020,
+        "title": "Final Option: 'The best one yet'"
+    },
+    {
+        "author": "Peter Newman",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780007593101,
+        "title": "The Vagrant (The Vagrant Trilogy)"
+    },
+    {
+        "author": "Zig Ziglar",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781418530297,
+        "title": "Selling 101: What Every Successful Sales Professional Needs to Know"
+    },
+    {
+        "author": "Jason Aaron",
+        "frequency": 0,
+        "genre": "Comics",
+        "isbn": 9781302494605,
+        "title": "Mighty Thor Vol. 2: Lords Of Midgard"
+    },
+    {
+        "author": "John Grisham",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9780385544191,
+        "title": "The Guardians: A Novel"
+    },
+    {
+        "author": "Michael Sincere",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781440511929,
+        "title": "Start Day Trading Now: A Quick and Easy Introduction to Making Money While Managing Your Risk"
+    },
+    {
+        "author": "Arthur Conan Doyle",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781476797502,
+        "title": "The Memoirs of Sherlock Holmes"
+    },
+    {
+        "author": "Peter J. Tomasi",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401270506,
+        "title": "Batman: Arkham Knight Vol. 3"
+    },
+    {
+        "author": "Blake Pierce",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781640294127,
+        "title": "Watching (The Making of Riley Paige—Book 1)"
+    },
+    {
+        "author": "Tony Robbins",
+        "frequency": 0,
+        "genre": "Self-Help",
+        "isbn": 9780743274333,
+        "title": "Awaken the Giant Within: How to Take Immediate Control of Your Mental Emotional Physical and Financial"
+    },
+    {
+        "author": "Geoff Johns",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781401239565,
+        "title": "Batman: Earth One"
+    },
+    {
+        "author": "Robert Jordan",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781429960571,
+        "title": "A Crown of Swords: Book Seven of 'The Wheel of Time'"
+    },
+    {
+        "author": "Sara Rosett",
+        "frequency": 0,
+        "genre": "Mystery",
+        "isbn": 9781617734076,
+        "title": "Getting Away Is Deadly: An Ellie Avery Mystery"
+    },
+    {
+        "author": "Douglas Adams",
+        "frequency": 0,
+        "genre": "Humor",
+        "isbn": 9780330513081,
+        "title": "The Hitchhiker's Guide to the Galaxy: 42nd Anniversary Edition"
+    },
+    {
+        "author": "Brian Tracy",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780814434208,
+        "title": "Management (The Brian Tracy Success Library)"
+    },
+    {
+        "author": "Vanessa Van Edwards",
+        "frequency": 0,
+        "genre": "Self-Help",
+        "isbn": 9780399564505,
+        "title": "Captivate: The Science of Succeeding with People"
+    },
+    {
+        "author": "Hajime Isayama",
+        "frequency": 0,
+        "genre": "Fantasy",
+        "isbn": 9781612626864,
+        "title": "Attack on Titan: Volume 13"
+    },
+    {
+        "author": "The Awkward Yeti",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9781449474836,
+        "title": "Heart and Brain: An Awkward Yeti Collection"
+    },
+    {
+        "author": "Cullen Bunn",
+        "frequency": 0,
+        "genre": "Graphic Novel",
+        "isbn": 9781302368807,
+        "title": "Deadpool Kills the Marvel Universe"
+    },
+    {
+        "author": "George R.R. Martin",
+        "frequency": 0,
+        "genre": "none",
+        "isbn": 9780007482931,
+        "title": "A Game of Thrones: The Story Continues Books 1-5: A Game of Thrones A Clash of Kings A Storm of Swords A Feast for Crows A Dance with Dragons (A Song of Ice and Fire)"
+    },
+    {
+        "author": "Adam Kay",
+        "frequency": 0,
+        "genre": "Autobiography",
+        "isbn": 9781529018592,
+        "title": "Twas The Nightshift Before Christmas: Festive hospital diaries from the author of million-copy hit This is Going to Hurt"
+    },
+    {
+        "author": "Barbara Allan",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781617738760,
+        "title": "Antiques Con"
+    },
+    {
+        "author": "Ernest Cline",
+        "frequency": 0,
+        "genre": "Science Fiction",
+        "isbn": 9780307887450,
+        "title": "Ready Player One"
+    },
+    {
+        "author": "Rhys Bowen",
+        "frequency": 0,
+        "genre": "Fiction",
+        "isbn": 9781101207369,
+        "title": "Her Royal Spyness"
+    },
+    {
+        "author": "Matthew Walker",
+        "frequency": 0,
+        "genre": "Psychology",
+        "isbn": 9780141983776,
+        "title": "Why We Sleep: The New Science of Sleep and Dreams"
     }
 ]

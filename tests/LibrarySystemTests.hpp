@@ -7,16 +7,8 @@
 using namespace std;
 
 TEST(LibrarySystemTest, Constructor) {
-    LibrarySystem testLibrary("tests/test_catalogue.json", "tests/test_checked_out.json", "tests/test_files/test_users.json");
-    UserSystem* us = testLibrary.GetUserSystem();
-    BookSystem* bs = testLibrary.GetBookSystem();
-    EXPECT_TRUE(us != nullptr && bs != nullptr);
-}
-
-TEST(LibrarySystemTest, Destructor) {
-    LibrarySystem* testLibrary = new LibrarySystem("tests/test_catalogue.json", "tests/test_checked_out.json", "tests/test_files/test_users.json");
-    UserSystem* us = testLibrary->GetUserSystem();
-    BookSystem* bs = testLibrary->GetBookSystem();
-    delete testLibrary;
-    EXPECT_TRUE(us == nullptr && bs == nullptr);
+    LibrarySystem testLibrary("../tests/test_files/test_catalogue.json", "../tests/test_files/test_checked_out.json", "../tests/test_files/test_users.json");
+    EXPECT_TRUE(testLibrary.GetBookSystem()->GetCatalogue().size() == 4 &&
+                testLibrary.GetUserSystem()->GetMap().size() == 7 &&
+                testLibrary.GetBookSystem()->GetCheckedOut().size() == 2);
 }
