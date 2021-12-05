@@ -17,6 +17,7 @@
 #include "User.hpp"
 
 #include <vector>
+#include <set>
 #include "CheckOutData.hpp"
 
 class UserSystem;
@@ -25,7 +26,7 @@ class CheckOutData;
 class BookSystem {
     private:
         std::unordered_map<long long, Content*> catalogue;
-        std::unordered_map<int, std::vector<CheckOutData>> checkedOut;
+        std::unordered_map<int, std::set<CheckOutData>> checkedOut;
 
         std::string catalogueFile; 
         std::string checkedOutFile;
@@ -33,7 +34,7 @@ class BookSystem {
         int maximumSeconds;
 
         void DeallocateContent(Content* content);
-        bool FindInCheckedOutVec(std::vector<CheckOutData>& userVec, long long ISBN);
+        bool FindInCheckedOutSet(std::set<CheckOutData> userSet, long long ISBN);
     public:
         BookSystem() = default;
         BookSystem(const std::string& catF, const std::string& coF, int maxSec = 259200);
@@ -48,7 +49,7 @@ class BookSystem {
         void CheckExpiration();
 
         std::unordered_map<long long, Content*>& GetCatalogue();
-        std::unordered_map<int, std::vector<CheckOutData>>& GetCheckedOut();
+        std::unordered_map<int, std::set<CheckOutData>>& GetCheckedOut();
         Content* GetContent(long long ISBN);
 
         void LoadCatalogue();
