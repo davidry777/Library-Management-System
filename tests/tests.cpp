@@ -1,15 +1,15 @@
 #include "gtest/gtest.h"
 
 
-// #include "BookTests.hpp"
-// #include "BundleTests.hpp"
-// #include "SortTests.hpp"
-// #include "SearchTests.hpp"
-// #include "PersonTests.hpp"
+#include "BookTests.hpp"
+#include "BundleTests.hpp"
 #include "BookSystemTests.hpp"
-// #include "LibrarySystemTests.hpp"
-// #include "UserSystemTests.hpp"
+#include "SortTests.hpp"
+#include "SearchTests.hpp"
+#include "PersonTests.hpp"
 // #include "LoginSystemTests.hpp"
+// #include "UserSystemTests.hpp"
+// #include "LibrarySystemTests.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
