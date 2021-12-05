@@ -135,7 +135,7 @@ void RemoveBook(Librarian* person) {
 }
 
 void PrintLoginMenu() {
-    std::cout << " ------------------- Main Menu --------------------- " << std::endl;
+    std::cout << " -------------------- Main Menu -------------------- " << std::endl;
     std::cout << "|           1. Log In                               |" << std::endl;
     std::cout << "|           2. Register an Account                  |" << std::endl;
     std::cout << "|           3. Exit Program                         |" << std::endl;
@@ -144,37 +144,37 @@ void PrintLoginMenu() {
 }
 
 void PrintMenu(User* person) {
-    std::cout << "/---------------- User Library Menu ----------------/" << std::endl;
-    std::cout << "/           1. Display Your Information             /" << std::endl;
-    std::cout << "/           2. Check Out a Book                     /" << std::endl;
-    std::cout << "/           3. Return a Book                        /" << std::endl;
-    std::cout << "/           4. Display Debt From Fines              /" << std::endl;
-    std::cout << "/           5. Pay off Debt                         /" << std::endl;
-    std::cout << "/           6. Show all Checked Out Books           /" << std::endl;
-    std::cout << "/           7. Search/Sort Books                    /" << std::endl;
-    std::cout << "/---------------------------------------------------/" << std::endl;
+    std::cout << " ---------------- User Library Menu ---------------- " << std::endl;
+    std::cout << "|           1. Display Your Information             |" << std::endl;
+    std::cout << "|           2. Check Out a Book                     |" << std::endl;
+    std::cout << "|           3. Return a Book                        |" << std::endl;
+    std::cout << "|           4. Display Debt From Fines              |" << std::endl;
+    std::cout << "|           5. Pay off Debt                         |" << std::endl;
+    std::cout << "|           6. Show all Checked Out Books           |" << std::endl;
+    std::cout << "|           7. Search/Sort Books                    |" << std::endl;
+    std::cout << " --------------------------------------------------- " << std::endl;
     std::cout << "Type an option (1-5). Type -1 to Log Out:\n > ";
 }
 
 void PrintMenu(Librarian* person) {
-    std::cout << "/------------- Librarian Library Menu --------------/" << std::endl;
-    std::cout << "/           1. Display Your Information             /" << std::endl;
-    std::cout << "/           2. Add Book to Library                  /" << std::endl;
-    std::cout << "/           3. Remove Book from Library             /" << std::endl;
-    std::cout << "/           4. Set a New Library                    /" << std::endl;
-    std::cout << "/---------------------------------------------------/" << std::endl;
+    std::cout << " ------------- Librarian Library Menu -------------- " << std::endl;
+    std::cout << "|           1. Display Your Information             |" << std::endl;
+    std::cout << "|           2. Add Book to Library                  |" << std::endl;
+    std::cout << "|           3. Remove Book from Library             |" << std::endl;
+    std::cout << "|           4. Set a New Library                    |" << std::endl;
+    std::cout << " --------------------------------------------------- " << std::endl;
     std::cout << "Type an option (1-4). Type -1 to Log Out:\n > ";
 }
 
 void DisplayMenu()
 {
-    std::cout << "/----------- Library Sort/Search Menu --------------/" << std::endl;
-    std::cout << "/           1. Search by Genre                      /" << std::endl;
-    std::cout << "/           2. Search by KeyWord                    /" << std::endl;
-    std::cout << "/           3. Search by ISBN                       /" << std::endl;
-    std::cout << "/           4. Sort Alphabetically                  /" << std::endl;
-    std::cout << "/           5. Sort by Frequency                    /" << std::endl;
-    std::cout << "/---------------------------------------------------/" << std::endl;
+    std::cout << " ------------ Library Sort/Search Menu ------------- " << std::endl;
+    std::cout << "|           1. Search by Genre                      |" << std::endl;
+    std::cout << "|           2. Search by KeyWord                    |" << std::endl;
+    std::cout << "|           3. Search by ISBN                       |" << std::endl;
+    std::cout << "|           4. Sort Alphabetically                  |" << std::endl;
+    std::cout << "|           5. Sort by Frequency                    |" << std::endl;
+    std::cout << " --------------------------------------------------- " << std::endl;
 }
 
 void DisplayHelper(User* person, LibrarySystem* library, int choice)
