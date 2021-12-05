@@ -26,7 +26,12 @@ void User::ReturnBook(long long ISBN) { bookSys->ReturnContent(this, ISBN); }
 
 int User::GetBalance() { return debt; }
 
-void User::PayBalance(int cash) { debt -= cash; }
+void User::PayBalance(int cash) 
+{ 
+    debt -= cash;
+    if(debt < 0)
+        debt = 0;
+}
 
 void User::DisplayCheckOut()
 {
