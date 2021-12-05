@@ -61,8 +61,8 @@ void BookSystem::SaveCheckedOut(string file) {
     json checkedOutJSON;
 
     int i = 0;
-    for (pair<int, std::set<CheckOutData>> dataPair : this->checkedOut) {
-        for (CheckOutData data : dataPair.second) {
+    for (pair<int, std::vector<CheckOutData>> dataPair : this->checkedOut) {
+        for (CheckOutData &data : dataPair.second) {
             checkedOutJSON[i]["time"] = data.timeCheckedOut;
             checkedOutJSON[i]["content_isbn"] = data.contentCheckedOut->GetISBN();
             checkedOutJSON[i]["over_time"] = data.overTime;
@@ -101,7 +101,7 @@ void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
         if (this->checkedOut.find(dataUser->GetId()) == this->checkedOut.end())
             this->checkedOut.insert({dataUser->GetId(), {newData}});
         else
-            this->checkedOut.at(data).insert(newData);
+            this->checkedOut.at(data).push_back(newData);
     }
 }
 std::unordered_map<long long, Content*>& BookSystem::GetCatalogue() {
@@ -114,7 +114,7 @@ Content* BookSystem::GetContent(long long ISBN) {
     std::cout << "Error finding ISBN. ISBN number " << ISBN << " does not exist in catalogue!" << std::endl;
     return nullptr;
 }
-unordered_map<int, std::set<CheckOutData>>& BookSystem::GetCheckedOut() {
+unordered_map<int, std::vector<CheckOutData>>& BookSystem::GetCheckedOut() {
     return this->checkedOut;
 }
 bool BookSystem::AddContent(Content* content) {
@@ -146,8 +146,8 @@ bool BookSystem::RemoveContent(long long ISBN) {
     std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;
     return false;
 }
-bool BookSystem::FindInCheckedOutSet(set<CheckOutData> userSet, long long ISBN) {
-    for (CheckOutData data : userSet)
+bool BookSystem::FindInCheckedOutVec(vector<CheckOutData>& userVec, long long ISBN) {
+    for (CheckOutData &data : userVec)
         if (data.contentCheckedOut->GetISBN())
             return true;
     return false;
@@ -159,7 +159,7 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
     }
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         if (this->checkedOut.find(person->GetId()) != this->checkedOut.end()) {
-            if (this->FindInCheckedOutSet(this->checkedOut.at(person->GetId()), ISBN)) {
+            if (this->FindInCheckedOutVec(this->checkedOut.at(person->GetId()), ISBN)) {
                 cout << ISBN << " has already been checked out!" << endl;
                 return false;
             }
@@ -169,7 +169,7 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
         if (this->checkedOut.find(person->GetId()) == this->checkedOut.end())
             this->checkedOut.insert({person->GetId(), {data}});
         else
-            this->checkedOut.at(person->GetId()).insert(data);
+            this->checkedOut.at(person->GetId()).push_back(data);
         User* personUser = dynamic_cast<User*>(person);
         personUser->AddCheckOutData(data);
     }
@@ -181,7 +181,7 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
 }
 bool BookSystem::ReturnContent(Person* person, long long ISBN) {
     if (checkedOut.find(person->GetId()) != checkedOut.end() && this->catalogue.find(ISBN) != this->catalogue.end()) {
-        for (set<CheckOutData>::iterator it = checkedOut.at(person->GetId()).begin(); it != checkedOut.at(person->GetId()).end(); ++it) {
+        for (vector<CheckOutData>::iterator it = checkedOut.at(person->GetId()).begin(); it != checkedOut.at(person->GetId()).end(); ++it) {
             if ((*it).contentCheckedOut->GetISBN() == ISBN) {
                 cout << "returning " << (*it).contentCheckedOut->GetISBN() << endl;
                 if (this->checkedOut.at(person->GetId()).size() == 1)
@@ -196,9 +196,9 @@ bool BookSystem::ReturnContent(Person* person, long long ISBN) {
     return false;
 }
 void BookSystem::CheckExpiration() {
-    for (pair<int, set<CheckOutData>> dataPair : this->checkedOut) {
-        for (CheckOutData data : dataPair.second)
-            if (time(0) - data.timeCheckedOut >= 25900)
-                data.overTime = true;
+    for (pair<int, vector<CheckOutData>> dataPair : this->checkedOut) {
+        for (int i = 0; i < dataPair.second.size(); ++i)
+            if (time(0) - dataPair.second.at(i).timeCheckedOut >= maximumSeconds)
+                this->checkedOut.at(dataPair.first).at(i).overTime = true;
     }
 }
