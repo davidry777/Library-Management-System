@@ -153,7 +153,7 @@ void PrintMenu(User* person) {
     std::cout << "/           6. Show all Checked Out Books           /" << std::endl;
     std::cout << "/           7. Search/Sort Books                    /" << std::endl;
     std::cout << "/---------------------------------------------------/" << std::endl;
-    std::cout << "Type an option (1-5). Type -1 to quit:\n > ";
+    std::cout << "Type an option (1-5). Type -1 to Log Out:\n > ";
 }
 
 void PrintMenu(Librarian* person) {
@@ -163,7 +163,7 @@ void PrintMenu(Librarian* person) {
     std::cout << "/           3. Remove Book from Library             /" << std::endl;
     std::cout << "/           4. Set a New Library                    /" << std::endl;
     std::cout << "/---------------------------------------------------/" << std::endl;
-    std::cout << "Type an option (1-4). Type -1 to quit:\n > ";
+    std::cout << "Type an option (1-4). Type -1 to Log Out:\n > ";
 }
 
 void DisplayMenu()

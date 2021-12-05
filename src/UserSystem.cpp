@@ -95,7 +95,7 @@ void UserSystem::SaveUserData(string userInfo)
 	
 	if (fileOut.is_open())
 	{
-		fileOut << userInfo;
+		fileOut << std::setw(3) << userJson;
 	}
 	fileOut.close();
 }
