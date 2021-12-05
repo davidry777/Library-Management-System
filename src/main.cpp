@@ -13,6 +13,8 @@
 #include "../header/Librarian.hpp"
 #include "../header/DisplaySystem.hpp"
 
+using namespace std;
+
 void PrintUserInfo(User* user) {
     user->GetInfo();
 }
@@ -64,22 +66,32 @@ void PrintLibrarianInfo(Librarian* person) {
     person->GetInfo();
 }
 
+bool IsDigitString(const string& str) {
+    for (char ch : str)
+        if (!isdigit(ch))
+            return false;
+    return true;
+}
+
 void AddBook(Librarian* person) {
-    std::string title, genre, author;
+    std::string title, genre, author, isbnStr;
     long long isbn;
 
-    std::cout << "Enter title for new book: " << std::endl;
-    std::cin >> title;
-    std::cout << std::endl;
-    std::cout << "Enter ISBN for " << title << ": " << std::endl;
-    std::cin >> isbn;
-    std::cout << std::endl;
-    std::cout << "Enter genre for " << title << ": " << std::endl;
-    std::cin >> genre;
-    std::cout << std::endl;
-    std::cout << "Enter author for " << title << ": " << std::endl;
-    std::cin >> author;
-    std::cout << std::endl;
+    std::cout << "Enter title for new book:\n > ";
+    getline(cin, title);
+    
+    while (true) {
+        std::cout << "Enter ISBN for " << title << ":\n > ";
+        getline(cin, isbnStr);
+        if (IsDigitString(isbnStr))
+            break;
+    }
+    isbn = stoll(isbnStr);
+
+    std::cout << "Enter genre for " << title << ":\n > ";
+    getline(cin, genre);
+    std::cout << "Enter author for " << title << ":\n > ";
+    getline(cin, author);
 
     Book* newBook = new Book(title, isbn, genre, author, 0);
     std::cout << title << " added to Librarian " << person->GetName() << "'s library" << std::endl;
@@ -100,6 +112,14 @@ bool Login(int id, std::string &password, LoginSystem *logSys) {
     return logSys->LoginVerify(id, password);
 }
 
+void PrintLoginMenu() {
+    std::cout << "/------------------- Main Menu ---------------------/" << std::endl;
+    std::cout << "/           1. Log In                               /" << std::endl;
+    std::cout << "/           2. Exit Program                         /" << std::endl;
+    std::cout << "/---------------------------------------------------/" << std::endl;
+    std::cout << "Type an option (1-2):\n > ";
+}
+
 void PrintMenu(User* person) {
     std::cout << "/---------------- User Library Menu ----------------/" << std::endl;
     std::cout << "/           1. Display Your Information             /" << std::endl;
@@ -110,6 +130,7 @@ void PrintMenu(User* person) {
     std::cout << "/           6. Show all Checked Out Books           /" << std::endl;
     std::cout << "/           7. Search/Sort Books                    /" << std::endl;
     std::cout << "/---------------------------------------------------/" << std::endl;
+    std::cout << "Type an option (1-5). Type -1 to quit:\n > ";
 }
 
 void PrintMenu(Librarian* person) {
@@ -119,6 +140,7 @@ void PrintMenu(Librarian* person) {
     std::cout << "/           3. Remove Book from Library             /" << std::endl;
     std::cout << "/           4. Set a New Library                    /" << std::endl;
     std::cout << "/---------------------------------------------------/" << std::endl;
+    std::cout << "Type an option (1-4). Type -1 to quit:\n > ";
 }
 
 void DisplayMenu()
@@ -136,7 +158,6 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 {
 	int input = -1;
 	std::string sinput;
-	int ntinput;
 	DisplayMenu();
 	std::cout << "Type an option (1-5). Type 0 to go back to main menu: ";
 	std:: cin >> input;
@@ -145,91 +166,74 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	if(input == 1)
 	{
 		std::cout << "Enter the genre you would like to search for: ";
-		std::cin >> sinput;
+		std::getline(std::cin, sinput);
 		if(choice == 1)
-			display->DisplayBooks('1', sinput, person->GetCheckedOut());	
+			display->DisplayBooks('1', sinput, library->GetBookSystem().GetUserCheckedOut(person));	
 		if(choice == 2)
-			display->DisplayBooks('1', sinput, library->GetBookSystem()->GetCatalogue());
+			display->DisplayBooks('1', sinput, library->GetBookSystem().GetCatalogue());
 	}
 	if(input == 2)
 	{
 		std::cout << "Enter the keyword you would like to search by: ";
-		std:: cin >> sinput;
+		std::getline(std::cin, sinput);
 		if(choice == 1)
-			display->DisplayBooks('2', sinput, person->GetCheckedOut());
+			display->DisplayBooks('2', sinput, library->GetBookSystem().GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('2', sinput, library->GetBookSystem()->GetCatalogue());
+			display->DisplayBooks('2', sinput, library->GetBookSystem().GetCatalogue());
 	}
 	if(input == 3)
 	{
 		std::cout << "Enter the ISBN you would like to search for: ";
-		std::cin >> ntinput;
+		std::getline(std::cin, sinput);
 		if(choice == 1)
-			display->DisplayBooks('3', ntinput, person->GetCheckedOut());
+			display->DisplayBooks('3', ntinput, library->GetBookSystem().GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('3', ntinput, library->GetBookSystem()->GetCatalogue());
+			display->DisplayBooks('3', ntinput, library->GetBookSystem().GetCatalogue());
 	}
 	if(input == 4)
 	{
 		if(choice == 1)
-			display->DisplayBooks('4', person->GetCheckedOut());
+			display->DisplayBooks('4', library->GetBookSystem().GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('4', library->GetBookSystem()->GetCatalogue());
+			display->DisplayBooks('4', library->GetBookSystem().GetCatalogue());
 	}
 	if(input == 5)
 	{
 		if(choice == 1)
-			display->DisplayBooks('5', person->GetCheckedOut());
+			display->DisplayBooks('5', library->GetBookSystem().GetUserCheckedOut(person));
 		if(choice == 2)
-			display->DisplayBooks('5', library->GetBookSystem()->GetCatalogue());
+			display->DisplayBooks('5', library->GetBookSystem().GetCatalogue());
 	}
 	delete display;
 }
 
-int SwitchCase(User* person) {
-    int input = -1;
-    std::cout << "Type an option (1-7). Type -1 to quit: ";
-    std::cin >> input;
-    std::cout << std::endl;
-
-    if (input == 1)
+void ExecuteCommand(User* person, const string& input) {
+    if (input == "1")
         PrintUserInfo(person);
-    if (input == 2)
+    if (input == "2")
         CheckoutBook(person);
-    if (input == 3)
+    if (input == "3")
         ReturnBook(person);
-    if (input == 4)
+    if (input == "4")
         ShowDebt(person);
-    if (input == 5)
+    if (input == "5")
         PayDebt(person);
-    if (input == 6)
+    if (input == "6")
         DisplayCheckedOutBooks(person);
-    if (input == 7)
-	    return input;
-    if (input == -1)
-        return -1;
-
-    return input;
+    if (input == "7")
+	    ;// Search/Sort Books
+        
 }
 
-int SwitchCase(Librarian* librarian) {
-    int input = -1;
-    std::cout << "Type an option (1-5). Type -1 to quit: ";
-    std::cin >> input;
-    std::cout << std::endl;
-
-    if (input == 1)
+void ExecuteCommand(Librarian* librarian, const string& input) {
+    if (input == "1")
         PrintLibrarianInfo(librarian);    
-    if (input == 2)
+    if (input == "2")
         AddBook(librarian);
-    if (input == 3)
+    if (input == "3")
         RemoveBook(librarian);
-    if (input == 4)
+    if (input == "4")
         cout << "Work in progress" << endl;
-    if (input == -1)
-        return -1;
-
-    return input;
 }
 
 int SwitchCaseDisplay(User* person, LibrarySystem* library)
@@ -246,51 +250,38 @@ int SwitchCaseDisplay(User* person, LibrarySystem* library)
 	return input;
 }
 
-int main()
-{
-    int id = 0;
-    std::string password  = "";
+int main() {
+    LibrarySystem lib("program_files/catalogue.json", "program_files/checked_out.json", "program_files/userInfo.json");
+    Person* currPerson = nullptr;
+    string input;
 
-    std::cout << "Enter Your User ID: " << std::endl;
-    std::cin >> id;
-    std::cout << std::endl;
-
-    std::cout << "Enter Password: " << std::endl;
-    std::cin >> password;
-    std::cout << std::endl;
-    
-    // BookSystem* bs = new BookSystem(catF, coF);
-    // UserSystem* us = new UserSystem("../userInfo.json", bs);
-    // LoginSystem* logS = new LoginSystem(us->GetMap());
-    LibrarySystem* library = new LibrarySystem("../catalogue.json", "../checked_out.json", "../userInfo.json");
-    LoginSystem* logS = new LoginSystem(library->GetUserSystem()->GetMap());
-
-    if(Login(id,password, logS))
-    {
-  //LibrarySystem* library = new LibrarySystem(us, bs, "../catalogue.json", "../checked_out.json", "../passed_due.json", "", "");   // Don't know what goes in 4th and 5th param
-       Person* person = library->GetUserSystem()->GetPerson(id);
-        
-        if (person->GetType() == "User"){
-            // User* user = dynamic_cast<User*>(person);
-            int option = -1;
-            do {
-                PrintMenu(dynamic_cast<User*>(person));
-                int option = SwitchCase(dynamic_cast<User*>(person));
-		        if(option == 7)
-			        SwitchCaseDisplay(dynamic_cast<User*>(person), library);
+    while (true) { 
+        PrintLoginMenu();
+        getline(cin, input);
+        if (input != "1" || input != "2") { continue; }
+        if (input == "2") { break; }
+        /*
+        Login System Here
+        Set currPerson
+        */
+        if (dynamic_cast<User*>(currPerson) != nullptr) {
+            while (input != "-1") {
+                PrintMenu(dynamic_cast<User*>(currPerson));
+                getline(cin, input);
+                ExecuteCommand(dynamic_cast<User*>(currPerson), input);
             }
-            while (option != -1);
-        }    
-        else
-        {
-            // Librarian* librarian = dynamic_cast<Librarian*>(person);
-            int option = -1;
-            do {
-                PrintMenu(dynamic_cast<Librarian*>(person));
-                int option = SwitchCase(dynamic_cast<Librarian*>(person));
-            } 
-            while (option != -1);
+        }
+        else if (dynamic_cast<Librarian*>(currPerson) != nullptr) {
+            while (input != "-1") {
+                PrintMenu(dynamic_cast<Librarian*>(currPerson));
+                getline(cin, input);
+                ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input);
+            }
         }
     }
-    return 0;
+    cout << "Saving. Do not exit program." << endl;
+    lib.GetBookSystem().SaveCatalogue();
+    lib.GetBookSystem().SaveCheckedOut();
+    lib.GetUserSystem().SaveUserData("program_files/userInfo.json");
+    cout << "Program successfully saved." << endl;
 }
