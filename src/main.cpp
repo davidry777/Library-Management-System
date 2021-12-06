@@ -180,6 +180,7 @@ void DisplayMenu()
 void DisplayHelper(User* person, LibrarySystem* library, int choice)
 {
 	int input = -1;
+	int intinput = 0;
 	std::string sinput;
 	DisplayMenu();
 	std::cout << "Type an option (1-5). Type 0 to go back to main menu: ";
@@ -206,12 +207,12 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	}
 	if(input == 3)
 	{
-		// std::cout << "Enter the ISBN you would like to search for: ";
-		// std::getline(std::cin, sinput);
-		// if(choice == 1)
-		// 	display->DisplayBooks('3', ntinput, library->GetBookSystem().GetUserCheckedOut(person));
-		// if(choice == 2)
-		// 	display->DisplayBooks('3', ntinput, library->GetBookSystem().GetCatalogue());
+		 std::cout << "Enter the ISBN you would like to search for: ";
+		 std::cin >> intinput;
+		 if(choice == 1)
+		 	display->DisplayBooks('3', intinput, library->GetBookSystem()->GetUserCheckedOut(person));
+		 if(choice == 2)
+		 	display->DisplayBooks('3', intinput, library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 4)
 	{
@@ -230,7 +231,21 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	delete display;
 }
 
-void ExecuteCommand(User* person, const string& input) {
+int SwitchCaseDisplay(User* person, LibrarySystem* library)
+{
+        int input = -1;
+        std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back: ";
+        std:: cin >> input;
+        if(input == 1)
+           DisplayHelper(person, library, input);
+        if(input == 2)
+           DisplayHelper(person, library, input);
+        if(input == 0)
+           return 0;
+        return input;
+}
+
+void ExecuteCommand(User* person, const string& input, LibrarySystem* library) {
     if (input == "1")
         PrintUserInfo(person);
     if (input == "2")
@@ -244,8 +259,7 @@ void ExecuteCommand(User* person, const string& input) {
     if (input == "6")
         DisplayCheckedOutBooks(person);
     if (input == "7")
-	    ;// Search/Sort Books
-        
+	DisplayHelper(person, library, SwitchCaseDisplay(person, library));       
 }
 
 void ExecuteCommand(Librarian* librarian, const string& input) {
@@ -257,20 +271,6 @@ void ExecuteCommand(Librarian* librarian, const string& input) {
         RemoveBook(librarian);
     if (input == "4")
         cout << "Work in progress" << endl;
-}
-
-int SwitchCaseDisplay(User* person, LibrarySystem* library)
-{
-	int input = -1;
-	std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back: ";
-	std:: cin >> input;
-	if(input == 1)
-	   DisplayHelper(person, library, input);
-	if(input == 2)
-	   DisplayHelper(person, library, input);	
-	if(input == 0)
-	   return 0;
-	return input;
 }
 
 int main() {
@@ -296,7 +296,7 @@ int main() {
                 while (input != "-1") {
                     PrintMenu(dynamic_cast<User*>(currPerson));
                     getline(cin, input);
-                    ExecuteCommand(dynamic_cast<User*>(currPerson), input);
+                    ExecuteCommand(dynamic_cast<User*>(currPerson), input, &lib);
                 }
             else if (dynamic_cast<Librarian*>(currPerson) != nullptr)
                 while (input != "-1") {
