@@ -274,10 +274,26 @@ int SwitchCaseDisplay(User* person, LibrarySystem* library)
 }
 
 int main() {
-    LibrarySystem lib("../program_files/catalogue.json", "../program_files/checked_out.json", "../program_files/userInfo.json", 86400);
     Person* currPerson = nullptr;
     string input;
     bool loggedIn = false;
+    string catalogueFile, checkedOutFile, userInfoFile;
+    
+    cout << "Input the catalogue filename (or \"default\" for default filenames):\n > ";
+    getline(cin, catalogueFile);
+    if (catalogueFile == "default") {
+        catalogueFile = "../program_files/catalogue.json"; 
+        checkedOutFile = "../program_files/checked_out.json"; 
+        userInfoFile = "../program_files/userInfo.json"; 
+    }
+    else {
+        cout << "Input the check out data filename:\n > ";
+        getline(cin, checkedOutFile);
+        cout << "Input the user info data filename:\n > ";
+        getline(cin, userInfoFile);
+    }
+
+    LibrarySystem lib(catalogueFile, checkedOutFile, userInfoFile, 86400);
 
     while (true) { 
         PrintLoginMenu();
@@ -312,7 +328,7 @@ int main() {
     cout << "33%" << endl;
     lib.GetBookSystem()->SaveCheckedOut();
     cout << "66%" << endl;
-    lib.GetUserSystem()->SaveUserData("../program_files/userInfo.json");
+    lib.GetUserSystem()->SaveUserData(userInfoFile);
     cout << "100%" << endl;
     cout << "Program successfully saved. Exiting..." << endl;
     return 0;
