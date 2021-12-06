@@ -146,6 +146,7 @@ bool BookSystem::RemoveContent(long long ISBN) {
     if (this->catalogue.find(ISBN) != this->catalogue.end()) {
         DeallocateContent(this->catalogue.at(ISBN));
         this->catalogue.erase(ISBN);
+        cout << "Book removed!" << endl;
         return true;
     }
     std::cout << "Error removing content. ISBN number " << ISBN << " does not exist in the catalogue!" << std::endl;

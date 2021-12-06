@@ -185,7 +185,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	long long longinput = 0;
 	std::string sinput;
 	DisplayMenu();
-	std::cout << "Type an option (1-5). Type 0 to go back to main menu: ";
+	std::cout << "Type an option (1-5). Type 0 to go back to main menu:\n >";
 	if (!GetIntInput(input)) {
         cout << "Invalid input! Only input a number.\n";
         return;
@@ -193,7 +193,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	DisplaySystem* display = new DisplaySystem;
 	if(input == 1)
 	{
-		std::cout << "Enter the genre you would like to search for: ";
+		std::cout << "Enter the genre you would like to search for:\n >";
 		std::getline(std::cin, sinput);
 		if(choice == 1)
 			display->DisplayBooks('1', sinput, library->GetBookSystem()->GetUserCheckedOut(person));	
@@ -202,7 +202,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	}
 	if(input == 2)
 	{
-		std::cout << "Enter the keyword you would like to search by: ";
+		std::cout << "Enter the keyword you would like to search by:\n >";
 		std::getline(std::cin, sinput);
 		if(choice == 1)
 			display->DisplayBooks('2', sinput, library->GetBookSystem()->GetUserCheckedOut(person));
@@ -211,7 +211,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	}
 	if(input == 3)
 	{
-		 std::cout << "Enter the ISBN you would like to search for: ";
+		 std::cout << "Enter the ISBN you would like to search for:\n >";
 		 if (!GetLongInput(longinput)) {
             cout << "Invalid input! Only input a number.\n";
             return;
@@ -241,7 +241,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 int SwitchCaseDisplay(User* person, LibrarySystem* library)
 {
         int input = -1;
-        std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back: ";
+        std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back:\n >";
         if (!GetIntInput(input)) {
             cout << "Invalid input! Only input a number.\n";
             return -0;
@@ -289,12 +289,12 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   bool allowLog = false;
   int userID;
   string userPass;
-  cout << "Input User ID: ";
+  cout << "Input User ID:\n >";
   if (!GetIntInput(userID)) {
       cout << "Invalid User ID. Only input digits." << endl;
       return false;
   }
-  cout << "Input User Password: ";
+  cout << "Input User Password:\n >";
   getline(cin, userPass);
   if (logSys->LoginVerify(userID,userPass))
     allowLog = true;
@@ -314,14 +314,14 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
     getline(cin, input);
   }
 
-  cout  << "Input name:" << endl;
+  cout  << "Input name:\n >" << endl;
   getline(cin, name);
-  cout << "Input User ID:" << endl;
+  cout << "Input User ID:\n >" << endl;
   if (!GetIntInput(ID)) {
       cout << "Invalid User ID. Only input digits." << endl;
       return nullptr;
   }
-  cout << "Input User Password:" << endl;
+  cout << "Input User Password:\n > " << endl;
   getline(cin, userPass);
   int hashPass = logSys->HashPassword(userPass);
   if (input == "2")
