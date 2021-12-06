@@ -153,7 +153,7 @@ bool BookSystem::RemoveContent(long long ISBN) {
 }
 bool BookSystem::FindInCheckedOutVec(vector<CheckOutData*>& userVec, long long ISBN) {
     for (CheckOutData* &data : userVec)
-        if (data->contentCheckedOut->GetISBN())
+        if (data->contentCheckedOut->GetISBN() == ISBN)
             return true;
     return false;
 }
@@ -180,6 +180,7 @@ bool BookSystem::CheckOut(Person* person, long long ISBN) {
         std::cout << "ISBN " << ISBN << " not in catalogue!" << std::endl;
         return false;
     }
+    cout << "Book has been checked out successfully!" << endl;
     return true;
 }
 bool BookSystem::ReturnContent(Person* person, long long ISBN) {
@@ -191,6 +192,7 @@ bool BookSystem::ReturnContent(Person* person, long long ISBN) {
                     this->checkedOut.erase(person->GetId());
                 else
                     this->checkedOut.at(person->GetId()).erase(it);
+                cout << "Book has been returned successfully!" << endl;
                 return true;
             }
         }
