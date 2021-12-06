@@ -275,25 +275,70 @@ void ExecuteCommand(Librarian* librarian, const string& input) {
         DisplayCatalogue(librarian);
 }
 
+bool LoginHelper(LoginSystem *logSys)
+{
+  bool allowLog = false;
+  int userID;
+  string userPass;
+  cout << "Input User ID: ";
+  cin >> userID;
+  cout << endl;
+  cout << "Input User Password: ";
+  getline(cin, userPass);
+  if (logSys->LoginVerify(userID,userPass))
+    allowLog = true;
+  return allowLog;
+}
+
+Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *userSys)
+{
+  int input = -10;
+  bool isDone = false;
+  Person *create;
+  string name, userPass;
+  int ID;
+  while (input != 1 && input != 2)
+  {
+    cout << "To register a Librarian Account Input 1\nTo register a User Account Input 2\n";
+    cin >> input;
+  }
+
+  cout  << "Input name:" << endl;
+  getline(cin, name);
+  cout << "Input User ID:" << endl;
+  cin >> ID;
+  cout << "Input User Password:" << endl;
+  getline(cin, userPass);
+  int hashPass = logSys->HashPassword(userPass);
+  if (input == 2)
+    create = new User(name, ID, bookSys, hashPass);
+  else if (input == 1)
+    create = new Librarian(name, ID, bookSys, hashPass);
+
+  userSys->AddPerson(logSys, create);
+  return create;
+}
+
 int main() {
-    Person* currPerson = nullptr;
-    string input;
-    bool loggedIn = false;
-    string catalogueFile, checkedOutFile, userInfoFile;
-    
-    cout << "Input the catalogue filename (or \"default\" for default filenames):\n > ";
-    getline(cin, catalogueFile);
-    if (catalogueFile == "default") {
-        catalogueFile = "../program_files/catalogue.json"; 
-        checkedOutFile = "../program_files/checked_out.json"; 
-        userInfoFile = "../program_files/userInfo.json"; 
-    }
-    else {
-        cout << "Input the check out data filename:\n > ";
-        getline(cin, checkedOutFile);
-        cout << "Input the user info data filename:\n > ";
-        getline(cin, userInfoFile);
-    }
+  Person* currPerson = nullptr;
+  string input;
+  bool loggedIn = false;
+  string catalogueFile, checkedOutFile, userInfoFile;
+  
+  cout << "Input the catalogue filename (or \"default\" for default filenames):\n > ";
+  getline(cin, catalogueFile);
+  if (catalogueFile == "default") {
+      catalogueFile = "../program_files/catalogue.json"; 
+      checkedOutFile = "../program_files/checked_out.json"; 
+      userInfoFile = "../program_files/userInfo.json"; 
+  }
+  else {
+      cout << "Input the check out data filename:\n > ";
+      getline(cin, checkedOutFile);
+      cout << "Input the user info data filename:\n > ";
+      getline(cin, userInfoFile);
+  }
+
 
     LibrarySystem lib(catalogueFile, checkedOutFile, userInfoFile, 86400);
 
