@@ -134,6 +134,10 @@ void RemoveBook(Librarian* person) {
     person->RemoveBook(isbn);
 }
 
+void DisplayCatalogue(Librarian* person) {
+     person->PrintCatalogue();
+ }
+
 void PrintLoginMenu() {
     std::cout << " -------------------- Main Menu -------------------- " << std::endl;
     std::cout << "|           1. Log In                               |" << std::endl;
@@ -153,7 +157,7 @@ void PrintMenu(User* person) {
     std::cout << "|           6. Show all Checked Out Books           |" << std::endl;
     std::cout << "|           7. Search/Sort Books                    |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
-    std::cout << "Type an option (1-5). Type -1 to Log Out:\n > ";
+    std::cout << "Type an option (1-7). Type -1 to Log Out:\n > ";
 }
 
 void PrintMenu(Librarian* person) {
@@ -161,9 +165,9 @@ void PrintMenu(Librarian* person) {
     std::cout << "|           1. Display Your Information             |" << std::endl;
     std::cout << "|           2. Add Book to Library                  |" << std::endl;
     std::cout << "|           3. Remove Book from Library             |" << std::endl;
-    std::cout << "|           4. Set a New Library                    |" << std::endl;
+    std::cout << "|           4. Display Catalogue                    |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
-    std::cout << "Type an option (1-4). Type -1 to Log Out:\n > ";
+    std::cout << "Type an option (1-3). Type -1 to Log Out:\n > ";
 }
 
 void DisplayMenu()
@@ -270,7 +274,7 @@ void ExecuteCommand(Librarian* librarian, const string& input) {
     if (input == "3")
         RemoveBook(librarian);
     if (input == "4")
-        cout << "Work in progress" << endl;
+        DisplayCatalogue(librarian);
 }
 
 int main() {
