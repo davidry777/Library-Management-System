@@ -182,12 +182,14 @@ void DisplayMenu()
 void DisplayHelper(User* person, LibrarySystem* library, int choice)
 {
 	int input = -1;
-	int intinput = 0;
+	long long longinput = 0;
 	std::string sinput;
 	DisplayMenu();
 	std::cout << "Type an option (1-5). Type 0 to go back to main menu: ";
-	std:: cin >> input;
-	std:: cout << std::endl;
+	if (!GetIntInput(input)) {
+        cout << "Invalid input! Only input a number.\n";
+        return;
+    }
 	DisplaySystem* display = new DisplaySystem;
 	if(input == 1)
 	{
@@ -210,11 +212,14 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	if(input == 3)
 	{
 		 std::cout << "Enter the ISBN you would like to search for: ";
-		 std::cin >> intinput;
+		 if (!GetLongInput(longinput)) {
+            cout << "Invalid input! Only input a number.\n";
+            return;
+        }
 		 if(choice == 1)
-		 	display->DisplayBooks('3', intinput, library->GetBookSystem()->GetUserCheckedOut(person));
+		 	display->DisplayBooks('3', longinput, library->GetBookSystem()->GetUserCheckedOut(person));
 		 if(choice == 2)
-		 	display->DisplayBooks('3', intinput, library->GetBookSystem()->GetCatalogue());
+		 	display->DisplayBooks('3', longinput, library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 4)
 	{
@@ -237,7 +242,10 @@ int SwitchCaseDisplay(User* person, LibrarySystem* library)
 {
         int input = -1;
         std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back: ";
-        std:: cin >> input;
+        if (!GetIntInput(input)) {
+            cout << "Invalid input! Only input a number.\n";
+            return;
+        }
         if(input == 1)
            DisplayHelper(person, library, input);
         if(input == 2)
@@ -299,7 +307,7 @@ int main() {
 
     while (true) { 
         PrintLoginMenu();
-        getline(cin, input);
+        
         if (input != "1" && input != "2" && input != "3") { continue; }
         if (input == "3") { break; }
         if (input == "1") {
