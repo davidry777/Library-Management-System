@@ -21,9 +21,14 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
 	ifstream people_file;
   people_file.open(peopleInput);
 	json readJson;
-  if (people_file.is_open() == false)
-    cout << "not open" << endl;
-	people_file >> readJson;
+  try {
+    people_file >> readJson;
+	  people_file.close();
+  }
+  catch (...) {
+    cout << "Warning: " << peopleInput << " was not found. No user info data will be loaded." << endl;
+    return;
+  }
 	unordered_map<int, Person*> userMap;
 	for (auto it : readJson)
 	{  
@@ -53,7 +58,6 @@ UserSystem::UserSystem(string peopleInput, BookSystem* bs)
     }
 	}    
 	this->people = userMap;
-	people_file.close();
 }
 
 UserSystem::~UserSystem() {

@@ -45,14 +45,14 @@ void BookSystem::SaveCatalogue(string file) {
 void BookSystem::LoadCatalogue() {
     std::ifstream inFS(catalogueFile);
     json catalogueJSON;
-    if (inFS.is_open() == false) {
-        cout << catalogueFile << " not found" << endl;
+    try {
+        inFS >> catalogueJSON;
+        inFS.close();
+    }
+    catch (...) {
+        cout << "Warning: " << catalogueFile << " was not found. No catalogue data will be loaded." << endl;
         return;
     }
-
-    inFS >> catalogueJSON;
-    inFS.close();
-
     for (auto content : catalogueJSON) {
         Content* newContent = new Book(content["title"], content["isbn"], content["genre"], content["author"], content["frequency"]);
         AddContent(newContent);
@@ -81,14 +81,15 @@ void BookSystem::SaveCheckedOut(string file) {
 void BookSystem::LoadCheckedOut(std::unordered_map<int, Person *> us) {
     ifstream inFS(checkedOutFile);
     json checkedOutJSON;
-    if (!inFS.is_open()) {
-        cout << checkedOutFile << " not found" << endl;
+    try {
+        inFS >> checkedOutJSON;
+        inFS.close();
+    }
+    catch (...) {
+        cout << "Warning: " << checkedOutFile << " was not found. No checked out data will be loaded." << endl;
         return;
     }
-
-    inFS >> checkedOutJSON;
-    inFS.close();
-
+    
     for (auto data : checkedOutJSON) {
         time_t dataTime = data["time"];
         if (this->catalogue.find((data["content_isbn"])) == this->catalogue.end()) {
