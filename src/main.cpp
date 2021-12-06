@@ -244,7 +244,7 @@ int SwitchCaseDisplay(User* person, LibrarySystem* library)
         std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back: ";
         if (!GetIntInput(input)) {
             cout << "Invalid input! Only input a number.\n";
-            return;
+            return -0;
         }
         if(input == 1)
            DisplayHelper(person, library, input);
@@ -290,8 +290,10 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   int userID;
   string userPass;
   cout << "Input User ID: ";
-  cin >> userID;
-  cout << endl;
+  if (!GetIntInput(userID)) {
+      cout << "Invalid User ID. Only input digits." << endl;
+      return false;
+  }
   cout << "Input User Password: ";
   getline(cin, userPass);
   if (logSys->LoginVerify(userID,userPass))
@@ -301,27 +303,30 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
 
 Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *userSys)
 {
-  int input = -10;
+  string input = "";
   bool isDone = false;
   Person *create;
   string name, userPass;
   int ID;
-  while (input != 1 && input != 2)
+  while (input != "1" && input != "2")
   {
     cout << "To register a Librarian Account Input 1\nTo register a User Account Input 2\n";
-    cin >> input;
+    getline(cin, input);
   }
 
   cout  << "Input name:" << endl;
   getline(cin, name);
   cout << "Input User ID:" << endl;
-  cin >> ID;
+  if (!GetIntInput(ID)) {
+      cout << "Invalid User ID. Only input digits." << endl;
+      return nullptr;
+  }
   cout << "Input User Password:" << endl;
   getline(cin, userPass);
   int hashPass = logSys->HashPassword(userPass);
-  if (input == 2)
+  if (input == "2")
     create = new User(name, ID, bookSys, hashPass);
-  else if (input == 1)
+  else if (input == "1")
     create = new Librarian(name, ID, bookSys, hashPass);
 
   userSys->AddPerson(logSys, create);
@@ -329,65 +334,59 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
 }
 
 int main() {
-  Person* currPerson = nullptr;
-  string input;
-  bool loggedIn = false;
-  string catalogueFile, checkedOutFile, userInfoFile;
-  
-  cout << "Input the catalogue filename (or \"default\" for default filenames):\n > ";
-  getline(cin, catalogueFile);
-  if (catalogueFile == "default") {
-      catalogueFile = "../program_files/catalogue.json"; 
-      checkedOutFile = "../program_files/checked_out.json"; 
-      userInfoFile = "../program_files/userInfo.json"; 
-  }
-  else {
-      cout << "Input the check out data filename:\n > ";
-      getline(cin, checkedOutFile);
-      cout << "Input the user info data filename:\n > ";
-      getline(cin, userInfoFile);
-  }
+    Person* currPerson = nullptr;
+    string input;
+    bool loggedIn = false;
+    string catalogueFile, checkedOutFile, userInfoFile;
 
-  LibrarySystem lib(catalogueFile, checkedOutFile, userInfoFile, 86400);
-  LoginSystem logSys(lib.GetUserSystem()->GetMap());
+    cout << "Input the catalogue filename (or \"default\" for default filenames):\n > ";
+    getline(cin, catalogueFile);
+    if (catalogueFile == "default") {
+        catalogueFile = "../program_files/catalogue.json"; 
+        checkedOutFile = "../program_files/checked_out.json"; 
+        userInfoFile = "../program_files/userInfo.json"; 
+    }
+    else {
+        cout << "Input the check out data filename:\n > ";
+        getline(cin, checkedOutFile);
+        cout << "Input the user info data filename:\n > ";
+        getline(cin, userInfoFile);
+    }
 
-  while (true) { 
-      PrintLoginMenu();
-      getline(cin, input);
-      if (input != "1" && input != "2" && input != "3") { continue; }
-      if (input == "3") { break; }
-      if (input == "1") {
-          loggedIn = LoginHelper(&logSys, lib.GetUserSystem(), currPerson);
-          // LogIn System here
-          // If Log In was successful, set loggedIn = true
-      }
-      else if (input == "2") {
-          currPerson = RegisterHelper(lib.GetBookSystem(), &logSys, lib.GetUserSystem());
-          // Register System here
-      }
-      if (loggedIn) {
-          if (dynamic_cast<User*>(currPerson) != nullptr)
-              while (input != "-1") {
-                  PrintMenu(dynamic_cast<User*>(currPerson));
-                  getline(cin, input);
-                  ExecuteCommand(dynamic_cast<User*>(currPerson), input, &lib);
-              }
-          else if (dynamic_cast<Librarian*>(currPerson) != nullptr)
-              while (input != "-1") {
-                  PrintMenu(dynamic_cast<Librarian*>(currPerson));
-                  getline(cin, input);
-                  ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input);
-              }
-      }
-      loggedIn = false;
-  }
-  cout << "Saving. Do not exit program!" << endl;
-  lib.GetBookSystem()->SaveCatalogue();
-  cout << "33%" << endl;
-  lib.GetBookSystem()->SaveCheckedOut();
-  cout << "66%" << endl;
-  lib.GetUserSystem()->SaveUserData(userInfoFile);
-  cout << "100%" << endl;
-  cout << "Program successfully saved. Exiting..." << endl;
-  return 0;
+    LibrarySystem lib(catalogueFile, checkedOutFile, userInfoFile, 86400);
+    LoginSystem logSys(lib.GetUserSystem()->GetMap());
+
+    while (input != "3") { 
+        PrintLoginMenu();
+        getline(cin, input);
+        if (input != "1" && input != "2" && input != "3") continue;
+        if (input == "1")
+            loggedIn = LoginHelper(&logSys, lib.GetUserSystem(), currPerson);
+        else if (input == "2")
+            currPerson = RegisterHelper(lib.GetBookSystem(), &logSys, lib.GetUserSystem());
+        if (loggedIn) {
+            if (dynamic_cast<User*>(currPerson) != nullptr)
+                while (input != "-1") {
+                    PrintMenu(dynamic_cast<User*>(currPerson));
+                    getline(cin, input);
+                    ExecuteCommand(dynamic_cast<User*>(currPerson), input, &lib);
+                }
+            else if (dynamic_cast<Librarian*>(currPerson) != nullptr)
+                while (input != "-1") {
+                    PrintMenu(dynamic_cast<Librarian*>(currPerson));
+                    getline(cin, input);
+                    ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input);
+                }
+        }
+        loggedIn = false;
+    }
+    cout << "Saving. Do not exit program!" << endl;
+    lib.GetBookSystem()->SaveCatalogue();
+    cout << "33%" << endl;
+    lib.GetBookSystem()->SaveCheckedOut();
+    cout << "66%" << endl;
+    lib.GetUserSystem()->SaveUserData(userInfoFile);
+    cout << "100%" << endl;
+    cout << "Program successfully saved. Exiting..." << endl;
+    return 0;
 }
