@@ -349,21 +349,22 @@ int main() {
 
 
     LibrarySystem lib(catalogueFile, checkedOutFile, userInfoFile, 86400);
+    LoginSystem* logSys = new LoginSystem(lib.GetUserSystem()->GetMap());
 
     while (true) { 
         PrintLoginMenu();
-        
+        getline(cin, input);
         if (input != "1" && input != "2" && input != "3") { continue; }
         if (input == "3") { break; }
-     	if (input == "1") {
-     	     loggedIn = LoginHelper(logSys);
-          // LogIn System here
-          // If Log In was successful, set loggedIn = true
-      	}
-      	else if (input == "2") {
-      	    currPerson = RegisterHelper(lib.GetBookSystem(), logSys, lib.GetUserSystem());
-          // Register System here
-      
+      if (input == "1") {
+            loggedIn = LoginHelper(logSys);
+            // LogIn System here
+            // If Log In was successful, set loggedIn = true
+        }
+        else if (input == "2") {
+            currPerson = RegisterHelper(lib.GetBookSystem(), logSys, lib.GetUserSystem());
+            // Register System here
+        }
         currPerson = lib.GetUserSystem()->GetPerson(123);
         loggedIn = true;
         if (loggedIn) {
