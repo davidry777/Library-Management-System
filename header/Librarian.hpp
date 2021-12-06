@@ -2,7 +2,6 @@
 #define __LIBRARIAN_HPP__
 
 #include "Person.hpp"
-#include "DisplaySystem.hpp"
 #include "BookSystem.hpp"
 #include "Book.hpp"
 
@@ -19,7 +18,6 @@ class Librarian : public Person {
         void AddBook(Book* newBook);
         void RemoveBook(long long ISBN);
         void SetBookSys(BookSystem* newBookSys);
-        void PrintCatalogue();
 };
 
 #endif //__LIBRARIAN_HPP__

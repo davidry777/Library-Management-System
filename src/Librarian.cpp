@@ -24,9 +24,3 @@ void Librarian::AddBook(Book* newBook) { bookSys->AddContent(newBook); }
 void Librarian::RemoveBook(long long ISBN) { bookSys->RemoveContent(ISBN); }
 
 void Librarian::SetBookSys(BookSystem* newBookSys) { bookSys = newBookSys; }
-
-void Librarian::PrintCatalogue() 
-{ 
-    DisplaySystem catOutput = DisplaySystem();
-    catOutput.DisplayBooks(bookSys->GetCatalogue());
-}
