@@ -321,6 +321,12 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
       cout << "Invalid User ID. Only input digits." << endl;
       return nullptr;
   }
+  if (userSys->GetPerson(ID)!=nullptr)
+  {
+    cout << "Error: Duplicate User, returning to home" << endl;
+    delete create;
+    return nullptr;
+  }
   cout << "Input User Password:\n > " << endl;
   getline(cin, userPass);
   int hashPass = logSys->HashPassword(userPass);
