@@ -53,24 +53,22 @@ void CheckoutBook(User* person) {
     long long isbn;
     std::cout << "Enter ISBN13 number to check out a book:\n > ";
     if (!GetLongInput(isbn)) {
-        cout << "Invalid input! Only input a number.";
+        cout << "Invalid input! Only input a number.\n";
         return;
     }
     std::cout << "Checking out book..." << std::endl;
     person->CheckoutBook(isbn);
-    std::cout << "Book checked out!" << std::endl;
 }
 
 void ReturnBook(User* person) {
     long long isbn;
     std::cout << "Enter ISBN13 number to return a book:\n > ";
     if (!GetLongInput(isbn)) {
-        cout << "Invalid input! Only input a number.";
+        cout << "Invalid input! Only input a number.\n";
         return;
     }
     std::cout << "Returning book..." << std::endl;
     person->ReturnBook(isbn);
-    std::cout << "Book returned!" << std::endl;
 }
 
 void ShowDebt(User* person) {
@@ -81,7 +79,7 @@ void PayDebt(User* person) {
     int money;
     std::cout << "Enter how much money you want to pay off:\n > ";
     if (!GetIntInput(money)) {
-        cout << "Invalid input! Only input a number.";
+        cout << "Invalid input! Only input a number.\n";
         return;
     }
     std::cout << "Paying off $" << money << std::endl;
@@ -107,7 +105,7 @@ void AddBook(Librarian* person) {
     
     std::cout << "Enter ISBN for " << title << ":\n > ";
     if (!GetLongInput(isbn)) {
-        cout << "Invalid input! Only input a number.";
+        cout << "Invalid input! Only input a number.\n";
         return;
     }
 
@@ -126,7 +124,7 @@ void RemoveBook(Librarian* person) {
 
     std::cout << "Enter ISBN13 number to remove out a book:\n > ";
     if (!GetLongInput(isbn)) {
-        cout << "Invalid input! Only input a number.";
+        cout << "Invalid input! Only input a number.\n";
         return;
     }
 
@@ -184,12 +182,14 @@ void DisplayMenu()
 void DisplayHelper(User* person, LibrarySystem* library, int choice)
 {
 	int input = -1;
-	int intinput = 0;
+	long long longinput = 0;
 	std::string sinput;
 	DisplayMenu();
 	std::cout << "Type an option (1-5). Type 0 to go back to main menu: ";
-	std:: cin >> input;
-	std:: cout << std::endl;
+	if (!GetIntInput(input)) {
+        cout << "Invalid input! Only input a number.\n";
+        return;
+    }
 	DisplaySystem* display = new DisplaySystem;
 	if(input == 1)
 	{
@@ -212,11 +212,14 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	if(input == 3)
 	{
 		 std::cout << "Enter the ISBN you would like to search for: ";
-		 std::cin >> intinput;
+		 if (!GetLongInput(longinput)) {
+            cout << "Invalid input! Only input a number.\n";
+            return;
+        }
 		 if(choice == 1)
-		 	display->DisplayBooks('3', intinput, library->GetBookSystem()->GetUserCheckedOut(person));
+		 	display->DisplayBooks('3', longinput, library->GetBookSystem()->GetUserCheckedOut(person));
 		 if(choice == 2)
-		 	display->DisplayBooks('3', intinput, library->GetBookSystem()->GetCatalogue());
+		 	display->DisplayBooks('3', longinput, library->GetBookSystem()->GetCatalogue());
 	}
 	if(input == 4)
 	{
@@ -239,7 +242,10 @@ int SwitchCaseDisplay(User* person, LibrarySystem* library)
 {
         int input = -1;
         std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back: ";
-        std:: cin >> input;
+        if (!GetIntInput(input)) {
+            cout << "Invalid input! Only input a number.\n";
+            return;
+        }
         if(input == 1)
            DisplayHelper(person, library, input);
         if(input == 2)
@@ -277,6 +283,7 @@ void ExecuteCommand(Librarian* librarian, const string& input) {
         DisplayCatalogue(librarian);
 }
 
+
 bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
 {
   bool allowLog = false;
@@ -289,13 +296,8 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   getline(cin, userPass);
   if (logSys->LoginVerify(userID,userPass))
     allowLog = true;
-
-  if (allowLog)
-    currPerson = userSys->GetPerson(userID);
-
   return allowLog;
 }
-
 
 Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *userSys)
 {
@@ -347,7 +349,7 @@ int main() {
   }
 
   LibrarySystem lib(catalogueFile, checkedOutFile, userInfoFile, 86400);
-  LoginSystem* logSys = new LoginSystem(lib.GetUserSystem()->GetMap());
+  LoginSystem logSys(lib.GetUserSystem()->GetMap());
 
   while (true) { 
       PrintLoginMenu();
@@ -355,12 +357,12 @@ int main() {
       if (input != "1" && input != "2" && input != "3") { continue; }
       if (input == "3") { break; }
       if (input == "1") {
-          loggedIn = LoginHelper(logSys, lib.GetUserSystem(), currPerson);
+          loggedIn = LoginHelper(&logSys, lib.GetUserSystem(), currPerson);
           // LogIn System here
           // If Log In was successful, set loggedIn = true
       }
       else if (input == "2") {
-          currPerson = RegisterHelper(lib.GetBookSystem(), logSys, lib.GetUserSystem());
+          currPerson = RegisterHelper(lib.GetBookSystem(), &logSys, lib.GetUserSystem());
           // Register System here
       }
       if (loggedIn) {
