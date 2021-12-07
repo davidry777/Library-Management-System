@@ -54,15 +54,21 @@
  > What design patterns did you use? For each design pattern you must explain in 4-5 sentences:
  > * Strategy Pattern - For our library system, one of the patterns we utilized was the strategy pattern for the display system in searching of books. This pattern was chosen as we needed a way to choose between variable algorithms during runtime for searching books and sorting the results from that search of books. This improved our designing and coding aspect  as the BookSearch and BookSort interfaces are able to pick between searching by Genre, ISBN, and Subgenre of a book, while also sorting by frequency of checkout or alphabetical order. As these functions take in the same parameters of a vector of books, the same vector can be used for multiple searches, refining results by re-searching and re-sorting the book vector.
  > * Composite Pattern - Another design pattern that we used in our Library System is the Composite pattern. When designing the Library System, we ran into the issue of how we wanted to represent books and bundles of books, which can hold books or more bundles, and treat these two elements uniformly. We ultimately decided on representing these two elements through the Composite pattern, where they both inherit from a base Content class that defines common attributes and the function Draw() that they must implement for displaying its content. Now when creating the Bundle class, we gave it a list to hold Content* which can either be books or bundles. This has definitely helped us write better code as it kept it organized and managed to represent both simple and complex elements the same.
- > ## Final deliverable
- > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
+
  
  ## Screenshots
  > Screenshots of the input/output after running your application
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/User%20Checkout.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/User%20Debt.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/User%20Info.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/User%20Return.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/User%20Return.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/User%20Search.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/Librarian%20Add%20Book.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/Librarian%20Add%20Bundle.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/Librarian%20Info.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/Librarian%20Log%20In.png)
+ > ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/Librarian%20Remove%20Book.png)
  ## Installation/Usage
  > Instructions on installing and running your application
  > Clone the git repository, then run "cmake3 -B . -S .." in a subfolder within the final-project folder. Then you can run ./main to use the library system.
