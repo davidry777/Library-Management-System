@@ -347,7 +347,7 @@ void ExecuteCommand(Librarian* librarian, const string& input, LibrarySystem* li
 }
 
 
-bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
+bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person*& currPerson)
 {
   bool allowLog = false;
   int userID;
