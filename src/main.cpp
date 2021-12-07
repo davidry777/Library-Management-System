@@ -145,6 +145,15 @@ void PrintLoginMenu() {
     std::cout << "Type an option (1-3):\n > ";
 }
 
+void PrintRegisterMenu() {
+    std::cout << " ------------------ Registration ------------------- " << std::endl;
+    std::cout << "|           1. Register as Librarian                |" << std::endl;
+    std::cout << "|           2. Register as User                     |" << std::endl;
+    std::cout << "|          -1. Return                               |" << std::endl;
+    std::cout << " --------------------------------------------------- " << std::endl;
+    std::cout << "Type an option (1-2):\n > ";
+}
+
 void PrintMenu(User* person) {
     std::cout << " ---------------- User Library Menu ---------------- " << std::endl;
     std::cout << "|           1. Display Your Information             |" << std::endl;
@@ -154,6 +163,7 @@ void PrintMenu(User* person) {
     std::cout << "|           5. Pay off Debt                         |" << std::endl;
     std::cout << "|           6. Show all Checked Out Books           |" << std::endl;
     std::cout << "|           7. Search/Sort Books                    |" << std::endl;
+    std::cout << "|          -1. Log Out                              |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
     std::cout << "Type an option (1-7). Type -1 to Log Out:\n > ";
 }
@@ -164,8 +174,9 @@ void PrintMenu(Librarian* person) {
     std::cout << "|           2. Add Book to Library                  |" << std::endl;
     std::cout << "|           3. Remove Book from Library             |" << std::endl;
     std::cout << "|           4. Display Catalogue                    |" << std::endl;
+    std::cout << "|          -1. Return                               |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
-    std::cout << "Type an option (1-3). Type -1 to Log Out:\n > ";
+    std::cout << "Type an option (1-4):\n > ";
 }
 
 void DisplayMenu()
@@ -176,7 +187,9 @@ void DisplayMenu()
     std::cout << "|           3. Search by ISBN                       |" << std::endl;
     std::cout << "|           4. Sort Alphabetically                  |" << std::endl;
     std::cout << "|           5. Sort by Frequency                    |" << std::endl;
+    std::cout << "|          -1. Return                               |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
+    std::cout << "Type an option (1-5):\n > ";
 }
 
 void DisplayHelper(User* person, LibrarySystem* library, int choice)
@@ -185,11 +198,11 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	long long longinput = 0;
 	std::string sinput;
 	DisplayMenu();
-	std::cout << "Type an option (1-5). Type 0 to go back to main menu:\n >";
 	if (!GetIntInput(input)) {
         cout << "Invalid input! Only input a number.\n";
         return;
     }
+    if (input == -1) { return; }
 	DisplaySystem* display = new DisplaySystem;
 	if(input == 1)
 	{
@@ -289,12 +302,12 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   bool allowLog = false;
   int userID;
   string userPass;
-  cout << "Input User ID:\n >";
+  cout << "Input User ID:\n > ";
   if (!GetIntInput(userID)) {
       cout << "Invalid User ID. Only input digits." << endl;
       return false;
   }
-  cout << "Input User Password:\n >";
+  cout << "Input User Password:\n > ";
   getline(cin, userPass);
   if (logSys->LoginVerify(userID,userPass))
     allowLog = true;
@@ -308,15 +321,17 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
   Person *create;
   string name, userPass;
   int ID;
-  while (input != "1" && input != "2")
+  while (input != "1" && input != "2" && input != "-1")
   {
-    cout << "To register a Librarian Account Input 1\nTo register a User Account Input 2\n";
+    PrintRegisterMenu();
     getline(cin, input);
   }
-
-  cout  << "Input name:\n >" << endl;
+  if (input == "-1") {
+      return nullptr;
+  }
+  cout  << "Input name:\n > ";
   getline(cin, name);
-  cout << "Input User ID:\n >" << endl;
+  cout << "Input User ID:\n > ";
   if (!GetIntInput(ID)) {
       cout << "Invalid User ID. Only input digits." << endl;
       return nullptr;
@@ -326,7 +341,7 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
     cout << "Error: Duplicate User, returning to home" << endl;
     return nullptr;
   }
-  cout << "Input User Password:\n > " << endl;
+  cout << "Input User Password:\n > ";
   getline(cin, userPass);
   int hashPass = logSys->HashPassword(userPass);
   if (input == "2")
