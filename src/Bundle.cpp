@@ -1,8 +1,16 @@
 #include "../header/Bundle.hpp"
 
 Bundle::Bundle(const std::string& title, long long ISBN, const std::string& genre, const std::vector<Content*>& list, int frequency) : Content(title, ISBN, genre, "", frequency) {
-    for (Content* content : list)
+    bool found = false;
+    for (Content* content : list) {
+        for (Content* conL : this->contentList)
+            if (conL->GetISBN() == content->GetISBN()) {
+                std::cout << content->GetISBN() << " already exists in bundle!" << std::endl;
+                delete content;
+                continue;
+            }
         this->contentList.push_back({content});
+    }
     this->author = GetAuthor();
 }
 
