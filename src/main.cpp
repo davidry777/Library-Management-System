@@ -140,7 +140,7 @@ void AddBundle(Librarian* person, LibrarySystem* lib) {
     vector<Content*> books;
     std::cout << "Enter title for new book (or 'q' to stop adding books to bundle):\n > ";
     getline(cin, titleBook);
-    while (input != "q") {
+    while (titleBook != "q") {
         std::cout << "Enter ISBN for " << title << ":\n > ";
         while (!GetLongInput(isbnBook)) {
             cout << "Invalid input! Only input a number.\n";
