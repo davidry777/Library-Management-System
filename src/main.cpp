@@ -359,8 +359,13 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   }
   cout << "Input User Password:\n > ";
   getline(cin, userPass);
+  // cout << logSys->HashPassword(userPass);
   if (logSys->LoginVerify(userID,userPass))
+  {
+    currPerson=userSys->GetPerson(userID);
     allowLog = true;
+  }
+    
   return allowLog;
 }
 
@@ -412,9 +417,9 @@ int main() {
     cout << "Input the catalogue filename (or \"default\" for default filenames):\n > ";
     getline(cin, catalogueFile);
     if (catalogueFile == "default") {
-        catalogueFile = "../program_files/catalogue.json"; 
-        checkedOutFile = "../program_files/checked_out.json"; 
-        userInfoFile = "../program_files/userInfo.json"; 
+        catalogueFile = "program_files/catalogue.json"; 
+        checkedOutFile = "program_files/checked_out.json"; 
+        userInfoFile = "program_files/userInfo.json"; 
     }
     else {
         cout << "Input the check out data filename:\n > ";
