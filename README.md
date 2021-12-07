@@ -65,7 +65,8 @@
  > Screenshots of the input/output after running your application
  ## Installation/Usage
  > Instructions on installing and running your application
+ > Clone the git repository, then run "cmake ." in a subfolder within the final-project folder. Then you can run ./main to use the library system.
  ## Testing
  > Testing was done through writing test cases for classes using googletest
  ![image](https://user-images.githubusercontent.com/42660969/144948042-581fa67c-225b-46fe-8ae0-5c695ddcb282.png)
-
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/alltests.png)

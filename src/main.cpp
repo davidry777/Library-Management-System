@@ -360,7 +360,11 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   cout << "Input User Password:\n > ";
   getline(cin, userPass);
   if (logSys->LoginVerify(userID,userPass))
+  {
+    currPerson=userSys->GetPerson(userID);
     allowLog = true;
+  }
+    
   return allowLog;
 }
 
