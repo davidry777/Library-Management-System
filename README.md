@@ -65,8 +65,17 @@
  > Screenshots of the input/output after running your application
  ## Installation/Usage
  > Instructions on installing and running your application
- > Clone the git repository, then run "cmake ." in a subfolder within the final-project folder. Then you can run ./main to use the library system.
+ > Clone the git repository, then run "cmake3 -B . -S .." in a subfolder within the final-project folder. Then you can run ./main to use the library system.
  ## Testing
  > Testing was done through writing test cases for classes using googletest
  ![image](https://user-images.githubusercontent.com/42660969/144948042-581fa67c-225b-46fe-8ae0-5c695ddcb282.png)
 ![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/alltests.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/booksystemtest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/booktest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/bundletest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/librariantest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/librarytest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/loginsystemtest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/persontest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/usersystemtest.png)
+![image](https://github.com/cs100/final-project-dcast162-nkile001-dryan011-jgies011/blob/master/images/usertest.png)
