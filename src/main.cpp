@@ -119,6 +119,52 @@ void AddBook(Librarian* person) {
     std::cout << title << " added to Librarian " << person->GetName() << "'s library" << std::endl;
 }
 
+void AddBundle(Librarian* person, LibrarySystem* lib) {
+    std::string title, genre;
+    long long isbn;
+    std::string titleBook, genreBook, authorBook;
+    long long isbnBook;
+    string input;
+
+    std::cout << "Enter title for new Bundle of books:\n > ";
+    getline(cin, title);    
+    
+    std::cout << "Enter ISBN for " << title << ":\n > ";
+    if (!GetLongInput(isbn)) {
+        cout << "Invalid input! Only input a number.\n";
+        return;
+    }
+    std::cout << "Enter genre for " << title << ":\n > ";
+    getline(cin, genre);
+
+    vector<Content*> books;
+    std::cout << "Enter title for new book (or 'q' to stop adding books to bundle):\n > ";
+    getline(cin, titleBook);
+    while (input != "q") {
+        std::cout << "Enter ISBN for " << title << ":\n > ";
+        while (!GetLongInput(isbnBook)) {
+            cout << "Invalid input! Only input a number.\n";
+            std::cout << "Enter ISBN for " << titleBook << ":\n > ";
+        }
+        std::cout << "Enter genre for " << titleBook << ":\n > ";
+        getline(cin, genreBook);
+        std::cout << "Enter author for " << titleBook << ":\n > ";
+        getline(cin, authorBook);
+        books.push_back(new Book(titleBook, isbnBook, genreBook, authorBook, 0));
+        std::cout << "Enter title to add to " + title + " (or 'q' to stop adding books):\n > ";
+        getline(cin, titleBook);    
+    }
+    if (books.size() == 0) {
+        cout << "Bundle is empty! Bundle not being added to catalogue." << endl;
+        return;
+    }
+    if (!lib->GetBookSystem()->MakeBundle(title, isbn, genre, books)) {
+        cout << "ISBN " << isbn << " already exists in the catalogue!" << endl;
+        return;
+    }
+    std::cout << title << " added to Librarian " << person->GetName() << "'s library" << std::endl;
+}
+
 void RemoveBook(Librarian* person) {
     long long isbn = -1;
 
@@ -162,8 +208,9 @@ void PrintMenu(Librarian* person) {
     std::cout << " ------------- Librarian Library Menu -------------- " << std::endl;
     std::cout << "|           1. Display Your Information             |" << std::endl;
     std::cout << "|           2. Add Book to Library                  |" << std::endl;
-    std::cout << "|           3. Remove Book from Library             |" << std::endl;
-    std::cout << "|           4. Display Catalogue                    |" << std::endl;
+    std::cout << "|           3. Add Bundle to Library                |" << std::endl;
+    std::cout << "|           4. Remove Book from Library             |" << std::endl;
+    std::cout << "|           5. Display Catalogue                    |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
     std::cout << "Type an option (1-3). Type -1 to Log Out:\n > ";
 }
@@ -185,7 +232,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	long long longinput = 0;
 	std::string sinput;
 	DisplayMenu();
-	std::cout << "Type an option (1-5). Type 0 to go back to main menu:\n >";
+	std::cout << "Type an option (1-5). Type 0 to go back to main menu:\n > ";
 	if (!GetIntInput(input)) {
         cout << "Invalid input! Only input a number.\n";
         return;
@@ -193,7 +240,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	DisplaySystem* display = new DisplaySystem;
 	if(input == 1)
 	{
-		std::cout << "Enter the genre you would like to search for:\n >";
+		std::cout << "Enter the genre you would like to search for:\n > ";
 		std::getline(std::cin, sinput);
 		if(choice == 1)
 			display->DisplayBooks('1', sinput, library->GetBookSystem()->GetUserCheckedOut(person));	
@@ -202,7 +249,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	}
 	if(input == 2)
 	{
-		std::cout << "Enter the keyword you would like to search by:\n >";
+		std::cout << "Enter the keyword you would like to search by:\n > ";
 		std::getline(std::cin, sinput);
 		if(choice == 1)
 			display->DisplayBooks('2', sinput, library->GetBookSystem()->GetUserCheckedOut(person));
@@ -211,7 +258,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 	}
 	if(input == 3)
 	{
-		 std::cout << "Enter the ISBN you would like to search for:\n >";
+		 std::cout << "Enter the ISBN you would like to search for:\n > ";
 		 if (!GetLongInput(longinput)) {
             cout << "Invalid input! Only input a number.\n";
             return;
@@ -241,7 +288,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
 int SwitchCaseDisplay(User* person, LibrarySystem* library)
 {
         int input = -1;
-        std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back:\n >";
+        std::cout << "Type an option (1-2) [1 to use User Catalogue 2 to use Library Catalogue] Type 0 to go back:\n > ";
         if (!GetIntInput(input)) {
             cout << "Invalid input! Only input a number.\n";
             return -0;
@@ -272,14 +319,16 @@ void ExecuteCommand(User* person, const string& input, LibrarySystem* library) {
 	DisplayHelper(person, library, SwitchCaseDisplay(person, library));       
 }
 
-void ExecuteCommand(Librarian* librarian, const string& input) {
+void ExecuteCommand(Librarian* librarian, const string& input, LibrarySystem* lib) {
     if (input == "1")
         PrintLibrarianInfo(librarian);    
     if (input == "2")
         AddBook(librarian);
     if (input == "3")
-        RemoveBook(librarian);
+        AddBundle(librarian, lib);
     if (input == "4")
+        RemoveBook(librarian);
+    if (input == "5")
         DisplayCatalogue(librarian);
 }
 
@@ -289,12 +338,12 @@ bool LoginHelper(LoginSystem *logSys, UserSystem *userSys, Person* currPerson)
   bool allowLog = false;
   int userID;
   string userPass;
-  cout << "Input User ID:\n >";
+  cout << "Input User ID:\n > ";
   if (!GetIntInput(userID)) {
       cout << "Invalid User ID. Only input digits." << endl;
       return false;
   }
-  cout << "Input User Password:\n >";
+  cout << "Input User Password:\n > ";
   getline(cin, userPass);
   if (logSys->LoginVerify(userID,userPass))
     allowLog = true;
@@ -314,9 +363,9 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
     getline(cin, input);
   }
 
-  cout  << "Input name:\n >" << endl;
+  cout  << "Input name:\n > ";
   getline(cin, name);
-  cout << "Input User ID:\n >" << endl;
+  cout << "Input User ID:\n > ";
   if (!GetIntInput(ID)) {
       cout << "Invalid User ID. Only input digits." << endl;
       return nullptr;
@@ -326,7 +375,7 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
     cout << "Error: Duplicate User, returning to home" << endl;
     return nullptr;
   }
-  cout << "Input User Password:\n > " << endl;
+  cout << "Input User Password:\n > ";
   getline(cin, userPass);
   int hashPass = logSys->HashPassword(userPass);
   if (input == "2")
@@ -380,7 +429,7 @@ int main() {
                 while (input != "-1") {
                     PrintMenu(dynamic_cast<Librarian*>(currPerson));
                     getline(cin, input);
-                    ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input);
+                    ExecuteCommand(dynamic_cast<Librarian*>(currPerson), input, &lib);
                 }
         }
         loggedIn = false;
