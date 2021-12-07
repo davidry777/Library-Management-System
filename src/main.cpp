@@ -191,6 +191,15 @@ void PrintLoginMenu() {
     std::cout << "Type an option (1-3):\n > ";
 }
 
+void PrintRegisterMenu() {
+    std::cout << " ------------------ Registration ------------------- " << std::endl;
+    std::cout << "|           1. Register as Librarian                |" << std::endl;
+    std::cout << "|           2. Register as User                     |" << std::endl;
+    std::cout << "|          -1. Return                               |" << std::endl;
+    std::cout << " --------------------------------------------------- " << std::endl;
+    std::cout << "Type an option (1-2):\n > ";
+}
+
 void PrintMenu(User* person) {
     std::cout << " ---------------- User Library Menu ---------------- " << std::endl;
     std::cout << "|           1. Display Your Information             |" << std::endl;
@@ -200,6 +209,7 @@ void PrintMenu(User* person) {
     std::cout << "|           5. Pay off Debt                         |" << std::endl;
     std::cout << "|           6. Show all Checked Out Books           |" << std::endl;
     std::cout << "|           7. Search/Sort Books                    |" << std::endl;
+    std::cout << "|          -1. Log Out                              |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
     std::cout << "Type an option (1-7). Type -1 to Log Out:\n > ";
 }
@@ -211,8 +221,9 @@ void PrintMenu(Librarian* person) {
     std::cout << "|           3. Add Bundle to Library                |" << std::endl;
     std::cout << "|           4. Remove Book from Library             |" << std::endl;
     std::cout << "|           5. Display Catalogue                    |" << std::endl;
+    std::cout << "|          -1. Return                               |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
-    std::cout << "Type an option (1-3). Type -1 to Log Out:\n > ";
+    std::cout << "Type an option (1-4):\n > ";
 }
 
 void DisplayMenu()
@@ -223,7 +234,9 @@ void DisplayMenu()
     std::cout << "|           3. Search by ISBN                       |" << std::endl;
     std::cout << "|           4. Sort Alphabetically                  |" << std::endl;
     std::cout << "|           5. Sort by Frequency                    |" << std::endl;
+    std::cout << "|          -1. Return                               |" << std::endl;
     std::cout << " --------------------------------------------------- " << std::endl;
+    std::cout << "Type an option (1-5):\n > ";
 }
 
 void DisplayHelper(User* person, LibrarySystem* library, int choice)
@@ -237,6 +250,7 @@ void DisplayHelper(User* person, LibrarySystem* library, int choice)
         cout << "Invalid input! Only input a number.\n";
         return;
     }
+    if (input == -1) { return; }
 	DisplaySystem* display = new DisplaySystem;
 	if(input == 1)
 	{
@@ -357,12 +371,14 @@ Person* RegisterHelper(BookSystem* bookSys, LoginSystem *logSys, UserSystem *use
   Person *create;
   string name, userPass;
   int ID;
-  while (input != "1" && input != "2")
+  while (input != "1" && input != "2" && input != "-1")
   {
-    cout << "To register a Librarian Account Input 1\nTo register a User Account Input 2\n";
+    PrintRegisterMenu();
     getline(cin, input);
   }
-
+  if (input == "-1") {
+      return nullptr;
+  }
   cout  << "Input name:\n > ";
   getline(cin, name);
   cout << "Input User ID:\n > ";
